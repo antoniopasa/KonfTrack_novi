@@ -13,11 +13,3 @@ Projektna dokumentacija
 -projektne odluke
 -dokumenti za predaju 
 
-Članovi:
-Karla Tušek
-Marta Šimić
-Gabrijela Stipić
-Mia Hrkać
-Pavla Čančar
-Marin Luka Lončar
-Antonio Pasarić
