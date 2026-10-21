@@ -5,6 +5,7 @@ Grupa L-A-12.3
 
 Projektna dokumentacija
 -opis projekta
+-cilj
 -analiza zahtjeva 
 -obrasci uporabe
 -arhitektura sustava
@@ -12,3 +13,11 @@ Projektna dokumentacija
 -projektne odluke
 -dokumenti za predaju 
 
+Članovi:
+Karla Tušek
+Marta Šimić
+Gabrijela Stipić
+Mia Hrkać
+Pavla Čančar
+Marin Luka Lončar
+Antonio Pasarić
