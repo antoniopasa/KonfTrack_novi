@@ -37,4 +37,19 @@ Sigurnost, validacija i tehnička kvaliteta:
 	Centralizirano bilježenje tehničkih pogrešaka 
 	Pisanje unit i integracijskih testova za ključne rute
 
+Predaja znanstvenih radova
+	Unos metapodataka rada (naslov, sažetak, ključne riječi)
+	Povezivanje rada s odabranom konferencijom i temom
+	Unos i povezivanje svih suautora s radom
+	Upload PDF datoteke rada
+	Provjera dopuštenog formata datoteke (PDF)
+	Provjera veličine prenesene datoteke
+	Spremanje datoteke na poslužitelj ili pohranu
+	Slanje novih verzija rada (ako pravila dopuštaju)
+	Praćenje statusa rada (predan, u recenziji, prihvaćen, odbijen)
+	Dohvat popisa vlastitih predanih radova za autora
+	Uređivanje predanog rada prije isteka roka
+	Povlačenje rada od strane autora
+	Generiranje i slanje potvrde o uspješnoj predaji
+
 	
