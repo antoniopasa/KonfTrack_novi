@@ -61,3 +61,9 @@ Program konferencije
 	API ruta za javni dohvat objavljenog rasporeda
 	Izmjena i ažuriranje rasporeda programa
 
+Statistika i izvještaji
+	Agregacija ukupnog broja radova po konferenciji
+	Brojanje radova po trenutnim statusima
+	Izračun postotka dovršenih i zakašnjelih recenzija
+	Sumarno brojanje prihvaćenih i odbijenih radova
+	Generiranje i izvoz izvještaja u CSV formatu
