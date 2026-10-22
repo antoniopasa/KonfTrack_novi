@@ -68,6 +68,7 @@ Statistika i izvještaji
 	Sumarno brojanje prihvaćenih i odbijenih radova
 	Generiranje i izvoz izvještaja u CSV formatu
 
+
 Mia:
 	- Dvostruko slijepa recenzija (Double-Blind)
 	Bilježenje područja stručnosti i interesa recenzenta
