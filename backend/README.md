@@ -28,4 +28,13 @@ Upravljanje konferencijama:
 	-Automatska blokada predaje radova nakon isteka roka
 	-Dodjela i provjera prava organizatora nad konferencijom
 
+
+Sigurnost, validacija i tehnička kvaliteta:
+	Sanitizacija i validacija svih ulaznih podataka iz zahtjeva
+	Zaštita lozinki pomoću jakih algoritmima 
+	Sigurna provjera prava preuzimanja privatnih PDF datoteka
+	Zaštita od curenja osobnih podataka 
+	Centralizirano bilježenje tehničkih pogrešaka 
+	Pisanje unit i integracijskih testova za ključne rute
+
 	
