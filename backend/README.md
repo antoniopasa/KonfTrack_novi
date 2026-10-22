@@ -1,1 +1,1 @@
-
+Funkcijski zahtjevi
