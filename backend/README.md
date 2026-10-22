@@ -52,4 +52,12 @@ Predaja znanstvenih radova
 	Povlačenje rada od strane autora
 	Generiranje i slanje potvrde o uspješnoj predaji
 
-	
+Program konferencije
+	Kreiranje sekcija i dvorana/prostorija
+	Definiranje satnice i trajanja pojedinih sesija
+	Dodjeljivanje prihvaćenih radova u sesije
+	Postavljanje prezentera za svaki prihvaćeni rad
+	Algoritamska provjera vremenskih preklapanja sesija
+	API ruta za javni dohvat objavljenog rasporeda
+	Izmjena i ažuriranje rasporeda programa
+
