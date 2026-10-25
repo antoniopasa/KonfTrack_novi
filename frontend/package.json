@@ -4,5 +4,12 @@
   "scripts": {
     "build": "mkdir -p dist && echo \"<h1>Frontend App</h1>\" > dist/index.html",
     "test": "echo \"Frontend tests passed\" && exit 0"
+  },
+  "dependencies": {
+    "ejs": "^7.0.2",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
