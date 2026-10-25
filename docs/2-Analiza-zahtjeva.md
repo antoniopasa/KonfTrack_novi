@@ -15,8 +15,42 @@ Primjeri koriste temu projekta CrisisMap. Neki namjerno sadrže korisne nedostat
 
 | ID | Opis | Prioritet | Izvor | Kriteriji prihvaćanja |
 | --- | --- | --- | --- | --- |
-| F-001 | [Funkcijski zahtjev/ponašanje sustava] | [Visok/Srednji/Nizak] | [Odobreni zadatak / zahtjev dionika / povratna informacija] | [Opažljivi rezultat] |
-|  |  |  |  |  |
+| F-001 | Sustav omogućuje registraciju korisničkog računa unosom potrebnih podataka | Visok | Projektni zadatak | Korisnik može poslati valjane podatke i stvoriti račun. Nevaljani podaci i već zauzeta jedinstvena e-mail adresa odbijaju se |
+| F-002 | Sustav omogućuje sigurnu prijavu korisnika | Visok | Projektni zadatak | Korisnik s valjanim vjerodajnicama uspješno se prijavljuje, a korisnik s nevaljanim vjerodajnicama ne dobiva pristup zaštićenim funkcijama |
+| F-003 | Sustav omogućuje sigurnu odjavu i poništavanje sesije | Visok | Projektni zadatak | Nakon odjave prethodna sesija više se ne može koristiti za pristup zaštićenim funkcijama |
+| F-004 | Sustav omogućuje promjenu lozinke prijavljenog korisnika | Visok | Projektni zadatak | Korisnik može promijeniti lozinku nakon uspješne provjere potrebnih vjerodajnica; nova lozinka koristi se za sljedeću prijavu |
+| F-005 | Sustav omogućuje pregled i uređivanje osobnog profila | Visok | Projektni zadatak | Prijavljeni korisnik može pregledati i ažurirati dopuštena polja vlastitog profila, ali ne može samostalno mijenjati zaštićene administrativne ovlasti |
+| F-006 | Sustav podržava uloge administratora, predsjednika konferencije, recenzenta i autora | Visok | Projektni zadatak | Sustav prepoznaje definirane uloge i primjenjuje odgovarajuća pravila pristupa |
+| F-007 | Sustav omogućuje dodjelu uloga korisnicima za pojedinu konferenciju | Visok | Projektni zadatak | Ovlašteni korisnik može dodijeliti dopuštenu ulogu za konferenciju, a neovlašteni korisnik ne može sam sebi dodijeliti višu ovlast |
+| F-008 | Sustav provjerava prava pristupa pri izvršavanju zaštićenih operacija | Visok | Projektni zadatak | Zahtjevi korisnika bez odgovarajućih ovlasti odbijaju se, uključujući pokušaje pristupa podacima drugih korisnika ili konferencija |
+| F-009 | Sustav omogućuje administratoru pregled korisničkih računa te izmjenu ili blokiranje računa | Visok | Projektni zadatak | Ovlašteni administrator može pregledati račune i provesti dopuštene administrativne radnje; obični korisnik ne može izvršiti te radnje |
+| F-010 | Sustav omogućuje stvaranje nove konferencije | Visok | Projektni zadatak | Ovlašteni organizator unosi obvezne podatke i stvara konferenciju koja se sprema u sustav |
+| F-011 | Ovlašteni organizator unosi obvezne podatke i stvara konferenciju koja se sprema u sustav | Visok | Projektni zadatak | Ovlašteni organizator unosi obvezne podatke i stvara konferenciju koja se sprema u sustav |
+| F-012 | Sustav omogućuje ovlaštenim korisnicima uređivanje podataka i opisa konferencije | Visok | Projektni zadatak | Ovlašteni organizator može spremiti valjane izmjene, a korisnik bez odgovarajućih ovlasti ne može ih provesti |
+| F-013 | Sustav omogućuje dohvat detalja pojedine konferencije | Visok | Projektni zadatak | Za odabranu konferenciju prikazuju se dostupni podaci, uključujući opis, status, datume, rokove i znanstvene teme |
+| F-014 | Sustav podržava statuse konferencije: u pripremi, otvorena i zatvorena | Visok | Projektni zadatak | Konferencija ima jedan od dopuštenih statusa, a promjenu statusa može izvršiti samo ovlašteni korisnik |
+| F-015 | Sustav omogućuje postavljanje i uređivanje roka za predaju radova | Visok | Projektni zadatak | Ovlašteni organizator može definirati rok, a sustav ga prikazuje i koristi pri provjeri dopuštenosti predaje |
+| F-016 | Sustav omogućuje postavljanje i uređivanje roka za izradu recenzija | Visok | Projektni zadatak | Ovlašteni organizator može definirati rok koji se koristi pri praćenju i provjeri pravodobnosti recenzija |
+| F-017 | Sustav omogućuje postavljanje i uređivanje roka za donošenje odluka | Visok | Projektni zadatak | Ovlašteni organizator može definirati rok za odluke te ga pregledavati u podacima konferencije |
+| F-018 | Sustav omogućuje dodavanje i uređivanje znanstvenih tema konferencije | Visok | Projektni zadatak | Ovlašteni organizator može dodati ili urediti temu, a promjene su vidljive u podacima konferencije |
+| F-019 | Sustav omogućuje objavljivanje konferencije i upravljanje njezinom vidljivošću | Visok | Projektni zadatak | Ovlašteni organizator može objaviti konferenciju, a neobjavljena konferencija nije dostupna javnosti ako pravila sustava ne dopuštaju drukčije |
+| F-020 | Sustav odbija predaju rada nakon isteka roka za predaju | Visok | Projektni zadatak | Ako je rok istekao ili konferencija više ne dopušta predaju, backend odbija novu predaju neovisno o stanju korisničkog sučelja |
+| F-021 | Sustav provjerava ovlasti organizatora nad pojedinom konferencijom | Visok | Projektni zadatak | Organizator može upravljati konferencijom za koju ima odgovarajuću ovlast, ali ne može uređivati konferencije kojima ne upravlja |
+| F-022 | Sustav omogućuje autoru predaju znanstvenog rada za konferenciju | Visok | Projektni zadatak | Autor može poslati obvezne metapodatke i datoteku rada ako su konferencija i rokovi otvoreni za predaju |
+| F-023 | Sustav omogućuje spremanje metapodataka rada, uključujući naslov, sažetak, ključne riječi i autore | Visok | Projektni zadatak | Valjani podaci povezuju se s odgovarajućim radom i konferencijom. |
+| F-024 | Sustav provjerava format i veličinu datoteke predanog rada | Visok | Projektni zadatak | Neprihvatljiv format ili datoteka iznad dopuštene veličine odbijaju se uz odgovarajuću poruku |
+| F-025 | Sustav omogućuje autoru pregled i izmjenu vlastitog rada u dopuštenom razdoblju | Visok | Projektni zadatak | Autor može pristupiti vlastitim radovima i uređivati ih samo dok pravila konferencije dopuštaju izmjene |
+| F-026 | Sustav omogućuje povlačenje vlastitog rada u dopuštenim okolnostima | Visok | Projektni zadatak | Ovlašteni autor može povući vlastiti rad, a sustav evidentira promjenu statusa |
+| F-027 | Sustav omogućuje dodjelu recenzenata radovima | Visok | Projektni zadatak | Ovlašteni član odbora može dodijeliti odgovarajuće recenzente, a dodjele su evidentirane |
+| F-028 | Sustav omogućuje recenzentu pregled dodijeljenih radova i predaju recenzije | Visok | Projektni zadatak | Recenzent može pregledati dodijeljene radove i predati recenziju za koju ima ovlast |
+| F-029 | Sustav podržava dvostruko slijepo recenziranje | Visok | Projektni zadatak | U recenzijskom postupku autor ne vidi identitet recenzenta, a recenzent ne dobiva identitet autora putem zaštićenih prikaza i dostupnih datoteka |
+| F-030 | Sustav omogućuje evidentiranje konačne odluke o radu | Visok | Projektni zadatak | Ovlašteni član odbora može evidentirati odluku, a sustav sprema njezin status i pripadajuće podatke |
+| F-031 | Sustav omogućuje slanje obavijesti o važnim događajima konferencije | Visok | Projektni zadatak | Za definirane događaje, poput predaje rada, dodjele recenzenta ili donošenja odluke, sustav pokreće odgovarajuću obavijest prema utvrđenim pravilima |
+| F-032 | Sustav omogućuje izradu i uređivanje programa konferencije | Visok | Projektni zadatak | Ovlašteni organizator može stvoriti i ažurirati programske cjeline i raspored |
+| F-033 | Sustav provjerava vremenska preklapanja programskih stavki | Visok | Projektni zadatak | Sustav prepoznaje preklapanja koja nisu dopuštena prema definiranim pravilima rasporeda |
+| F-034 | Sustav omogućuje pregled programa konferencije | Visok | Projektni zadatak | Korisnik može dohvatiti objavljeni program i pregledati raspored prema dostupnim podacima |
+| F-035 | Sustav omogućuje pregled osnovnih statistika o radovima konferencije | Visok | Projektni zadatak | Prikazuju se izračuni broja predanih radova i njihove raspodjele prema definiranim statusima |
+
 
 <details>
 <summary><strong>Izvori zahtjeva i kriteriji prihvaćanja</strong></summary>
@@ -53,8 +87,17 @@ Za složenu interakciju kratak scenarij *Given / When / Then* može pojasniti kr
 
 | ID | Opis | Prioritet | Izvor | Način provjere |
 | --- | --- | --- | --- | --- |
-| NF-01 | [Konkretan zahtjev (npr. odziv, sigurnost, pristupačnost)] | Visok / Srednji / Nizak | [Sigurnost / Uputa / SLA] | [Mjerenje / Testni scenarij / Pregled] |
-|  |  |  |  |  |
+| NF-01 | Lozinke se moraju pohranjivati isključivo u obliku sigurnog kriptografskog sažetka dobivenog odgovarajućim algoritmom za pohranu lozinki | Visok | Sigurnosni zahtjevi projektnog tima | Pregled konfiguracije autentifikacije i provjera pohranjenih podataka |
+| NF-02 | Sve zaštićene operacije moraju provoditi autentifikaciju i provjeru ovlasti na backendu | Visok | Sigurnosni zahtjevi projektnog tima | Integracijski testovi s prijavljenim i neprijavljenim korisnicima te korisnicima s različitim ulogama |
+| NF-03 | Korisnik smije pristupati samo osobnim podacima i resursima za koje ima odgovarajuće ovlasti | Visok | Sigurnosni zahtjevi projektnog tima | Testiranje pokušaja pristupa tuđim profilima, radovima, recenzijama i konferencijama |
+| NF-04 | Privatne PDF datoteke moraju biti dostupne samo ovlaštenim korisnicima | Visok | Sigurnosni zahtjevi projektnog tima | Testiranje pristupa datotekama s različitim korisničkim ulogama i bez prijave |
+| NF-05 | Sustav mora validirati sve ulazne podatke prije obrade i spremanja | Visok | Sigurnosni zahtjevi projektnog tima | Testovi nevaljanih tipova, nedostajućih polja, nedopuštenih vrijednosti i neprihvatljivih datuma |
+| NF-06 | Sustav mora čuvati povjerljivost podataka povezanih s dvostruko slijepim recenziranjem | Visok | Zahtjevi projekta | Pregled odgovora API-ja, prava pristupa i dostupnih datoteka u scenarijima recenziranja |
+| NF-07 | Tehničke pogreške moraju se evidentirati centralizirano, bez zapisivanja lozinki, tokena i nepotrebnih osobnih podataka | Srednji | Sigurnosni zahtjevi projektnog tima | Pregled konfiguracije logiranja i provjera zapisa nakon simuliranih pogrešaka |
+| NF-08 | Ključne funkcionalnosti moraju imati automatizirane unit ili integracijske testove | Visok | Zahtjevi projektnog tima | Pokretanje testova i pregled rezultata u razvojnom okruženju ili CI postupku |
+| NF-09 | API mora vraćati dosljedne odgovore i odgovarajuće HTTP statuse za uspješne zahtjeve i pogreške | Srednji | Zahtjevi projektnog tima | ntegracijski testovi uspješnih, nevaljanih i neovlaštenih zahtjeva |
+| NF-10 | Sustav mora koristiti konfiguraciju koja omogućuje sigurno upravljanje tajnama i postavkama okruženja | Visok | Sigurnosni zahtjevi projektnog tima | Pregled konfiguracije, varijabli okruženja i repozitorija radi provjere da tajne nisu pohranjene u kodu |
+| NF-11 | Dokumentacija mora omogućiti članovima tima pokretanje projekta i razumijevanje osnovnih API funkcionalnosti | Srednji | Projektni proces tima | Drugi član tima prati upute za postavljanje i provjerava dokumentirane API rute |
 
 <details>
 <summary><strong>Nefunkcijski zahtjevi za analizu</strong></summary>
@@ -87,7 +130,14 @@ Relevantna svojstva mogu se odnositi na uporabljivost, pristupačnost, sigurnost
 
 | ID uloge ili aktera | Odnos prema sustavu | Relevantni zahtjevi |
 | --- | --- | --- |
-|  |  |  |
+| A-01 | Administrator sustava – upravlja korisničkim računima i administrativnim ovlastima | F-006, F-009, F-008, NF-02 |
+| A-02 | Predsjednik konferencije – upravlja konferencijom, rokovima, temama i dopuštenim organizacijskim procesima | F-007, F-010–F-021, F-027, F-030, F-032 |
+| A-03 | Autor – registrira se, upravlja profilom i predaje te prati vlastite radove | F-001–F-005, F-022–F-026 |
+| A-04 | Recenzent – pregledava dodijeljene radove i predaje recenzije | F-027–F-029, NF-03, NF-04, NF-06 |
+| A-05 | Programsko ili organizacijsko povjerenstvo – pregledava rezultate recenzija, donosi odluke i organizira program u okviru dodijeljenih ovlasti | F-027, F-030–F-036 |
+| A-06 | Javni posjetitelj – pregledava objavljene i javno dostupne konferencije te njihove dostupne informacije | F-012, F-013, F-020, F-035 |
+| D-01 | Voditelj tima – prati usklađenost projekta s dogovorenim opsegom i koordinira rad |Zahtjevi projekta, dokumentacija i Issues |
+
 
 <details>
 <summary><strong>Akteri i povezani zahtjevi</strong></summary>
