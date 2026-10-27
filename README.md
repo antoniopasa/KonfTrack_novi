@@ -13,10 +13,10 @@ GLAVNE FUNKCIONALNOSTI:
 -Marin Lukas Lončar
 -Pavla Čančar(koordinator)
 
-# [Naziv aplikacije]
+# [KonfTrack]
 
 <details>
-<summary>Zašto je ovaj odjeljak važan</summary>
+<summary>Opis aplikacije</summary>
 
 Započnite README nazivom svojeg projekta i sažetim opisom njegove svrhe. Naziv projekta ne mora sam po sebi objašnjavati čemu projekt služi, ali opis uz naziv treba novom čitatelju omogućiti da brzo razumije što aplikacija radi.
 
