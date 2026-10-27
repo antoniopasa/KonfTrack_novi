@@ -1,34 +1,25 @@
-# KonfTrack
-
-Programsko inžinjerstvo, FER. Grupa L-A-12.3
-
-CILJ:
-GLAVNE FUNKCIONALNOSTI:
-ČLANOVI TIMA:
--Marta Šimić
--Karla Tušek
--Antonio Pasarić
--Gabrijela Stipić
--Mia Hrkać
--Marin Lukas Lončar
--Pavla Čančar(koordinator)
+#Programsko inžinjerstvo, FER. Grupa L-A-12.3
 
 # [KonfTrack]
 
 <details>
-<summary>Opis aplikacije</summary>
-
-Započnite README nazivom svojeg projekta i sažetim opisom njegove svrhe. Naziv projekta ne mora sam po sebi objašnjavati čemu projekt služi, ali opis uz naziv treba novom čitatelju omogućiti da brzo razumije što aplikacija radi.
 
 </details>
 
-[U jednoj rečenici navedite što aplikacija omogućuje svojim korisnicima.]
+[Aplikacija omogućuje znanstvenicima objavu svojih znanstvenih radova, njihovo recenziranje uz oprez na sukob interesa, donošenje odluka o prihvaćanju radova koji će biti dio znanstvene konferencije .]
 
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 ## Opis aplikacije
 
-[U dvije ili tri rečenice objasnite problem, ciljane korisnike i glavnu korist svoje aplikacije. Trenutačne funkcionalnosti navedite odvojeno od planiranih; opišite stvarni opseg umjesto obećanih mogućnosti.]
+[Aplikacija rješava problem organizacije konferencija analgnim načinima tako što štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
+Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
+
+TRENUTAČNE FUNKCIONALNOSTI:
+
+PLANIRANE FUNKCIONALNOSTI:
+
+]
 
 **Ključne funkcionalnosti**
 
