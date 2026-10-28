@@ -6,13 +6,13 @@
 
 </details>
 
-[Aplikacija omogućuje znanstvenicima objavu svojih znanstvenih radova, njihovo recenziranje uz oprez na sukob interesa, donošenje odluka o prihvaćanju radova koji će biti dio znanstvene konferencije .]
+[Aplikacija omogućuje znanstvenicima objavu svojih znanstvenih radova, njihovo recenziranje uz oprez na sukob interesa te donošenje odluka o prihvaćanju radova koji će biti dio znanstvene konferencije .]
 
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 ## Opis aplikacije
 
-[Aplikacija rješava problem organizacije konferencija analgnim načinima tako što štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
+[Aplikacija rješava problem organizacije konferencija analognim načinima tako što štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
 Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
 
 TRENUTAČNE FUNKCIONALNOSTI:
@@ -94,13 +94,13 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 
 ## Članovi tima
 
--Marta Šimić
--Karla Tušek
--Antonio Pasarić
--Gabrijela Stipić
--Mia Hrkać
--Marin Lukas Lončar
--Pavla Čančar(koordinator)
+|Marta Šimić|frontend|
+|Karla Tušek| backend|
+|Antonio Pasarić| frontend|
+|Gabrijela Stipić|backend|
+|Mia Hrkać |backend|
+|Marin Lukas Lončar | baze podataka|
+|Pavla Čančar|koordinator|
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
 
