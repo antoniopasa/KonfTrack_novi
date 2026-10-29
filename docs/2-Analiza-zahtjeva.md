@@ -165,6 +165,8 @@ Relevantna svojstva mogu se odnositi na uporabljivost, pristupačnost, sigurnost
 | ID | Tip | Opis ograničenja ili pretpostavke | Izvor | Inženjerska posljedica / Provjera |
 | --- | --- | --- | --- | --- |
 | C-01 | Ograničenje | [Fiksni tehnički ili procesni uvjet] | [Zadatak / Pravila] | [Utjecaj na arhitekturu i oblikovanje] |
+| C-02 | Ograničenje | [Sustav se razvija u okviru studentskog projekta i raspoloživog vremena kolegija] | [Projektni zadatak i rokovi kolegija] | [Prioritet imaju funkcionalnosti nužne za ostvarenje osnovnog procesa upravljanja konferencijom. OPseg dodatnih funkcionalnosti dogovara se unutar tima.] |
+| C-03 | Ograničenje | [Pristup funkcionalnostima i podacima mora biti ograničen prema ulozi i ovlastima korisnika] | [Sigurnosni zahtjevi projekta; F-006-F009,NF-02 i NF-03] | [Ovlasti se moraju provjeravati na backendu, a ne samo skrivanjem opcija u korisničkom sučelju. Provjerava se pokušaj pristupa funkcionalnostima bez odgovarajućih ovlasti.] |
 | AS-01 | Pretpostavka | [Očekivani uvjet, npr. o podacima ili okolini] | [Procjena tima] | [Kako i kada će se provjeriti valjanost] |
 |  |  |  |  |  |
 <details>
