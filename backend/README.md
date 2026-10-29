@@ -1,3 +1,95 @@
+## Pokretanje backenda
+
+### Preduvjeti
+
+- [Node.js](https://nodejs.org/) 20 ili noviji
+- [PostgreSQL](https://www.postgresql.org/download/) (lokalno instaliran ili preko Dockera)
+- Git
+
+### 1. Kloniranje i instalacija
+
+```bash
+git clone <URL repozitorija>
+cd KonfTrack/backend
+npm install
+```
+
+Sve naredbe iz ovih uputa pokreću se iz mape `backend`.
+
+### 2. Baza podataka
+
+Napravi praznu bazu `konftrack` (npr. u pgAdminu: desni klik na _Databases → Create → Database_).
+
+Ili, ako koristiš Docker:
+
+```bash
+docker run --name konftrack-db -e POSTGRES_USER=konftrack -e POSTGRES_PASSWORD=konftrack -e POSTGRES_DB=konftrack -p 5432:5432 -d postgres:16
+```
+
+### 3. Varijable okruženja
+
+Kopiraj predložak i upiši svoje podatke:
+
+```bash
+cp .env.example .env
+```
+
+U `.env` postavi `DATABASE_URL` prema svojoj bazi:
+
+```
+DATABASE_URL="postgresql://KORISNIK:LOZINKA@127.0.0.1:5432/konftrack?schema=public"
+```
+
+Datoteka `.env` se nikad ne commita.
+
+Provjera veze s bazom:
+
+```bash
+echo "SELECT 1" | npx prisma db execute --stdin --schema prisma/schema.prisma
+```
+
+Ako sve radi, ispisat će se `Script executed successfully.`
+
+### 4. Migracije
+
+Kad shema baze bude dodana u `prisma/schema.prisma`, tablice se stvaraju naredbom:
+
+```bash
+npx prisma migrate dev
+```
+
+### 5. Pokretanje
+
+```bash
+npm run dev
+```
+
+Server se pokreće na portu iz `.env` (varijabla `PORT`).
+
+- `http://localhost:PORT/health` – provjera radi li server
+- `http://localhost:PORT/api-docs` – Swagger dokumentacija API-ja
+
+### Skripte
+
+| Naredba                  | Opis                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| `npm run dev`            | Pokretanje za razvoj, server se restarta pri svakoj promjeni |
+| `npm start`              | Pokretanje za produkciju                                     |
+| `npm test`               | Pokretanje testova                                           |
+| `npm run lint`           | Provjera koda ESLintom                                       |
+| `npm run lint:fix`       | Automatski popravak grešaka koje ESLint može popraviti       |
+| `npm run format`         | Formatiranje koda Prettierom                                 |
+| `npm run format:check`   | Provjera formatiranja bez izmjena                            |
+| `npm run prisma:migrate` | Pokretanje Prisma migracija                                  |
+| `npx prisma studio`      | Pregled baze u pregledniku                                   |
+
+### Česti problemi
+
+- **`Could not read package.json`** – naredba nije pokrenuta iz mape `backend`.
+- **`P1001: Can't reach database server`** – PostgreSQL nije pokrenut ili je u `DATABASE_URL` krivi port. Port se provjerava naredbom `netstat -ano | findstr LISTENING | findstr 543` (na Windowsu).
+- **`P1000: Authentication failed`** – kriva lozinka u `DATABASE_URL`. Posebni znakovi u lozinki (`@`, `#`, `%`...) moraju se zapisati URL-kodirano (npr. `@` → `%40`).
+- **`@prisma/client did not initialize yet`** – pokreni `npx prisma generate`. Klijent se generira tek kad u shemi postoji barem jedan model.
+
 Funkcijski zahtjevi:
 
 Korisnici i prava pristupa:
