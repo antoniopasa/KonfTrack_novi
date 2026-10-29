@@ -8,6 +8,7 @@
 
 [KonfTrack je web-aplikacija namijenjena organizaciji znanstvenih konferencija. Cilj projekta je olakšati upravljanje konferencijama, prijavu znanstvenih radova, njihovo recenziranje, pračenje životnog ciklusa radova te donošenje odluka o prihvaćanju radova.]
 
+
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 ## Opis aplikacije
@@ -105,13 +106,16 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 
 ## Članovi tima
 
-- Marta Šimić
-- Karla Tušek
-- Antonio Pasarić
-- Gabrijela Stipić
-- Mia Hrkać
-- Marin Lukas Lončar
-- Pavla Čančar(koordinator)
+| Član tima | Uloga |
+|---|---|
+| Marta Šimić | Frontend |
+| Karla Tušek | Backend |
+| Antonio Pasarić | Frontend |
+| Gabrijela Stipić | Backend |
+| Mia Hrkać | Backend |
+| Marin Lukas Lončar | Baze podataka |
+| Pavla Čančar | Koordinator |
+
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
 
