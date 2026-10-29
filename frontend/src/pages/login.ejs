@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend/src/pages/login.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/frontend/src/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/frontend/src/assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="login-container"> 
+        <!--treba dodat da slika loga vraca na home stranicu-->
+       <img src="/frontend/src/assets/logo.png" alt="KonfTrack Logo"  class="logo"> 
+      <h2>Login</h2>
+      <div class="login">
+      <!-- 
+        <form>
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+        </form>
+-->
+        <button id="orcid-login-btn" class="orcid-btn">
+          <img
+            class="orcid-logo"
+            src="/frontend/src/assets/orcid-logo.png"
+            alt="ORCID iD logo"
+            width="24"
+            height="24"
+          />
+          login with ORCID →
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
