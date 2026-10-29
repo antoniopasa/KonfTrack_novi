@@ -10,7 +10,9 @@
     "lint:fix": "eslint . --fix",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
@@ -23,7 +25,9 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
     "globals": "^17.13.0",
+    "prettier": "^3.9.10",
     "prisma": "^6.19.3"
   }
 }
