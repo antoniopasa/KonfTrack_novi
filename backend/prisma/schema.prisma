@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  // treba izbrisati i guess: output   = "../src/generated/prisma"
 }
 
 datasource db {
