@@ -6,18 +6,23 @@
 
 </details>
 
-[Aplikacija omogućuje znanstvenicima objavu svojih znanstvenih radova, njihovo recenziranje uz oprez na sukob interesa, donošenje odluka o prihvaćanju radova koji će biti dio znanstvene konferencije .]
+[KonfTrack je web-aplikacija namijenjena organizaciji znanstvenih konferencija. Cilj projekta je olakšati upravljanje konferencijama, prijavu znanstvenih radova, njihovo recenziranje, pračenje životnog ciklusa radova te donošenje odluka o prihvaćanju radova.]
 
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 ## Opis aplikacije
 
-[Aplikacija rješava problem organizacije konferencija analgnim načinima tako što štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
+[Aplikacija rješava problem organizacije konferencija analognim načinima tako što štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
 Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
 
-TRENUTAČNE FUNKCIONALNOSTI:
+- **Autori** — prijavljuju znanstvene radove i predaju njihove verzije.
+- **Recenzenti** — pregledavaju dodijeljene radove i izrađuju recenzije.
+- **Predsjednici programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
+- **Organizatori i administratori konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
 
-PLANIRANE FUNKCIONALNOSTI:
+###TRENUTAČNE FUNKCIONALNOSTI:
+
+###PLANIRANE FUNKCIONALNOSTI:
 
 ]
 
@@ -26,6 +31,12 @@ PLANIRANE FUNKCIONALNOSTI:
 - [Reprezentativna funkcionalnost koju korisnici mogu isprobati]
 - [Druga reprezentativna funkcionalnost]
 - [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva]
+- Upravljanje konferencijama i njihovim rokovima.
+- Prijava znanstvenih radova i predaja dokumenata.
+- Dodjela recenzenata uz provjeru sukoba interesa.
+- Izrada recenzija i donošenje odluka o prihvaćanju radova.
+- Izrada programa konferencije i izvoz odabranih podataka.
+
 
 Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [docs](docs/Home.md).
 
@@ -34,7 +45,7 @@ Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [docs](d
 ## Postavljanje (engl. deployment)
 
 <!-- UPUTA: Ovaj odjeljak opisuje već postavljenu aplikaciju koju se  može otvoriti i isprobati bez lokalnog pokretanja izvornog koda.
-Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li URL na javno dostupnu pokrenutu aplikaciju i radi li navedeni tijek uporabe. Nikada ne objavljujte lozinke ni pristupne tokene. -->
+Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li URL na javno dostupnu pokrenutu aplikaciju i radi li navedeni tijek uporabe. Nikada ne objavljujte lozinke ni pristupne tokene. Provjereni koraci za instalaciju, pokretanje backenda i frontenda -->
 
 **Javno dostupna aplikacija:** [Javni URL]
 
@@ -94,13 +105,13 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 
 ## Članovi tima
 
--Marta Šimić
--Karla Tušek
--Antonio Pasarić
--Gabrijela Stipić
--Mia Hrkać
--Marin Lukas Lončar
--Pavla Čančar(koordinator)
+- Marta Šimić
+- Karla Tušek
+- Antonio Pasarić
+- Gabrijela Stipić
+- Mia Hrkać
+- Marin Lukas Lončar
+- Pavla Čančar(koordinator)
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
 
