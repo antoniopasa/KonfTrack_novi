@@ -1,40 +1,43 @@
-# KonfTrack
+#Programsko inžinjerstvo, FER. Grupa L-A-12.3
 
-Programsko inžinjerstvo, FER. Grupa L-A-12.3
-
-CILJ:
-GLAVNE FUNKCIONALNOSTI:
-ČLANOVI TIMA:
--Marta Šimić
--Karla Tušek
--Antonio Pasarić
--Gabrijela Stipić
--Mia Hrkać
--Marin Lukas Lončar
--Pavla Čančar(koordinator)
-
-# [Naziv aplikacije]
+# [KonfTrack]
 
 <details>
-<summary>Zašto je ovaj odjeljak važan</summary>
-
-Započnite README nazivom svojeg projekta i sažetim opisom njegove svrhe. Naziv projekta ne mora sam po sebi objašnjavati čemu projekt služi, ali opis uz naziv treba novom čitatelju omogućiti da brzo razumije što aplikacija radi.
 
 </details>
 
-[U jednoj rečenici navedite što aplikacija omogućuje svojim korisnicima.]
+[KonfTrack je web-aplikacija namijenjena organizaciji znanstvenih konferencija. Cilj projekta je olakšati upravljanje konferencijama, prijavu znanstvenih radova, njihovo recenziranje, pračenje životnog ciklusa radova te donošenje odluka o prihvaćanju radova.]
+
 
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 ## Opis aplikacije
 
-[U dvije ili tri rečenice objasnite problem, ciljane korisnike i glavnu korist svoje aplikacije. Trenutačne funkcionalnosti navedite odvojeno od planiranih; opišite stvarni opseg umjesto obećanih mogućnosti.]
+[Aplikacija rješava problem organizacije konferencija analognim načinima tako što štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
+Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
+
+- **Autori** — prijavljuju znanstvene radove i predaju njihove verzije.
+- **Recenzenti** — pregledavaju dodijeljene radove i izrađuju recenzije.
+- **Predsjednici programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
+- **Organizatori i administratori konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
+
+###TRENUTAČNE FUNKCIONALNOSTI:
+
+###PLANIRANE FUNKCIONALNOSTI:
+
+]
 
 **Ključne funkcionalnosti**
 
 - [Reprezentativna funkcionalnost koju korisnici mogu isprobati]
 - [Druga reprezentativna funkcionalnost]
 - [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva]
+- Upravljanje konferencijama i njihovim rokovima.
+- Prijava znanstvenih radova i predaja dokumenata.
+- Dodjela recenzenata uz provjeru sukoba interesa.
+- Izrada recenzija i donošenje odluka o prihvaćanju radova.
+- Izrada programa konferencije i izvoz odabranih podataka.
+
 
 Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [docs](docs/Home.md).
 
@@ -43,7 +46,7 @@ Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [docs](d
 ## Postavljanje (engl. deployment)
 
 <!-- UPUTA: Ovaj odjeljak opisuje već postavljenu aplikaciju koju se  može otvoriti i isprobati bez lokalnog pokretanja izvornog koda.
-Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li URL na javno dostupnu pokrenutu aplikaciju i radi li navedeni tijek uporabe. Nikada ne objavljujte lozinke ni pristupne tokene. -->
+Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li URL na javno dostupnu pokrenutu aplikaciju i radi li navedeni tijek uporabe. Nikada ne objavljujte lozinke ni pristupne tokene. Provjereni koraci za instalaciju, pokretanje backenda i frontenda -->
 
 **Javno dostupna aplikacija:** [Javni URL]
 
@@ -103,13 +106,16 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 
 ## Članovi tima
 
--Marta Šimić
--Karla Tušek
--Antonio Pasarić
--Gabrijela Stipić
--Mia Hrkać
--Marin Lukas Lončar
--Pavla Čančar(koordinator)
+| Član tima | Uloga |
+|---|---|
+| Marta Šimić | Frontend |
+| Karla Tušek | Backend |
+| Antonio Pasarić | Frontend |
+| Gabrijela Stipić | Backend |
+| Mia Hrkać | Backend |
+| Marin Lukas Lončar | Baze podataka |
+| Pavla Čančar | Koordinator |
+
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
 
