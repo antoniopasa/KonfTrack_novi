@@ -12,7 +12,7 @@
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #f5f3ef, #a6d7f786);
+ background: linear-gradient(120deg, #a7b8cb 0%, #c3c9d6 50%, #f0dde4 100%);
   background-attachment: fixed;
   color: #272726;
 }
