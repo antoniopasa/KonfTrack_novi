@@ -1,0 +1,48 @@
+<%- include('../partials/head', { naslov: 'Moji radovi' }) %>
+<%- include('../partials/sidebar', { aktivno: 'radovi' }) %>
+
+<header class="page-header">
+  <h1>Moji radovi</h1>
+  <p>Pregled predanih radova i njihovih stanja.</p>
+</header>
+
+<section class="card">
+  <div class="card-head">
+    <h3>Predani radovi</h3>
+    <div class="filters">
+      <input type="text" placeholder="Pretraži..." disabled>
+      <select disabled>
+        <option>Sva stanja</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Naslov</th>
+          <th>Konferencija</th>
+          <th>Tema</th>
+          <th>Datum predaje</th>
+          <th>Stanje</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% radovi.forEach(function (r) { %>
+        <tr>
+          <td data-label="Naslov"><%= r.naslov %></td>
+          <td data-label="Konferencija"><%= r.konferencija %></td>
+          <td data-label="Tema"><%= r.tema %></td>
+          <td data-label="Datum predaje"><%= r.datum %></td>
+          <td data-label="Stanje"><span class="badge badge-<%= r.stanjeKljuc %>"><%= r.stanje %></span></td>
+          <td><button class="btn btn-small" disabled>Detalji</button></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
