@@ -1,12 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend/src/pages/index.css" />
     <title>Pocetna</title>
-</head>
-<body>
-    
-</body>
+        <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/frontend/src/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/frontend/src/assets/favicon-16x16.png"
+    />
+  </head>
+  <body>
+    <div class="stranica">
+      <aside class="sidebar">
+        <div class="sidebar-vrh">
+          <img
+            src="/frontend/src/assets/logo.png"
+            alt="KonfTrack Logo"
+            class="logo"
+          />
+        </div>
+        <div class="sidebar-sredina">
+          <ul>
+            <li><a href="#">Početna</a></li>
+            <li><a href="#">O nama</a></li>
+            <li><a href="#">Kontakt</a></li>
+          </ul>
+        </div>
+        <a href="#" class="prijava">Prijavi se</a>
+      </aside>
+
+      <main class="sadrzaj">
+        <header class="zaglavlje">
+          <h1>Dobrodošli na KonfTrack</h1>
+          <p>KonfTrack je aplikacija za praćenje konferencija i događaja.</p>
+        </header>
+
+        <section class="teme">
+          <h2>Teme konferencija</h2>
+          <ul>
+            <li>Tema 1</li>
+            <li>Tema 2</li>
+            <li>Tema 3</li>
+          </ul>
+        </section>
+
+        <section class="vazniDatumi">
+          <h2>Važni datumi</h2>
+          <div class="kalendar"></div>
+        </section>
+
+        <section class="datumiPredaja">
+          <h2>Datumi predaja</h2>
+          <ul>
+            <li>Datum 1</li>
+            <li>Datum 2</li>
+            <li>Datum 3</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>

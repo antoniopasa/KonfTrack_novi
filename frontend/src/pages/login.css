@@ -9,7 +9,7 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #d0b5bfee, #002b499d);
+  background: linear-gradient(135deg, #d0b5bf90, #002b495f);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,11 +25,6 @@ h4,
 .naslov,
 .logo-text {
   font-family: "Plus Jakarta Sans", sans-serif;
-}
-
-code,
-pre {
-  font-family: "JetBrains Mono", monospace;
 }
 
 .login-container {
