@@ -1,3 +1,4 @@
+/*
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
@@ -19,4 +20,77 @@ app.use("/health", healthRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server radi na http://localhost:${PORT}`);
+});
+*/
+require("dotenv").config();
+
+const express = require("express");
+const session = require("express-session");
+const path = require("path");
+const helmet = require("helmet");
+
+const authRoutes = require("./routes/authRoutes");
+const orcidRoutes = require("./routes/orcidRoutes");
+
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+// EJS konfiguracija
+app.set("view engine", "ejs");
+
+app.set("views", path.resolve(__dirname, "../../frontend/src/pages"));
+
+// Omogućavanje CSS-a, slika i ostalih statičkih datoteka
+app.use(express.static(path.resolve(__dirname, "../../frontend/src")));
+
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Sigurnosna zaglavlja
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "script-src": ["'self'"],
+        "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        "font-src": ["'self'", "https://fonts.gstatic.com", "data:"],
+        "img-src": ["'self'", "data:"],
+      },
+    },
+  }),
+);
+
+// Sesije
+app.use(
+  session({
+    name: "konftrack.sid",
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  }),
+);
+
+// Početna stranica
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+// Auth rute
+app.use("/", authRoutes);
+
+// ORCID rute
+app.use("/auth", orcidRoutes);
+
+// Pokretanje servera
+app.listen(PORT, () => {
+  console.log(`KonfTrack radi na http://localhost:${PORT}`);
 });
