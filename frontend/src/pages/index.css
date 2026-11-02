@@ -9,6 +9,22 @@
   scrollbar-color: #d0b5bf #f5f3ef;
 }
 
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #f5f3ef, #a6d7f786);
+  background-attachment: fixed;
+  color: #272726;
+}
+
+h1,
+h2,
+h3,
+h4,
+.naslov,
+.logo-text {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
 
 /* ---------- glavni raspored ---------- */
 .stranica {
