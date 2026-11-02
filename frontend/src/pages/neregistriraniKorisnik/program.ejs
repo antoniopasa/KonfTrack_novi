@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/neregistriraniKorisnik/index.css" />
+    <title>Pocetna</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+  </head>
+  <body>
+    <div class="stranica">
+      <aside class="sidebar">
+        <div class="sidebar-vrh">
+          <a href="/"><img src="/assets/logo.png" alt="KonfTrack Logo" class="logo" /></a>
+        </div>
+        <div class="sidebar-sredina">
+          <ul>
+            <li><a href="/">Početna</a></li>
+            <li><a href="/login">Predaja Rada</a></li>
+            <li><a href="/program" class="active">Program Konferencije</a></li>
+          </ul>
+        </div>
+        <a href="/login" class="prijava">Prijava/Registracija</a>
+      </aside>
+
+      <main class="sadrzaj sadrzaj-jedan">
+        <header class="zaglavlje">
+          <h1>Program konferencije</h1>
+          <p>Sekcije, dvorane, termini i izlaganja.</p>
+        </header>
+
+        <section class="programKartica">
+          <h2>Raspored po sekcijama</h2>
+
+          <% if (sekcije.length === 0) { %>
+            <p class="programNapomena">
+              Program će biti objavljen nakon odluke programskog odbora.
+            </p>
+          <% } else { %>
+            <ul class="programLista">
+              <% sekcije.forEach(s => { %>
+                <li>
+                  <strong><%= s.naziv %></strong>
+                  <span>Dvorana: <%= s.dvorana %></span>
+                  <span>Termin: <%= s.termin %></span>
+                  <span>Predsjedavajući: <%= s.predsjedavajuci %></span>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

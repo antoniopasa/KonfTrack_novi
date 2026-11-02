@@ -9,7 +9,7 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #d0b5bf90, #002b495f);
+   background: linear-gradient(120deg, #a7b8cb 0%, #c3c9d6 50%, #f2b6cc 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
