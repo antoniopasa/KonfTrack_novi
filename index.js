@@ -1,16 +1,17 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const PORT = 3000;
+const PORT = 67;
 
 const pagesDir = path.join(__dirname, "frontend", "src", "pages");
 
 app.set("view engine", "ejs");
 app.set("views", pagesDir);
+
 app.use(express.static(pagesDir));
+
 app.use("/assets", express.static(path.join(__dirname, "frontend", "src", "assets")));
 
-// mock korisnik, kasnije zamijeniti s req.user iz OAuth sesije
 app.use("/korisnik", (req, res, next) => {
   res.locals.korisnik = {
     ime: "Ivan",
@@ -20,25 +21,35 @@ app.use("/korisnik", (req, res, next) => {
   next();
 });
 
-// mock radovi dok backend nije gotov
 const mockRadovi = [
   { naslov: "Primjer rada 1", konferencija: "Konferencija 1", tema: "Tema 1", datum: "—", stanje: "Nacrt", stanjeKljuc: "nacrt" },
   { naslov: "Primjer rada 2", konferencija: "Konferencija 1", tema: "Tema 2", datum: "—", stanje: "U recenziji", stanjeKljuc: "recenzija" },
   { naslov: "Primjer rada 3", konferencija: "Konferencija 2", tema: "Tema 3", datum: "—", stanje: "Prihvaćen", stanjeKljuc: "prihvacen" },
 ];
+
+const mockSekcije = [
+  { naziv: "Sekcija 1: Tema 1", dvorana: "—", termin: "—", predsjedavajuci: "—" },
+  { naziv: "Sekcija 2: Tema 2", dvorana: "—", termin: "—", predsjedavajuci: "—" },
+];
+
 app.use("/assets", express.static(path.join(__dirname, "frontend", "src", "assets")));
-// javne stranice
+
 app.get("/", (req, res) => {
-  res.render("index", {});
+  res.render("neregistriraniKorisnik/index", {});
+});
+
+app.get("/program", (req, res) => {
+  res.render("neregistriraniKorisnik/program", { sekcije: mockSekcije });
 });
 
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
 app.get("/odjava", (req, res) => {
   res.redirect("/");
 });
-// stranice registriranog korisnika
+
 app.get("/korisnik", (req, res) => {
   res.render("registriraniKorisnik/pocetna");
 });

@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/index.css" />
-       <link rel="stylesheet" href="/zajednicko.css">
+    <link rel="stylesheet" href="/neregistriraniKorisnik/index.css" />
 
     <title>Pocetna</title>
     <link
@@ -28,12 +27,12 @@
         </div>
         <div class="sidebar-sredina">
           <ul>
-            <li><a href="#">Početna</a></li>
-            <li><a href="#">O nama</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="/" class="active">Početna</a></li>
+            <li><a href="/login">Predaja Rada</a></li>
+            <li><a href="/program">Program Konferencije</a></li>
           </ul>
         </div>
-        <a href="/login" class="prijava">Prijavi se</a>
+        <a href="/login" class="prijava">Prijava/Registracija</a>
       </aside>
 
       <main class="sadrzaj">
@@ -51,11 +50,17 @@
           </ul>
         </section>
 
-        <section class="vazniDatumi">
-          <h2>Važni datumi</h2>
-          <div class="kalendar"></div>
-        </section>
-
+       
+          <section class="vazniDatumi">
+            <h2>Važni datumi</h2>
+            <ul>
+              <li><span>Predaja radova</span><strong>—</strong></li>
+              <li><span>Recenzije</span><strong>—</strong></li>
+              <li><span>Obavijest autorima</span><strong>—</strong></li>
+              <li><span>Predaja konačnih verzija</span><strong>—</strong></li>
+            </ul>
+          </section>
+        
         <section class="datumiPredaja">
           <h2>Datumi predaja</h2>
           <ul>
