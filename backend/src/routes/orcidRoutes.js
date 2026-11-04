@@ -56,7 +56,7 @@ router.get("/orcid/callback", async (req, res) => {
     const lastName = nameParts.join(" ");
 
     // Pronađi ili kreiraj korisnika
-    const user = userModel.findOrCreateOrcidUser(orcidId, firstName, lastName);
+    const user = await userModel.findOrCreateOrcidUser(orcidId, firstName, lastName);
 
     // Kreiranje sesije
     req.session.regenerate((err) => {
