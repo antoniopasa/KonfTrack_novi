@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const PORT = 67;
+const PORT = 6767;
 
 const pagesDir = path.join(__dirname, "frontend", "src", "pages");
 
