@@ -1,3 +1,4 @@
+
 const userModel = require("../models/userModel");
 
 // REGISTRACIJA
@@ -46,7 +47,7 @@ exports.login = async (req, res) => {
       return res.status(400).send("Unesi e-mail i lozinku.");
     }
 
-    const user = userModel.findUserByEmail(email);
+    const user = await userModel.findUserByEmail(email);
 
     const validPassword = await userModel.verifyPassword(user, password);
 
@@ -72,8 +73,8 @@ exports.login = async (req, res) => {
 // PRIKAZ PROFILA
 const conferenceModel = require("../models/conferenceModel");
 
-exports.profile = (req, res) => {
-  const user = userModel.findUserById(req.session.userId);
+exports.profile = async (req, res) => {
+  const user = await userModel.findUserById(req.session.userId);
 
   if (!user) {
     return res.redirect("/login");
@@ -88,7 +89,7 @@ exports.profile = (req, res) => {
 };
 
 // UREĐIVANJE PROFILA
-exports.updateProfile = (req, res) => {
+exports.updateProfile = async (req, res) => {
   const { firstName, lastName, institution, expertise } = req.body;
 
   if (!firstName || !lastName) {
@@ -102,7 +103,7 @@ exports.updateProfile = (req, res) => {
         .filter(Boolean)
     : [];
 
-  userModel.updateUser(req.session.userId, {
+  await userModel.updateUser(req.session.userId, {
     firstName,
     lastName,
     institution,
