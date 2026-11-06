@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model committee_members {
+  id                Int          @id @default(autoincrement())
+  conference_id     Int?
+  user_id           Int?
+  invitation_status String?      @default("pending") @db.VarChar(20)
+  conferences       conferences? @relation(fields: [conference_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cm_conferences")
+  users             users?       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cm_users")
+}
+
+model conferences {
+  id                    Int                 @id @default(autoincrement())
+  name                  String?             @db.VarChar(250)
+  location              String?             @db.VarChar(250)
+  start_date            DateTime?           @db.Date
+  end_date              DateTime?           @db.Date
+  topics                String?
+  submission_deadline   DateTime?           @db.Timestamptz(6)
+  review_deadline       DateTime?           @db.Timestamptz(6)
+  notification_deadline DateTime?           @db.Timestamptz(6)
+  final_deadline        DateTime?           @db.Timestamptz(6)
+  max_pages             Int?
+  chair_id              Int?
+  status                String?             @default("pending") @db.VarChar(20)
+  program_published     Boolean?            @default(false)
+  committee_members     committee_members[]
+  users                 users?              @relation(fields: [chair_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_conferences_chair")
+  papers                papers[]
+  sections              sections[]
+}
+
+model email_templates {
+  id      Int    @id @default(autoincrement())
+  name    String @unique @db.VarChar(100)
+  subject String @db.VarChar(250)
+  body    String
+}
+
+model paper_authors {
+  id                                                  Int      @id @default(autoincrement())
+  paper_id                                            Int?
+  user_id                                             Int?
+  invited_name                                        String?  @db.VarChar(250)
+  invited_email                                       String?  @db.VarChar(250)
+  is_contact_author                                   Boolean? @default(false)
+  papers_paper_authors_paper_idTopapers               papers?  @relation("paper_authors_paper_idTopapers", fields: [paper_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pa_papers")
+  users                                               users?   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pa_users")
+  papers_papers_presentation_author_idTopaper_authors papers[] @relation("papers_presentation_author_idTopaper_authors")
+}
+
+model paper_versions {
+  id                  Int                  @id @default(autoincrement())
+  paper_id            Int?
+  version_number      Int?
+  version_type        String?              @db.VarChar(20)
+  file_path           String?
+  response_file_path  String?
+  statement_file_path String?
+  submitted_at        DateTime?            @db.Timestamptz(6)
+  papers              papers?              @relation(fields: [paper_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pv_papers")
+  review_assignments  review_assignments[]
+}
+
+model papers {
+  id                                                         Int                    @id @default(autoincrement())
+  conference_id                                              Int?
+  created_by                                                 Int?
+  title                                                      String?                @db.VarChar(250)
+  abstract                                                   String?
+  keywords                                                   String?
+  topic                                                      String?                @db.VarChar(250)
+  status                                                     String?                @default("draft") @db.VarChar(30)
+  submitted_at                                               DateTime?              @db.Timestamptz(6)
+  section_id                                                 Int?
+  presentation_author_id                                     Int?
+  presentation_start                                         DateTime?              @db.Timestamptz(6)
+  presentation_end                                           DateTime?              @db.Timestamptz(6)
+  paper_authors_paper_authors_paper_idTopapers               paper_authors[]        @relation("paper_authors_paper_idTopapers")
+  paper_versions                                             paper_versions[]
+  conferences                                                conferences?           @relation(fields: [conference_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_papers_conferences")
+  users                                                      users?                 @relation(fields: [created_by], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_papers_creator")
+  paper_authors_papers_presentation_author_idTopaper_authors paper_authors?         @relation("papers_presentation_author_idTopaper_authors", fields: [presentation_author_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_papers_presenter")
+  sections                                                   sections?              @relation(fields: [section_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_papers_sections")
+  personal_schedule                                          personal_schedule[]
+  reviewer_preferences                                       reviewer_preferences[]
+}
+
+model personal_schedule {
+  id       Int    @id @default(autoincrement())
+  user_id  Int
+  paper_id Int
+  papers   papers @relation(fields: [paper_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ps_papers")
+  users    users  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ps_users")
+
+  @@unique([user_id, paper_id])
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model review_assignments {
+  id                 Int                  @id @default(autoincrement())
+  paper_id           Int?
+  reviewer_id        Int?
+  paper_version_id   Int?
+  assigned_at        DateTime?            @db.Timestamptz(6)
+  score              Int?
+  expertise_score    Int?
+  author_comment     String?
+  committee_comment  String?
+  reviewed_at        DateTime?            @db.Timestamptz(6)
+  users              users?               @relation(fields: [reviewer_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ra_users")
+  paper_versions     paper_versions?      @relation(fields: [paper_version_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ra_versions")
+  review_discussions review_discussions[]
+}
+
+model review_discussions {
+  id                   Int                @id @default(autoincrement())
+  review_assignment_id Int
+  message              String
+  created_at           DateTime?          @default(now()) @db.Timestamptz(6)
+  review_assignments   review_assignments @relation(fields: [review_assignment_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rd_assignments")
+}
+
+model reviewer_preferences {
+  id          Int     @id @default(autoincrement())
+  paper_id    Int?
+  reviewer_id Int?
+  preference  String? @db.VarChar(30)
+  papers      papers? @relation(fields: [paper_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rp_papers")
+  users       users?  @relation(fields: [reviewer_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rp_users")
+}
+
+model sections {
+  id            Int          @id @default(autoincrement())
+  conference_id Int?
+  topic         String?      @db.VarChar(250)
+  room          String?      @db.VarChar(250)
+  start_time    DateTime?    @db.Timestamptz(6)
+  end_time      DateTime?    @db.Timestamptz(6)
+  chair_id      Int?
+  papers        papers[]
+  users         users?       @relation(fields: [chair_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_sections_chair")
+  conferences   conferences? @relation(fields: [conference_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_sections_conferences")
+}
+
+model users {
+  id                   Int                    @id @default(autoincrement())
+  email                String?                @unique @db.VarChar(250)
+  first_name           String                 @db.VarChar(100)
+  last_name            String                 @db.VarChar(100)
+  institution          String?                @db.VarChar(250)
+  orcid                String?                @unique @db.VarChar(19)
+  expertise            String?
+  is_admin             Boolean?               @default(false)
+  is_active            Boolean?               @default(true)
+  password_hash        String?                @db.VarChar(250)
+  committee_members    committee_members[]
+  conferences          conferences[]
+  paper_authors        paper_authors[]
+  papers               papers[]
+  personal_schedule    personal_schedule[]
+  review_assignments   review_assignments[]
+  reviewer_preferences reviewer_preferences[]
+  sections             sections[]
+}

@@ -33,7 +33,7 @@ Korisničke uloge definiraju se prema potrebama sustava. Pojedini korisnik može
 
 **Uključeno:** 
 
-->Registracija korisnika, prijava, odjava, upravljanje profilom i promjena lozinke.
+->Registracija korisnika, prijava, odjava, upravljanje profilom.
 
 ->Definiranje korisničkih uloga i provjera prava pristupa na backendu.
 

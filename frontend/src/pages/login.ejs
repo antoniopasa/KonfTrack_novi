@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/login.css" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <title>Login - KonfTrack</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <a href="/">
+        <img src="/assets/logo.png" alt="KonfTrack Logo" class="logo" />
+      </a>
+
+      <div class="login">
+        <form action="/login" method="POST">
+          <input
+            type="email"
+            name="email"
+            placeholder="E-mail adresa"
+            required
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Lozinka"
+            required
+          />
+
+          <button type="submit">Login</button>
+        </form>
+
+        <a href="/auth/orcid" id="orcid-login-btn" class="orcid-btn">
+          <img
+            class="orcid-logo"
+            src="/assets/orcid-logo.png"
+            alt="ORCID iD logo"
+          />
+          Login with ORCID →
+        </a>
+
+        <p class="register-text">
+          Nemate račun?
+          <a
+            href="https://orcid.org/register"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Registrirajte se
+          </a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

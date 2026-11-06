@@ -1,0 +1,72 @@
+<%- include('head', { naslov: 'Predaja rada' }) %>
+<%- include('sidebar', { aktivno: 'predaja' }) %>
+
+<header class="page-header">
+  <h1>Predaja rada</h1>
+  <p>Ispunite podatke o radu i priložite anonimizirani rukopis.</p>
+</header>
+
+<div class="notice">Predaja radova trenutno nije omogućena.</div>
+
+<form class="card form" onsubmit="return false;">
+  <fieldset disabled>
+    <div class="form-grid">
+      <div class="field full">
+        <label for="naslov">Naslov rada</label>
+        <input id="naslov" type="text" placeholder="Unesite naslov rada">
+      </div>
+
+      <div class="field full">
+        <label for="sazetak">Sažetak</label>
+        <textarea id="sazetak" rows="5" placeholder="Kratak sažetak rada"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="tema">Tema</label>
+        <select id="tema">
+          <option>Odaberite temu</option>
+          <option>Tema 1</option>
+          <option>Tema 2</option>
+          <option>Tema 3</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="kljucne">Ključne riječi</label>
+        <input id="kljucne" type="text" placeholder="npr. strojno učenje, obrada signala">
+      </div>
+
+      <div class="field full">
+        <label>Koautori</label>
+        <div class="coauthor-row">
+          <input type="text" placeholder="Ime i prezime">
+          <input type="email" placeholder="E-pošta">
+          <button type="button" class="btn btn-secondary">Dodaj</button>
+        </div>
+        <div class="list-item muted">Još nema dodanih koautora.</div>
+      </div>
+
+      <div class="field">
+        <label for="kontakt">Autor za kontakt</label>
+        <select id="kontakt">
+          <option><%= korisnik.ime %> <%= korisnik.prezime %></option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="rukopis">Rukopis (PDF, anonimiziran)</label>
+        <label class="dropzone" for="rukopis">
+          <input id="rukopis" type="file" accept="application/pdf" hidden>
+          <span>Odaberite ili povucite PDF datoteku</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary">Spremi nacrt</button>
+      <button type="submit" class="btn btn-primary">Predaj rad</button>
+    </div>
+  </fieldset>
+</form>
+
+<%- include('footer') %>

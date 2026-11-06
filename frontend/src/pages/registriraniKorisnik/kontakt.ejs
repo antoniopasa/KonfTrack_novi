@@ -1,0 +1,41 @@
+<%- include('head', { naslov: 'Kontakt' }) %>
+<%- include('sidebar', { aktivno: 'kontakt' }) %>
+
+<header class="page-header">
+  <h1>Kontakt</h1>
+  <p>Pošaljite upit programskom odboru ili administratorima.</p>
+</header>
+
+<section class="grid grid-2-1">
+  <form class="card form" onsubmit="return false;">
+    <fieldset disabled>
+      <div class="field">
+        <label for="primatelj">Primatelj</label>
+        <select id="primatelj">
+          <option>Programski odbor</option>
+          <option>Administrator</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="predmet">Predmet</label>
+        <input id="predmet" type="text" placeholder="Predmet poruke">
+      </div>
+      <div class="field">
+        <label for="poruka">Poruka</label>
+        <textarea id="poruka" rows="7" placeholder="Vaša poruka..."></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Pošalji</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="card">
+    <h3>Informacije</h3>
+    <div class="list-item"><span class="muted">E-pošta</span><br>info@konftrack.hr</div>
+    <div class="list-item"><span class="muted">Telefon</span><br>+385 1 000 0000</div>
+    <div class="list-item"><span class="muted">Adresa</span><br>Unska 3, 10000 Zagreb</div>
+  </div>
+</section>
+
+<%- include('footer') %>
