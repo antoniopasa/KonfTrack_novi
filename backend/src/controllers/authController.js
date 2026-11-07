@@ -120,7 +120,7 @@ exports.logout = (req, res) => {
       return res.status(500).send("Greška prilikom odjave.");
     }
 
-    res.clearCookie("connect.sid");
+    res.clearCookie("konftrack.sid");
     res.redirect("/");
   });
 };
