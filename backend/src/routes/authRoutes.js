@@ -24,7 +24,7 @@ router.get("/profile", requireLogin, authController.profile);
 router.post("/profile", requireLogin, authController.updateProfile);
 
 // ODJAVA
-router.get("/logout", "/odjava", requireLogin, authController.logout);
+router.get(["/logout", "/odjava"], requireLogin, authController.logout);
 //Time ruta odgovara na oba naziva pa sidebaar.ejs ne treba dirati
 
 module.exports = router;
