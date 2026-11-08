@@ -43,6 +43,9 @@ app.set("views", path.resolve(__dirname, "../../frontend/src/pages"));
 
 // Omogućavanje CSS-a, slika i ostalih statičkih datoteka
 app.use(express.static(path.resolve(__dirname, "../../frontend/src")));
+app.use(express.static(path.resolve(__dirname, "../../frontend/src/pages")));
+//gornji pokužuje slike i favicone a donji css
+
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -81,8 +84,22 @@ app.use(
 
 // Početna stranica
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("neregistriraniKorisnik/index");
 });
+
+
+// Privremeni primjer podataka dok program ne dođe iz baze
+const mockSekcije = [
+  { naziv: "Sekcija 1: Tema 1", dvorana: "—", termin: "—", predsjedavajuci: "—" },
+  { naziv: "Sekcija 2: Tema 2", dvorana: "—", termin: "—", predsjedavajuci: "—" },
+];
+
+app.get("/program", (req, res) => {
+  res.render("neregistriraniKorisnik/program", { sekcije: mockSekcije });
+});
+
+
+
 
 // Auth rute
 app.use("/", authRoutes);
