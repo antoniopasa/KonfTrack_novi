@@ -9,7 +9,7 @@
 
 body {
   font-family: "Inter", sans-serif;
-   background: linear-gradient(120deg, #a7b8cb 0%, #c3c9d6 50%, #f2b6cc 100%);
+  background: linear-gradient(120deg, #a7b8cb 0%, #c3c9d6 50%, #f2b6cc 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -116,7 +116,12 @@ h4,
 .login button[type="submit"]:active {
   transform: scale(0.99);
 }
-
+.registracija{
+  color: #d0b5bf; margin: top 5px; text-decoration: none
+}
+.registracija:hover{
+  color:#002b49
+}
 .orcid-btn {
   width: 100%;
   height: 55px;
@@ -163,4 +168,25 @@ h4,
 
 .register-text a:hover {
   text-decoration: underline;
+}
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 15px;
+  }
+
+  .login-container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .login input {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .login button[type="submit"],
+  .orcid-btn {
+    height: 50px;
+    font-size: 14px;
+  }
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/register.css" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+
+    <title>Registracija - KonfTrack</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+<body>
+  <div class="login-container">
+    <a href="/">
+      <img src="/assets/logo.png" alt="KonfTrack Logo" class="logo" />
+    </a>
+
+    <div class="login">
+      <form action="/register" method="POST" id="register-form">
+        <div class="polje">
+          <label for="ime">Ime</label>
+          <input type="text" id="ime" name="ime" autocomplete="given-name" required />
+          <span class="greska-polje" id="ime-greska"></span>
+        </div>
+
+        <div class="polje">
+          <label for="prezime">Prezime</label>
+          <input type="text" id="prezime" name="prezime" autocomplete="family-name" required />
+          <span class="greska-polje" id="prezime-greska"></span>
+        </div>
+
+        <div class="polje">
+          <label for="email">E-mail adresa</label>
+          <input type="email" id="email" name="email" autocomplete="email" required />
+          <span class="greska-polje" id="email-greska"></span>
+        </div>
+
+        <div class="polje">
+          <label for="lozinka">Lozinka</label>
+          <input type="password" id="lozinka" name="lozinka" minlength="8" autocomplete="new-password" required />
+          <span class="greska-polje" id="lozinka-greska"></span>
+        </div>
+
+        <div class="polje">
+          <label for="lozinka2">Ponovljena lozinka</label>
+          <input type="password" id="lozinka2" name="lozinka2" minlength="8" autocomplete="new-password" required />
+          <span class="greska-polje" id="lozinka2-greska"></span>
+        </div>
+
+        <button type="submit">Registriraj se</button>
+      </form>
+
+      <p class="register-text">
+        Već imaš račun? <a href="/login">Prijavi se</a>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
