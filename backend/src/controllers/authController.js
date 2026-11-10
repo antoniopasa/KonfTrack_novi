@@ -1,4 +1,3 @@
-
 const userModel = require("../models/userModel");
 
 // REGISTRACIJA
@@ -74,18 +73,35 @@ exports.login = async (req, res) => {
 const conferenceModel = require("../models/conferenceModel");
 
 exports.profile = async (req, res) => {
-  const user = await userModel.findUserById(req.session.userId);
+  try {
+    const user = await userModel.findUserById(req.session.userId);
 
-  if (!user) {
-    return res.redirect("/login");
+    if (!user) {
+      return res.redirect("/login");
+    }
+
+    const conferences = await conferenceModel.getUserConferences(user.id);
+
+    const safeUser = { ...user };
+    delete safeUser.passwordHash;
+
+    const korisnikZaPrikaz = {
+      id: safeUser.id,
+      ime: safeUser.firstName,
+      prezime: safeUser.lastName,
+      ustanova: safeUser.institution,
+      email: safeUser.email,
+      orcidId: safeUser.orcidId,
+    };
+
+    return res.render("registriraniKorisnik/pocetna", {
+      korisnik: korisnikZaPrikaz,
+      conferences,
+    });
+  } catch (error) {
+    console.error("Greška pri učitavanju profila:", error);
+    return res.status(500).send("Greška prilikom učitavanja profila.");
   }
-
-  const conferences = conferenceModel.getUserConferences(user.id);
-
-  res.render("profile", {
-    user,
-    conferences,
-  });
 };
 
 // UREĐIVANJE PROFILA
