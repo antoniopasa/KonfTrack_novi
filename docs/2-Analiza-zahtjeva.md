@@ -178,12 +178,11 @@ Relevantna svojstva mogu se odnositi na uporabljivost, pristupačnost, sigurnost
 | A-02 | Predsjednik programskog odbora – upravlja dodijeljenom konferencijom, njezinim podacima, temama i rokovima, poziva recenzente, upravlja raspodjelom radova, donosi odluke o radovima, organizira program i pregledava statistiku konferencije. | F-011–F-018, F-033, F-038–F-044, F-052–F-063, F-067–F-068 |
 | A-03 | Autor – registrira se i upravlja svojim profilom, predaje radove, unosi podatke o radovima i koautorima, prati stanja svojih radova, predaje revizije i konačne verzije te prima obavijesti o odlukama. | F-001–F-004, F-019–F-032, F-055–F-056, NF-03, NF-04, NF-06 |
 | A-04 | Recenzent – prihvaća ili odbija poziv za sudjelovanje u programskom odboru, iskazuje interes za recenziranje radova, pregledava dodijeljene radove, predaje recenzije i sudjeluje u anonimnoj raspravi o radovima. | F-001–F-007, F-034–F-037, F-045–F-051, NF-03, NF-04, NF-06 |
-| A-05 | Član programskog odbora – ima pristup povjerljivim komentarima recenzenata namijenjenima programskom odboru. | F-046, NF-03, NF-06 |
-| A-06 | Registrirani korisnik – pregledava objavljeni program konferencije te odabrana izlaganja dodaje u osobni raspored i izvozi raspored u Google Calendar. | F-064–F-065 |
-| A-07 | Javni posjetitelj – bez registracije pregledava javne stranice konferencija, njihove osnovne informacije, teme, važne datume i objavljeni program. | F-009, F-012, F-018, F-063 |
-| A-08 | ORCID – vanjski sustav putem kojeg se omogućuje registracija i prijava korisnika te dohvaćaju podaci potrebni za prepoznavanje sukoba interesa. | F-001, F-002, F-004, F-037 |
-| A-09 | Crossref – vanjski servis putem kojeg sustav provjerava DOI oznake referenci i dohvaća pripadajuće metapodatke. | F-026 |
-| A-10 | Google Calendar – vanjski sustav u koji registrirani korisnik može izvesti svoj osobni raspored izlaganja. | F-065 |
+| A-05 | Registrirani korisnik – pregledava objavljeni program konferencije te odabrana izlaganja dodaje u osobni raspored i izvozi raspored u Google Calendar. | F-064–F-065 |
+| A-06 | Javni posjetitelj – bez registracije pregledava javne stranice konferencija, njihove osnovne informacije, teme, važne datume i objavljeni program. | F-009, F-012, F-018, F-063 |
+| A-07 | ORCID – vanjski sustav putem kojeg se omogućuje registracija i prijava korisnika te dohvaćaju podaci potrebni za prepoznavanje sukoba interesa. | F-001, F-002, F-004, F-037 |
+| A-08 | Crossref – vanjski servis putem kojeg sustav provjerava DOI oznake referenci i dohvaća pripadajuće metapodatke. | F-026 |
+| A-09 | Google Calendar – vanjski sustav u koji registrirani korisnik može izvesti svoj osobni raspored izlaganja. | F-065 |
 | D-01 | Projektni tim – razvija i održava aplikaciju, prati usklađenost implementacije s dogovorenim opsegom projekta te koordinira razvojne aktivnosti i dokumentaciju. | Zahtjevi projekta, dokumentacija i Issues |
 
 
