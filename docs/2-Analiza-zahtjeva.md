@@ -122,19 +122,24 @@ Za složenu interakciju kratak scenarij *Given / When / Then* može pojasniti kr
 
 **Cilj:** Odrediti važna svojstva kvalitete i uvjete rada odobrene aplikacije na način koji tim može razumno provjeriti.
 
-| ID | Opis | Prioritet | Izvor | Način provjere |
-| --- | --- | --- | --- | --- |
-| NF-01 | Lozinke se moraju pohranjivati isključivo u obliku sigurnog kriptografskog sažetka dobivenog odgovarajućim algoritmom za pohranu lozinki | Visok | Sigurnosni zahtjevi projektnog tima | Pregled konfiguracije autentifikacije i provjera pohranjenih podataka |
-| NF-02 | Sve zaštićene operacije moraju provoditi autentifikaciju i provjeru ovlasti na backendu | Visok | Sigurnosni zahtjevi projektnog tima | Integracijski testovi s prijavljenim i neprijavljenim korisnicima te korisnicima s različitim ulogama |
-| NF-03 | Korisnik smije pristupati samo osobnim podacima i resursima za koje ima odgovarajuće ovlasti | Visok | Sigurnosni zahtjevi projektnog tima | Testiranje pokušaja pristupa tuđim profilima, radovima, recenzijama i konferencijama |
-| NF-04 | Privatne PDF datoteke moraju biti dostupne samo ovlaštenim korisnicima | Visok | Sigurnosni zahtjevi projektnog tima | Testiranje pristupa datotekama s različitim korisničkim ulogama i bez prijave |
-| NF-05 | Sustav mora validirati sve ulazne podatke prije obrade i spremanja | Visok | Sigurnosni zahtjevi projektnog tima | Testovi nevaljanih tipova, nedostajućih polja, nedopuštenih vrijednosti i neprihvatljivih datuma |
-| NF-06 | Sustav mora čuvati povjerljivost podataka povezanih s dvostruko slijepim recenziranjem | Visok | Zahtjevi projekta | Pregled odgovora API-ja, prava pristupa i dostupnih datoteka u scenarijima recenziranja |
-| NF-07 | Tehničke pogreške moraju se evidentirati centralizirano, bez zapisivanja lozinki, tokena i nepotrebnih osobnih podataka | Srednji | Sigurnosni zahtjevi projektnog tima | Pregled konfiguracije logiranja i provjera zapisa nakon simuliranih pogrešaka |
-| NF-08 | Ključne funkcionalnosti moraju imati automatizirane unit ili integracijske testove | Visok | Zahtjevi projektnog tima | Pokretanje testova i pregled rezultata u razvojnom okruženju ili CI postupku |
-| NF-09 | API mora vraćati dosljedne odgovore i odgovarajuće HTTP statuse za uspješne zahtjeve i pogreške | Srednji | Zahtjevi projektnog tima | ntegracijski testovi uspješnih, nevaljanih i neovlaštenih zahtjeva |
-| NF-10 | Sustav mora koristiti konfiguraciju koja omogućuje sigurno upravljanje tajnama i postavkama okruženja | Visok | Sigurnosni zahtjevi projektnog tima | Pregled konfiguracije, varijabli okruženja i repozitorija radi provjere da tajne nisu pohranjene u kodu |
-| NF-11 | Dokumentacija mora omogućiti članovima tima pokretanje projekta i razumijevanje osnovnih API funkcionalnosti | Srednji | Projektni proces tima | Drugi član tima prati upute za postavljanje i provjerava dokumentirane API rute |
+## 2.2 Nefunkcijski zahtjevi
+
+| **ID** | **Opis** | **Prioritet** | **Izvor** | **Način provjere** |
+| ------ | -------- | ------------- | --------- | ----------------- |
+| NF-01 | Sustav mora sigurno obrađivati autentifikacijske podatke i OAuth 2.0 tokene te spriječiti njihovo neovlašteno otkrivanje. | Visok | Sigurnosni zahtjevi projektnog tima | Pregled načina obrade i pohrane autentifikacijskih podataka i tokena te provjera da se tokeni ne izlažu neovlaštenim korisnicima. |
+| NF-02 | Sve zaštićene operacije moraju provoditi autentifikaciju i provjeru ovlasti na backendu, neovisno o ograničenjima prikazanim u korisničkom sučelju. | Visok | Sigurnosni zahtjevi projektnog tima | Integracijski testovi s prijavljenim i neprijavljenim korisnicima te korisnicima s različitim ulogama. |
+| NF-03 | Korisnik smije pristupati samo osobnim podacima i resursima za koje ima odgovarajuće ovlasti. | Visok | Sigurnosni zahtjevi projektnog tima | Testiranje pokušaja pristupa tuđim profilima, radovima, recenzijama i konferencijama. |
+| NF-04 | Privatne PDF datoteke radova moraju biti dostupne samo ovlaštenim korisnicima. | Visok | Sigurnosni zahtjevi projektnog tima | Testiranje pristupa datotekama s različitim korisničkim ulogama i bez prijave. |
+| NF-05 | Sustav mora validirati sve ulazne podatke prije njihove obrade i spremanja. | Visok | Sigurnosni zahtjevi projektnog tima | Testiranje nevaljanih tipova, nedostajućih polja, nedopuštenih vrijednosti i neprihvatljivih datuma. |
+| NF-06 | Sustav mora očuvati anonimnost dvostruko slijepe recenzije u svim dijelovima aplikacije, uključujući korisničko sučelje, nazive datoteka koje recenzenti preuzimaju, obavijesti e-poštom i odgovore programskog sučelja (API). | Visok | Projektni zadatak – Ostali zahtjevi | Pregled korisničkog sučelja, preuzetih datoteka, poslanih obavijesti i API odgovora tijekom postupka recenziranja, uz provjeru da se identiteti autora i recenzenata ne otkrivaju neovlaštenim osobama. |
+| NF-07 | Tehničke pogreške moraju se evidentirati centralizirano, bez zapisivanja lozinki, autentifikacijskih tokena i nepotrebnih osobnih podataka. | Srednji | Sigurnosni zahtjevi projektnog tima | Pregled konfiguracije logiranja i provjera zapisa nakon simuliranih pogrešaka. |
+| NF-08 | Ključne funkcionalnosti sustava moraju imati odgovarajuće automatizirane unit ili integracijske testove. | Visok | Zahtjevi razvojnog procesa projektnog tima | Pokretanje automatiziranih testova i pregled njihovih rezultata u razvojnom okruženju ili CI postupku. |
+| NF-09 | API mora vraćati dosljedne odgovore i odgovarajuće HTTP statuse za uspješne zahtjeve i različite vrste pogrešaka. | Srednji | Tehnički zahtjevi projektnog tima | Integracijski testovi uspješnih, nevaljanih i neovlaštenih API zahtjeva. |
+| NF-10 | Sustav mora koristiti konfiguraciju koja omogućuje sigurno upravljanje tajnama i postavkama različitih okruženja, bez pohranjivanja tajnih podataka izravno u izvornom kodu. | Visok | Sigurnosni zahtjevi projektnog tima | Pregled konfiguracije, varijabli okruženja i repozitorija radi provjere da tajni podaci nisu pohranjeni u izvornom kodu. |
+| NF-11 | Dokumentacija projekta mora omogućiti članovima tima pokretanje aplikacije i razumijevanje osnovnih API funkcionalnosti. | Srednji | Zahtjevi razvojnog procesa projektnog tima | Drugi član tima prati upute za postavljanje aplikacije i provjerava dokumentirane API rute. |
+| NF-12 | Korisničko sučelje aplikacije mora biti prilagođeno različitim veličinama zaslona, uključujući zaslone mobilnih uređaja. | Visok | Projektni zadatak – Ostali zahtjevi | Testiranje prikaza i korištenja aplikacije na različitim veličinama zaslona, uključujući mobilne uređaje, tablete i stolna računala. |
+| NF-13 | Sustav mora podržavati vremensku zonu koju odabere predsjednik programskog odbora za određivanje rokova te prikazivati rokove korisnicima preračunate u njihovo lokalno vrijeme. | Visok | Projektni zadatak – Ostali zahtjevi | Postavljanje roka u odabranoj vremenskoj zoni i provjera prikaza istog roka korisnicima koji se nalaze u različitim vremenskim zonama, uključujući prijelaz na ljetno i zimsko računanje vremena. |
+| NF-14 | Sustav mora podržavati istodobni rad većeg broja korisnika, osobito u razdobljima neposredno prije isteka roka za predaju radova. | Visok | Projektni zadatak – Ostali zahtjevi | Provođenje testova opterećenja s većim brojem istodobnih korisnika, uz simulaciju predaje radova i drugih uobičajenih operacija. |
 
 <details>
 <summary><strong>Nefunkcijski zahtjevi za analizu</strong></summary>
