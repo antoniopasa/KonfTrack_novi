@@ -70,8 +70,6 @@ Naredba `prisma migrate status` treba ispisati `Database schema is up to date!`.
 
 Svaki član tima treba isprobati ovaj postupak na svojoj praznoj bazi. Ako Prisma traži reset baze s važnim podacima, prekini postupak jer reset briše podatke.
 
-
-
 ### 5. Pokretanje
 
 ```bash
@@ -103,6 +101,53 @@ Server se pokreće na portu iz `.env` (varijabla `PORT`).
 - **`P1001: Can't reach database server`** – PostgreSQL nije pokrenut ili je u `DATABASE_URL` krivi port. Port se provjerava naredbom `netstat -ano | findstr LISTENING | findstr 543` (na Windowsu).
 - **`P1000: Authentication failed`** – kriva lozinka u `DATABASE_URL`. Posebni znakovi u lozinki (`@`, `#`, `%`...) moraju se zapisati URL-kodirano (npr. `@` → `%40`).
 - **`@prisma/client did not initialize yet`** – pokreni `npx prisma generate`. Klijent se generira tek kad u shemi postoji barem jedan model.
+
+### ORCID Sandbox konfiguracija
+
+Za lokalno testiranje ORCID prijave potrebno je registrirati aplikaciju u [ORCID Sandbox Developer Tools](https://sandbox.orcid.org/developer-tools).
+
+1. Registriraj Sandbox račun i potvrdi e-mail adresu.
+2. Kreiraj aplikaciju KonfTrack.
+3. Kao lokalni redirect URI registriraj:
+
+   `http://127.0.0.1:3000/auth/orcid/callback`
+
+4. Spremi dobiveni Client ID i Client Secret u lokalnu datoteku `.env`.
+5. U `.env` postavi:
+
+   ```env
+   ORCID_SANDBOX=true
+   ORCID_CLIENT_ID=
+   ORCID_CLIENT_SECRET=
+   ORCID_CALLBACK_URL=http://127.0.0.1:3000/auth/orcid/callback
+   ```
+
+Client ID i Client Secret povjerljivi su podaci. Ne smiju se spremati u Git repozitorij, README, frontend kod ili javne poruke.
+
+### Generiranje tajnih ključeva
+
+Za `SESSION_SECRET` i `JWT_SECRET` generiraj dva različita nasumična ključa:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+Dobivene vrijednosti upiši u lokalni `.env`. Nemoj koristiti isti ključ za obje varijable.
+
+### Produkcijska konfiguracija
+
+U produkciji potrebno je:
+
+- postaviti `NODE_ENV=production`
+- postaviti `ORCID_SANDBOX=false`
+- koristiti produkcijski ORCID Client ID i Client Secret
+- registrirati HTTPS redirect URI na produkcijskoj ORCID aplikaciji
+- postaviti `ORCID_CALLBACK_URL` na registrirani HTTPS URI
+- postaviti `APP_URL` na HTTPS adresu aplikacije
+- postaviti `COOKIE_SECURE=true`
+- konfigurirati `trust proxy` ako aplikacija radi iza reverse proxyja
+
+Stvarni pristupni podaci moraju se postaviti kroz sigurne varijable okruženja na poslužitelju, a ne u Git repozitoriju.
 
 Funkcijski zahtjevi:
 

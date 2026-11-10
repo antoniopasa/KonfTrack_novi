@@ -1,10 +1,10 @@
-const isSandbox = process.env.ORCID_SANDBOX === "true";
+const env = require("./env");
 
-const baseUrl = isSandbox ? "https://sandbox.orcid.org" : "https://orcid.org";
+const baseUrl = env.ORCID_SANDBOX ? "https://sandbox.orcid.org" : "https://orcid.org";
 
 module.exports = {
   baseUrl,
-  clientId: process.env.ORCID_CLIENT_ID,
-  clientSecret: process.env.ORCID_CLIENT_SECRET,
-  callbackUrl: process.env.ORCID_CALLBACK_URL,
+  clientId: env.ORCID_CLIENT_ID,
+  clientSecret: env.ORCID_CLIENT_SECRET,
+  callbackUrl: env.ORCID_CALLBACK_URL,
 };
