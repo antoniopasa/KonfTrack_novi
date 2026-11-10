@@ -50,13 +50,27 @@ echo "SELECT 1" | npx prisma db execute --stdin --schema prisma/schema.prisma
 
 Ako sve radi, ispisat će se `Script executed successfully.`
 
-### 4. Migracije
+### 4. Postavljanje tablica migracijama
 
-Kad shema baze bude dodana u `prisma/schema.prisma`, tablice se stvaraju naredbom:
+Sve naredbe pokreću se iz mape `backend`.
 
-```bash
-npx prisma migrate dev
+Nakon postavljanja prazne baze i `.env` datoteke primijeni migracije spremljene u repozitoriju.
+
+```powershell
+npx.cmd prisma migrate dev
+npx.cmd prisma generate
+npx.cmd prisma migrate status
 ```
+
+Korisnik baze treba imati pravo stvaranja baza jer Prisma tijekom razvoja koristi pomoćnu shadow bazu.
+
+Migracija `init` stvara početne tablice. Migracija `auth_tokens` dodaje tablicu tokena te polja `email_verified_at` i `created_at` u tablicu `users`.
+
+Naredba `prisma migrate status` treba ispisati `Database schema is up to date!`.
+
+Svaki član tima treba isprobati ovaj postupak na svojoj praznoj bazi. Ako Prisma traži reset baze s važnim podacima, prekini postupak jer reset briše podatke.
+
+
 
 ### 5. Pokretanje
 
