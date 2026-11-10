@@ -170,15 +170,21 @@ Relevantna svojstva mogu se odnositi na uporabljivost, pristupačnost, sigurnost
 
 **Cilj:** Utvrditi uloge koje utječu na zahtjeve i razlikovati dionike od aktera koji komuniciraju s aplikacijom.
 
-| ID uloge ili aktera | Odnos prema sustavu | Relevantni zahtjevi |
-| --- | --- | --- |
-| A-01 | Administrator sustava – upravlja korisničkim računima i administrativnim ovlastima | F-006, F-009, F-008, NF-02 |
-| A-02 | Predsjednik konferencije – upravlja konferencijom, rokovima, temama i dopuštenim organizacijskim procesima | F-007, F-010–F-021, F-027, F-030, F-032 |
-| A-03 | Autor – registrira se, upravlja profilom i predaje te prati vlastite radove | F-001–F-005, F-022–F-026 |
-| A-04 | Recenzent – pregledava dodijeljene radove i predaje recenzije | F-027–F-029, NF-03, NF-04, NF-06 |
-| A-05 | Programsko ili organizacijsko povjerenstvo – pregledava rezultate recenzija, donosi odluke i organizira program u okviru dodijeljenih ovlasti | F-027, F-030–F-036 |
-| A-06 | Javni posjetitelj – pregledava objavljene i javno dostupne konferencije te njihove dostupne informacije | F-012, F-013, F-020, F-035 |
-| D-01 | Voditelj tima – prati usklađenost projekta s dogovorenim opsegom i koordinira rad |Zahtjevi projekta, dokumentacija i Issues |
+**Cilj:** Utvrditi uloge koje utječu na zahtjeve i razlikovati dionike od aktera koji komuniciraju s aplikacijom.
+
+| **ID uloge ili aktera** | **Odnos prema sustavu** | **Relevantni zahtjevi** |
+| ----------------------- | ---------------------- | ----------------------- |
+| A-01 | Administrator sustava – upravlja korisničkim računima i konferencijama, odobrava nove konferencije, imenuje predsjednike programskih odbora, uređuje predloške poruka e-pošte i pregledava statistiku korištenja sustava. | F-008, F-010, F-069, F-070, NF-02 |
+| A-02 | Predsjednik programskog odbora – upravlja dodijeljenom konferencijom, njezinim podacima, temama i rokovima, poziva recenzente, upravlja raspodjelom radova, donosi odluke o radovima, organizira program i pregledava statistiku konferencije. | F-011–F-018, F-033, F-038–F-044, F-052–F-063, F-067–F-068 |
+| A-03 | Autor – registrira se i upravlja svojim profilom, predaje radove, unosi podatke o radovima i koautorima, prati stanja svojih radova, predaje revizije i konačne verzije te prima obavijesti o odlukama. | F-001–F-004, F-019–F-032, F-055–F-056, NF-03, NF-04, NF-06 |
+| A-04 | Recenzent – prihvaća ili odbija poziv za sudjelovanje u programskom odboru, iskazuje interes za recenziranje radova, pregledava dodijeljene radove, predaje recenzije i sudjeluje u anonimnoj raspravi o radovima. | F-001–F-007, F-034–F-037, F-045–F-051, NF-03, NF-04, NF-06 |
+| A-05 | Član programskog odbora – ima pristup povjerljivim komentarima recenzenata namijenjenima programskom odboru. | F-046, NF-03, NF-06 |
+| A-06 | Registrirani korisnik – pregledava objavljeni program konferencije te odabrana izlaganja dodaje u osobni raspored i izvozi raspored u Google Calendar. | F-064–F-065 |
+| A-07 | Javni posjetitelj – bez registracije pregledava javne stranice konferencija, njihove osnovne informacije, teme, važne datume i objavljeni program. | F-009, F-012, F-018, F-063 |
+| A-08 | ORCID – vanjski sustav putem kojeg se omogućuje registracija i prijava korisnika te dohvaćaju podaci potrebni za prepoznavanje sukoba interesa. | F-001, F-002, F-004, F-037 |
+| A-09 | Crossref – vanjski servis putem kojeg sustav provjerava DOI oznake referenci i dohvaća pripadajuće metapodatke. | F-026 |
+| A-10 | Google Calendar – vanjski sustav u koji registrirani korisnik može izvesti svoj osobni raspored izlaganja. | F-065 |
+| D-01 | Projektni tim – razvija i održava aplikaciju, prati usklađenost implementacije s dogovorenim opsegom projekta te koordinira razvojne aktivnosti i dokumentaciju. | Zahtjevi projekta, dokumentacija i Issues |
 
 
 <details>
