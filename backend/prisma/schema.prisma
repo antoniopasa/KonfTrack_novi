@@ -150,6 +150,28 @@ model sections {
   conferences   conferences? @relation(fields: [conference_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_sections_conferences")
 }
 
+enum AuthTokenType {
+  refresh
+  email_verify
+  email_add
+}
+
+model auth_tokens {
+  id         Int           @id @default(autoincrement())
+  user_id    Int
+  type       AuthTokenType
+  token_hash String        @unique
+  new_email  String?       @db.VarChar(250)
+  expires_at DateTime      @db.Timestamptz(6)
+  used_at    DateTime?     @db.Timestamptz(6)
+  revoked_at DateTime?     @db.Timestamptz(6)
+  created_at DateTime      @default(now()) @db.Timestamptz(6)
+
+  users users @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
 model users {
   id                   Int                    @id @default(autoincrement())
   email                String?                @unique @db.VarChar(250)
@@ -169,4 +191,7 @@ model users {
   review_assignments   review_assignments[]
   reviewer_preferences reviewer_preferences[]
   sections             sections[]
+  email_verified_at    DateTime?              @db.Timestamptz(6)
+  created_at           DateTime               @default(now()) @db.Timestamptz(6)
+  auth_tokens          auth_tokens[]
 }
