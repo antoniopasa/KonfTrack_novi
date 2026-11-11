@@ -122,7 +122,6 @@ Za složenu interakciju kratak scenarij *Given / When / Then* može pojasniti kr
 
 **Cilj:** Odrediti važna svojstva kvalitete i uvjete rada odobrene aplikacije na način koji tim može razumno provjeriti.
 
-## 2.2 Nefunkcijski zahtjevi
 
 | **ID** | **Opis** | **Prioritet** | **Izvor** | **Način provjere** |
 | ------ | -------- | ------------- | --------- | ----------------- |
@@ -167,8 +166,6 @@ Relevantna svojstva mogu se odnositi na uporabljivost, pristupačnost, sigurnost
 </details>
 
 ## 2.3 Dionici i akteri
-
-**Cilj:** Utvrditi uloge koje utječu na zahtjeve i razlikovati dionike od aktera koji komuniciraju s aplikacijom.
 
 **Cilj:** Utvrditi uloge koje utječu na zahtjeve i razlikovati dionike od aktera koji komuniciraju s aplikacijom.
 
