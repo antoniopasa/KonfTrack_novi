@@ -9,19 +9,13 @@
 Glavni dijagram obuhvaća registrirane i neregistrirane korisnike, posebne korisničke uloge te vanjske sustave s kojima aplikacija komunicira. Prikazane su glavne funkcionalnosti sustava i povezanost aktera s onima koje koriste. 
 Zbog većeg broja funkcionalnosti, glavni dijagram ograničen je na pregled najvažnijih slučajeva uporabe. Složenije funkcionalne cjeline dodatno su razrađene zasebnim usmjerenim dijagramima kako bi se postigla preglednost i lakše razumijevanje. 
 
-![Dijagram obrazaca uporabe sustava CrisisMap](./assets/diagrams/3-1-crisismap-system-UC.svg)
+![Dijagram obrazaca uporabe sustava KonfTrack](./assets/diagrams/3-1-konftrack-system-UC.svg)
 
 **Slika 3.1. Dijagram obrazaca uporabe sustava KonfTrack**
 
-**PlantUML izvor:** [izvor](./puml/3-1-crisismap-system-UC.puml)
+**PlantUML izvor:** [izvor](./puml/3-1-konftrack-system-UC.puml)
 
 
-
-![Dijagram obrazaca uporabe sustava CrisisMap](./assets/diagrams/3-1-crisismap-system-UC.svg)
-
-**Slika 3.1. Dijagram obrazaca uporabe sustava CrisisMap**
-
-**PlantUML izvor:** [izvor](./puml/3-1-crisismap-system-UC.puml)
 
 **Provjera dijagrama:** Prikažite prepoznate uloge koje **komuniciraju s aplikacijom**, a ne dionike koji s njom nemaju interakciju. Svaki glavni korisnički cilj mora imati pridruženog aktera; uključeni obrazac uporabe može se dosegnuti preko drugog obrasca uporabe bez vlastite izravne veze s akterom. `<<include>>` i `<<extend>>` koristite samo kada odnos odgovara stvarnom ponašanju.
 
