@@ -17,12 +17,6 @@ Zbog većeg broja funkcionalnosti, glavni dijagram ograničen je na pregled najv
 
 
 
-![Dijagram obrazaca uporabe sustava CrisisMap](./assets/diagrams/3-1-crisismap-system-UC.svg)
-
-**Slika 3.1. Dijagram obrazaca uporabe sustava CrisisMap**
-
-**PlantUML izvor:** [izvor](./puml/3-1-crisismap-system-UC.puml)
-
 **Provjera dijagrama:** Prikažite prepoznate uloge koje **komuniciraju s aplikacijom**, a ne dionike koji s njom nemaju interakciju. Svaki glavni korisnički cilj mora imati pridruženog aktera; uključeni obrazac uporabe može se dosegnuti preko drugog obrasca uporabe bez vlastite izravne veze s akterom. `<<include>>` i `<<extend>>` koristite samo kada odnos odgovara stvarnom ponašanju.
 
 <details>
