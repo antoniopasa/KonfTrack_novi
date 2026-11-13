@@ -180,7 +180,7 @@ Relevantna svojstva mogu se odnositi na uporabljivost, pristupačnost, sigurnost
 | A-07 | ORCID – vanjski sustav putem kojeg se omogućuje registracija i prijava korisnika te dohvaćaju podaci potrebni za prepoznavanje sukoba interesa. | F-001, F-002, F-004, F-037 |
 | A-08 | Crossref – vanjski servis putem kojeg sustav provjerava DOI oznake referenci i dohvaća pripadajuće metapodatke. | F-026 |
 | A-09 | Google Calendar – vanjski sustav u koji registrirani korisnik može izvesti svoj osobni raspored izlaganja. | F-065 |
-| D-01 | Projektni tim – razvija i održava aplikaciju, prati usklađenost implementacije s dogovorenim opsegom projekta te koordinira razvojne aktivnosti i dokumentaciju. | Zahtjevi projekta, dokumentacija i Issues |
+
 
 
 <details>
