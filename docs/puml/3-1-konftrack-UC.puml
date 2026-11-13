@@ -1,0 +1,63 @@
+@startuml
+left to right direction
+title KonfTrack - dijagram obrazaca uporabe
+
+actor "Neregistrirani posjetitelj" as Posjetitelj
+actor "Registrirani korisnik" as Korisnik
+actor "Autor" as Autor
+actor "Član odbora" as Odbor
+actor "Recenzent" as Recenzent
+actor "Predsjednik konferencije" as Predsjednik
+actor "Administrator" as Admin
+actor "ORCID\n(vanjski sustav)" as ORCID
+actor "Poslužitelj e-pošte\n(vanjski sustav)" as Mail
+
+Autor --|> Korisnik
+Odbor --|> Korisnik
+Recenzent --|> Odbor
+Predsjednik --|> Odbor
+Admin --|> Korisnik
+
+rectangle "KonfTrack" {
+  usecase "UC-01 Registracija e-poštom" as UC01
+  usecase "UC-02 Prijava putem ORCID-a" as UC02
+  usecase "UC-03 Prijava e-poštom i lozinkom" as UC03
+  usecase "UC-04 Odjava" as UC04
+  usecase "UC-05 Uređivanje profila" as UC05
+  usecase "UC-06 Pregled javne stranice konferencije" as UC06
+  usecase "UC-07 Stvaranje konferencije i imenovanje predsjednika" as UC07
+  usecase "UC-08 Upravljanje konferencijom" as UC08
+  usecase "UC-09 Predaja rada" as UC09
+  usecase "UC-10 Izmjena i povlačenje rada" as UC10
+  usecase "UC-11 Dodjela recenzenata" as UC11
+  usecase "UC-12 Recenziranje rada" as UC12
+  usecase "UC-13 Donošenje odluke o radu" as UC13
+  usecase "UC-14 Izrada i pregled programa" as UC14
+  usecase "UC-15 Upravljanje korisničkim računima" as UC15
+  usecase "UC-16 Pregled statistike radova" as UC16
+}
+
+Posjetitelj --> UC01
+Posjetitelj --> UC02
+Posjetitelj --> UC03
+Posjetitelj --> UC06
+
+Korisnik --> UC04
+Korisnik --> UC05
+Korisnik --> UC06
+Korisnik --> UC09
+
+Autor --> UC10
+Recenzent --> UC12
+Predsjednik --> UC08
+Predsjednik --> UC11
+Predsjednik --> UC13
+Predsjednik --> UC14
+Predsjednik --> UC16
+Admin --> UC07
+Admin --> UC15
+
+UC01 -- Mail
+UC02 -- ORCID
+UC13 -- Mail
+@enduml
