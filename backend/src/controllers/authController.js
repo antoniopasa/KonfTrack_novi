@@ -3,10 +3,18 @@ const userModel = require("../models/userModel");
 // REGISTRACIJA
 exports.register = async (req, res) => {
   try {
-    const { email, password, firstName, lastName } = req.body;
+    const { email, ime, prezime, lozinka, lozinka2 } = req.body;
+
+    const firstName = ime;
+    const lastName = prezime;
+    const password = lozinka;
 
     if (!email || !password || !firstName || !lastName) {
       return res.status(400).send("Popuni sva obavezna polja.");
+    }
+
+    if (password !== lozinka2) {
+      return res.status(400).send("Lozinke se ne podudaraju.");
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
