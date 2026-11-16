@@ -1,5 +1,7 @@
 const userModel = require("../models/userModel");
 
+const { signToken } = require("../services/tokenService");
+
 // REGISTRACIJA
 exports.register = async (req, res) => {
   try {
@@ -32,9 +34,14 @@ exports.register = async (req, res) => {
       lastName,
     });
 
-    req.session.userId = user.id;
-
-    res.redirect("/profile");
+    req.session.regenerate((err) => {
+      if (err) {
+        return res.status(500).send("Greška prilikom registracije.");
+      }
+      req.session.userId = user.id;
+      req.session.token = signToken(user);
+      res.redirect("/profile");
+    });
   } catch (error) {
     if (error.message === "EMAIL_EXISTS") {
       return res.status(409).send("Korisnik s tom e-mail adresom već postoji.");
@@ -68,7 +75,7 @@ exports.login = async (req, res) => {
       }
 
       req.session.userId = user.id;
-
+      req.session.token = signToken(user);
       res.redirect("/profile");
     });
   } catch (error) {
@@ -82,7 +89,7 @@ const conferenceModel = require("../models/conferenceModel");
 
 exports.profile = async (req, res) => {
   try {
-    const user = await userModel.findUserById(req.session.userId);
+    const user = await userModel.findUserById(req.userId);
 
     if (!user) {
       return res.redirect("/login");
@@ -127,7 +134,7 @@ exports.updateProfile = async (req, res) => {
         .filter(Boolean)
     : [];
 
-  await userModel.updateUser(req.session.userId, {
+  await userModel.updateUser(req.userId, {
     firstName,
     lastName,
     institution,
@@ -146,5 +153,38 @@ exports.logout = (req, res) => {
 
     res.clearCookie("konftrack.sid");
     res.redirect("/");
+  });
+};
+
+// IZDAVANJE TOKENA (OAuth 2.0 stil, password grant za vlastiti API)
+exports.token = async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = email ? await userModel.findUserByEmail(email) : null;
+
+  if (!user || !(await userModel.verifyPassword(user, password))) {
+    return res.status(401).json({ error: "Pogrešan e-mail ili lozinka." });
+  }
+
+  res.json({
+    access_token: signToken(user),
+    token_type: "Bearer",
+    expires_in: 86400,
+  });
+};
+
+// PROFIL KAO JSON (za provjeru tokena)
+exports.me = async (req, res) => {
+  const user = await userModel.findUserById(req.userId);
+  if (!user) return res.status(404).json({ error: "Korisnik nije pronađen." });
+
+  res.json({
+    id: user.id,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    institution: user.institution,
+    email: user.email,
+    orcidId: user.orcidId,
+    expertise: user.expertise,
   });
 };
