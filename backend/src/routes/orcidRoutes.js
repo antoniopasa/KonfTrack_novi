@@ -7,6 +7,8 @@ const orcidConfig = require("../config/orcid");
 const orcidService = require("../services/orcidService");
 const userModel = require("../models/userModel");
 
+const { signToken } = require("../services/tokenService");
+
 // KORISNIK KLIKNE NA ORCID LOGIN
 router.get("/orcid", (req, res) => {
   const state = crypto.randomBytes(32).toString("hex");
@@ -65,7 +67,7 @@ router.get("/orcid/callback", async (req, res) => {
       }
 
       req.session.userId = user.id;
-
+      req.session.token = signToken(user);
       res.redirect("/profile");
     });
   } catch (error) {
