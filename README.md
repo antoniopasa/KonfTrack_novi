@@ -114,7 +114,7 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 | Gabrijela Stipić | Backend |
 | Mia Hrkać | Backend |
 | Marin Lukas Lončar | Baze podataka |
-| Pavla Čančar | Koordinator |
+| Pavla Čančar | Koordinator + Dokumentacija |
 
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
