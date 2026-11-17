@@ -1,0 +1,146 @@
+' ==============================================================================
+' Datoteka: upravljanje_recenziranjem.puml
+'
+' Svrha:    Prikazuje slučajeve uporabe povezane s upravljanjem recenziranjem
+'           u sustavu KonfTrack.
+' Autor:    [Pavla Čančar]
+' AI:       AI je pomogao u reviziji i oblikovanju dijagrama prema zadanom kosturu predloška;
+'           autor je priredio, uredio i pregledao konačni sadržaj.
+' Zahtjevi: US-R01 do US-R17
+'
+' Diagram level: System Requirements
+' Diagram type:  Use Case Diagram
+' Version:       1.7
+' ==============================================================================
+
+@startuml
+title Sustav KonfTrack – upravljanje recenziranjem
+
+top to bottom direction
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam ArrowColor #212529
+skinparam nodesep 25
+skinparam ranksep 35
+
+skinparam actor {
+    BackgroundColor #F8F9FA
+    BorderColor #212529
+}
+
+skinparam usecase {
+    BackgroundColor #E7F1FF
+    BorderColor #0D6EFD
+}
+
+' ==============================================================================
+' Primarni akteri
+' ==============================================================================
+
+actor Chair as "Predsjednik programskog odbora"
+actor Reviewer as "Recenzent"
+
+' Pomoćna veza za okomiti raspored aktera
+Chair -[hidden]down-> Reviewer
+
+' ==============================================================================
+' Granica sustava
+' ==============================================================================
+
+rectangle "Sustav KonfTrack – upravljanje recenziranjem" {
+
+    ' Pozivanje recenzenata i iskazivanje interesa
+
+    (US-R01\nPozivanje recenzenata\nu programski odbor) as US_R01
+
+    (US-R02\nPrihvaćanje ili odbijanje\npoziva za recenziranje) as US_R02
+
+    (US-R03\nIskazivanje interesa za recenziranje\npojedinih radova\n==\n- Želim recenzirati\n- Mogu recenzirati\n- Ne želim recenzirati\n- Sukob interesa) as US_R03
+
+    ' Dodjela radova recenzentima
+
+    (US-R04\nProvjera sukoba interesa) as US_R04
+
+    (US-R05\nAutomatsko generiranje prijedloga\ndodjele radova recenzentima) as US_R05
+
+    (US-R06\nProvjera ograničenja dodjele\n==\n- Najmanje 3 recenzenta po radu\n- Recenzent ne smije recenzirati vlastiti rad) as US_R06
+
+    (US-R07\nPregled, potvrđivanje i ručno Uređivanje\npredložene dodjele radova recenzentima) as US_R07
+
+    ' Recenziranje radova
+
+    (US-R08\nPregled dodijeljenih radova i rokova) as US_R08
+
+    (US-R09\nIzrada i predaja recenzije\n==\n- Ocjena od -3 do +3\n- Procjena stručnosti od 1 do 5\n- Komentar namijenjen autorima\n- Povjerljivi komentar koji vidi samo predsjednik programskog odbora) as US_R09
+
+    (US-R13\nPregled recenzija drugih recenzenata\n==\nDostupno tek nakon predaje svih recenzija za određeni rad) as US_R13
+
+    (US-R14\nSudjelovanje u anonimnoj raspravi\n==\nDostupno tek nakon predaje svih recenzija za određeni rad) as US_R14
+
+    ' Upravljanje rokovima i zamjenama
+
+    (US-R10\nAutomatsko slanje podsjetnika\n7 i 2 dana prije roka) as US_R10
+
+    (US-R11\nAutomatsko označavanje zakašnjele recenzije) as US_R11
+
+    (US-R12\nZamjena recenzenta koji nije predao recenziju\n==\nUklanjanje pristupa zamijenjenom recenzentu) as US_R12
+
+    (US-R15\nProduljenje roka za recenziranje) as US_R15
+
+    (US-R16\nObavještavanje korisnika o produljenju roka) as US_R16
+
+    (US-R17\nAutomatsko zatvaranje predaje recenzija\nnakon isteka roka) as US_R17
+
+    ' Pomoćni raspored slučajeva uporabe
+
+    US_R01 -[hidden]down-> US_R02
+    US_R02 -[hidden]down-> US_R03
+
+    US_R04 -[hidden]down-> US_R05
+    US_R05 -[hidden]down-> US_R06
+    US_R06 -[hidden]down-> US_R07
+
+    US_R08 -[hidden]down-> US_R09
+    US_R09 -[hidden]down-> US_R13
+    US_R13 -[hidden]down-> US_R14
+
+    US_R10 -[hidden]down-> US_R11
+    US_R11 -[hidden]down-> US_R12
+    US_R12 -[hidden]down-> US_R15
+    US_R15 -[hidden]down-> US_R16
+    US_R16 -[hidden]down-> US_R17
+}
+
+' ==============================================================================
+' Asocijacije aktera i slučajeva uporabe
+' ==============================================================================
+
+Chair -- US_R01
+Chair -- US_R07
+Chair -- US_R12
+Chair -- US_R15
+
+Reviewer -- US_R02
+Reviewer -- US_R03
+Reviewer -- US_R08
+Reviewer -- US_R09
+Reviewer -- US_R13
+Reviewer -- US_R14
+
+' ==============================================================================
+' Veze između slučajeva uporabe
+' ==============================================================================
+
+US_R05 ..> US_R04 : <<include>>
+US_R05 ..> US_R06 : <<include>>
+
+US_R07 ..> US_R04 : <<include>>
+US_R07 ..> US_R06 : <<include>>
+
+US_R12 ..> US_R04 : <<include>>
+US_R12 ..> US_R06 : <<include>>
+
+US_R15 ..> US_R16 : <<include>>
+
+@enduml
