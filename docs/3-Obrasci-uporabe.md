@@ -24,7 +24,7 @@ Zbog većeg broja funkcionalnosti, glavni dijagram ograničen je na pregled najv
 **PlantUML izvor:** [izvor](./puml/3-2-konftrack-recenziranje-UC.puml)
 
 
-![Dijagram obrazaca uporabe sustava KonfTrack- Upravljanje radovima](./assets/diagrams/3-2-konftrack-recenziranje-UC.svg)
+![Dijagram obrazaca uporabe sustava KonfTrack- Upravljanje radovima](./assets/diagrams/3-3-konftrack-radovi-UC.svg)
 
 **Slika 3.3. Usmjereni dijagram obrazaca uporabe sustava KonfTrack - Upravljanje radovima**
 
