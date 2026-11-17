@@ -16,10 +16,11 @@
 [Aplikacija rješava problem organizacije konferencija analognim načinima tako što štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
 Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
 
+-**Neregistrirani korisnik** - nije potrebna prijava da bi pogledali program, skinuli raspored.
 - **Autori** — prijavljuju znanstvene radove i predaju njihove verzije.
 - **Recenzenti** — pregledavaju dodijeljene radove i izrađuju recenzije.
-- **Predsjednici programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
-- **Organizatori i administratori konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
+- **Predsjednik programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
+- **Organizator/administrator konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
 
 ###TRENUTAČNE FUNKCIONALNOSTI:
 
