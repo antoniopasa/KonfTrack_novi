@@ -1,13 +1,16 @@
 const {PrismaClient} = require('@prisma/client');
 const prisma= new PrismaClient();
+const fs = require('fs');
+const { validatePdf, verifyDoi } = require('../utils/paperValidator');
 
 exports.submitPaper= async(req, res)=>{
     try{
-        const{title, abstract, keywords, topic, conferenceId, authors}=req.body;
+        const{title, abstract, keywords, topic, conferenceId, authors, references}=req.body;
         const userId = req.userId;
        
 
         if(!title || !abstract || !conferenceId ){
+            if (req.file) fs.unlinkSync(req.file.path);
             return res.status(400).json({error: 'Naslov, sazetak i konferencija su obavezni!'});
         }
         if(!req.file){
@@ -15,10 +18,39 @@ exports.submitPaper= async(req, res)=>{
         }
 
         const conference=await prisma.conference.findUnique({where:{id: parseInt(conferenceId)}});
-        if(conference && conference.submission_deadline && new Date() > new Date(conference.submission_deadline)){
-            return res.status(400).json({error:'Rok za predaju radova je istekao.'});
+
+        if (!conference) {
+            fs.unlinkSync(req.file.path);
+            return res.status(404).json({ error: 'Konferencija nije pronađena.' });
         }
-        const parsedAuthors= typeof authors === 'string' ? JSON.parse(authors): authors;
+
+        if(conference && conference.submission_deadline && new Date() > new Date(conference.submission_deadline)){
+          if (req.file) fs.unlinkSync(req.file.path);
+          return res.status(400).json({error:'Rok za predaju radova je istekao.'});
+        }
+        const parsedAuthors = typeof authors === 'string' ? JSON.parse(authors): (authors || []);
+        const authorNames = parsedAuthors.map(a => a.name || a.invitedName);
+
+        const maxPages = conference.max_pages || 10;
+        const pdfValidation = await validatePdf(req.file.path, maxPages, authorNames);
+
+        if (!pdfValidation.valid) {
+            fs.unlinkSync(req.file.path); 
+            return res.status(400).json({ error: pdfValidation.error });
+        }
+
+        const parsedReferences = typeof references === 'string' ? JSON.parse(references) : (references || []);
+        const doiWarnings = [];
+
+        for (const ref of parsedReferences) {
+            const doiString = typeof ref === 'string' ? ref : ref.doi;
+            if (doiString) {
+                const doiCheck = await verifyDoi(doiString);
+                if (!doiCheck.exists) {
+                    doiWarnings.push(doiCheck.warning);
+                }
+            }
+        }
 
         const newPaper=await prisma.paper.create({
             data:{
@@ -52,9 +84,19 @@ exports.submitPaper= async(req, res)=>{
                 versions:true
             }
         });
-        return res.status(201).json({message: 'Rad uspjesno predan!', paper: newPaper})
+        return res.status(201).json({
+          message: 'Rad uspjesno predan!',
+          paper: newPaper,
+          warnings: {
+            pdfWarnings: pdfValidation.warnings,
+            doiWarnings: doiWarnings
+          }
+        });
     }catch (error){
         console.error('Greska pri predaji rada.', error);
+        if (req.file && fs.existsSync(req.file.path)){
+          fs.unlinkSync(req.file.path);
+        }
         return res.status(500).json({eror:'Doslo je do greske na posluzitelju.'});
     }
 };
