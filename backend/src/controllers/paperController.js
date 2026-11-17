@@ -4,7 +4,8 @@ const prisma= new PrismaClient();
 exports.submitPaper= async(req, res)=>{
     try{
         const{title, abstract, keywords, topic, conferenceId, authors}=req.body;
-        const userId=req.session?.userId || 1;
+        const userId = req.userId;
+       
 
         if(!title || !abstract || !conferenceId ){
             return res.status(400).json({error: 'Naslov, sazetak i konferencija su obavezni!'});
@@ -26,7 +27,7 @@ exports.submitPaper= async(req, res)=>{
                 keywords,
                 topic,
                 conferenceId: parseInt(conferenceId),
-                createdBy:userId,
+                created_by:userId,
                 status:'predan',
                 submittedAt:new Date(),
                 authors: {
@@ -54,21 +55,42 @@ exports.submitPaper= async(req, res)=>{
         return res.status(201).json({message: 'Rad uspjesno predan!', paper: newPaper})
     }catch (error){
         console.error('Greska pri predaji rada.', error);
-        return res.ststus(500).json({eror:'Doslo je do greske na posluzitelju.'});
+        return res.status(500).json({eror:'Doslo je do greske na posluzitelju.'});
     }
 };
+
+exports.getMyPapers = async (req, res) => {
+  try {
+    const userId = req.userId;
+
+    const papers = await prisma.paper.findMany({
+      where: { created_by: userId }, 
+      include: { 
+        conference: true, 
+        authors: true, 
+        versions: true 
+      }
+    });
+
+    return res.status(200).json({ papers });
+  } catch (error) {
+    console.error('Greška pri dohvatu radova:', error);
+    return res.status(500).json({ error: 'Greška na poslužitelju.' });
+  }
+};
+
 
 exports.updatePaper = async (req, res) => {
   try {
     const paperId = parseInt(req.params.id);
     const { title, abstract, keywords, topic } = req.body;
-    const userId = req.session?.userId || 1;
+    const userId = req.userId;
 
     const paper = await prisma.paper.findUnique({ where: { id: paperId }, include: { conference: true } });
     if (!paper) return res.status(404).json({ error: 'Rad nije pronaden.' });
 
     // Provjera vlasništva
-    if (paper.createdBy !== userId) {
+    if (paper.created_by !== userId) {
       return res.status(403).json({ error: 'Nemate ovlasti uredivati ovaj rad.' });
     }
 
@@ -87,12 +109,11 @@ exports.updatePaper = async (req, res) => {
     return res.status(500).json({ error: 'Greška na poslužitelju.' });
   }
 };
-const withdrawPaper = async (req, res) => {
+exports.withdrawPaper = async (req, res) => {
   try {
     const paperId = parseInt(req.params.id);
-    const userId = req.user.id; 
+    const userId = req.userId;
 
-    
     const paper = await prisma.paper.findUnique({
       where: { id: paperId },
       include: { conference: true }
