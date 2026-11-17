@@ -1,0 +1,181 @@
+
+
+' UC_Upravljanje_radovima_v1.puml
+'
+' Svrha:    Prikazuje funkcionalnosti vezane uz životni ciklus
+'           znanstvenih radova u sustavu KonfTrack, od kreiranja
+'           nacrta i predaje rada do revizije, povlačenja i predaje
+'           konačne verzije. Interna logika, pohrana podataka i
+'           korisničko sučelje nisu obuhvaćeni.
+' Autor:    Pavla Čančar
+' AI:       Dijagram je izrađen uz pomoć AI alata. AI je pomogao
+'           u izradi i reviziji i obolikovanju vizualno ugodnog prikaza; autor je pregledao i odgovara
+'           za konačni sadržaj.
+' Zahtjevi: F-019 do F-032 (svaki slučaj korištenja ima ID za
+'           praćenje prema funkcionalnim zahtjevima)
+'
+' Diagram level: System Requirements
+' Diagram type:  Use Case Diagram
+' Version:       1.2
+
+' ============================================================
+
+@startuml UC_Upravljanje_radovima
+
+title Upravljanje radovima
+
+top to bottom direction
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam ArrowColor #212529
+skinparam ActorBorderColor #212529
+skinparam ActorBackgroundColor #F2F2F2
+skinparam UseCaseBorderColor #3973AC
+skinparam UseCaseBackgroundColor #DCEAF7
+skinparam RectangleBorderColor #212529
+
+actor "Autor" as Author
+actor "Crossref" as Crossref <<external system>>
+
+rectangle "KonfTrack" {
+
+    package "1. Priprema rada" {
+
+        usecase "UC-A01\nKreiranje i spremanje\nnacrta rada" as UCA_01
+
+        usecase "UC-A02\nUnos metapodataka rada" as UCA_02
+
+        usecase "UC-A03\nUpravljanje koautorima" as UCA_03
+
+        usecase "UC-A04\nOdređivanje korespondentnog autora" as UCA_04
+    }
+
+    package "2. Predaja rada i provjere" {
+
+        usecase "UC-A05\nPrilaganje anonimizirane\nPDF datoteke rada" as UCA_05
+
+        usecase "UC-A06\nProvjera formata i\nbroja stranica PDF-a" as UCA_06
+
+        usecase "UC-A07\nProvjera metapodataka\nPDF datoteke" as UCA_07
+
+        usecase "UC-A08\nProvjera DOI referenci" as UCA_08
+
+        usecase "UC-A09\nPredaja rada" as UCA_09
+    }
+
+    package "3. Upravljanje predanim radom" {
+
+        usecase "UC-A10\nPregled vlastitih radova" as UCA_10
+
+        usecase "UC-A11\nUređivanje predanog rada\n==\nUređivanje nije dopušteno\n tijekom recenziranja" as UCA_11
+
+        usecase "UC-A12\nPovlačenje rada" as UCA_12
+
+        usecase "UC-A18\nObavještavanje recenzenata\no povlačenju rada" as UCA_18
+    }
+
+    package "4. Revizija i konačna verzija" {
+
+        usecase "UC-A13\nPredaja revidirane\nverzije rada" as UCA_13
+
+        usecase "UC-A14\nPrilaganje dokumenta s\nodgovorima na recenzije" as UCA_14
+
+        usecase "UC-A15\nPredaja konačne\nneanonimizirane verzije rada" as UCA_15
+
+        usecase "UC-A16\nPrilaganje potpisane izjave\no autorskim pravima" as UCA_16
+
+        usecase "UC-A17\nOdređivanje izlagača rada" as UCA_17
+    }
+}
+
+' ------------------------------------------------------------
+' Povezanost aktera i slučajeva korištenja
+' ------------------------------------------------------------
+
+Author -- UCA_01
+Author -- UCA_02
+Author -- UCA_03
+Author -- UCA_04
+Author -- UCA_05
+Author -- UCA_09
+Author -- UCA_10
+Author -- UCA_11
+Author -- UCA_12
+Author -- UCA_13
+Author -- UCA_14
+Author -- UCA_15
+Author -- UCA_16
+Author -- UCA_17
+
+Crossref -- UCA_08
+
+' ------------------------------------------------------------
+' Odnosi include
+' ------------------------------------------------------------
+
+' Predaja rada uključuje potrebne podatke i dokumentaciju
+UCA_09 ..> UCA_02 : <<include>>
+UCA_09 ..> UCA_03 : <<include>>
+UCA_09 ..> UCA_04 : <<include>>
+UCA_09 ..> UCA_05 : <<include>>
+UCA_09 ..> UCA_08 : <<include>>
+
+' Provjere priložene PDF datoteke
+UCA_05 ..> UCA_06 : <<include>>
+UCA_05 ..> UCA_07 : <<include>>
+
+' Revidirana verzija uključuje novu datoteku
+' i dokument s odgovorima na recenzije
+UCA_13 ..> UCA_05 : <<include>>
+UCA_13 ..> UCA_14 : <<include>>
+
+' Konačna verzija uključuje izjavu i određivanje izlagača
+UCA_15 ..> UCA_16 : <<include>>
+UCA_15 ..> UCA_17 : <<include>>
+
+' Povlačenje rada pokreće obavještavanje recenzenata
+UCA_12 ..> UCA_18 : <<include>>
+
+' ------------------------------------------------------------
+' Pomoćne veze za raspored elemenata
+' ------------------------------------------------------------
+
+UCA_01 -[hidden]down-> UCA_02
+UCA_02 -[hidden]down-> UCA_03
+UCA_03 -[hidden]down-> UCA_04
+
+UCA_05 -[hidden]down-> UCA_06
+UCA_06 -[hidden]down-> UCA_07
+UCA_07 -[hidden]down-> UCA_08
+UCA_08 -[hidden]down-> UCA_09
+
+UCA_10 -[hidden]down-> UCA_11
+UCA_11 -[hidden]down-> UCA_12
+UCA_12 -[hidden]down-> UCA_18
+
+UCA_13 -[hidden]down-> UCA_14
+UCA_14 -[hidden]down-> UCA_15
+UCA_15 -[hidden]down-> UCA_16
+UCA_16 -[hidden]down-> UCA_17
+
+' ------------------------------------------------------------
+' Mogući statusi rada
+' ------------------------------------------------------------
+
+note bottom of UCA_10
+  Mogući statusi rada:
+  - Nacrt
+  - Predan
+  - U recenziranju
+  - Potrebna dorada
+  - Prihvaćen
+  - Odbijen
+  - Konačna verzija predana
+  - Uvršten u program
+  - Povucen
+end note
+
+@enduml

@@ -81,18 +81,25 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 ### 4.3.1 ER dijagram i model podataka
 
-**Cilj:** Prikazati važne pohranjene entitete, njihove identifikatore i veze te dovoljno atributa za razumijevanje podataka aplikacije. ER dijagram odvojen je od reprezentativnog UML dijagrama razreda u nastavku.
+Sustav KonfTrack koristi relacijsku PostgreSQL bazu
+podataka za pohranu podataka o korisnicima,
+konferencijama, znanstvenim radovima, recenzijama
+i ostalim povezanim entitetima.
 
-**ER dijagram:** [Ugradite čitljiv dijagram projekta.]  
-**Izvor dijagrama:** [Poveznica na njegov izvor.]  
-**Implementacija:** [Navedite gdje je odgovarajući model podataka definiran u projektu.]
+**ER dijagram:**
 
-<details>
-<summary><strong>Jedna prijava poplave i povezani podaci</strong></summary>
+![ER dijagram sustava KonfTrack](konfTrackERD.png)
 
-**Primjer — CrisisMap:** Ana putem svojeg korisničkog računa podnosi prijavu poplave `R-104`. Odabire lokaciju na karti i označava razinu ozbiljnosti kao visoku. Građanin može podnijeti više prijava; svaka prijava pripada jednoj kategoriji kriznog događaja, primjerice *Poplava*. Aplikacija pohranjuje prijavu i njezine koordinate. Kartografske pločice dolaze od vanjskog pružatelja i nisu entiteti u modelu podataka aplikacije.
+**Izvor dijagrama:**
 
-![ER dijagram podataka sustava CrisisMap](./assets/diagrams/4-2-crisismap-data-ERD.svg)
+[Izvorni ER dijagram](konfTrackERD.pgerd)
+
+**Implementacija:**
+
+Model podataka definiran je u PostgreSQL bazi,
+a njegova struktura opisana je u
+[Prisma shemi](../backend/prisma/schema.prisma).
+
 
 **Slika 4.2. ER dijagram podataka sustava CrisisMap**
 

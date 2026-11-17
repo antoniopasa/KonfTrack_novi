@@ -91,6 +91,8 @@ model papers {
   sections                                                   sections?              @relation(fields: [section_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_papers_sections")
   personal_schedule                                          personal_schedule[]
   reviewer_preferences                                       reviewer_preferences[]
+  review_assignments review_assignments[]
+
 }
 
 model personal_schedule {
@@ -118,6 +120,8 @@ model review_assignments {
   users              users?               @relation(fields: [reviewer_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ra_users")
   paper_versions     paper_versions?      @relation(fields: [paper_version_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ra_versions")
   review_discussions review_discussions[]
+  papers papers? @relation(fields: [paper_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ra_papers")
+
 }
 
 model review_discussions {
