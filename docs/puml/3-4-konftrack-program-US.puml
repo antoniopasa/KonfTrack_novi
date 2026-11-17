@@ -1,0 +1,147 @@
+
+
+' UC_Upravljanje_programom_v1.puml
+'
+' Svrha:    Prikazuje funkcionalnosti vezane uz sastavljanje,
+'           uređivanje i objavu programa konferencije, upravljanje
+'           sekcijama, uvrštavanje radova, osobne rasporede korisnika
+'           te automatsko generiranje zbornika sažetaka. Interna
+'           logika, pohrana podataka i korisničko sučelje nisu
+'           obuhvaćeni.
+' Autor:    Pavla Čančar
+' AI:       Dijagram je izrađen i vizualno uređen uz pomoć AI alata. AI je pomogao
+'           u izradi i reviziji i da kod prati izgled strukture po danom predlošku; autori su pregledali i odgovaraju
+'           za konačni sadržaj.
+' Zahtjevi: F-057 do F-066 (svaki slučaj korištenja ima ID za
+'           praćenje prema funkcionalnim zahtjevima)
+'
+' Diagram level: System Requirements
+' Diagram type:  Use Case Diagram
+' Version:       1.0
+
+@startuml UC_Upravljanje_programom
+
+title Upravljanje programom konferencije
+
+top to bottom direction
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam ArrowColor #212529
+skinparam ActorBorderColor #212529
+skinparam ActorBackgroundColor #F2F2F2
+skinparam UseCaseBorderColor #3973AC
+skinparam UseCaseBackgroundColor #DCEAF7
+skinparam RectangleBorderColor #212529
+
+actor "Predsjednik programskog odbora" as Chair
+actor "Registrirani korisnik" as User
+actor "Neregistrirani korisnik" as Visitor
+actor "Google Calendar" as GoogleCalendar <<external system>>
+
+rectangle "KonfTrack" {
+
+    package "1. Sastavljanje programa konferencije" {
+
+        usecase "UC-P01\nSastavljanje i uređivanje\nprograma konferencije" as UCP_01
+
+        usecase "UC-P02\nUpravljanje sekcijama" as UCP_02
+
+        usecase "UC-P03\nUnos podataka o sekciji\n==\nTema sekcije\nDvorana\nTermin\nPredsjedavajući" as UCP_03
+
+        usecase "UC-P04\nUvrštavanje radova\nu sekcije programa" as UCP_04
+
+        usecase "UC-P05\nPredlaganje grupiranja radova\nprema temama i ključnim riječima" as UCP_05
+    }
+
+    package "2. Provjera i objava programa" {
+
+        usecase "UC-P06\nProvjera preklapanja termina\nizlaganja istog izlagača" as UCP_06
+
+        usecase "UC-P07\nProvjera da predsjedavajući\nsekcije nije autor rada" as UCP_07
+
+        usecase "UC-P08\nPromjena statusa rada u\n'Uvršten u program'" as UCP_08
+
+        usecase "UC-P09\nObjava programa konferencije" as UCP_09
+
+        usecase "UC-P10\nPregled objavljenog\nprograma konferencije" as UCP_10
+    }
+
+    package "3. Osobni raspored korisnika" {
+
+        usecase "UC-P11\nDodavanje izlaganja\nu osobni raspored" as UCP_11
+
+        usecase "UC-P12\nIzvoz osobnog rasporeda\nu Google Calendar" as UCP_12
+    }
+
+    package "4. Generiranje zbornika sažetaka" {
+
+        usecase "UC-P13\nAutomatsko generiranje\nzbornika sažetaka u PDF-u" as UCP_13
+
+        usecase "UC-P14\nOrganiziranje zbornika po sekcijama\ni izrada kazala autora" as UCP_14
+    }
+}
+
+' ------------------------------------------------------------
+' Povezanost aktera i slučajeva korištenja
+' ------------------------------------------------------------
+
+Chair -- UCP_01
+Chair -- UCP_02
+Chair -- UCP_03
+Chair -- UCP_04
+Chair -- UCP_09
+
+Visitor -- UCP_10
+User -- UCP_10
+User -- UCP_11
+User -- UCP_12
+
+GoogleCalendar -- UCP_12
+
+' ------------------------------------------------------------
+' Odnosi include i extend
+' ------------------------------------------------------------
+
+' Sastavljanje programa uključuje upravljanje sekcijama
+' i uvrštavanje radova u program
+UCP_01 ..> UCP_02 : <<include>>
+UCP_01 ..> UCP_04 : <<include>>
+
+' Upravljanje sekcijama uključuje unos podataka o sekciji
+UCP_02 ..> UCP_03 : <<include>>
+
+' Sustav može predložiti grupiranje radova kao pomoć
+' pri uvrštavanju radova u sekcije
+UCP_05 ..> UCP_04 : <<extend>>
+
+' Uvrštavanje rada uključuje provjere rasporeda
+' i promjenu statusa rada
+UCP_04 ..> UCP_06 : <<include>>
+UCP_04 ..> UCP_07 : <<include>>
+UCP_04 ..> UCP_08 : <<include>>
+
+' Generiranje zbornika uključuje organizaciju sadržaja
+UCP_13 ..> UCP_14 : <<include>>
+
+' ------------------------------------------------------------
+' Pomoćne veze za raspored elemenata
+' ------------------------------------------------------------
+
+UCP_01 -[hidden]down-> UCP_02
+UCP_02 -[hidden]down-> UCP_03
+UCP_03 -[hidden]down-> UCP_04
+UCP_04 -[hidden]down-> UCP_05
+
+UCP_06 -[hidden]down-> UCP_07
+UCP_07 -[hidden]down-> UCP_08
+UCP_08 -[hidden]down-> UCP_09
+UCP_09 -[hidden]down-> UCP_10
+
+UCP_11 -[hidden]down-> UCP_12
+
+UCP_13 -[hidden]down-> UCP_14
+
+@enduml
