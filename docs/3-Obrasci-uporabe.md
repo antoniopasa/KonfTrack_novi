@@ -61,7 +61,7 @@ Dijagram prikazuje **ogledni scenarij** s građaninom, posjetiteljem i koordinat
 
 Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostvarenju korisničkog cilja; tehničke veze opisuju se u arhitekturi. Nemojte stvarati dodatni obavezni dijagram obrazaca uporabe samo radi popisa integracija. Prenatrpan dijagram podijelite prema povezanim akterima ili ciljevima samo kada time postaje čitljiviji.
 
-
+PAVLA
 | Fokus | Pitanje |
 | --- | --- |
 | Cijeli sustav | Koji korisnički ciljevi najbolje objašnjavaju čemu ova aplikacija služi? |
