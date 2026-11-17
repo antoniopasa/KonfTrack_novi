@@ -17,7 +17,7 @@ Zbog većeg broja funkcionalnosti, glavni dijagram ograničen je na pregled najv
 
 
 
-![Dijagram obrazaca uporabe sustava KonfTrack](./assets/diagrams/3-1-konftrack-system-UC.svg)
+![Dijagram obrazaca uporabe sustava KonfTrack- Upravljanje recenziranjem](./assets/diagrams/3-2-konftrack-recenziranje-UC.svg)
 
 **Slika 3.2. Usmjereni dijagram obrazaca uporabe sustava KonfTrack - Upravljanje recenziranjem**
 
