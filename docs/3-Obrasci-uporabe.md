@@ -17,21 +17,21 @@ Zbog većeg broja funkcionalnosti, glavni dijagram ograničen je na pregled najv
 
 
 
-![Dijagram obrazaca uporabe sustava KonfTrack](./assets/diagrams/3-1-konftrack-system-UC.svg)
+![Dijagram obrazaca uporabe sustava KonfTrack- Upravljanje recenziranjem](./assets/diagrams/3-2-konftrack-recenziranje-UC.svg)
 
-**Slika 3.2. Usmjereni dijagram sustava KonfTrack**
+**Slika 3.2. Usmjereni dijagram obrazaca uporabe sustava KonfTrack - Upravljanje recenziranjem**
 
-**PlantUML izvor:** [izvor](./puml/3-1-konftrack-system-UC.puml)
-
-
-![Dijagram obrazaca uporabe sustava KonfTrack](./assets/diagrams/3-1-konftrack-system-UC.svg)
-
-**Slika 3.3. Dijagram obrazaca uporabe sustava KonfTrack**
-
-**PlantUML izvor:** [izvor](./puml/3-1-konftrack-system-UC.puml)
+**PlantUML izvor:** [izvor](./puml/3-2-konftrack-recenziranje-UC.puml)
 
 
-![Dijagram obrazaca uporabe sustava KonfTrack](./assets/diagrams/3-1-konftrack-system-UC.svg)
+![Dijagram obrazaca uporabe sustava KonfTrack- Upravljanje radovima](./assets/diagrams/3-3-konftrack-radovi-UC.svg)
+
+**Slika 3.3. Usmjereni dijagram obrazaca uporabe sustava KonfTrack - Upravljanje radovima**
+
+**PlantUML izvor:** [izvor](./puml/3-3-konftrack-radovi-UC.puml)
+
+
+![Dijagram obrazaca uporabe sustava KonfTrack - Upravljanje radovima](./assets/diagrams/3-1-konftrack-system-UC.svg)
 
 **Slika 3.4. Dijagram obrazaca uporabe sustava KonfTrack**
 
