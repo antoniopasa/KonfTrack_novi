@@ -5,8 +5,8 @@
 '
 ' Svrha:    Prikazuje glavne aktere i ciljeve korištenja sustava KonfTrack te
 '           vanjske sustave s kojima KonfTrack komunicira. Detaljni prikazi nalaze se u zasebnim usmjerenim dijagramima.
-' Autor:    [Ime i prezime autora]
-' AI:       AI je pomogao u izradi i reviziji dijagrama; autor je pregledao
+' Autor:    [Pavla Čančar]
+' AI:       AI je pomogao reviziji dijagrama koji je izradio autor te u usklađivanju izgleda koda s predloškom koji nam je zadan kao primejr;autor je pregledao
 '           sadržaj i odgovara za konačni sadržaj.
 ' Zahtjevi: F-001 do F-070
 '
