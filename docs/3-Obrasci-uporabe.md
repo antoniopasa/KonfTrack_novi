@@ -32,6 +32,7 @@ Zbog većeg broja funkcionalnosti, glavni dijagram ograničen je na pregled najv
 
 
 ![Dijagram obrazaca uporabe sustava KonfTrack - Izrada programa](./assets/diagrams/3-4-konftrack-program-UC.svg)
+
 **Slika 3.4. Usmjereni dijagram obrazaca uporabe sustava KonfTrack - Izrada programa**
 
 **PlantUML izvor:** [izvor](./puml/3-4-konftrack-program-UC.puml)
