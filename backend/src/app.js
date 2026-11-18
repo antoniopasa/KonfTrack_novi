@@ -7,6 +7,7 @@ const helmet = require("helmet");
 
 const authRoutes = require("./routes/authRoutes");
 const orcidRoutes = require("./routes/orcidRoutes");
+//const paperRoutes = require("./routes/paperRoutes");
 
 const app = express();
 
@@ -92,7 +93,8 @@ app.use("/", authRoutes);
 
 // ORCID rute
 app.use("/auth", orcidRoutes);
-
+// Rute za radove
+//app.use("/auth", paperRoutes);
 // Pokretanje servera
 app.listen(PORT, () => {
   console.log(`KonfTrack radi na http://localhost:${PORT}`);

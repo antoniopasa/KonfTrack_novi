@@ -51,7 +51,11 @@ exports.register = async (req, res) => {
     res.status(500).send("Greška prilikom registracije.");
   }
 };
-
+exports.kontakt = async (req, res) => {
+  const korisnik = await dohvatiKorisnika(req);
+  if (!korisnik) return res.redirect("/login");
+  res.render("registriraniKorisnik/kontakt", { korisnik });
+};
 // PRIJAVA
 exports.login = async (req, res) => {
   try {
@@ -118,7 +122,29 @@ exports.profile = async (req, res) => {
     return res.status(500).send("Greška prilikom učitavanja profila.");
   }
 };
+async function dohvatiKorisnika(req) {
+  const user = await userModel.findUserById(req.userId);
+  if (!user) return null;
+  return {
+    id: user.id,
+    ime: user.firstName,
+    prezime: user.lastName,
+    ustanova: user.institution,
+    email: user.email,
+    orcidId: user.orcidId,
+  };
+}
 
+exports.predaja = async (req, res) => {
+  const korisnik = await dohvatiKorisnika(req);
+  if (!korisnik) return res.redirect("/login");
+  res.render("registriraniKorisnik/predaja", { korisnik });
+};
+exports.mojiRadovi = async (req, res) => {
+  const korisnik = await dohvatiKorisnika(req);
+  if (!korisnik) return res.redirect("/login");
+  res.render("registriraniKorisnik/moji-radovi", { korisnik, radovi: [] });
+};
 // UREĐIVANJE PROFILA
 exports.updateProfile = async (req, res) => {
   const { firstName, lastName, institution, expertise } = req.body;

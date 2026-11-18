@@ -29,20 +29,9 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <% radovi.forEach(function (r) { %>
-        <tr>
-          <td data-label="Naslov"><%= r.naslov %></td>
-          <td data-label="Konferencija"><%= r.konferencija %></td>
-          <td data-label="Tema"><%= r.tema %></td>
-          <td data-label="Datum predaje"><%= r.datum %></td>
-          <td data-label="Stanje"><span class="badge badge-<%= r.stanjeKljuc %>"><%= r.stanje %></span></td>
-          <td><button class="btn btn-small" disabled>Detalji</button></td>
-        </tr>
-        <% }) %>
-      </tbody>
+       <tbody id="radoviTijelo"></tbody>
     </table>
   </div>
 </section>
-
+<script src="/registriraniKorisnik/moji-radovi.js" defer></script>
 <%- include('footer') %>
