@@ -51,11 +51,7 @@ exports.register = async (req, res) => {
     res.status(500).send("Greška prilikom registracije.");
   }
 };
-exports.kontakt = async (req, res) => {
-  const korisnik = await dohvatiKorisnika(req);
-  if (!korisnik) return res.redirect("/login");
-  res.render("registriraniKorisnik/kontakt", { korisnik });
-};
+
 // PRIJAVA
 exports.login = async (req, res) => {
   try {
