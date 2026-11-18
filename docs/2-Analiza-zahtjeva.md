@@ -267,8 +267,78 @@ Ograničenje je uvjet koji tim mora poštovati; pretpostavka je uvjet na koji se
 
 | ID zahtjeva | Obrazac uporabe / modul | Arhitekturna realizacija | Ispitivanje ili provjera |
 | --- | --- | --- | --- |
-| F-001 | [UC-001] | [Komponenta, modul ili drugo mjesto realizacije] | [ST-01, CT-01 ili druga provjera] |
-|F-003|	UC-23 Odjava iz sustava	Modul autentifikacije i upravljanja korisničkim sesijama – potrebno potvrditi stvarni naziv komponente u implementaciji. |	Provjera uspješne odjave i poništavanja sesije; provjera da prethodna sesija više ne omogućuje pristup zaštićenim funkcionalnostima. Oznaka ispitnog slučaja: na čekanju.|
+### Primjeri popunjenih redaka matrice sljedivosti
+
+| ID zahtjeva | Obrazac uporabe / modul | Arhitekturna realizacija | Ispitivanje ili provjera |
+| :--- | :--- | :--- | :--- |
+| F-001 | UC-01 – Registracija | Backend: `authController` za obradu registracije, `authRoutes.js` za definiranje ruta i Prisma klijent za pristup bazi podataka. Frontend: `register.ejs` i `register.css` za korisničko sučelje registracije. | Provedena je ručna provjera registracije putem Thunder Clienta. Predloženi ST-01: provjeriti uspješnu registraciju s ispravnim podacima i odbijanje neispravnih podataka. |
+| F-002 | UC-02 – Prijava u sustav | Backend: `authController`, `authRoutes.js`, `orcidRoutes.js`, `orcidService.js` i `tokenService.js`. Autentifikacija se ostvaruje putem sesije i JWT tokena, a ORCID prijava koristi OAuth 2.0. Frontend: `login.ejs` i `login.css`. | Provedena je ručna provjera prijave putem Thunder Clienta. Predloženi ST-02: provjeriti prijavu ispravnim i neispravnim podacima. Predloženi ST-03: provjeriti tijek prijave putem ORCID-a u sandbox okruženju. |
+| F-003 | UC-23 – Odjava iz sustava | Backend: funkcija `logout` u `authControlleru` i ruta u `authRoutes.js`. Prilikom odjave uništava se sesija i briše kolačić `konftrack.sid`. | Provedena je ručna provjera odjave putem Thunder Clienta. Predloženi ST-04: provjeriti uništavanje sesije, brisanje kolačića i onemogućavanje pristupa zaštićenim web-rutama nakon odjave. |
+| F-004 | UC-04 – Upravljanje profilom | Backend: ruta `/profile` i zaštićeni endpoint `/api/me` za dohvat podataka prijavljenog korisnika. Podaci se dohvaćaju putem autentifikacije i Prisma klijenta. Frontend: stranica profila i sučelje registriranog korisnika izrađeno pomoću EJS predložaka. | Na čekanju – predloženi ST-05: provjeriti prikaz podataka prijavljenog korisnika. Predloženi CT-01: provjeriti dohvat korisničkih podataka putem odgovarajućeg kontrolera ili servisa. |
+| F-007 | Obrasci uporabe koji zahtijevaju autentifikaciju i kontrolu pristupa | Backend: `authMiddleware.js` za provjeru JWT tokena ili korisničke sesije. Zaštićene API rute koriste Bearer autentifikaciju, a neautorizirani zahtjevi dobivaju HTTP status 401. | Provedena je provjera zaštićene rute u Thunder Clientu s valjanim tokenom i bez tokena. Predloženi ST-06: provjeriti odbijanje pristupa zaštićenoj ruti bez valjanog tokena ili sesije. |
+| F-008 | UC-05 – Upravljanje korisnicima i postavkama platforme | Na čekanju – administratorski modul | Na čekanju – provjera pregleda, uređivanja i deaktivacije korisničkih računa |
+| F-009 | UC-03 – Pregled javne stranice konferencije | Frontend: EJS stranice za neregistriranog korisnika, uključujući pripadajuće predloške u mapi `neregistriraniKorisnik/`, te stranica programa `program.ejs`. | Na čekanju – predloženi ST-07: provjeriti može li neregistrirani korisnik otvoriti javnu stranicu konferencije i objavljeni program bez prijave. |
+| F-010 | UC-06 – Odobravanje konferencije i imenovanje predsjednika | Na čekanju – administratorski modul za upravljanje konferencijama | Na čekanju – provjera odobravanja konferencije i imenovanja predsjednika programskog odbora |
+| F-011 | UC-07 – Upravljanje konferencijom | Na čekanju – modul upravljanja konferencijama | Na čekanju – provjera unosa i izmjene osnovnih podataka konferencije |
+| F-012 | UC-03 – Pregled javne stranice konferencije | Na čekanju – modul prikaza podataka konferencije | Na čekanju – provjera prikaza podataka o konferenciji |
+| F-013 | UC-07 – Upravljanje konferencijom | Na čekanju – modul upravljanja rokovima | Na čekanju – provjera postavljanja rokova za pojedine faze konferencije |
+| F-014 | UC-07 – Upravljanje konferencijom | Na čekanju – modul upravljanja rokovima i pravilima pristupa | Na čekanju – provjera automatskog onemogućavanja radnji nakon isteka roka |
+| F-015 | UC-07 – Upravljanje konferencijom | Na čekanju – modul upravljanja rokovima | Na čekanju – provjera produljenja postojećeg roka |
+| F-016 | UC-07 – Upravljanje konferencijom | Na čekanju – modul obavijesti | Na čekanju – provjera slanja obavijesti korisnicima na koje se produljenje roka odnosi |
+| F-017 | UC-07 – Upravljanje konferencijom | Na čekanju – modul upravljanja temama konferencije | Na čekanju – provjera dodavanja, izmjene i uklanjanja tema |
+| F-018 | UC-07 – Upravljanje konferencijom | Na čekanju – modul objave podataka konferencije | Na čekanju – provjera objave javnih informacija o konferenciji |
+| F-019 | UC-08 – Predaja rada | Na čekanju – modul predaje radova | Na čekanju – provjera uspješne predaje rada |
+| F-020 | UC-08 – Predaja rada | Na čekanju – modul metapodataka radova | Na čekanju – provjera unosa i spremanja metapodataka rada |
+| F-021 | UC-08 – Predaja rada | Na čekanju – modul upravljanja autorima i koautorima | Na čekanju – provjera odabira postojećih korisnika i pozivanja novih koautora |
+| F-022 | UC-08 – Predaja rada | Na čekanju – modul upravljanja autorima rada | Na čekanju – provjera određivanja jednog korespondentnog autora |
+| F-023 | UC-08 – Predaja rada | Na čekanju – modul za pohranu i obradu datoteka | Na čekanju – provjera prilaganja anonimizirane PDF datoteke |
+| F-024 | UC-08 – Predaja rada | Na čekanju – modul validacije PDF datoteka | Na čekanju – provjera formata datoteke i najvećeg dopuštenog broja stranica |
+| F-025 | UC-08 – Predaja rada | Na čekanju – modul obrade PDF metapodataka | Na čekanju – provjera prepoznavanja imena autora u metapodacima PDF datoteke |
+| F-026 | UC-08 i UC-21 – Provjera DOI referenci | Na čekanju – modul integracije s vanjskim servisom Crossref | Na čekanju – provjera dohvaćanja metapodataka i upozorenja za nepostojeće DOI oznake |
+| F-027 | UC-09 – Upravljanje vlastitim radovima | Na čekanju – modul upravljanja radovima | Na čekanju – provjera uređivanja rada ovisno o njegovu statusu i rokovima |
+| F-028 | UC-09 – Upravljanje vlastitim radovima | Na čekanju – modul upravljanja statusima radova | Na čekanju – provjera povlačenja rada i očuvanja zapisa o povučenom radu |
+| F-029 | UC-09 – Upravljanje vlastitim radovima | Na čekanju – modul upravljanja životnim ciklusom rada | Na čekanju – provjera prijelaza rada između definiranih statusa |
+| F-030 | UC-09 – Upravljanje vlastitim radovima | Na čekanju – modul revizija radova | Na čekanju – provjera predaje revidirane verzije i dokumenta s odgovorima te zadržavanja istih recenzenata |
+| F-031 | UC-09 – Upravljanje vlastitim radovima | Na čekanju – modul predaje konačnih verzija | Na čekanju – provjera predaje konačne neanonimizirane verzije rada i potpisane izjave o autorskim pravima |
+| F-032 | UC-09 – Upravljanje vlastitim radovima | Na čekanju – modul upravljanja izlagačima | Na čekanju – provjera određivanja izlagača rada |
+| F-033 | UC-10 – Upravljanje recenzentima | Na čekanju – modul pozivanja recenzenata | Na čekanju – provjera slanja poziva recenzentima putem e-pošte |
+| F-034 | UC-11 – Prihvaćanje ili odbijanje poziva za recenziranje | Na čekanju – modul poziva recenzenata | Na čekanju – provjera prihvaćanja i odbijanja poziva |
+| F-035 | UC-12 – Iskazivanje interesa za recenziranje | Na čekanju – modul iskazivanja interesa recenzenata | Na čekanju – provjera odabira jedne od ponuđenih mogućnosti interesa |
+| F-036 | UC-12 – Iskazivanje interesa za recenziranje | Na čekanju – modul evidencije sukoba interesa | Na čekanju – provjera prijave sukoba interesa od strane recenzenta |
+| F-037 | UC-13 – Dodjela radova recenzentima; UC-22 – Provjera sukoba interesa | Na čekanju – modul provjere sukoba interesa i integracije s ORCID-om | Na čekanju – provjera prepoznavanja sukoba interesa na temelju institucije i prethodne suradnje |
+| F-038 | UC-13 – Dodjela radova recenzentima | Na čekanju – modul automatske dodjele radova | Na čekanju – provjera generiranja prijedloga dodjele uz najmanje tri recenzenta i uravnoteženo opterećenje |
+| F-039 | UC-13 – Dodjela radova recenzentima | Na čekanju – modul upravljanja vidljivošću prijedloga dodjele | Na čekanju – provjera da prijedlog dodjele prije potvrde vidi samo predsjednik programskog odbora |
+| F-040 | UC-13 – Dodjela radova recenzentima | Na čekanju – modul potvrde dodjele radova | Na čekanju – provjera da recenzenti dobivaju pristup radovima tek nakon potvrde dodjele |
+| F-041 | UC-13 – Dodjela radova recenzentima | Na čekanju – modul ručnog uređivanja dodjele | Na čekanju – provjera ručne izmjene dodjele i ograničenja minimalnog broja recenzenata |
+| F-042 | UC-13 – Dodjela radova recenzentima | Na čekanju – modul provjere ograničenja dodjele | Na čekanju – provjera da svaki rad u postupku recenziranja ima najmanje tri aktivna recenzenta |
+| F-043 | UC-14 – Recenziranje rada | Na čekanju – modul upravljanja recenzentima i zamjenama | Na čekanju – provjera mogućnosti zamjene recenzenta |
+| F-044 | UC-14 – Recenziranje rada | Na čekanju – modul upravljanja ovlastima recenzenata | Na čekanju – provjera ukidanja pristupa zamijenjenom recenzentu |
+| F-045 | UC-14 – Recenziranje rada | Na čekanju – modul korisničkog sučelja recenzenta | Na čekanju – provjera prikaza dodijeljenih radova i rokova na nadzornoj ploči recenzenta |
+| F-046 | UC-14 – Recenziranje rada | Na čekanju – modul za unos i pohranu recenzija | Na čekanju – provjera unosa ocjene, stručnosti, komentara za autore i povjerljivih komentara |
+| F-047 | UC-14 – Recenziranje rada | Na čekanju – modul anonimnosti i kontrole pristupa | Na čekanju – provjera da recenzent ne vidi autore te da autori ne vide identitet recenzenata |
+| F-048 | UC-15 – Sudjelovanje u anonimnoj raspravi | Na čekanju – modul prikaza recenzija | Na čekanju – provjera da su recenzije drugih recenzenata dostupne tek nakon predaje svih recenzija za rad |
+| F-049 | UC-15 – Sudjelovanje u anonimnoj raspravi | Na čekanju – modul anonimne rasprave | Na čekanju – provjera rasprave pod anonimnim oznakama recenzenata |
+| F-050 | UC-14 – Recenziranje rada | Na čekanju – modul automatskih obavijesti | Na čekanju – provjera slanja podsjetnika sedam i dva dana prije isteka roka |
+| F-051 | UC-14 – Recenziranje rada | Na čekanju – modul praćenja rokova recenziranja | Na čekanju – provjera označavanja recenzija koje nisu predane do isteka roka |
+| F-052 | UC-14 – Recenziranje rada | Na čekanju – modul zamjene recenzenata | Na čekanju – provjera dodjele zamjenskog recenzenta i očuvanja pravila o najmanje tri aktivna recenzenta |
+| F-053 | UC-16 – Donošenje odluka o radovima | Na čekanju – modul pregleda rezultata recenziranja | Na čekanju – provjera prikaza prosječne ocjene, broja recenzija i upozorenja na neslaganje |
+| F-054 | UC-16 – Donošenje odluka o radovima | Na čekanju – modul donošenja odluka | Na čekanju – provjera odabira odluke o prihvaćanju, doradi ili odbijanju rada |
+| F-055 | UC-16 – Donošenje odluka o radovima | Na čekanju – modul obavijesti autorima | Na čekanju – provjera slanja obavijesti svim autorima rada jednom akcijom |
+| F-056 | UC-16 – Donošenje odluka o radovima | Na čekanju – modul pripreme sadržaja obavijesti | Na čekanju – provjera uključivanja odluke i recenzija te izostavljanja povjerljivih komentara |
+| F-057 | UC-18 – Upravljanje programom konferencije | Na čekanju – modul upravljanja programom | Na čekanju – provjera sastavljanja i uređivanja programa konferencije |
+| F-058 | UC-18 – Upravljanje programom konferencije | Na čekanju – modul upravljanja sekcijama | Na čekanju – provjera unosa teme, prostorije, termina i predsjedavajućeg sekcije |
+| F-059 | UC-18 – Upravljanje programom konferencije | Na čekanju – modul predlaganja grupiranja radova | Na čekanju – provjera predlaganja grupiranja radova prema temama i ključnim riječima |
+| F-060 | UC-18 – Upravljanje programom konferencije | Na čekanju – modul provjere rasporeda | Na čekanju – provjera preklapanja termina izlaganja istog izlagača |
+| F-061 | UC-18 – Upravljanje programom konferencije | Na čekanju – modul provjere pravila sekcija | Na čekanju – provjera da predsjedavajući sekcije nije autor rada u toj sekciji |
+| F-062 | UC-18 – Upravljanje programom konferencije | Na čekanju – modul upravljanja statusima radova | Na čekanju – provjera promjene statusa rada u „Uvršten u program” |
+| F-063 | UC-03 i UC-18 – Pregled javne stranice i upravljanje programom | Na čekanju – modul javne objave programa | Na čekanju – provjera prikaza objavljenog programa na javnoj stranici konferencije |
+| F-064 | UC-19 – Upravljanje osobnim rasporedom | Na čekanju – modul osobnog rasporeda korisnika | Na čekanju – provjera dodavanja izlaganja u osobni raspored |
+| F-065 | UC-19 – Upravljanje osobnim rasporedom | Na čekanju – modul izvoza rasporeda i integracije s Google Calendarom | Na čekanju – provjera izvoza rasporeda u Google Calendar |
+| F-066 | UC-20 – Generiranje zbornika radova | Na čekanju – modul automatskog generiranja PDF zbornika | Na čekanju – provjera generiranja zbornika sažetaka, organizacije po sekcijama i kazala autora |
+| F-067 | UC-17 – Pregled statistike konferencije | Na čekanju – modul statistike konferencije | Na čekanju – provjera izračuna broja predanih radova po temama, stope prihvaćanja, prosječnog trajanja recenziranja i opterećenja recenzenata |
+| F-068 | UC-17 – Pregled statistike konferencije | Na čekanju – modul izvoza statistike | Na čekanju – provjera izvoza statističkih podataka u CSV formatu |
+| F-069 | UC-05 – Upravljanje korisnicima i postavkama platforme | Na čekanju – modul predložaka e-pošte | Na čekanju – provjera uređivanja predložaka obavijesti |
+| F-070 | UC-05 – Upravljanje korisnicima i postavkama platforme | Na čekanju – administratorski modul statistike platforme | Na čekanju – provjera prikaza statističkih podataka o korištenju platforme |
 |  |  |  |  |
 
 <details>
