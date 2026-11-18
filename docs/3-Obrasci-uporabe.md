@@ -343,6 +343,17 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 | **Alternativni tokovi / Iznimke** | **[2]a — [Podaci nisu dostupni]:** [Ako ORCID ne dostavi potrebne podatke, sustav ne može provesti odgovarajuću automatsku provjeru na temelju tih podataka]<br> **[3]a — [Utvrđena ista institucija]:** [Ako recenzent pripada istoj instituciji kao neki od autora ili koautora rada, sustav evidentira sukob interesa.]<br> **[4]a — [Utvrđena nedavna suradnja]:** [Ako je recenzent surađivao s nekim od autora ili koautora u posljednje tri godine, sustav evidentira sukob interesa.] |
 | **Posljedice (ishod)** | [Sustav je proveo provjeru sukoba interesa i evidentirao rezultate koji se uzimaju u obzir pri dodjeli radova recenzentima.] |
 
+### UC-23: Odjava iz sustava
+
+| Element specifikacije | Opis |
+| :--- | :--- |
+| **Primarni akter** | Registrirani korisnik |
+| **Povezani zahtjevi** | F-003, NF-01 |
+| **Preduvjeti** | Korisnik je uspješno prijavljen u sustav i ima aktivnu korisničku sesiju. |
+| **Glavni uspješni tok** | 1. Korisnik odabire mogućnost „Odjava” u korisničkom sučelju.<br>2. Sustav pokreće postupak odjave i poništava korisničku sesiju.<br>3. Sustav uklanja ili deaktivira podatke za autentifikaciju koje aplikacija koristi za održavanje te sesije.<br>4. Sustav potvrđuje završetak odjave i preusmjerava korisnika na javnu stranicu ili stranicu za prijavu.<br>5. Korisnik više nema pristup funkcionalnostima koje zahtijevaju prijavu. |
+| **Alternativni tokovi / Iznimke** | **[2]a — Sesija je već istekla ili poništena:** Sustav utvrđuje da sesija više nije aktivna, uklanja preostale lokalne podatke za autentifikaciju i korisnika preusmjerava na javnu stranicu ili stranicu za prijavu. Odjava se smatra dovršenom.<br> **[2]b — Neuspješno poništavanje sesije:** Ako sustav ne može potvrditi poništavanje sesije, korisniku prikazuje obavijest o neuspješnoj odjavi. Sustav ne smije prikazati odjavu kao uspješnu dok sesija nije sigurno poništena. |
+| **Posljedice (ishod)** | Korisnička sesija je poništena i korisnik više ne može pristupati zaštićenim funkcionalnostima bez ponovne prijave. Javno dostupne stranice konferencija ostaju dostupne. |
+
 <details>
 <summary><strong>Primjeri specifikacija: Registracija i prijava kriznog događaja</strong></summary>
 
