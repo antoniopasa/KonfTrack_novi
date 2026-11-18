@@ -66,21 +66,7 @@ app.get("/", (req, res) => {
   res.render("neregistriraniKorisnik/index");
 });
 
-// Privremeni podaci za program
-const mockSekcije = [
-  {
-    naziv: "Sekcija 1: Tema 1",
-    dvorana: "—",
-    termin: "—",
-    predsjedavajuci: "—",
-  },
-  {
-    naziv: "Sekcija 2: Tema 2",
-    dvorana: "—",
-    termin: "—",
-    predsjedavajuci: "—",
-  },
-];
+const mockSekcije = require("./data/mockSekcije");
 
 app.get("/program", (req, res) => {
   res.render("neregistriraniKorisnik/program", {

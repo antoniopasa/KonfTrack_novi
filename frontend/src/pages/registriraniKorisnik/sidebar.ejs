@@ -1,20 +1,41 @@
 <aside class="sidebar">
-<a href="/korisnik" class="logo">
-  <img src="/assets/logo.png" alt="KonfTrack Logo" />
-</a>
+  <a href="/korisnik" class="logo">
+    <img src="/assets/logo.png" alt="KonfTrack Logo" />
+  </a>
 
   <nav class="nav">
-    <a href="/korisnik" class="nav-link <%= aktivno === 'pocetna' ? 'active' : '' %>">Početna</a>
-    <a href="/korisnik/predaja" class="nav-link <%= aktivno === 'predaja' ? 'active' : '' %>">Predaja rada</a>
-    <a href="/korisnik/moji-radovi" class="nav-link <%= aktivno === 'radovi' ? 'active' : '' %>">Moji radovi</a>
-   <!-- <a href="/korisnik/kontakt" class="nav-link <%= aktivno === 'kontakt' ? 'active' : '' %>">Kontakt</a> -->
+    <a
+      href="/korisnik"
+      class="nav-link <%= aktivno === 'pocetna' ? 'active' : '' %>"
+      >Početna</a
+    >
+    <a
+      href="/korisnik/predaja"
+      class="nav-link <%= aktivno === 'predaja' ? 'active' : '' %>"
+      >Predaja rada</a
+    >
+    <a
+      href="/korisnik/moji-radovi"
+      class="nav-link <%= aktivno === 'radovi' ? 'active' : '' %>"
+      >Moji radovi</a
+    >
+    <a
+      href="/korisnik/program"
+      class="nav-link <%= aktivno === 'program' ? 'active' : '' %>"
+      >Program konferencije</a
+    >
+    <!-- <a href="/korisnik/kontakt" class="nav-link <%= aktivno === 'kontakt' ? 'active' : '' %>">Kontakt</a> -->
   </nav>
 
   <div class="sidebar-bottom">
     <div class="user-box">
-      <div class="avatar"><%= korisnik.ime.charAt(0) %><%= korisnik.prezime.charAt(0) %></div>
+      <div class="avatar">
+        <%= korisnik.ime.charAt(0) %><%= korisnik.prezime.charAt(0) %>
+      </div>
       <div class="user-info">
-        <span class="user-name"><%= korisnik.ime %> <%= korisnik.prezime %></span>
+        <span class="user-name"
+          ><%= korisnik.ime %> <%= korisnik.prezime %></span
+        >
         <span class="user-org"><%= korisnik.ustanova %></span>
       </div>
     </div>
@@ -22,4 +43,4 @@
   </div>
 </aside>
 
-<main class="content">
+<main class="content"

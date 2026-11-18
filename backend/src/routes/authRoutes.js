@@ -69,5 +69,5 @@ router.get("/api/me", requireLogin, authController.me);
 router.get("/korisnik/predaja", requireLogin, authController.predaja);
 router.get("/korisnik/moji-radovi", requireLogin, authController.mojiRadovi);
 router.get("/korisnik", requireLogin, authController.profile);
-
+router.get("/korisnik/program", requireLogin, authController.program);
 module.exports = router;
