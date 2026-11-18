@@ -95,6 +95,26 @@ Server se pokreće na portu iz `.env` (varijabla `PORT`).
 | `npm run prisma:migrate` | Pokretanje Prisma migracija                                  |
 | `npx prisma studio`      | Pregled baze u pregledniku                                   |
 
+### Struktura backenda
+
+| Mapa              | Namjena                                              |
+| ----------------- | ---------------------------------------------------- |
+| `src/routes`      | Definicija ruta i Swagger (`@openapi`) opisi         |
+| `src/controllers` | Obrada HTTP zahtjeva i odgovora                      |
+| `src/services`    | Poslovna logika i pozivi vanjskih servisa            |
+| `src/models`      | Pristup bazi preko Prisma klijenta                   |
+| `src/middleware`  | Provjera prijave i ostali međukoraci obrade zahtjeva |
+| `src/config`      | Konfiguracija (okruženje, Prisma, Swagger, ORCID)    |
+| `prisma/`         | Shema baze i migracije                               |
+
+### Dogovori za tim
+
+- Svaki novi endpoint dobiva `@openapi` komentar kako bi se pojavio u Swagger dokumentaciji.
+- Prije commita pokreću se `npm run lint` i `npm run format`.
+- Za pristup bazi koristi se samo zajednički Prisma klijent iz `src/config/prisma.js`.
+- Svaka nova varijabla okruženja dodaje se i u `.env.example`.
+- Svaki zadatak radi se na zasebnoj grani i spaja pull requestom koji u opisu sadrži `Closes #broj-issuea`.
+
 ### Česti problemi
 
 - **`Could not read package.json`** – naredba nije pokrenuta iz mape `backend`.
