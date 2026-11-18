@@ -242,107 +242,106 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 | Element specifikacije | Opis |
 | :--- | :--- |
 | **Primarni akter** | [Recenzent] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Povezani zahtjevi** | [F-043, F-044, F-045, F-046, F-047, F-050, F-051, F-052] |
+| **Preduvjeti** | [Recenzent je prijavljen u sustav, rad mu je dodijeljen i rok za recenziranje nije istekao.] |
+| **Glavni uspješni tok** |1. Recenzent otvara pregled svojih recenzija (UR-08).<br>2. Sustav prikazuje radove dodijeljene recenzentu i pripadajuće rokove.<br>3. Recenzent odabire rad koji želi recenzirati.<br>4. Sustav prikazuje anonimizirani rad bez podataka o autorima.<br>5. Recenzent pregledava rad i ispunjava obrazac recenzije (UR-09).<br>6. Recenzent unosi ocjenu rada od -3 do +3 i procjenu vlastite stručnosti za područje rada od 1 do 5.<br>7. Recenzent unosi komentar namijenjen autorima i zaseban povjerljivi komentar namijenjen programskom odboru.<br>8. Recenzent predaje recenziju.<br>9. Sustav sprema recenziju i evidentira vrijeme predaje.<br>10. Sustav šalje automatske podsjetnike recenzentima sedam i dva dana prije isteka roka (UR-10).|
+| **Alternativni tokovi / Iznimke** | **[5]a — [Recenzija nije potpuna]:** [Ako nisu uneseni svi obvezni podaci recenzije, sustav obavještava recenzenta i traži dopunu.]<br> **[8]a — [Rok za recenziranje je istekao]:** [Sustav označava recenziju kao zakašnjelu (UR-11, F-051)]<br> **[8]b — [Zamjena recenzenta]:** [Ako recenzent ne preda recenziju u predviđenom roku, predsjednik programskog odbora može mu dodijeliti zamjenskog recenzenta (UR-12, F-052). Zamijenjeni recenzent gubi pristup radu i više ne može sudjelovati u recenziranju niti utjecati na odluku o radu (F-043, F-044). ]<br> **[8]c— [Rok za recenziranje je produljen]:** [Ako je predsjednik produljio rok, sustav primjenjuje novi rok i obavještava pogođene korisnike.]<br> **[10]a — [Automatsko zatvaranje predaje]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
+| **Posljedice (ishod)** | [Recenzija je spremljena i povezana s pripadajućim radom. Sadrži ocjenu, procjenu stručnosti, komentar za autore i povjerljivi komentar za programski odbor. Identitet autora nije dostupan recenzentu, a identitet recenzenta nije dostupan autorima.] |
 
 
 ### UC-[15]: [Sudjelovanje u anonimnoj raspravi]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Recenzent] |
+| **Povezani zahtjevi** | [F-048, F-049] |
+| **Preduvjeti** | [Recenzent je prijavljen u sustav, dodijeljen mu je odabrani rad i sve recenzije tog rada su predane.] |
+| **Glavni uspješni tok** |1. Recenzent otvara rad za koji je završeno prikupljanje recenzija.<br>2. Sustav provjerava jesu li sve recenzije za odabrani rad predane.<br>3. Sustav prikazuje recenzije ostalih recenzenata uz vlastitu recenziju (UR-13).<br>4. Sustav prikazuje recenzente pod anonimnim oznakama, primjerice „Recenzent 1”, „Recenzent 2” i „Recenzent 3”.<br>5. Recenzent pregledava ostale recenzije i sudjeluje u raspravi o radu (UR-14).<br>6. Sustav sprema poruke i prikazuje ih ostalim recenzentima dodijeljenima tom radu.|
+| **Alternativni tokovi / Iznimke** | **[2]a — [Nisu predane sve recenzije]:** [Ako barem jedna recenzija još nije predana, sustav ne omogućuje pregled recenzija drugih recenzenata ni sudjelovanje u raspravi.]<br> **[5]a — [Recenzent nema pristup raspravi]:** [Ako korisniku rad više nije dodijeljen, sustav mu ne dopušta pristup raspravi.|
+| **Posljedice (ishod)** | [Recenzenti mogu pregledavati međusobne recenzije i sudjelovati u raspravi o radu, pri čemu su njihovi stvarni identiteti skriveni i prikazani anonimnim oznakama.] |
 
 
 ### UC-[16]: [Donošenje odluka o radovima]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Predsjednik programskog odbora] |
+| **Povezani zahtjevi** | [F-053, F-054, F-055, F-056] |
+| **Preduvjeti** | [Predsjednik programskog odbora prijavljen je u sustav i ima odgovarajuće ovlasti. Recenzije za radove su predane i dostupne za donošenje odluka.] |
+| **Glavni uspješni tok** |1. Predsjednik otvara pregled radova za koje je potrebno donijeti odluku.<br>2. Sustav prikazuje tablicu radova s prosječnom ocjenom, brojem predanih recenzija i oznakom značajnog neslaganja među recenzentima (F-053).<br>3. Predsjednik odabire rad koji želi pregledati.<br>4. Sustav prikazuje recenzije rada, uključujući komentare namijenjene autorima, ali ne prikazuje povjerljive komentare programskog odbora autorima.<br>5. Predsjednik pregledava recenzije i donosi odluku: prihvaćanje rada, zahtjev za doradu ili odbijanje rada (F-054).<br>6. Predsjednik potvrđuje odluku.<br>7. Sustav priprema obavijest autorima koristeći predložak poruke<br>8. Predsjednik pokreće slanje obavijesti svim autorima rada jednom radnjom (F-055).<br>9. Sustav šalje obavijesti koje sadrže odluku i recenzije, bez povjerljivih komentara programskog odbora (F-056).|
+| **Alternativni tokovi / Iznimke** | **[2]a — [Recenzije nisu potpune]:** [Ako za rad još nisu predane sve potrebne recenzije, sustav ga ne prikazuje kao spremnog za donošenje konačne odluke.]<br> **[5]a — [Odluka nije odabrana]:** [Ako predsjednik nije odabrao jednu od ponuđenih odluka, sustav ne dopušta potvrđivanje odluke.]<br> **[8]a — [Slanje obavijesti nije uspjelo]:** [Ako sustav ne može poslati obavijesti svim autorima, obavještava predsjednika o neuspješnom slanju.] |
+| **Posljedice (ishod)** | [Za rad je evidentirana odluka predsjednika programskog odbora: prihvaćen, potrebna dorada ili odbijen. Svim autorima rada poslana je obavijest s odlukom i recenzijama, bez povjerljivih komentara programskog odbora.] |
 
 
 ### UC-[17]: [Pregled statistike konferencije]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Predsjednik programskog odbora] |
+| **Povezani zahtjevi** | [F-067, F-068] |
+| **Preduvjeti** | [Predsjednik programskog odbora prijavljen je u sustav i ima odgovarajuće ovlasti za pregled statistike odabrane konferencije.] |
+| **Glavni uspješni tok** |1. Predsjednik otvara statistički pregled konferencije.<br>2. Sustav prikuplja i prikazuje statističke podatke o konferenciji.<br>3. Sustav prikazuje broj predanih radova prema temama, stopu prihvaćanja radova, prosječno trajanje recenziranja i opterećenje recenzenata (F-067).<br>4. Predsjednik pregledava prikazane statističke podatke.<br>5. Predsjednik odabire mogućnost izvoza statistike.<br>6. Sustav generira datoteku u CSV formatu i omogućuje njezino preuzimanje (F-068).|
+| **Alternativni tokovi / Iznimke** | **[2]a — [Nema dostupnih statističkih podataka]:** [Ako za odabranu konferenciju još nema podataka za izračun pojedine statistike, sustav prikazuje dostupne podatke i označava da ostali podaci nisu dostupni.]<br> **[6]a — [Izvoz nije uspio]:** [Ako sustav ne može generirati CSV datoteku, obavještava predsjednika o neuspješnom izvozu.]<br> |
+| **Posljedice (ishod)** | [Predsjednik je pregledao statističke podatke konferencije i, prema potrebi, preuzeo CSV datoteku sa statistikom.] |
 
 
 ### UC-[18]: [Upravljanje programom konferencije]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Predsjednik programskog odbora] |
+| **Povezani zahtjevi** | [F-057, F-058, F-059, F-060, F-061, F-062, F-063] |
+| **Preduvjeti** | [Predsjednik programskog odbora prijavljen je u sustav i ima odgovarajuće ovlasti. Za konferenciju postoje prihvaćeni radovi s predanim konačnim verzijama.] |
+| **Glavni uspješni tok** |1. Predsjednik otvara funkcionalnost za sastavljanje programa konferencije (UC-P01).<br>2. Sustav prikazuje radove dostupne za uvrštavanje u program.<br>3. Predsjednik upravlja sekcijama konferencije (UC-P02) i unosi njihove podatke: temu, prostoriju, vrijeme održavanja i predsjedavajućeg sekcije (UC-P03).<br>4. Predsjednik odabire radove koje želi uvrstiti u pojedine sekcije (UC-P04).<br>5. Sustav može predložiti grupiranje radova prema temama i ključnim riječima (UC-P05).<br>6. Sustav provjerava preklapanje termina izlaganja istog izlagača (UC-P06).<br>7. Sustav provjerava je li predsjedavajući sekcije autor rada koji je uvršten u tu sekciju (UC-P07).<br>8. Nakon uspješnih provjera sustav mijenja status uvrštenih radova u „Uvršten u program” (UC-P08, F-062).<br>9. Predsjednik objavljuje program konferencije (UC-P09).<br>10. Sustav prikazuje potvrdu o objavi programa i čini ga dostupnim na javnoj stranici konferencije (F-063).|
+| **Alternativni tokovi / Iznimke** | **[3]a — [Nepotpuni podaci sekcije]:** [Ako nisu uneseni svi potrebni podaci sekcije, sustav obavještava predsjednika i traži dopunu]<br> **[5]a — [ Predloženo grupiranje nije prihvaćeno]:** [Predsjednik može samostalno odabrati raspored radova po sekcijama]<br> **[6]a — [Preklapanje termina izlagač]:** [Ako isti izlagač ima dva izlaganja u istom terminu, sustav upozorava predsjednika i traži izmjenu rasporeda.]<br> **[7]a — [Predsjedavajući je autor rada]:** [Ako je predsjedavajući sekcije autor rada u toj sekciji, sustav upozorava predsjednika i traži odabir drugog predsjedavajućeg ili izmjenu rasporeda.]<br> **[9]a — [Program nije moguće objaviti]:** [Ako program nije potpun ili postoje neriješena ograničenja, sustav obavještava predsjednika i ne objavljuje program.] |
+| **Posljedice (ishod)** | [Program konferencije sastavljen je od sekcija i pripadajućih izlaganja, provjerena su ograničenja rasporeda, a uvrštenim radovima dodijeljen je status „Uvršten u program”. Objavljeni program dostupan je na javnoj stranici konferencije.] |
 
 
 ### UC-[19]: [Upravljanje osobnim rasporedom]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Registrirani korisnik] |
+| **Povezani zahtjevi** | [F-064, F-065] |
+| **Preduvjeti** | [Korisnik je prijavljen u sustav, a program konferencije je objavljen.] |
+| **Glavni uspješni tok** |1. Korisnik otvara objavljeni program konferencije (UC-P10).<br>2. Sustav prikazuje sekcije i izlaganja objavljenog programa.<br>3. Korisnik odabire izlaganja koja želi dodati u svoj osobni raspored (UC-P11).<br>4. Sustav sprema odabrana izlaganja u osobni raspored korisnika.<br>5. Korisnik odabire mogućnost izvoza osobnog rasporeda u Google Calendar (UC-P12).<br>6. Sustav priprema podatke o odabranim izlaganjima i omogućuje njihov izvoz u Google Calendar.|
+| **Alternativni tokovi / Iznimke** | **[2]a — [Program nije objavljen]:** [Ako program konferencije još nije objavljen, sustav obavještava korisnika da izlaganja nisu dostupna za dodavanje u osobni raspored]<br> **[3]a — [Izlaganje je već dodano]:** [Ako se izlaganje već nalazi u osobnom rasporedu, sustav ne dodaje duplikat.]br> **[6]a — [Izvoz nije uspio]:** [Ako izvoz u Google Calendar nije moguće dovršiti, sustav obavještava korisnika o neuspješnom izvozu.] |
+| **Posljedice (ishod)** | [Korisnik ima spremljen osobni raspored s odabranim izlaganjima i može ga izvesti u Google Calendar.] |
 
 
 ### UC-[20]: [Generiranje zbornika radova]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
-
+| **Primarni akter** | [Sustav KonfTrack(automatski proces)] |
+| **Povezani zahtjevi** | [F-066] |
+| **Preduvjeti** | [Za konferenciju postoje prihvaćeni radovi s dostupnim sažecima i podacima potrebnima za izradu zbornika. Dostupni su podaci o sekcijama i autorima.] |
+| **Glavni uspješni tok** |1. Sustav pokreće postupak automatskog generiranja zbornika konferencije.<br>2. Sustav prikuplja sažetke prihvaćenih radova.<br>3. Sustav organizira sadržaj zbornika prema sekcijama konferencije (UC-P14).<br>4. Sustav generira kazalo autora (UC-P14).<br>5. Sustav izrađuje zbornik u PDF formatu.<br>6. Sustav evidentira generirani zbornik i omogućuje njegovu dostupnost u sustavu.|
+| **Alternativni tokovi / Iznimke** | **[2]a — [Nedostaju podaci o prihvaćenim radovima]:** [Ako za neki prihvaćeni rad nedostaje sažetak ili drugi potreban podatak, sustav ne može u potpunosti generirati zbornik i evidentira problem]<br> **[5]a — [Generiranje PDF-a nije uspjelo]:** [Ako sustav ne može izraditi PDF datoteku, evidentira neuspjeh generiranja.] |
+| **Posljedice (ishod)** | [Generiran je PDF zbornik sa sažecima prihvaćenih radova, organiziran prema sekcijama konferencije i s izrađenim kazalom autora.
 
 ### UC-[21]: [Provjera DOI referenci]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Autor] |
+| **Povezani zahtjevi** | [F-026] |
+| **Preduvjeti** | [Autor predaje rad i unio je DOI reference koje je potrebno provjeriti.] |
+| **Glavni uspješni tok** |1. Tijekom predaje rada sustav preuzima unesene DOI reference (UC-A08).<br>2. Sustav šalje upite vanjskom sustavu Crossref za provjeru DOI identifikatora.<br>3. Crossref vraća podatke o pronađenim DOI zapisima.<br>4. Sustav dohvaća dostupne metapodatke referenci.<br>5. Sustav prikazuje autoru rezultate provjere DOI referenci i dostupne metapodatke. |
+| **Alternativni tokovi / Iznimke** | **[2]a — [Crossref nije dostupan]:** [Ako vanjski sustav Crossref ne odgovara, sustav obavještava autora da provjeru nije moguće dovršiti.]<br> **[3]a — [DOI referenca nije pronađena]:** [Ako Crossref ne pronađe zapis za uneseni DOI, sustav upozorava autora da referenca nije pronađena]<br> **[3]b — [ 3b — DOI referenca nije valjana]:** [Ako uneseni DOI nije u odgovarajućem obliku, sustav obavještava autora o neispravnom unosu.] |
+| **Posljedice (ishod)** | [DOI reference rada provjerene su putem Crossrefa, dostupni metapodaci dohvaćeni su, a autor je upozoren na DOI reference za koje nije pronađen odgovarajući zapis.a] |
 
 
 ### UC-[22]: [Provjera sukoba interesa]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akteri** | [Sustav KonfTrack automatski pokreće provjeru; vanjski sustav ORCID sudjeluje dostavljanjem dostupnih podataka.] |
+| **Povezani zahtjevi** | [F-037] |
+| **Preduvjeti** | [U tijeku je postupak predlaganja ili provjere dodjele radova recenzentima. Dostupni su podaci o autorima i koautorima rada te podaci o recenzentima.] |
+| **Glavni uspješni tok** |1. Sustav pokreće automatsku provjeru sukoba interesa za pojedini rad i potencijalne recenzente (UR-04).<br>2. Sustav dohvaća dostupne podatke o institucijama i prethodnoj suradnji putem ORCID-a.<br>3. Sustav provjerava pripada li recenzent istoj instituciji kao neki od autora ili koautora rada.<br>4. Sustav provjerava postoji li suradnja recenzenta s nekim od autora ili koautora u posljednje tri godine.<br>5. Sustav evidentira utvrđene sukobe interesa.<br>6. Sustav koristi rezultate provjere pri predlaganju i provjeri dodjele radova recenzentima (UC-13).|
+| **Alternativni tokovi / Iznimke** | **[2]a — [Podaci nisu dostupni]:** [Ako ORCID ne dostavi potrebne podatke, sustav ne može provesti odgovarajuću automatsku provjeru na temelju tih podataka]<br> **[3]a — [Utvrđena ista institucija]:** [Ako recenzent pripada istoj instituciji kao neki od autora ili koautora rada, sustav evidentira sukob interesa.]<br> **[4]a — [Utvrđena nedavna suradnja]:** [Ako je recenzent surađivao s nekim od autora ili koautora u posljednje tri godine, sustav evidentira sukob interesa.] |
+| **Posljedice (ishod)** | [Sustav je proveo provjeru sukoba interesa i evidentirao rezultate koji se uzimaju u obzir pri dodjeli radova recenzentima.] |
 
 <details>
 <summary><strong>Primjeri specifikacija: Registracija i prijava kriznog događaja</strong></summary>
