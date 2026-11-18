@@ -1,5 +1,7 @@
 
 
+
+
 ' ==============================================================================
 ' 3-1-konftrack-system-UC_v1.puml
 '
@@ -78,6 +80,7 @@ rectangle "Sustav KonfTrack" as KonfTrack {
     ' Pristup i korisnički račun
     (UC-01\nRegistracija) as UC_Register
     (UC-02\nPrijava u sustav) as UC_Login
+    (UC-23\nOdjava iz sustava) as UC_Logout
     (UC-03\nPregled javne stranice\nkonferencije) as UC_PublicPage
     (UC-04\nUpravljanje profilom) as UC_Profile
 
@@ -125,6 +128,7 @@ User -- UC_Login
 User -- UC_PublicPage
 User -- UC_Profile
 User -- UC_Schedule
+User -- UC_Logout
 
 ' Administrator sustava
 Admin -- UC_Admin
