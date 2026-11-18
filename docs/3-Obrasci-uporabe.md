@@ -89,7 +89,7 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 | **Povezani zahtjevi** | [F-001] |
 | **Preduvjeti** | [Korisnik nema postojeći korisnički račun u sustavu.] |
 | **Glavni uspješni tok** | 1. Registrirani korisnik odabire mogućnost prijave u sustav.<br>2. Aplikacija prikazuje dostupne načine prijave.<br>3. Korisnik odabire prijavu putem adrese e-pošte ili ORCID računa.<br>4. Aplikacija pokreće odgovarajući postupak autentifikacije i provjerava identitet korisnika.<br>5. Ako je odabrana prijava putem ORCID-a, korisnik prolazi autorizaciju putem ORCID-a.<br>6. Nakon uspješne autentifikacije aplikacija izdaje i koristi OAuth 2.0 tokene za autorizaciju pristupa te korisniku omogućuje pristup njegovu računu.<br> |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka]  | **[2]a — [nova iznimka]:** [Uvjet nastanka, reakcija programa i nastavak toka] tu? | **[2]a — [reca iznimka]:** [Uvjet nastanka, reakcija programa i nastavak toka] tu? |
+| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka]<br> **[2]a — [nova iznimka]:** [Uvjet nastanka, reakcija programa i nastavak toka] tu?<br><br> **[2]a — [reca iznimka]:** [Uvjet nastanka, reakcija programa i nastavak toka] tu? |
 | **Posljedice (ishod)** | [Korisnik je uspješno prijavljen u sustav i može pristupati funkcionalnostima koje odgovaraju njegovim dodijeljenim ulogama i ovlastima.] |
 
 ### UC-[02]: [Prijava u sustav]
