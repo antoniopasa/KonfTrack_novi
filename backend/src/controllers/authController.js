@@ -1,5 +1,5 @@
 const userModel = require("../models/userModel");
-
+const mockSekcije = require("../data/mockSekcije");
 const { signToken } = require("../services/tokenService");
 
 // REGISTRACIJA
@@ -51,11 +51,7 @@ exports.register = async (req, res) => {
     res.status(500).send("Greška prilikom registracije.");
   }
 };
-exports.kontakt = async (req, res) => {
-  const korisnik = await dohvatiKorisnika(req);
-  if (!korisnik) return res.redirect("/login");
-  res.render("registriraniKorisnik/kontakt", { korisnik });
-};
+
 // PRIJAVA
 exports.login = async (req, res) => {
   try {
@@ -144,6 +140,12 @@ exports.mojiRadovi = async (req, res) => {
   const korisnik = await dohvatiKorisnika(req);
   if (!korisnik) return res.redirect("/login");
   res.render("registriraniKorisnik/moji-radovi", { korisnik, radovi: [] });
+};
+exports.program = async (req, res) => {
+  const korisnik = await dohvatiKorisnika(req);
+  if (!korisnik) return res.redirect("/login");
+
+  res.render("registriraniKorisnik/program", { korisnik, sekcije: mockSekcije });
 };
 // UREĐIVANJE PROFILA
 exports.updateProfile = async (req, res) => {

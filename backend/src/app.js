@@ -7,7 +7,7 @@ const helmet = require("helmet");
 
 const authRoutes = require("./routes/authRoutes");
 const orcidRoutes = require("./routes/orcidRoutes");
-//const paperRoutes = require("./routes/paperRoutes");
+const paperRoutes = require("./routes/paperRoutes");
 
 const app = express();
 
@@ -66,21 +66,7 @@ app.get("/", (req, res) => {
   res.render("neregistriraniKorisnik/index");
 });
 
-// Privremeni podaci za program
-const mockSekcije = [
-  {
-    naziv: "Sekcija 1: Tema 1",
-    dvorana: "—",
-    termin: "—",
-    predsjedavajuci: "—",
-  },
-  {
-    naziv: "Sekcija 2: Tema 2",
-    dvorana: "—",
-    termin: "—",
-    predsjedavajuci: "—",
-  },
-];
+const mockSekcije = require("./data/mockSekcije");
 
 app.get("/program", (req, res) => {
   res.render("neregistriraniKorisnik/program", {
@@ -93,6 +79,7 @@ app.use("/", authRoutes);
 
 // ORCID rute
 app.use("/auth", orcidRoutes);
+app.use("/api/papers", paperRoutes);
 // Rute za radove
 //app.use("/auth", paperRoutes);
 // Pokretanje servera

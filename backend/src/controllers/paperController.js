@@ -1,201 +1,336 @@
-const {PrismaClient} = require('@prisma/client');
-const prisma= new PrismaClient();
-const fs = require('fs');
-const { validatePdf, verifyDoi } = require('../utils/paperValidator');
+const fs = require("fs");
+const prisma = require("../config/prisma");
+const { validatePdf } = require("../services/pdfService");
+const { verifyDoi } = require("../services/crossrefService");
 
-exports.submitPaper= async(req, res)=>{
-    try{
-        const{title, abstract, keywords, topic, conferenceId, authors, references}=req.body;
-        const userId = req.userId;
-       
 
-        if(!title || !abstract || !conferenceId ){
-            if (req.file) fs.unlinkSync(req.file.path);
-            return res.status(400).json({error: 'Naslov, sazetak i konferencija su obavezni!'});
-        }
-        if(!req.file){
-            return res.status(400).json({error:'Anonimizirani PDF rukopis je obavezan! '});
-        }
+const NE_MOZE_POVUCI = ["accepted", "rejected", "withdrawn", "final_submitted", "in_program"];
 
-        const conference=await prisma.conference.findUnique({where:{id: parseInt(conferenceId)}});
+function obrisiDatoteku(file) {
+  if (file && file.path && fs.existsSync(file.path)) fs.unlinkSync(file.path);
+}
 
-        if (!conference) {
-            fs.unlinkSync(req.file.path);
-            return res.status(404).json({ error: 'Konferencija nije pronađena.' });
-        }
+function parsirajJson(vrijednost, zadano) {
+  if (!vrijednost) return zadano;
+  if (typeof vrijednost !== "string") return vrijednost;
+  try {
+    return JSON.parse(vrijednost);
+  } catch {
+    return zadano;
+  }
+}
 
-        if(conference && conference.submission_deadline && new Date() > new Date(conference.submission_deadline)){
-          if (req.file) fs.unlinkSync(req.file.path);
-          return res.status(400).json({error:'Rok za predaju radova je istekao.'});
-        }
-        const parsedAuthors = typeof authors === 'string' ? JSON.parse(authors): (authors || []);
-        const authorNames = parsedAuthors.map(a => a.name || a.invitedName);
+//Pretvara listu autora s fronta u zapise za paper_authors.
+//Ako koautor s tom e-poštom već postoji u sustavu povezuje se preko user_id.
+async function pripremiAutore(autori, userId) {
+  const rezultat = [];
+  for (const a of autori) {
+    const email = (a.email || "").toLowerCase().trim();
+    let povezaniId = a.isSelf ? userId : null;
 
-        const maxPages = conference.max_pages || 10;
-        const pdfValidation = await validatePdf(req.file.path, maxPages, authorNames);
-
-        if (!pdfValidation.valid) {
-            fs.unlinkSync(req.file.path); 
-            return res.status(400).json({ error: pdfValidation.error });
-        }
-
-        const parsedReferences = typeof references === 'string' ? JSON.parse(references) : (references || []);
-        const doiWarnings = [];
-
-        for (const ref of parsedReferences) {
-            const doiString = typeof ref === 'string' ? ref : ref.doi;
-            if (doiString) {
-                const doiCheck = await verifyDoi(doiString);
-                if (!doiCheck.exists) {
-                    doiWarnings.push(doiCheck.warning);
-                }
-            }
-        }
-
-        const newPaper=await prisma.paper.create({
-            data:{
-                title,
-                abstract,
-                keywords,
-                topic,
-                conferenceId: parseInt(conferenceId),
-                created_by:userId,
-                status:'predan',
-                submittedAt:new Date(),
-                authors: {
-                    create: parsedAuthors ? parsedAuthors.map(author=> ({
-                        userId: author.userId ? parseInt(author.userId): null,
-                        invitedName: author.name || null,
-                        invitedEmail: author.email || null,
-                        isContactAuthor: author.isContactAuthor || false,
-                    })) : []
-                },
-                versions:{
-                    create:{
-                        versionNumber:1,
-                        versionType: 'initial',
-                        filePath:req.file.path,
-                        submittedAt:new Date()
-                    }
-                }
-            },
-            include:{
-                authors:true,
-                versions:true
-            }
-        });
-        return res.status(201).json({
-          message: 'Rad uspjesno predan!',
-          paper: newPaper,
-          warnings: {
-            pdfWarnings: pdfValidation.warnings,
-            doiWarnings: doiWarnings
-          }
-        });
-    }catch (error){
-        console.error('Greska pri predaji rada.', error);
-        if (req.file && fs.existsSync(req.file.path)){
-          fs.unlinkSync(req.file.path);
-        }
-        return res.status(500).json({eror:'Doslo je do greske na posluzitelju.'});
+    if (!povezaniId && email) {
+      const postojeci = await prisma.users.findUnique({ where: { email } });
+      if (postojeci) povezaniId = postojeci.id;
     }
-};
 
+    rezultat.push({
+      user_id: povezaniId,
+      invited_name: a.name || null,
+      invited_email: email || null,
+      is_contact_author: Boolean(a.isContactAuthor),
+    });
+  }
+  return rezultat;
+}
+
+//dohvaća rad i provjerava da pripada korisniku
+async function dohvatiVlastitiRad(paperId, userId) {
+  const paper = await prisma.papers.findUnique({
+    where: { id: paperId },
+    include: {
+      conferences: true,
+      paper_versions: { orderBy: { version_number: "asc" } },
+      paper_authors_paper_authors_paper_idTopapers: true,
+    },
+  });
+  if (!paper) return { greska: 404, poruka: "Rad nije pronađen." };
+  if (paper.created_by !== userId) return { greska: 403, poruka: "Nemate ovlasti za ovaj rad." };
+  return { paper };
+}
+
+//sprema rukopis kao verziju 1 (zamjenjuje postojeću datoteku ako je ima)
+async function spremiRukopis(paperId, file, tip) {
+  const postojeca = await prisma.paper_versions.findFirst({
+    where: { paper_id: paperId, version_number: 1 },
+  });
+
+  if (postojeca) {
+    if (file) {
+      if (postojeca.file_path && fs.existsSync(postojeca.file_path)) fs.unlinkSync(postojeca.file_path);
+    }
+    return prisma.paper_versions.update({
+      where: { id: postojeca.id },
+      data: {
+        file_path: file ? file.path : postojeca.file_path,
+        version_type: tip,
+        submitted_at: new Date(),
+      },
+    });
+  }
+
+  if (!file) return null;
+
+  return prisma.paper_versions.create({
+    data: {
+      paper_id: paperId,
+      version_number: 1,
+      version_type: tip,
+      file_path: file.path,
+      submitted_at: new Date(),
+    },
+  });
+}
+
+//logika za spremanje nacrta i predaju rada
+async function spremiRad(req, res, predaja) {
+  const userId = req.userId;
+  const { paperId, title, abstract, keywords, topic, conferenceId, authors, references } = req.body;
+
+  try {
+    if (!title || !title.trim()) {
+      obrisiDatoteku(req.file);
+      return res.status(400).json({ error: "Naslov rada je obavezan." });
+    }
+
+    if (predaja && (!abstract || !conferenceId)) {
+      obrisiDatoteku(req.file);
+      return res.status(400).json({ error: "Naslov, sažetak i konferencija su obavezni za predaju." });
+    }
+
+    // Postojeci nacrt koji se nadopunjuje
+    let postojeci = null;
+    if (paperId) {
+      const r = await dohvatiVlastitiRad(parseInt(paperId), userId);
+      if (r.greska) {
+        obrisiDatoteku(req.file);
+        return res.status(r.greska).json({ error: r.poruka });
+      }
+      postojeci = r.paper;
+      if (postojeci.status !== "draft") {
+        obrisiDatoteku(req.file);
+        return res.status(400).json({ error: "Moguće je uređivati samo rad u stanju nacrta." });
+      }
+    }
+
+    // Konferencija
+    let conference = null;
+    if (conferenceId) {
+      conference = await prisma.conferences.findUnique({ where: { id: parseInt(conferenceId) } });
+      if (!conference) {
+        obrisiDatoteku(req.file);
+        return res.status(404).json({ error: "Konferencija nije pronađena." });
+      }
+    }
+
+    if (predaja && conference.submission_deadline && new Date() > new Date(conference.submission_deadline)) {
+      obrisiDatoteku(req.file);
+      return res.status(400).json({ error: "Rok za predaju radova je istekao." });
+    }
+
+    const autori = parsirajJson(authors, []);
+    const pdfWarnings = [];
+    const doiWarnings = [];
+
+    if (predaja) {
+      
+      const staraVerzija = postojeci && postojeci.paper_versions.find((v) => v.version_number === 1);
+      const putanja = req.file ? req.file.path : staraVerzija && staraVerzija.file_path;
+
+      if (!putanja) {
+        return res.status(400).json({ error: "Anonimizirani PDF rukopis je obavezan." });
+      }
+
+      if (!autori.some((a) => a.isContactAuthor)) {
+        obrisiDatoteku(req.file);
+        return res.status(400).json({ error: "Odaberite autora za kontakt." });
+      }
+
+      const provjera = await validatePdf(
+        putanja,
+        conference.max_pages || 10,
+        autori.map((a) => a.name),
+      );
+      if (!provjera.valid) {
+        obrisiDatoteku(req.file);
+        return res.status(400).json({ error: provjera.error });
+      }
+      pdfWarnings.push(...provjera.warnings);
+
+      for (const ref of parsirajJson(references, [])) {
+        const doi = typeof ref === "string" ? ref : ref.doi;
+        if (!doi) continue;
+        const r = await verifyDoi(doi);
+        if (!r.exists) doiWarnings.push(r.warning);
+      }
+    }
+
+    const podaci = {
+      title: title.trim(),
+      abstract: abstract || null,
+      keywords: keywords || null,
+      topic: topic || null,
+      conference_id: conferenceId ? parseInt(conferenceId) : null,
+      status: predaja ? "submitted" : "draft",
+      submitted_at: predaja ? new Date() : null,
+    };
+    const zapisiAutora = await pripremiAutore(autori, userId);
+
+    const paper = await prisma.$transaction(async (tx) => {
+      if (postojeci) {
+        await tx.paper_authors.deleteMany({ where: { paper_id: postojeci.id } });
+        return tx.papers.update({
+          where: { id: postojeci.id },
+          data: {
+            ...podaci,
+            paper_authors_paper_authors_paper_idTopapers: { create: zapisiAutora },
+          },
+        });
+      }
+      return tx.papers.create({
+        data: {
+          ...podaci,
+          created_by: userId,
+          paper_authors_paper_authors_paper_idTopapers: { create: zapisiAutora },
+        },
+      });
+    });
+
+    await spremiRukopis(paper.id, req.file, predaja ? "initial" : "draft");
+
+    return res.status(predaja || !postojeci ? 201 : 200).json({
+      message: predaja ? "Rad je uspješno predan." : "Nacrt je spremljen.",
+      paper: { id: paper.id, status: paper.status },
+      warnings: { pdfWarnings, doiWarnings },
+    });
+  } catch (error) {
+    console.error("Greška pri spremanju rada:", error);
+    obrisiDatoteku(req.file);
+    return res.status(500).json({ error: "Došlo je do greške na poslužitelju." });
+  }
+}
+
+// predaja rada (novog ili postojećeg nacrta)
+exports.submitPaper = (req, res) => spremiRad(req, res, true);
+
+// spremanje nacrta
+exports.saveDraft = (req, res) => spremiRad(req, res, false);
+
+// radovi koje je korisnik predao ili na kojima je koautor
 exports.getMyPapers = async (req, res) => {
   try {
     const userId = req.userId;
-
-    const papers = await prisma.paper.findMany({
-      where: { created_by: userId }, 
-      include: { 
-        conference: true, 
-        authors: true, 
-        versions: true 
-      }
+    const papers = await prisma.papers.findMany({
+      where: {
+        OR: [
+          { created_by: userId },
+          { paper_authors_paper_authors_paper_idTopapers: { some: { user_id: userId } } },
+        ],
+      },
+      include: { conferences: { select: { id: true, name: true } } },
+      orderBy: { id: "desc" },
     });
 
-    return res.status(200).json({ papers });
+    return res.status(200).json({
+      papers: papers.map((p) => ({
+        id: p.id,
+        title: p.title,
+        topic: p.topic,
+        status: p.status,
+        submittedAt: p.submitted_at,
+        conference: p.conferences,
+        isOwner: p.created_by === userId,
+      })),
+    });
   } catch (error) {
-    console.error('Greška pri dohvatu radova:', error);
-    return res.status(500).json({ error: 'Greška na poslužitelju.' });
+    console.error("Greška pri dohvatu radova:", error);
+    return res.status(500).json({ error: "Greška na poslužitelju." });
   }
 };
 
+// detalji vlastitog rada (za nastavak uređivanja nacrta)
+exports.getPaper = async (req, res) => {
+  try {
+    const r = await dohvatiVlastitiRad(parseInt(req.params.id), req.userId);
+    if (r.greska) return res.status(r.greska).json({ error: r.poruka });
+    const p = r.paper;
+    const v1 = p.paper_versions.find((v) => v.version_number === 1);
 
+    return res.json({
+      paper: {
+        id: p.id,
+        title: p.title,
+        abstract: p.abstract,
+        keywords: p.keywords,
+        topic: p.topic,
+        conferenceId: p.conference_id,
+        status: p.status,
+        hasManuscript: Boolean(v1 && v1.file_path),
+        authors: p.paper_authors_paper_authors_paper_idTopapers.map((a) => ({
+          name: a.invited_name,
+          email: a.invited_email,
+          isContactAuthor: a.is_contact_author,
+          isSelf: a.user_id === req.userId,
+        })),
+      },
+    });
+  } catch (error) {
+    console.error("Greška pri dohvatu rada:", error);
+    return res.status(500).json({ error: "Greška na poslužitelju." });
+  }
+};
+
+//  izmjena metapodataka do isteka roka
 exports.updatePaper = async (req, res) => {
   try {
-    const paperId = parseInt(req.params.id);
+    const r = await dohvatiVlastitiRad(parseInt(req.params.id), req.userId);
+    if (r.greska) return res.status(r.greska).json({ error: r.poruka });
+    const paper = r.paper;
+
+    if (paper.conferences && paper.conferences.submission_deadline && new Date() > new Date(paper.conferences.submission_deadline)) {
+      return res.status(400).json({ error: "Rok za izmjenu rada je istekao." });
+    }
+
     const { title, abstract, keywords, topic } = req.body;
-    const userId = req.userId;
-
-    const paper = await prisma.paper.findUnique({ where: { id: paperId }, include: { conference: true } });
-    if (!paper) return res.status(404).json({ error: 'Rad nije pronaden.' });
-
-    // Provjera vlasništva
-    if (paper.created_by !== userId) {
-      return res.status(403).json({ error: 'Nemate ovlasti uredivati ovaj rad.' });
-    }
-
-    // Provjera rokova
-    if (paper.conference && paper.conference.submission_deadline && new Date() > new Date(paper.conference.submission_deadline)) {
-      return res.status(400).json({ error: 'Rok za izmjenu rada je istekao.' });
-    }
-
-    const updatedPaper = await prisma.paper.update({
-      where: { id: paperId },
-      data: { title, abstract, keywords, topic }
+    const updated = await prisma.papers.update({
+      where: { id: paper.id },
+      data: { title, abstract, keywords, topic },
     });
-    return res.status(200).json({ message: 'Rad je uspjesno azuriran.', paper: updatedPaper });
+    return res.status(200).json({ message: "Rad je uspješno ažuriran.", paper: updated });
   } catch (error) {
-    console.error('Greška pri ažuriranju rada:', error);
-    return res.status(500).json({ error: 'Greška na poslužitelju.' });
+    console.error("Greška pri ažuriranju rada:", error);
+    return res.status(500).json({ error: "Greška na poslužitelju." });
   }
 };
+
+//  povlačenje rada
 exports.withdrawPaper = async (req, res) => {
   try {
-    const paperId = parseInt(req.params.id);
-    const userId = req.userId;
+    const r = await dohvatiVlastitiRad(parseInt(req.params.id), req.userId);
+    if (r.greska) return res.status(r.greska).json({ error: r.poruka });
+    const paper = r.paper;
 
-    const paper = await prisma.paper.findUnique({
-      where: { id: paperId },
-      include: { conference: true }
-    });
-
-    if (!paper) {
-      return res.status(404).json({ error: 'Rad nije pronađen.' });
+    if (NE_MOZE_POVUCI.includes(paper.status)) {
+      return res.status(400).json({ error: "Rad se u ovom stanju više ne može povući." });
     }
 
-    if (paper.created_by !== userId) {
-      return res.status(403).json({ error: 'Nemate dopuštenje za povlačenje tuđeg rada.' });
+    if (paper.conferences && paper.conferences.submission_deadline && new Date() > new Date(paper.conferences.submission_deadline)) {
+      return res.status(400).json({ error: "Rok za ovu konferenciju je istekao, rad se više ne može povući." });
     }
 
-    if (paper.status === 'accepted' || paper.status === 'rejected') {
-      return res.status(400).json({ 
-        error: `Rad se više ne može povući jer mu je status: ${paper.status}.` 
-      });
-    }
-
-    if (paper.conference && paper.conference.submission_deadline) {
-      const deadline = new Date(paper.conference.submission_deadline);
-      if (new Date() > deadline) {
-        return res.status(400).json({ 
-          error: 'Rok za ovu konferenciju je istekao, rad se više ne može povući.' 
-        });
-      }
-    }
-
-    const updatedPaper = await prisma.paper.update({
-      where: { id: paperId },
-      data: { status: 'withdrawn' }
-    });
-
-    return res.status(200).json({ 
-      message: 'Rad je uspješno povučen.', 
-      paper: updatedPaper 
-    });
-
+    await prisma.papers.update({ where: { id: paper.id }, data: { status: "withdrawn" } });
+    return res.status(200).json({ message: "Rad je uspješno povučen." });
   } catch (error) {
-    console.error('Greška prilikom povlačenja rada:', error);
-    return res.status(500).json({ error: 'Došlo je do greške na poslužitelju.' });
+    console.error("Greška prilikom povlačenja rada:", error);
+    return res.status(500).json({ error: "Došlo je do greške na poslužitelju." });
   }
-}; 
+};
