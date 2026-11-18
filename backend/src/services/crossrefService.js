@@ -1,30 +1,27 @@
-
-const axios = require('axios');
-
+//Provjera DOI oznake preko Crossref API-ja 
 async function verifyDoi(doi) {
-    if (!doi) return { exists: false };
-    try {
-        const cleanDoi = doi.replace(/https?:\/\/doi\.org\//, '').trim();
-        
-        const response = await axios.get(`https://api.crossref.org/works/${cleanDoi}`, {
-            headers: { 
-                'User-Agent': 'KonfTrackApp/1.0 (mailto:admin@konftrack.local)' 
-            }
-        });
+  if (!doi) return { exists: false };
+  const cleanDoi = doi.replace(/https?:\/\/(dx\.)?doi\.org\//, "").trim();
 
-        if (response.status === 200 && response.data?.message) {
-            return {
-                exists: true,
-                metadata: {
-                    title: response.data.message.title?.[0] || '',
-                    publisher: response.data.message.publisher || ''
-                }
-            };
-        }
-    } catch (error) {
-        return { exists: false, warning: `DOI "${doi}" ne postoji ili nije važeći u Crossref bazi.` };
+  try {
+    const response = await fetch(`https://api.crossref.org/works/${encodeURIComponent(cleanDoi)}`, {
+      headers: { "User-Agent": "KonfTrackApp/1.0 (mailto:admin@konftrack.local)" },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return {
+        exists: true,
+        metadata: {
+          title: data.message?.title?.[0] || "",
+          publisher: data.message?.publisher || "",
+        },
+      };
     }
-    return { exists: false, warning: `DOI "${doi}" nije pronađen.` };
+  } catch {
+    
+  }
+  return { exists: false, warning: `DOI "${doi}" ne postoji ili nije važeći u Crossref bazi.` };
 }
 
 module.exports = { verifyDoi };
