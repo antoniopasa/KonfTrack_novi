@@ -101,9 +101,7 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 | **Preduvjeti** | [Korisnik ima registrirani korisnički račun u sustavu.] |
 | **Glavni uspješni tok** | 1. Registrirani korisnik odabire mogućnost prijave u sustav.<br>2. Aplikacija prikazuje dostupne načine prijave.<br>3. Korisnik odabire prijavu putem adrese e-pošte ili ORCID računa.<br>4. Aplikacija pokreće odgovarajući postupak autentifikacije i provjerava identitet korisnika.<br>5. Ako je odabrana prijava putem ORCID-a, korisnik prolazi autorizaciju putem ORCID-a.<br>6. Nakon uspješne autentifikacije aplikacija izdaje i koristi OAuth 2.0 tokene za autorizaciju pristupa te korisniku omogućuje pristup njegovu računu. |
 | **Alternativni tokovi / Iznimke** | **[3]a — [Odabran neispravan način prijave]:** [Ako korisnik ne odabere ili ne može koristiti podržani način prijave, aplikacija ne pokreće autentifikaciju.]<br> **[4]a — [Neuspješna autentifikacija]:** [Ako identitet korisnika nije moguće potvrditi, aplikacija prikazuje obavijest o neuspješnoj prijavi i ne omogućuje pristup računu.]<br> **[5]a — [Neuspješna ORCID autorizacija]:** [Ako korisnik ne dovrši autorizaciju putem ORCID-a, prijava se ne dovršava.] |
-| **Posljedice (ishod)** | [
-
-Korisnik je uspješno prijavljen u sustav i može pristupati funkcionalnostima koje odgovaraju njegovim dodijeljenim ulogama i ovlastima.] |
+| **Posljedice (ishod)** | [Korisnik je uspješno prijavljen u sustav i može pristupati funkcionalnostima koje odgovaraju njegovim dodijeljenim ulogama i ovlastima.] |
 
 
 ### UC-[03]: [Pregled javne stranice konferencije]
@@ -123,84 +121,84 @@ Korisnik je uspješno prijavljen u sustav i može pristupati funkcionalnostima k
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Registrirani korisnik] |
+| **Povezani zahtjevi** | [F-004] |
+| **Preduvjeti** | [Korisnik je prijavljen u sustav.] |
+| **Glavni uspješni tok** | 1. Korisnik otvara svoj korisnički profil.<br>2. Sustav prikazuje trenutačne podatke profila.<br>3. Korisnik unosi ili uređuje ime, prezime, instituciju, ORCID ID i ključne riječi koje opisuju njegovo područje stručnosti.<br>4. Korisnik potvrđuje promjene.<br>5. Sustav provjerava unesene podatke i sprema ažurirani profil.<br>6. Sustav prikazuje potvrdu o uspješnom spremanju promjena.|
+| **Alternativni tokovi / Iznimke** | **[3]a — [Nepotpuni ili neispravni podaci]:** [Ako uneseni podaci nisu valjani ili nedostaju obvezni podaci, sustav obavještava korisnika i traži ispravak.]<br> **[5]a — [Neuspješno spremanje profila]:** [Ako sustav ne može spremiti promjene, obavještava korisnika da ažuriranje nije uspjelo.] |
+| **Posljedice (ishod)** | [Korisnički profil uspješno je ažuriran i sadrži unesene podatke o korisniku, instituciji, ORCID identifikatoru i području stručnosti.] |
 
 
-### UC-[05]: [Upravljanje korisnicima i postavkama platforme]
+### UC-[06]: [Upravljanje korisnicima i postavkama platforme]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Administrator sustava] |
+| **Povezani zahtjevi** | [F-008, F-069, F-070] |
+| **Preduvjeti** | [Administrator je prijavljen u sustav i ima administratorske ovlasti.] |
+| **Glavni uspješni tok** |1. Administrator otvara administracijsko sučelje sustava.<br>2. Sustav prikazuje dostupne administracijske funkcionalnosti.<br>3. Administrator odabire upravljanje korisnicima.<br>4. Sustav prikazuje popis korisnika i njihove podatke.<br>5. Administrator odabire korisnički račun kojim želi upravljati.<br>6. Administrator može deaktivirati korisnički račun u slučaju zlouporabe sustava (F-008).<br>7. Administrator može uređivati predloške poruka elektroničke pošte koje sustav koristi za obavještavanje korisnika (F-069).<br>8. Administrator može pregledavati statističke podatke o korištenju platforme (F-070).<br>9. Sustav sprema provedene promjene i prikazuje odgovarajuću potvrdu. |
+| **Alternativni tokovi / Iznimke** | **[4]a — [Korisnik nije pronađen]:** [Ako odabrani korisnički račun ne postoji, sustav obavještava administratora.]<br> **[6]a — [Deaktivacija nije moguća]:** [Ako deaktivaciju nije moguće provesti, sustav obavještava administratora o neuspjehu.]<br> **[7]a — [Neispravan predložak poruke]:** [Ako predložak nije ispravno unesen, sustav obavještava administratora i traži ispravak.] |
+| **Posljedice (ishod)** | [Administrator može upravljati korisničkim računima, deaktivirati račune u slučaju zlouporabe, uređivati predloške poruka i pregledavati statističke podatke o korištenju platforme.] |
 
 
 ### UC-[06]: [Odobravanje konferencije i imenovanje predsjednika]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Administrator sustava] |
+| **Povezani zahtjevi** | [F-010] |
+| **Preduvjeti** | [Administrator je prijavljen u sustav i ima administratorske ovlasti. Zahtjev za odobravanje nove konferencije zaprimljen je u sustavu] |
+| **Glavni uspješni tok** |1. Administrator otvara pregled konferencija koje čekaju odobrenje.<br>2. Sustav prikazuje zaprimljene zahtjeve za nove konferencije.<br>3. Administrator odabire konferenciju koju želi pregledati.<br>4. Sustav prikazuje dostupne podatke o konferenciji.<br>5. Administrator provjerava podatke i odobrava konferenciju.<br>6. Administrator odabire korisnika kojem dodjeljuje ulogu predsjednika programskog odbora za tu konferenciju.<br>7. Sustav evidentira odobrenje konferencije i dodjeljuje odabranom korisniku odgovarajuću ulogu.<br>8. Sustav prikazuje potvrdu o uspješnom odobrenju i imenovanju predsjednika programskog odbora. |
+| **Alternativni tokovi / Iznimke** | **[3]a — [Konferencija nije pronađena]:** [Ako odabrani zahtjev više nije dostupan, sustav obavještava administratora.]<br> **[5]a — [Konferencija nije odobrena]:** [Ako administrator ne odobri konferenciju, ona se ne aktivira za daljnje upravljanje.]<br> **[6]a — [Korisnik nije odabran]:** [ Ako administrator ne odabere korisnika za predsjednika programskog odbora, postupak imenovanja ne može se dovršiti.]|
+| **Posljedice (ishod)** | [Konferencija je odobrena u sustavu, a odabranom korisniku dodijeljena je uloga predsjednika programskog odbora za tu konferenciju.] |
 
 
 ### UC-[07]: [Upravljanje konferencijom]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Predsjednik programskog odbora] |
+| **Povezani zahtjevi** | [F-011, F-013, F-014, F-015, F-016, F-017, F-018] |
+| **Preduvjeti** | [Konferencija je odobrena u sustavu, a predsjedniku programskog odbora dodijeljena je odgovarajuća uloga za tu konferenciju.] |
+| **Glavni uspješni tok** |1. Predsjednik programskog odbora otvara podatke konferencije.<br>2. Sustav prikazuje trenutačne podatke i postavke konferencije.<br>3. Predsjednik unosi ili uređuje naziv konferencije, lokaciju, datume održavanja i ostale osnovne podatke (F-011).<br>4. Predsjednik definira teme konferencije (F-017).<br>5. Predsjednik postavlja rokove za pojedine faze konferencije: predaju radova, recenziranje, obavještavanje autora i predaju konačnih verzija (F-013).<br>6. Sustav sprema unesene podatke i rokove te automatski onemogućuje odgovarajuće radnje nakon isteka pripadajućih rokova (F-014).<br>7. Predsjednik objavljuje javne informacije o konferenciji (F-018).<br>8. Sustav prikazuje potvrdu o uspješnom spremanju i objavi podataka.|
+| **Alternativni tokovi / Iznimke** | **[3]a — [Neispravni podaci konferencije]:** [Ako uneseni podaci nisu valjani ili nedostaju obvezni podaci, sustav obavještava predsjednika i traži ispravak.]<br> **[5]a — [Nevaljan rok]:** [Ako uneseni rok nije valjan, sustav obavještava predsjednika i traži ispravak.]<br> **[6]a — [Produljenje roka]:** [Predsjednik odabire rok koji želi produljiti i unosi novi datum i vrijeme. Sustav ažurira rok te obavještava korisnike na koje produljenje utječe (F-015, F-016). Za produljenje roka za recenziranje primjenjuju se i UR-15: Produljenje roka za recenziranje te UR-16: Obavještavanje korisnika o produljenju roka.]|
+| **Posljedice (ishod)** | [Podaci i postavke konferencije spremljeni su, definirani rokovi primjenjuju se na odgovarajuće aktivnosti, a javne informacije dostupne su na stranici konferencije ako su objavljene.] |
 
 
 ### UC-[08]: [Predaja rada]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Autor] |
+| **Povezani zahtjevi** | [F-019, F-020, F-021, F-022, F-023, F-024, F-025, F-026] |
+| **Preduvjeti** | [SAutor je prijavljen u sustav i ima odgovarajuću ulogu za predaju rada na odabranoj konferenciji. Rok za predaju radova nije istekao.] |
+| **Glavni uspješni tok** |1. Autor pokreće postupak predaje rada za odabranu konferenciju.<br>2. Sustav omogućuje izradu i spremanje nacrta rada (UC-A01).<br>3. Autor unosi metapodatke rada: naslov, sažetak, ključne riječi i temu (UC-A02).<br>4. Autor odabire koautore među postojećim korisnicima ili ih poziva unosom imena i adrese e-pošte (UC-A03).<br>5. Autor određuje korespondentnog autora rada (UC-A04).<br>6. Autor prilaže anonimiziranu PDF datoteku rada (UC-A05).<br>7. Sustav provjerava format datoteke i najveći dopušteni broj stranica (UC-A06).<br>8. Sustav provjerava metapodatke PDF datoteke i upozorava autora ako su u njima navedena imena autora (UC-A07).<br>9. Sustav provjerava DOI reference rada putem sustava Crossref te dohvaća dostupne metapodatke referenci (UC-A08, UC-21).<br>10. Autor potvrđuje predaju rada.<br>11. Sustav evidentira rad kao predan i prikazuje potvrdu o uspješnoj predaji (UC-A09).|
+| **Alternativni tokovi / Iznimke** | **[3]a — [Nepotpuni metapodaci]:** [Ako nisu uneseni svi obvezni metapodaci, sustav obavještava autora i traži dopunu.]<br> **[4]a — [Koautor nije pronađen]:** [Autor može unijeti ime i adresu e-pošte osobe koju želi pozvati kao koautora.]<br> **[6]a — [Neodgovarajuća datoteka]:** [Ako datoteka nije u PDF formatu ili prelazi dopušteni broj stranica, sustav obavještava autora i ne dopušta nastavak predaje dok se problem ne ispravi.]<br> **[8]a — [Podaci o autorima u metapodacima PDF-a]:** [Sustav upozorava autora da datoteka možda nije u potpunosti anonimizirana. Autor može ispraviti datoteku prije predaje.]<br> **[9]a — [DOI referenca nije pronađena]:** [Sustav upozorava autora da za uneseni DOI nije pronađen odgovarajući zapis u Crossrefu.]<br> **[10]a — [Rok za predaju je istekao]:** [Sustav ne dopušta predaju rada nakon isteka roka.]|
+| **Posljedice (ishod)** | [Rad je evidentiran u sustavu sa statusom „Predan”, zajedno s unesenim metapodacima, popisom autora i priloženom anonimiziranom PDF datotekom.] |
 
 
 ### UC-[09]: [Upravljanje vlastitim radovima]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Autor] |
+| **Povezani zahtjevi** | [F-027, F-028, F-029, F-030, F-031, F-032] |
+| **Preduvjeti** | [Autor je prijavljen u sustav i ima najmanje jedan rad povezan sa svojim korisničkim računom.] |
+| **Glavni uspješni tok** | 1. Autor otvara pregled vlastitih radova (UC-A10).<br>2. Sustav prikazuje radove povezane s autorom i njihove trenutačne statuse.<br>3. Autor odabire rad kojim želi upravljati.<br>4. Sustav, ovisno o statusu rada i rokovima konferencije, prikazuje dopuštene radnje.<br>5. Autor može urediti podatke predanog rada ako je uređivanje dopušteno (UC-A11).<br>6. Ako je za rad zatražena dorada, autor prilaže revidiranu verziju rada i dokument s odgovorima na recenzije (UC-A13, UC-A14).<br>7. Ako je rad prihvaćen, autor prilaže konačnu neanonimiziranu verziju, potpisanu izjavu o autorskim pravima i određuje izlagača rada (UC-A15, UC-A16, UC-A17).<br>8. Sustav sprema promjene i ažurira status rada u skladu s provedenom radnjom. |
+| **Alternativni tokovi / Iznimke** | **[4]a — [Rad se ne može uređivati]:** [Ako je rad u postupku recenziranja, sustav ne dopušta njegovo uređivanje (UC-A11)]<br> **[4]b — [Povlačenje rada]:** [Autor može povući rad prije njegova prihvaćanja, uključujući i dok je rad u postupku recenziranja (UC-A12). Sustav evidentira povlačenje, zadržava zapis rada i obavještava recenzente o povlačenju (UC-A18).]<br> **[6]a — [Nepotpuna revidirana predaja]:** [Ako nisu priloženi revidirana verzija rada i dokument s odgovorima na recenzije, sustav obavještava autora i traži dopunu. Nakon uspješne predaje revidirana verzija vraća se u postupak recenziranja s istim recenzentima.]<br> **[7]a — [Nepotpuna konačna predaja]:** [Ako nedostaje konačna neanonimizirana verzija, potpisana izjava o autorskim pravima ili podatak o izlagaču, sustav obavještava autora i traži dopunu.]<br> **[7]b — [Rok za predaju konačne verzije je istekao]:** [Sustav ne dopušta predaju nakon isteka pripadajućeg roka.] |
+| **Posljedice (ishod)** | [Autor može pregledavati vlastite radove i, ovisno o statusu rada i rokovima, uređivati ih, povući ih, predati revidiranu verziju ili predati konačnu verziju. Povučeni rad ostaje evidentiran u sustavu sa statusom „Povučen”.] |
 
 
 ### UC-[10]: [Upravljanje recenzentima]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Predsjednik programskog odbora] |
+| **Povezani zahtjevi** | [F-033] |
+| **Preduvjeti** | [Predsjednik programskog odbora prijavljen je u sustav i ima odgovarajuće ovlasti za upravljanje recenzentima odabrane konferencije.] |
+| **Glavni uspješni tok** |1. Predsjednik programskog odbora otvara dio sustava za upravljanje recenzentima.<br>2. Sustav prikazuje mogućnosti upravljanja pozivima u programski odbor.<br>3. Predsjednik unosi adresu e-pošte osobe koju želi pozvati kao recenzenta.<br>4. Predsjednik šalje poziv za sudjelovanje u programskom odboru konferencije (UR-01).<br>5. Sustav evidentira poslani poziv i šalje pozivnu poruku na unesenu adresu e-pošte.<br>6. Sustav omogućuje predsjedniku pregled statusa poslanih poziva. |
+| **Alternativni tokovi / Iznimke** | **[3]a — [Nevaljana adresa e-pošte]:** [Sustav obavještava predsjednika da unesena adresa nije valjana i traži ispravak. ] **[3]b — [Osoba je već pozvana]:** [Ako za unesenu adresu već postoji aktivan poziv za istu konferenciju, sustav obavještava predsjednika i ne šalje ponovljeni poziv.] **[5]a — [Slanje poziva nije uspjelo]:** [Sustav obavještava predsjednika da poziv nije moguće poslati.] |
+| **Posljedice (ishod)** | [Poziv za sudjelovanje u programskom odboru evidentiran je u sustavu i poslan potencijalnom recenzentu. Status poziva može se pratiti u sustavu.] |
 
 
 ### UC-[11]: [Prihvaćanje ili odbijanje poziva na recenziranje]
@@ -209,10 +207,10 @@ Korisnik je uspješno prijavljen u sustav i može pristupati funkcionalnostima k
 | :--- | :--- |
 | **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
 | **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Preduvjeti** | [Predsjednik programskog odbora prijavljen je u sustav i ima odgovarajuće ovlasti za upravljanje recenzentima odabrane konferencije.] |
+| **Glavni uspješni tok** |1. Predsjednik programskog odbora otvara dio sustava za upravljanje recenzentima.<br>2. Sustav prikazuje mogućnosti upravljanja pozivima u programski odbor.<br>3. Predsjednik unosi adresu e-pošte osobe koju želi pozvati kao recenzenta.<br>4. Predsjednik šalje poziv za sudjelovanje u programskom odboru konferencije (UR-01).<br>5. Sustav evidentira poslani poziv i šalje pozivnu poruku na unesenu adresu e-pošte.<br>6. Sustav omogućuje predsjedniku pregled statusa poslanih poziva. |
+| **Alternativni tokovi / Iznimke** | **[3]a — [Nevaljana adresa e-pošte]:** [Sustav obavještava predsjednika da unesena adresa nije valjana i traži ispravak. ] **[3]b — [Osoba je već pozvana]:** [Ako za unesenu adresu već postoji aktivan poziv za istu konferenciju, sustav obavještava predsjednika i ne šalje ponovljeni poziv.] **[5]a — [Slanje poziva nije uspjelo]:** [Sustav obavještava predsjednika da poziv nije moguće poslati.] |
+| **Posljedice (ishod)** | [Poziv za sudjelovanje u programskom odboru evidentiran je u sustavu i poslan potencijalnom recenzentu. Status poziva može se pratiti u sustavu.] |
 
 
 ### UC-[12]: [Iskazivanje interesa za recenziranje]
