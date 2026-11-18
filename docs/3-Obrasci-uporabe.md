@@ -88,32 +88,35 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 | **Primarni akter** | [Neregistrirani korisnik] |
 | **Povezani zahtjevi** | [F-001] |
 | **Preduvjeti** | [Korisnik nema postojeći korisnički račun u sustavu.] |
-| **Glavni uspješni tok** | 1. Registrirani korisnik odabire mogućnost prijave u sustav.<br>2. Aplikacija prikazuje dostupne načine prijave.<br>3. Korisnik odabire prijavu putem adrese e-pošte ili ORCID računa.<br>4. Aplikacija pokreće odgovarajući postupak autentifikacije i provjerava identitet korisnika.<br>5. Ako je odabrana prijava putem ORCID-a, korisnik prolazi autorizaciju putem ORCID-a.<br>6. Nakon uspješne autentifikacije aplikacija izdaje i koristi OAuth 2.0 tokene za autorizaciju pristupa te korisniku omogućuje pristup njegovu računu.<br> |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka]<br> **[2]a — [nova iznimka]:** [Uvjet nastanka, reakcija programa i nastavak toka] tu?<br><br> **[2]a — [reca iznimka]:** [Uvjet nastanka, reakcija programa i nastavak toka] tu? |
+| **Glavni uspješni tok** |1. Neregistrirani korisnik odabire mogućnost registracije.<br>2. Aplikacija prikazuje dostupne načine registracije.<br>3. Korisnik odabire registraciju putem valjane adrese e-pošte ili ORCID računa.<br>4. Aplikacija obrađuje odabrani način registracije i provjerava podatke potrebne za stvaranje računa.<br>5. Ako je odabrana registracija putem ORCID-a, korisnik prolazi odgovarajući postupak autorizacije putem ORCID-a.<br>6. Aplikacija stvara korisnički račun i potvrđuje uspješnu registraciju. |
+| **Alternativni tokovi / Iznimke** | **[3]a — [Nevaljana adresa e-pošte]:** [ Ako korisnik unese nevaljanu adresu e-pošte, aplikacija prikazuje obavijest i traži ispravak podatka.]<br> **[4]a — [odaci nisu prihvaćeni]:** [ Ako podaci potrebni za registraciju nisu valjani ili je račun već registriran, aplikacija obavještava korisnika i ne stvara novi račun.] tu?<br> **[5]a — [Neuspješna ORCID autorizacija]:** [Ako korisnik ne dovrši autorizaciju putem ORCID-a, registracija se ne dovršava.] |
 | **Posljedice (ishod)** | [Korisnik je uspješno prijavljen u sustav i može pristupati funkcionalnostima koje odgovaraju njegovim dodijeljenim ulogama i ovlastima.] |
 
 ### UC-[02]: [Prijava u sustav]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Registrirani korisnik] |
+| **Povezani zahtjevi** | [F-002] |
+| **Preduvjeti** | [Korisnik ima registrirani korisnički račun u sustavu.] |
+| **Glavni uspješni tok** | 1. Registrirani korisnik odabire mogućnost prijave u sustav.<br>2. Aplikacija prikazuje dostupne načine prijave.<br>3. Korisnik odabire prijavu putem adrese e-pošte ili ORCID računa.<br>4. Aplikacija pokreće odgovarajući postupak autentifikacije i provjerava identitet korisnika.<br>5. Ako je odabrana prijava putem ORCID-a, korisnik prolazi autorizaciju putem ORCID-a.<br>6. Nakon uspješne autentifikacije aplikacija izdaje i koristi OAuth 2.0 tokene za autorizaciju pristupa te korisniku omogućuje pristup njegovu računu. |
+| **Alternativni tokovi / Iznimke** | **[3]a — [Odabran neispravan način prijave]:** [Ako korisnik ne odabere ili ne može koristiti podržani način prijave, aplikacija ne pokreće autentifikaciju.]<br> **[4]a — [Neuspješna autentifikacija]:** [Ako identitet korisnika nije moguće potvrditi, aplikacija prikazuje obavijest o neuspješnoj prijavi i ne omogućuje pristup računu.]<br> **[5]a — [Neuspješna ORCID autorizacija]:** [Ako korisnik ne dovrši autorizaciju putem ORCID-a, prijava se ne dovršava.] |
+| **Posljedice (ishod)** | [
+
+Korisnik je uspješno prijavljen u sustav i može pristupati funkcionalnostima koje odgovaraju njegovim dodijeljenim ulogama i ovlastima.] |
 
 
 ### UC-[03]: [Pregled javne stranice konferencije]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Neregistrirani korisnik] |
+| **Sekundarni akter** | [Registrirani korisnik] |
+| **Povezani zahtjevi** | [F-009, F-012, F-063] |
+| **Preduvjeti** | [Konferencija je odobrena, a njezini javno dostupni podaci objavljeni su u sustavu. Za pregled javne stranice nije potrebna prijava.] |
+| **Glavni uspješni tok** |1. Korisnik otvara javnu stranicu konferencije.<br>2. Aplikacija prikazuje dostupne javne informacije o konferenciji, uključujući naziv, lokaciju, datume i teme.<br>3. Korisnik pregledava objavljene informacije o konferenciji.<br>4. Ako je program konferencije objavljen, aplikacija omogućuje njegov pregled, uključujući pripadajuće sekcije i izlaganja (UC-P10).|
+| **Alternativni tokovi / Iznimke** | **[1]a — [Konferencija nije dostupna]:** [Ako tražena konferencija ne postoji ili njezina javna stranica nije dostupna, aplikacija prikazuje odgovarajuću obavijest.]<br> **[4]a — [Program nije objavljen]:** [Ako program konferencije još nije objavljen, aplikacija prikazuje ostale dostupne javne informacije bez prikaza programa.] |
+| **Posljedice (ishod)** | [Korisnik je pregledao javno dostupne informacije o konferenciji i, ako je objavljen, njezin program. Ne dolazi do promjene podataka konferencije.] |
 
 
 ### UC-[04]: [Upravljanje profilom]
