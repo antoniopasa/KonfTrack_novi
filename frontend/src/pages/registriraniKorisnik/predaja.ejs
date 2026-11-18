@@ -6,11 +6,16 @@
   <p>Ispunite podatke o radu i priložite anonimizirani rukopis.</p>
 </header>
 
-<div class="notice">Predaja radova trenutno nije omogućena.</div>
 
-<form class="card form" onsubmit="return false;">
-  <fieldset disabled>
+<form class="card form" id="predajaForm"
+      data-ime="<%= korisnik.ime %> <%= korisnik.prezime %>"
+      data-email="<%= korisnik.email %>">
+  <fieldset>
     <div class="form-grid">
+      <div class="field">
+  <label for="konferencija">Konferencija (ID)</label>
+  <input id="konferencija" type="number" placeholder="npr. 1">
+</div>
       <div class="field full">
         <label for="naslov">Naslov rada</label>
         <input id="naslov" type="text" placeholder="Unesite naslov rada">
@@ -68,5 +73,5 @@
     </div>
   </fieldset>
 </form>
-
+<script src="/registriraniKorisnik/predaja.js" defer></script>
 <%- include('footer') %>
