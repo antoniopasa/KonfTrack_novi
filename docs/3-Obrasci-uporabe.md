@@ -343,7 +343,7 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 | **Alternativni tokovi / Iznimke** | **[2]a — [Podaci nisu dostupni]:** [Ako ORCID ne dostavi potrebne podatke, sustav ne može provesti odgovarajuću automatsku provjeru na temelju tih podataka]<br> **[3]a — [Utvrđena ista institucija]:** [Ako recenzent pripada istoj instituciji kao neki od autora ili koautora rada, sustav evidentira sukob interesa.]<br> **[4]a — [Utvrđena nedavna suradnja]:** [Ako je recenzent surađivao s nekim od autora ili koautora u posljednje tri godine, sustav evidentira sukob interesa.] |
 | **Posljedice (ishod)** | [Sustav je proveo provjeru sukoba interesa i evidentirao rezultate koji se uzimaju u obzir pri dodjeli radova recenzentima.] |
 
-### UC-23: Odjava iz sustava
+### UC-[23]: Odjava iz sustava
 
 | Element specifikacije | Opis |
 | :--- | :--- |
