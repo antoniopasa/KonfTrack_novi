@@ -336,7 +336,8 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akteri** | [Sustav KonfTrack automatski pokreće provjeru; vanjski sustav ORCID sudjeluje dostavljanjem dostupnih podataka.] |
+| **Primarni akteri** | [Sustav KonfTrack] |
+| **Primarni akteri** | [vanjski sustav ORCID] |
 | **Povezani zahtjevi** | [F-037] |
 | **Preduvjeti** | [U tijeku je postupak predlaganja ili provjere dodjele radova recenzentima. Dostupni su podaci o autorima i koautorima rada te podaci o recenzentima.] |
 | **Glavni uspješni tok** |1. Sustav pokreće automatsku provjeru sukoba interesa za pojedini rad i potencijalne recenzente (UR-04).<br>2. Sustav dohvaća dostupne podatke o institucijama i prethodnoj suradnji putem ORCID-a.<br>3. Sustav provjerava pripada li recenzent istoj instituciji kao neki od autora ili koautora rada.<br>4. Sustav provjerava postoji li suradnja recenzenta s nekim od autora ili koautora u posljednje tri godine.<br>5. Sustav evidentira utvrđene sukobe interesa.<br>6. Sustav koristi rezultate provjere pri predlaganju i provjeri dodjele radova recenzentima (UC-13).|
