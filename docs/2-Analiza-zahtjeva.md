@@ -268,6 +268,7 @@ Ograničenje je uvjet koji tim mora poštovati; pretpostavka je uvjet na koji se
 | ID zahtjeva | Obrazac uporabe / modul | Arhitekturna realizacija | Ispitivanje ili provjera |
 | --- | --- | --- | --- |
 | F-001 | [UC-001] | [Komponenta, modul ili drugo mjesto realizacije] | [ST-01, CT-01 ili druga provjera] |
+|F-003|	UC-23 Odjava iz sustava	Modul autentifikacije i upravljanja korisničkim sesijama – potrebno potvrditi stvarni naziv komponente u implementaciji. |	Provjera uspješne odjave i poništavanja sesije; provjera da prethodna sesija više ne omogućuje pristup zaštićenim funkcionalnostima. Oznaka ispitnog slučaja: na čekanju.|
 |  |  |  |  |
 
 <details>
