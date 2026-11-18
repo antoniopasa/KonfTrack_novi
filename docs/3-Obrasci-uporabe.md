@@ -205,43 +205,43 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Predsjednik programskog odbora prijavljen je u sustav i ima odgovarajuće ovlasti za upravljanje recenzentima odabrane konferencije.] |
-| **Glavni uspješni tok** |1. Predsjednik programskog odbora otvara dio sustava za upravljanje recenzentima.<br>2. Sustav prikazuje mogućnosti upravljanja pozivima u programski odbor.<br>3. Predsjednik unosi adresu e-pošte osobe koju želi pozvati kao recenzenta.<br>4. Predsjednik šalje poziv za sudjelovanje u programskom odboru konferencije (UR-01).<br>5. Sustav evidentira poslani poziv i šalje pozivnu poruku na unesenu adresu e-pošte.<br>6. Sustav omogućuje predsjedniku pregled statusa poslanih poziva. |
-| **Alternativni tokovi / Iznimke** | **[3]a — [Nevaljana adresa e-pošte]:** [Sustav obavještava predsjednika da unesena adresa nije valjana i traži ispravak. ] **[3]b — [Osoba je već pozvana]:** [Ako za unesenu adresu već postoji aktivan poziv za istu konferenciju, sustav obavještava predsjednika i ne šalje ponovljeni poziv.] **[5]a — [Slanje poziva nije uspjelo]:** [Sustav obavještava predsjednika da poziv nije moguće poslati.] |
-| **Posljedice (ishod)** | [Poziv za sudjelovanje u programskom odboru evidentiran je u sustavu i poslan potencijalnom recenzentu. Status poziva može se pratiti u sustavu.] |
+| **Primarni akter** | [Recenzent] |
+| **Povezani zahtjevi** | [F-034] |
+| **Preduvjeti** | [Recenzent je primio poziv za sudjelovanje u programskom odboru odabrane konferencije.] |
+| **Glavni uspješni tok** |1. Recenzent otvara poziv za sudjelovanje u programskom odboru konferencije.<br>2. Sustav prikazuje podatke o konferenciji i sadržaj poziva.<br>3. Recenzent odabire mogućnost prihvaćanja poziva.<br>4. Sustav evidentira prihvaćanje poziva i dodjeljuje korisniku ulogu recenzenta za odabranu konferenciju.<br>5. Sustav prikazuje potvrdu o uspješnom prihvaćanju poziva. |
+| **Alternativni tokovi / Iznimke** | **[3]a — [Odbijanje poziva]:** [Recenzent odabire mogućnost odbijanja poziva. Sustav evidentira odbijanje i ažurira status poziva.] **[3]b — [Poziv više nije dostupan]:** [Ako je poziv istekao ili više nije aktivan, sustav obavještava korisnika da odgovor nije moguće poslati.] |
+| **Posljedice (ishod)** | [Poziv je evidentiran kao prihvaćen ili odbijen. Ako je recenzent prihvatio poziv, dodijeljena mu je uloga recenzenta za odabranu konferenciju.] |
 
 
 ### UC-[12]: [Iskazivanje interesa za recenziranje]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Recenzent] |
+| **Povezani zahtjevi** | [F-035, F-036] |
+| **Preduvjeti** | [Recenzent je prihvatio poziv za sudjelovanje u programskom odboru i prijavljen je u sustav. Radovi za odabranu konferenciju predani su i dostupni za iskazivanje interesa.] |
+| **Glavni uspješni tok** | 1. Recenzent otvara popis radova za koje može iskazati interes za recenziranje (UR-03).<br>2. Sustav prikazuje naslove i sažetke dostupnih radova.<br>3. Recenzent odabire rad i iskazuje svoj interes odabirom jedne od ponuđenih mogućnosti: „Želim recenzirati”, „Mogu recenzirati”, „Ne želim recenzirati” ili „Sukob interesa”.<br>4. Sustav evidentira odabranu mogućnost za pojedini rad.<br>5. Recenzent ponavlja postupak za ostale dostupne radove.<br>6. Sustav sprema iskazane interese recenzenta. |
+| **Alternativni tokovi / Iznimke** | **[3]a — [Sukob interesa]:** [Recenzent odabire mogućnost „Sukob interesa” ako smatra da postoji razlog zbog kojeg ne bi trebao recenzirati odabrani rad (F-036). Sustav evidentira iskazani sukob interesa.]<br> **[3]b — [Rad više nije dostupan]:** [Ako rad više nije dostupan za iskazivanje interesa, sustav obavještava recenzenta.] |
+| **Posljedice (ishod)** | [Sustav sadrži evidentirane iskaze interesa recenzenta za pojedine radove, koji se mogu koristiti prilikom predlaganja dodjele radova recenzentima.] |
 
 
 ### UC-[13]: [Dodjela radova recenzentima]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
-| **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
-| **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
-| **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
-| **Alternativni tokovi / Iznimke** | **[Korak]a — [Naziv iznimke]:** [Uvjet nastanka, reakcija programa i nastavak toka] |
-| **Posljedice (ishod)** | [Promjena stanja podataka ili potvrda nakon uspješnog završetka] |
+| **Primarni akter** | [Predsjednik programskog odbora] |
+| **Povezani zahtjevi** | [F-037, F-038, F-039, F-040, F-041, F-042] |
+| **Preduvjeti** | [Predsjednik programskog odbora prijavljen je u sustav i ima odgovarajuće ovlasti. Predaja radova je završena, a recenzenti su iskazali interes za recenziranje.] |
+| **Glavni uspješni tok** |1. Predsjednik otvara funkcionalnost za dodjelu radova recenzentima<br>2. Sustav pokreće provjeru sukoba interesa za radove i recenzente (UR-04, UC-22). <br>3. Sustav automatski generira prijedlog dodjele radova recenzentima (UR-05), uzimajući u obzir iskazane interese, sukobe interesa i ravnomjernu raspodjelu opterećenja recenzenata (F-038).<br>4. Sustav provjerava ograničenja dodjele (UR-06): svaki rad mora imati najmanje tri recenzenta, a recenzent ne smije recenzirati vlastiti rad (F-038, F-042).<br>5. Sustav prikazuje prijedlog dodjele isključivo predsjedniku programskog odbora (F-039).<br>6. Predsjednik pregledava prijedlog i prema potrebi ručno mijenja dodijeljene recenzente (UR-07, F-041).<br>7. Sustav ponovno provjerava ograničenja dodjele.<br>8. Predsjednik potvrđuje dodjelu radova recenzentima (F-040).<br>9. Sustav evidentira potvrđene dodjele i omogućuje recenzentima pristup dodijeljenim radovima. |
+| **Alternativni tokovi / Iznimke** | **[3]a — [Nije moguće pronaći odgovarajuće recenzente]:** [: Ako sustav ne može predložiti dodjelu koja zadovoljava ograničenja, obavještava predsjednika da je potrebna ručna izmjena prijedloga.]<br> **[4]a — [Nedovoljan broj recenzenata]:** [Ako rad nema najmanje tri dodijeljena recenzenta, sustav ne dopušta potvrđivanje dodjele.]<br> **[6]a — [Ručna izmjena dodjele]:** [Predsjednik mijenja dodjelu pojedinog rada. Sustav nakon izmjene ponovno provjerava sukobe interesa i ograničenja dodjele.]<br> **[7]a — [Dodjela krši ograničenja]:** [Ako recenzent ima sukob interesa ili bi rad imao manje od tri recenzenta, sustav obavještava predsjednika i ne dopušta potvrđivanje takve dodjele.] |
+| **Posljedice (ishod)** | [Radovi su dodijeljeni recenzentima, pri čemu svaki rad ima najmanje tri recenzenta, dodjela poštuje ograničenja sukoba interesa i vlastitog autorstva, a opterećenje recenzenata nastoji se ravnomjerno rasporediti..] |
 
 
 ### UC-[14]: [Recenziranje rada]
 
 | Element specifikacije | Opis |
 | :--- | :--- |
-| **Primarni akter** | [Uloga definirana u analizi zahtjeva] |
+| **Primarni akter** | [Recenzent] |
 | **Povezani zahtjevi** | [Identifikatori funkcijskih zahtjeva, npr. F-001, F-004] |
 | **Preduvjeti** | [Stanje sustava koje mora biti zadovoljeno prije početka izvođenja] |
 | **Glavni uspješni tok** | 1. Akter pokreće akciju.<br>2. Program obrađuje unos i vraća povratnu informaciju.<br>3. [Koračni prikaz interakcije do ostvarenja cilja] |
