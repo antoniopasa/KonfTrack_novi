@@ -72,4 +72,5 @@ router.get("/korisnik", requireLogin, authController.profile);
 router.get("/korisnik", requireLogin, authController.profile);
 router.get("/korisnik/predaja", requireLogin, authController.predaja);
 router.get("/korisnik/moji-radovi", requireLogin, authController.mojiRadovi);
+router.get("/korisnik/kontakt", requireLogin, authController.kontakt);
 module.exports = router;
