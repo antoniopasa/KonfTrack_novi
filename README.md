@@ -1,68 +1,60 @@
-#Programsko inžinjerstvo, FER. Grupa L-A-12.3
+**Programsko inženjerstvo, FER. Grupa L-A-12.3**
 
-# [KonfTrack]
+# KonfTrack
 
-<details>
-
-</details>
-
-[KonfTrack je web-aplikacija namijenjena organizaciji znanstvenih konferencija. Cilj projekta je olakšati upravljanje konferencijama, prijavu znanstvenih radova, njihovo recenziranje, pračenje životnog ciklusa radova te donošenje odluka o prihvaćanju radova.]
-
+KonfTrack je web-aplikacija namijenjena organizaciji znanstvenih konferencija. Cilj projekta je olakšati upravljanje konferencijama, prijavu znanstvenih radova, njihovo recenziranje, praćenje životnog ciklusa radova te donošenje odluka o prihvaćanju radova.
 
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 ## Opis aplikacije
 
-[Aplikacija rješava problem organizacije konferencija starim načinima tako što za razliku od njih  štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
-Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
+Aplikacija rješava problem organizacije konferencija starim načinima tako što za razliku od njih štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan.
+Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratorima platforme.
 
--**Neregistrirani korisnik** - bez prijave pregledava javnu stranicu konferencije i objavljeni program.
-- **Autori** — prijavljuju znanstvene radove i predaju njihove verzije.
-- **Recenzenti** — pregledavaju dodijeljene radove i izrađuju recenzije.
-- **Predsjednik programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
-- **Organizator/administrator konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
+- **Neregistrirani korisnik** — bez prijave pregledava javnu stranicu konferencije: poziv na predaju radova, teme, važne datume i objavljeni program.
+- **Registrirani korisnik** — slaže osobni raspored izlaganja i izvozi ga u Google Calendar. Isti korisnik na različitim konferencijama može imati različite uloge.
+- **Autor** — predaje radove, prati njihova stanja, predaje revizije i konačne verzije te prima obavijesti o odlukama.
+- **Recenzent** — prihvaća poziv u programski odbor, iskazuje interes za radove, recenzira dodijeljene radove i sudjeluje u anonimnoj raspravi.
+- **Predsjednik programskog odbora** — upravlja podacima, temama i rokovima konferencije, poziva recenzente, potvrđuje raspodjelu radova, donosi odluke, slaže program i pregledava statistiku.
+- **Administrator** — upravlja korisničkim računima, odobrava nove konferencije i imenuje njihove predsjednike programskog odbora, uređuje predloške poruka e-pošte i pregledava statistiku korištenja platforme.
 
-## TRENUTAČNE FUNKCIONALNOSTI:
+## Trenutačne funkcionalnosti
 
-| Funkcionalnost | Povezani zahtjevi | Napomena |
-|---|---|---|
-| Registracija korisnika adresom e-pošte i lozinkom | F-001 | Implementirana je registracija korisnika. Lozinka se pohranjuje u obliku sažetka (hash), a ne kao običan tekst. |
-| Prijava korisnika adresom e-pošte i lozinkom | F-002 | Implementirana je prijava korisnika i uspostavljanje sesije. Funkcionalnost je ručno provjerena putem alata Thunder Client. |
-| Registracija i prijava putem ORCID računa (OAuth 2.0) | F-001, F-002 | Implementiran je tijek autorizacije putem ORCID-a u sandbox okruženju. Potpuna end-to-end provjera integracije još nije potvrđena. |
-| Odjava korisnika | F-003 | Implementirano je uništavanje poslužiteljske sesije i uklanjanje sesijskog kolačića. Već izdani JWT tokeni ostaju valjani do isteka njihova 24-satnog trajanja. |
-| Dohvat vlastitog korisničkog profila | F-004 | Implementiran je dohvat podataka prijavljenog korisnika. Mogućnost uređivanja profila još nije potvrđena. |
-| Izdavanje JWT tokena za pristup API-ju | F-002, NF-01 | Implementirana je ruta `POST /api/auth/token`. Izdani token vrijedi 24 sata i koristi se za autentifikaciju zahtjeva prema zaštićenim API rutama. |
-| Javna početna stranica i stranica programa | F-009 | Osnovne stranice su izrađene. Podaci o programu trenutačno su privremeni i nije potvrđeno da su povezani sa stvarnim podacima iz baze. |
-| Osnovno sučelje registriranog korisnika | F-019, F-027 | Izrađene su stranice i navigacija za registriranog korisnika, uključujući početnu stranicu, obrazac za predaju rada i prikaz „Moji radovi”. Predaja rada kroz sučelje još nije potpuno povezana s poslužiteljskim dijelom aplikacije. |
-| Poslužiteljska obrada prijave znanstvenog rada | F-019 – F-026 | Implementiran je dio poslužiteljske logike za predaju rada, spremanje nacrta, pohranu PDF rukopisa i podataka o autorima. Funkcionalnost još nije potpuno integrirana sa sučeljem. |
-| Provjera PDF rukopisa i DOI referenci | F-023 – F-026 | Implementirane su provjere PDF datoteke, njezinih metapodataka i DOI referenci putem Crossref servisa. Provjera metapodataka ne znači automatsku provjeru anonimnosti cjelokupnog sadržaja dokumenta. |
+| Funkcionalnost                                        | Povezani zahtjevi | Napomena                                                                                                                                                                                                                              |
+| ----------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Registracija korisnika adresom e-pošte i lozinkom     | F-001             | Implementirana je registracija korisnika. Lozinka se pohranjuje u obliku sažetka (hash), a ne kao običan tekst.                                                                                                                       |
+| Prijava korisnika adresom e-pošte i lozinkom          | F-001             | Implementirana je prijava korisnika i uspostavljanje sesije. Funkcionalnost je ručno provjerena putem alata Thunder Client.                                                                                                           |
+| Registracija i prijava putem ORCID računa (OAuth 2.0) | F-001             | Implementiran je tijek autorizacije putem ORCID-a u sandbox okruženju. Potpuna end-to-end provjera integracije još nije potvrđena.                                                                                                    |
+| Odjava korisnika                                      | F-001             | Implementirano je uništavanje poslužiteljske sesije i uklanjanje sesijskog kolačića. Već izdani JWT tokeni ostaju valjani do isteka njihova 24-satnog trajanja.                                                                       |
+| Dohvat vlastitog korisničkog profila                  | F-002             | Implementiran je dohvat podataka prijavljenog korisnika. Mogućnost uređivanja profila još nije potvrđena.                                                                                                                             |
+| Izdavanje JWT tokena za pristup API-ju                | F-001, NF-01      | Implementirana je ruta `POST /api/auth/token`. Izdani token vrijedi 24 sata i koristi se za autentifikaciju zahtjeva prema zaštićenim API rutama.                                                                                     |
+| Javna početna stranica i stranica programa            | F-007             | Osnovne stranice su izrađene. Podaci o programu trenutačno su privremeni i nije potvrđeno da su povezani sa stvarnim podacima iz baze.                                                                                                |
+| Osnovno sučelje registriranog korisnika               | F-008, F-011      | Izrađene su stranice i navigacija za registriranog korisnika, uključujući početnu stranicu, obrazac za predaju rada i prikaz „Moji radovi”. Predaja rada kroz sučelje još nije potpuno povezana s poslužiteljskim dijelom aplikacije. |
+| Poslužiteljska obrada prijave znanstvenog rada        | F-008 – F-010     | Implementiran je dio poslužiteljske logike za predaju rada, spremanje nacrta, pohranu PDF rukopisa i podataka o autorima. Funkcionalnost još nije potpuno integrirana sa sučeljem.                                                    |
+| Provjera PDF rukopisa i DOI referenci                 | F-009, F-010      | Implementirane su provjere PDF datoteke, njezinih metapodataka i DOI referenci putem Crossref servisa. Provjera metapodataka ne znači automatsku provjeru anonimnosti cjelokupnog sadržaja dokumenta.                                 |
 
-## PLANIRANE FUNKCIONALNOSTI:
+## Planirane funkcionalnosti
 
-| Funkcionalnost | Povezani zahtjevi | Napomena |
-|---|---|---|
-| Upravljanje konferencijama, temama, rokovima i postavkama konferencije | F-010 – F-018 | Obuhvaća stvaranje i uređivanje konferencija te upravljanje njihovim osnovnim postavkama i rokovima. |
-| Potpuna integracija predaje znanstvenih radova sa sučeljem | F-019 – F-028 | Obuhvaća predaju rada, upravljanje autorima i koautorima, rukopisima, izmjenama i povlačenjem radova. |
-| Implementaciju, upravljanje korisničkim ulogama i ovlastima te administracija korisničkih računa | F-005 – F-008 | Potrebno je implementirati sustav korisničkih uloga i pripadajućih ovlasti te osigurati da korisnici mogu pristupati funkcionalnostima i izvršavati radnje u skladu sa svojom ulogom i dodijeljenim pravima.Obuhvaća administraciju korisnika i upravljanje njihovim ovlastima u sustavu. |
-| Pozivanje recenzenata, iskazivanje interesa i provjera sukoba interesa | F-033 – F-044 | Obuhvaća pozivanje recenzenata, iskazivanje interesa, provjeru sukoba interesa te predlaganje, potvrđivanje i izmjenu raspodjele radova. |
-| Provedba recenzijskog postupka | F-045 – F-052 | Obuhvaća dvostruko slijepu recenziju, predaju recenzija, raspravu recenzenata i slanje podsjetnika. |
-| Donošenje odluka o radovima i obavještavanje autora | F-053 – F-056 | Obuhvaća evidentiranje odluka o prihvaćanju ili odbijanju radova te obavještavanje autora. |
-| Izrada i objava programa konferencije | F-057 – F-062 | Obuhvaća organizaciju prihvaćenih radova u program konferencije. |
-| Upravljanje osobnim rasporedom i izvoz podataka u kalendarske aplikacije | F-063 – F-065 | Obuhvaća osobni raspored sudionika i izvoz podataka u kalendarski format odnosno podržane kalendarske aplikacije. |
-| Generiranje zbornika sažetaka u PDF formatu | F-066 | Obuhvaća generiranje zbornika sažetaka konferencije. |
-
+| Funkcionalnost                                                                   | Povezani zahtjevi | Napomena                                                                                                                                                                                                                                                                                   |
+| -------------------------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Upravljanje konferencijama, temama, rokovima i postavkama konferencije           | F-004 – F-007     | Obuhvaća stvaranje i uređivanje konferencija te upravljanje njihovim osnovnim postavkama i rokovima.                                                                                                                                                                                       |
+| Potpuna integracija predaje znanstvenih radova sa sučeljem                       | F-008 – F-011     | Obuhvaća predaju rada, upravljanje autorima i koautorima, rukopisima, izmjenama i povlačenjem radova.                                                                                                                                                                                      |
+| Upravljanje korisničkim ulogama i ovlastima te administracija korisničkih računa | F-003             | Potrebno je implementirati sustav korisničkih uloga i pripadajućih ovlasti te osigurati da korisnici mogu pristupati funkcionalnostima i izvršavati radnje u skladu sa svojom ulogom i dodijeljenim pravima. Obuhvaća administraciju korisnika i upravljanje njihovim ovlastima u sustavu. |
+| Pozivanje recenzenata, iskazivanje interesa i provjera sukoba interesa           | F-013 – F-017     | Obuhvaća pozivanje recenzenata, iskazivanje interesa, provjeru sukoba interesa te predlaganje, potvrđivanje i izmjenu raspodjele radova.                                                                                                                                                   |
+| Provedba recenzijskog postupka                                                   | F-017 – F-019     | Obuhvaća dvostruko slijepu recenziju, predaju recenzija, raspravu recenzenata i slanje podsjetnika.                                                                                                                                                                                        |
+| Donošenje odluka o radovima i obavještavanje autora                              | F-020, F-021      | Obuhvaća evidentiranje odluka o prihvaćanju ili odbijanju radova te obavještavanje autora.                                                                                                                                                                                                 |
+| Izrada i objava programa konferencije                                            | F-022             | Obuhvaća organizaciju prihvaćenih radova u program konferencije.                                                                                                                                                                                                                           |
+| Upravljanje osobnim rasporedom i izvoz podataka u kalendarske aplikacije         | F-023             | Obuhvaća osobni raspored sudionika i izvoz podataka u kalendarski format odnosno podržane kalendarske aplikacije.                                                                                                                                                                          |
+| Generiranje zbornika sažetaka u PDF formatu                                      | F-024             | Obuhvaća generiranje zbornika sažetaka konferencije.                                                                                                                                                                                                                                       |
+| Statistika konferencije i platforme, izvoz u CSV i predlošci poruka e-pošte      | F-025             | Obuhvaća pregled „Statistika” za predsjednika programskog odbora, izvoz u CSV te administratorsko uređivanje predložaka poruka i pregled statistike korištenja.                                                                                                                            |
 
 **Ključne funkcionalnosti**
 
-- [Reprezentativna funkcionalnost koju korisnici mogu isprobati]:
-- Prijava u sustav e-poštom ili ORCID računom (F-001, F-002)
-- [Druga reprezentativna funkcionalnost]:
-- Predaja znanstvenog rada (F-019, F-020)
-- [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva];
-- Povlačenje znanstvenog rada( F-028 )
+- Prijava u sustav e-poštom ili ORCID računom (F-001)
+- Predaja znanstvenog rada s provjerom PDF rukopisa i DOI referenci (F-008 – F-010)
+- Povlačenje znanstvenog rada (F-011)
 
-
-Za potpuni opis funkcionalnih i nefunkcionalnih zahtjeva, slučajeva uporabe, arhitekture, implementacije i rezultata ispitivanja pogledajte [projektnu dokumentaciju](/docs/Home.md)
+Za potpuni opis funkcijskih i nefunkcijskih zahtjeva, slučajeva uporabe, arhitekture, implementacije i rezultata ispitivanja pogledajte [projektnu dokumentaciju](/docs/Home.md)
 
 <a id="deployment"></a>
 
@@ -94,10 +86,11 @@ Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li
 git clone [URL vašeg repozitorija]
 cd KonfTrack
 ```
+
 Za ispravno pokretanje aplikacije potrebno je postaviti bazu podataka, konfigurirati varijable okruženja i instalirati potrebne pakete. Detaljne upute za postavljanje baze podataka, konfiguraciju .env datoteke, pokretanje migracija i pokretanje backend poslužitelja nalaze se u navedenoj dokumentaciji.
+
 - [Dokumentacija baze podataka za pokretanje apliakcije](db/README-db.md)
 - [Dokumentacija backenda za pokretanje aplikacije](backend/README.md)
-
 
 **Adresa:** [Stvarna adresa koju aplikacija ispiše nakon pokretanja.]
 
@@ -109,15 +102,15 @@ Za ispravno pokretanje aplikacije potrebno je postaviti bazu podataka, konfiguri
 
 Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša aplikacija radi. Za svaku navedite njezinu konkretnu ulogu i jedan razlog ili ograničenje važno za projekt. Alat za razvoj ili ispitivanje uključite samo ako je njegova uloga važna za razumijevanje načina na koji je projekt izrađen ili provjeren. Nemojte prepisivati popis ovisnosti (engl. dependencies), statistiku programskih jezika ni popis razvojnih okruženja i komunikacijskih alata. Tablicu provjerite prema stvarnom repozitoriju i pokrenutoj aplikaciji; potrebne verzije i konfiguraciju dokumentirajte u vodiču za instalaciju.
 
-| Tehnologija ili alat | Uloga u ovom projektu        | Razlog uporabe ili važno ograničenje           |
-| -------------------- | ---------------------------- | ---------------------------------------------- |
-| Node.js i Express | Poslužiteljska aplikacija: rute, obrada obrazaca i API. | Ista aplikacija poslužuje web-stranice i API, pa se postavlja kao jedna usluga. |
-| EJS | Generiranje web-stranica na poslužitelju. | Sučelje se uglavnom sastoji od obrazaca i popisa, pa nije potreban zaseban klijent u pregledniku. |
-| PostgreSQL | Pohrana korisnika, konferencija, radova, recenzija i njihovih odnosa. | Podaci su izrazito povezani; promjene sheme zahtijevaju migracije. |
-| Prisma | Pristup bazi i verzionirane migracije. | Svi članovi tima rade nad istom shemom iz repozitorija. |
-| express-session i JWT | Sesija za web-stranice i tokeni za API. | Izdani JWT ostaje valjan do isteka i nakon odjave. |
-| ORCID (OAuth 2.0) | Registracija i prijava istraživača te podaci za provjeru sukoba interesa. | Ovisnost o vanjskoj usluzi; sandbox i produkcija imaju odvojene postavke. |
-| Crossref API | Provjera DOI oznaka referenci predanih radova. | Vanjska usluga; nedostupnost servisa ne smije spriječiti predaju rada. |
+| Tehnologija ili alat  | Uloga u ovom projektu                                                     | Razlog uporabe ili važno ograničenje                                                              |
+| --------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Node.js i Express     | Poslužiteljska aplikacija: rute, obrada obrazaca i API.                   | Ista aplikacija poslužuje web-stranice i API, pa se postavlja kao jedna usluga.                   |
+| EJS                   | Generiranje web-stranica na poslužitelju.                                 | Sučelje se uglavnom sastoji od obrazaca i popisa, pa nije potreban zaseban klijent u pregledniku. |
+| PostgreSQL            | Pohrana korisnika, konferencija, radova, recenzija i njihovih odnosa.     | Podaci su izrazito povezani; promjene sheme zahtijevaju migracije.                                |
+| Prisma                | Pristup bazi i verzionirane migracije.                                    | Svi članovi tima rade nad istom shemom iz repozitorija.                                           |
+| express-session i JWT | Sesija za web-stranice i tokeni za API.                                   | Izdani JWT ostaje valjan do isteka i nakon odjave.                                                |
+| ORCID (OAuth 2.0)     | Registracija i prijava istraživača te podaci za provjeru sukoba interesa. | Ovisnost o vanjskoj usluzi; sandbox i produkcija imaju odvojene postavke.                         |
+| Crossref API          | Provjera DOI oznaka referenci predanih radova.                            | Vanjska usluga; nedostupnost servisa ne smije spriječiti predaju rada.                            |
 
 Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Ključne arhitekturne odluke](docs/4-Arhitektura-i-oblikovanje.md).
 
@@ -140,15 +133,15 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 
 ## Članovi tima
 
-| Član tima | Uloga |Fer mail|
-|---|---|---|
-| Marta Šimić | Frontend |ms57042@fer.hr|
-| Karla Tušek | Backend |kt56735@fer.hr|
-| Antonio Pasarić | Frontend |ap56979@fer.hr|
-| Gabrijela Stipić | Backend |gs57113@fer.hr|
-| Mia Hrkać | Backend |mh56916@fer.hr|
-| Marin Lukas Lončar | Baze podataka |ml010811167@fer.hr|
-| Pavla Čančar | Koordinator + Dokumentacija |pc56957@fer.hr|
+| Član tima          | Uloga                       | Fer mail           |
+| ------------------ | --------------------------- | ------------------ |
+| Marta Šimić        | Frontend                    | ms57042@fer.hr     |
+| Karla Tušek        | Backend                     | kt56735@fer.hr     |
+| Antonio Pasarić    | Frontend                    | ap56979@fer.hr     |
+| Gabrijela Stipić   | Backend                     | gs57113@fer.hr     |
+| Mia Hrkać          | Backend                     | mh56916@fer.hr     |
+| Marin Lukas Lončar | Baze podataka               | ml010811167@fer.hr |
+| Pavla Čančar       | Koordinator + Dokumentacija | pc56957@fer.hr     |
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
 
@@ -157,8 +150,9 @@ Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za prać
 [Ako je primjenjivo, ukratko opišite kako se evidentiraju zadaci i nedostaci te kako se pregledavaju promjene koda i gdje se nalazi aktualna evidencija zadataka. Ako tim održava `CONTRIBUTING.md`, ovdje postavite poveznicu umjesto ponavljanja pravila. Nemojte stvarati tu datoteku samo zato da biste popunili ovaj odjeljak.]
 
 opis:
+
 - Podjela zadataka odvijala se tijekom laboratorijskih vježbi, na sastancima uživo, putem GitHub Issues alata te dogovorom u zajedničkoj WhatsApp grupi.
-Greške i nedostaci uočavaju se tijekom testiranja i korištenja aplikacije, a zatim se prijavljuju u WhatsApp grupu. Za pojedine probleme otvaraju se GitHub Issues zadaci kojima se dodjeljuje odgovorna osoba (Assignee).
+  Greške i nedostaci uočavaju se tijekom testiranja i korištenja aplikacije, a zatim se prijavljuju u WhatsApp grupu. Za pojedine probleme otvaraju se GitHub Issues zadaci kojima se dodjeljuje odgovorna osoba (Assignee).
 - Radi očuvanja stabilnosti glavne grane (main), izravno dodavanje promjena u nju nije dopušteno. Svi članovi tima dužni su raditi putem zasebnih grana (branch) ili forkanjem repozitorija te predavati promjene putem Pull Requestova (PR).Iznimke su dodavanje nekih dijelova dokumentacije.(npr. prenošenje .puml i .svg datoteka za UML dijagrame)
 - Pri otvaranju Pull Requesta u pravilu se određuje član tima zadužen za pregled promjena (Review). Ako je ta osoba dulje vrijeme nedostupna, moguće je odabrati drugog člana ili samostalno spojiti promjene, ali samo u slučaju novih, neovisnih funkcionalnosti koje ne utječu na postojeće dijelove aplikacije. Ako promjena uključuje uklanjanje postojećeg sadržaja ili utječe na druge funkcionalnosti, pregled drugog člana tima obvezan je prije spajanja.
 - Članovi tima također kontinuirano testiraju aplikaciju te prijavljuju uočene probleme i daju povratne informacije o već implementiranim funkcionalnostima.
@@ -192,7 +186,6 @@ Ovaj projekt slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencij
 AI je u dokumentaciji korišten za ispravljanje pravopisa i gramatike, poboljšavanje stila i formulacije rečenica, usklađivanje struktura teksta s kosturom predloška dokumentacije, pregledavanje je li nešto duplicirano, previđeno, zaboravljeno, nekonzistentno ili cjelovito. AI alat koji je korišten za izradu dokumentacije je Chat GPT. Sadržaj koji je generirao ponekad je uvelike olakšao zapis dokumentacije i praćenje, ali ponekad je bio neprecizan, zaobilazio rješenje ili ubacivao pogrešne stvari. Za svako korištenje bilo je potrebno pregledati, provjeriti, ispraviti i preoblikovati sadržaj.
 AI je u programiranju korišten za istraživanje, upoznavanje rada s vanjskim sustavima, prevođenje dokumenata, pomoć u usmjeravanju koda, debuggiranje...
 AI alat koji su korišteni jesu ChatGPT i Claude.
-
 
 1. Koji AI alat si koristio/la – primjerice ChatGPT, Gemini ili Copilot.
 2. Kako si ga koristio/la – primjerice za ispravljanje gramatike, razradu ideja ili pomoć pri programiranju.
