@@ -117,16 +117,50 @@ a njegova struktura opisana je u
 
 </details>
 
+
 ### 4.3.2 Reprezentativni UML dijagram razreda
 
-**Cilj:** Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
+Za reprezentativni dio oblikovanja sustava KonfTrack odabrana je
+funkcionalnost predaje i upravljanja znanstvenim radovima.
 
-**Dijagram razreda:** [Ugradite čitljiv UML dijagram razreda za reprezentativni dio oblikovanja.]  
-**PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]  
-**Referenca na kod pri završnom pregledu:** [Poveznica na odgovarajuću implementaciju.]
+Dijagram prikazuje osnovne entitete sustava, njihove atribute,
+operacije za upravljanje radovima te međusobne veze.
 
-<details>
-<summary><strong>Oblikovanje odgovornosti prijave i dopuštenih promjena</strong></summary>
+**Dijagram razreda:**
+
+![UML dijagram razreda KonfTrack](./assets/diagrams/4-3-konftrack-paper-CD.svg)
+
+**PlantUML izvor:**
+
+[Izvorni UML dijagram](./puml/4-3-konftrack-paper-CD.puml)
+
+**Referenca na kod pri završnom pregledu:**
+
+[Kontroler za upravljanje radovima](../backend/src/controllers/paperController.js)
+
+[Prisma modeli podataka](../backend/prisma/schema.prisma)
+
+[Servis za provjeru PDF-a](../backend/src/services/pdfService.js)
+
+[Servis za provjeru DOI oznaka](../backend/src/services/crossrefService.js)
+
+**Objašnjenje oblikovanja:**
+
+Razredi Paper, Conference, User, PaperAuthor i PaperVersion
+predstavljaju osnovne podatkovne entitete sustava.
+Njihove veze prikazane su asocijacijama s odgovarajućim
+kardinalnostima.
+
+PaperController odgovoran je za spremanje nacrta,
+predaju, dohvat, uređivanje i povlačenje znanstvenih radova.
+
+Prilikom predaje rada koristi PdfService za provjeru
+rukopisa i CrossrefService za provjeru DOI oznaka.
+Ove ovisnosti prikazane su isprekidanim strelicama.
+
+Kontroler i servisi predstavljaju logičke JavaScript module,
+dok podatkovni entiteti odgovaraju modelima Prisma ORM-a.
+
 
 **Primjer — CrisisMap:** Prijava sadrži pravila za promjenu vlastitog statusa. Razred tijeka rada koordinira podnošenje i pregled, dok sučelje repozitorija opisuje potrebne operacije trajne pohrane. Dijagram predlaže te odgovornosti prije implementacije.
 
