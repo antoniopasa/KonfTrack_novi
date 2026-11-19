@@ -171,7 +171,8 @@ dok podatkovni entiteti odgovaraju modelima Prisma ORM-a.
 **PlantUML izvor:** [izvor](./puml/4-3-crisismap-domain-CD.puml)
 
 **Analiza primjera:** `DisasterReport` sadrži dopuštena pravila promjene stanja pa tijek rada ne može prešutno odobriti već odbijenu prijavu. `ReportWorkflow` koordinira operaciju bez preuzimanja pravila prijelaza stanja same prijave; `ReportRepository` definira potrebne operacije pohrane. Kompozicija `Location` i odabrani tipovi prikazuju veze korisne za oblikovanje. Dijagram namjerno izostavlja stupce baze podataka i nepovezane razrede: ER model objašnjava pohranjene podatke, dok ovaj dijagram dodjeljuje programske odgovornosti i operacije. Ti su razredi odluka oblikovanja, a ne obavezni slojevi za svaki tim. Završnu implementaciju usporedite s početnim oblikovanjem i ažurirajte dijagram tamo gdje su se odluke promijenile; generiranje dijagrama iz koda tek na kraju ne može zamijeniti ovo početno modeliranje.
-
+<details>
+<summary><strong>Oblikovanje odgovornosti prijave i dopuštenih promjena</strong></summary>
 </details>
 
 ## 4.4 Ponašanje tijekom izvođenja
