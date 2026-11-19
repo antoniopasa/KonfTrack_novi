@@ -22,7 +22,7 @@ Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima pr
 - **Predsjednik programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
 - **Organizator/administrator konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
 
-###TRENUTAČNE FUNKCIONALNOSTI:
+##TRENUTAČNE FUNKCIONALNOSTI:
 
 | Funkcionalnost | Povezani zahtjevi | Napomena |
 |---|---|---|
@@ -37,7 +37,7 @@ Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima pr
 | Poslužiteljska obrada prijave znanstvenog rada | F-019 – F-026 | Implementiran je dio poslužiteljske logike za predaju rada, spremanje nacrta, pohranu PDF rukopisa i podataka o autorima. Funkcionalnost još nije potpuno integrirana sa sučeljem. |
 | Provjera PDF rukopisa i DOI referenci | F-023 – F-026 | Implementirane su provjere PDF datoteke, njezinih metapodataka i DOI referenci putem Crossref servisa. Provjera metapodataka ne znači automatsku provjeru anonimnosti cjelokupnog sadržaja dokumenta. |
 
-###PLANIRANE FUNKCIONALNOSTI:
+##PLANIRANE FUNKCIONALNOSTI:
 
 | Funkcionalnost | Povezani zahtjevi | Napomena |
 |---|---|---|
