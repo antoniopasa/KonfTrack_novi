@@ -133,15 +133,16 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 
 ## Članovi tima
 
-| Član tima          | Uloga                       | Fer mail           |
-| ------------------ | --------------------------- | ------------------ |
-| Marta Šimić        | Frontend                    | ms57042@fer.hr     |
-| Karla Tušek        | Backend                     | kt56735@fer.hr     |
-| Antonio Pasarić    | Frontend                    | ap56979@fer.hr     |
-| Gabrijela Stipić   | Backend                     | gs57113@fer.hr     |
-| Mia Hrkać          | Backend                     | mh56916@fer.hr     |
-| Marin Lukas Lončar | Baze podataka               | ml010811167@fer.hr |
-| Pavla Čančar       | Koordinator + Dokumentacija | pc56957@fer.hr     |
+| Član tima | Uloga |
+|---|---|
+| Marta Šimić | Frontend |
+| Karla Tušek | Backend |
+| Antonio Pasarić | Frontend |
+| Gabrijela Stipić | Backend |
+| Mia Hrkać | Backend |
+| Marin Lukas Lončar | Baze podataka |
+| Pavla Čančar | Koordinator + Dokumentacija |
+
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
 
@@ -187,6 +188,12 @@ AI je u dokumentaciji korišten za ispravljanje pravopisa i gramatike, poboljša
 AI je u programiranju korišten za istraživanje, upoznavanje rada s vanjskim sustavima, prevođenje dokumenata, pomoć u usmjeravanju koda, debuggiranje...
 AI alat koji su korišteni jesu ChatGPT i Claude.
 
+
+1. Koji AI alat si koristio/la – primjerice ChatGPT, Gemini ili Copilot.
+2. Kako si ga koristio/la – primjerice za ispravljanje gramatike, razradu ideja ili pomoć pri programiranju.
+3. Kako je AI pridonio radu – objasniti na koji je način njegov sadržaj iskorišten.
+4. Osobno kritičko mišljenje – vlastiti osvrt na sadržaj koji je generirao AI.
+5. Detaljan zapis upita (promptova) – navesti što si upisivao/la u AI alat i kako si s njim komunicirao/la.
 
 <a id="code-of-conduct-and-support"></a>
 
