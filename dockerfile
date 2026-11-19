@@ -7,7 +7,8 @@ WORKDIR /app/backend
 COPY backend/ ./
 COPY frontend/ /app/frontend/
 
-RUN DATABASE_URL="postgresql://user:pass@localhost:5432/db" npm ci
+RUN npm ci --ignore-scripts
+RUN DATABASE_URL="postgresql://user:pass@localhost:5432/db" npx prisma generate
 
 ENV NODE_ENV=production
 EXPOSE 3000
