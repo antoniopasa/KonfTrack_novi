@@ -18,11 +18,16 @@ Očekivana korist projekta je jednostavnije upravljanje konferencijama, bolja pr
 
 | Skupina korisnika ili dionika | Potreba ili interes relevantan za ovaj projekt |
 | --- | --- |
-| Administrator sustava | Upravljanje korisničkim računima i provođenje administrativnih aktivnosti |
-| Autor rada | Pregledavanje dostupne konferencije, predaja rada, upravljanje vlastitim predajama u dopuštenom razdoblju i pregledavanje dostupne informacije o odlukama |
-| Recenzent | Pregledati dodijeljene radove te izraditi i predati recenziju u propisanom roku |
-| Predsjednik programskog odbora i progrmski odbor | Pratiti tijek recenziranja, vidjeti rezultate recenzija, donositi odluke i organizirati program konferencije u skladu s dodijeljenim ovlastima |
-| Korisnici | Prijava na konferencije i sigurnost podataka |
+| Administrator sustava | Stvaranje i odobravanje konferencije, odabir predsjednika programskog odbora i upravljanje postavkama platforme |
+| Predsjednik programskog odbora | Upravljanje konferencijom i njezinim rokovima, organizacija postupka recenziranja, pozivanje i dodjela radova recenzentima, praćenje postupka i rezultata recenziranja, donošenje odluka o radovima, organizacija programa konferencije i pregled statistike |
+| Autor | Pregledavanje dostupne konferencije, predaja rada, upravljanje vlastitim predajama u dopuštenom razdoblju i pregledavanje dostupnih informacija(obavijesti, odluka) te predaja konačne verzije |
+| Recenzent | Pregledavanje poziva, iskazivanje interesa za recenziranje, pregled i recenziranje dodijeljenih radova, sudjelovanje u anonimnoj raspravi |
+| Neregistrirani korisnici | Pregled javno dostupne informacije o konferencijama i njihovim programima te mogućnost registracije |
+| Registrirani korisnici | Pristup funkcionalnostima sustava u skladu s dodijeljenim ulogama i ovlastima, upravljanje vlastitim profilom ,pregledavanje objavljenih informacija o konferenciji, mogućnost predaje rada, odjava |
+| Programski odbor | Sastoji se od predsjednika i recenzenata, cilj je uspješno pregledati, ocijeniti i odlučiti koji radovi će biti izlagani i uvrstiti ih u program|
+| ORCID | Omogućavanje vanjske autentifikacije korisnika i dohvat i provjera potrebnih podataka  potrebnih za identifikaciju autora i provjeru mogućih sukoba interesa. |
+| Crossref | Omogućavanje provjere DOI referenci i dohvat bibliografskih metapodataka znanstvenih radova |
+| Google Calendar | Omogućavanje povezivanje osobnog rasporeda korisnika s vanjskim kalendarom, ako se implementira izravna integracija s Google Calendarom. |
 
 Korisničke uloge definiraju se prema potrebama sustava. Pojedini korisnik može sudjelovati u više konferencija, a njegova prava pristupa mogu ovisiti o ulozi dodijeljenoj za određenu konferenciju.
 
@@ -34,20 +39,19 @@ Korisničke uloge definiraju se prema potrebama sustava. Pojedini korisnik može
 **Uključeno:**
 
 - Registracija korisnika putem e-pošte ili ORCID računa, prijava, odjava i upravljanje korisničkim profilom.
-- Definiranje korisničkih uloga i provjera prava pristupa na backendu.
-- Stvaranje, pregled i uređivanje konferencija te upravljanje njihovim statusima, vidljivošću, znanstvenim temama i rokovima.
 - Predaja znanstvenih radova, spremanje nacrta, pohrana PDF datoteka i upravljanje statusima predanih radova.
 - Validacija podataka i PDF dokumenata, uključujući provjeru formata, veličine, broja stranica i odabranih metapodataka dokumenta.
 - Provjera DOI referenci putem Crossref servisa.
-- Provođenje dvostruko slijepog recenziranja, dodjela recenzenata i evidentiranje recenzija.
-- Evidentiranje odluka o radovima i obavještavanje korisnika o važnim događajima.
-- Upravljanje programom konferencije i osobnim rasporedom korisnika.
-- Generiranje zbornika radova u PDF formatu, u skladu sa zahtjevom projekta.
-- Pozivanje postojećih prema e-mail adresi
 - -Ručne provjere kroz Thunder Client
 
 **Izvan opsega ili odgođeno:**
 
+- Definiranje korisničkih uloga i provjera prava pristupa na backendu.
+- Stvaranje, pregled i uređivanje konferencija te upravljanje njihovim statusima, vidljivošću, znanstvenim temama i rokovima.
+- Provođenje dvostruko slijepog recenziranja, dodjela recenzenata i evidentiranje recenzija.
+- Evidentiranje odluka o radovima i obavještavanje korisnika o važnim događajima.
+- Upravljanje programom konferencije i osobnim rasporedom korisnika.
+- Generiranje zbornika radova u PDF formatu, u skladu sa zahtjevom projekta.
 - Uređivanje korisničkog profila, ako je trenutačno implementirano samo dohvaćanje profila.
 - Potpuna autorizacija na temelju uloga i prava pristupa, trenutačno samo provjera je li korisnik prijavljen
 - Uređivanje uloga i dopuštenja prema bazi podataka
