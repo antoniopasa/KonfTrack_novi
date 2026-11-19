@@ -19,7 +19,7 @@ Očekivana korist projekta je jednostavnije upravljanje konferencijama, bolja pr
 | Skupina korisnika ili dionika | Potreba ili interes relevantan za ovaj projekt |
 | --- | --- |
 | Administrator sustava | Upravljanje korisničkim računima i provođenje administrativnih aktivnosti |
-| Autor rada | Pregledati dostupne konferencije, predati rad, upravljati vlastitim predajama u dopuštenom razdoblju i pregledati dostupne informacije o odlukama |
+| Autor rada | Pregledavanje dostupne konferencije, predaja rada, upravljanje vlastitim predajama u dopuštenom razdoblju i pregledavanje dostupne informacije o odlukama |
 | Recenzent | Pregledati dodijeljene radove te izraditi i predati recenziju u propisanom roku |
 | Predsjednik programskog odbora i progrmski odbor | Pratiti tijek recenziranja, vidjeti rezultate recenzija, donositi odluke i organizirati program konferencije u skladu s dodijeljenim ovlastima |
 | Korisnici | Prijava na konferencije i sigurnost podataka |
