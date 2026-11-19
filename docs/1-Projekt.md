@@ -5,7 +5,8 @@
 ## 1.1 Problem i cilj projekta
 
 **Cilj:**
-Organizacija znanstvenih konferencija često se oslanja na razmjenu e-mailova i sinkronizaciju tablica. Takav pristup dovodi do gubitka dokumenata, propuštanja strogih rokova, rizika od curenja identiteta autora tijekom recenzije te otežane komunikacije između organizatora, recenzenata i autora.
+Problem:
+Organizacija znanstvenih konferencija često se oslanja na razmjenu e-mailova i sinkronizaciju tablica. Takav pristup dovodi do gubitka dokumenata, propuštanja strogih rokova, rizika od curenja identiteta autora tijekom recenzije, velike koordinacije i praćenju te otežane komunikacije između organizatora, recenzenata i autora.
 
 Cilj projekta KonfTrack je razviti web-platformu koja omogućuje upravljanje znanstvenim konferencijama i njihovim ključnim organizacijskim procesima. Sustav će podržavati upravljanje korisnicima i njihovim pravima pristupa, stvaranje i uređivanje konferencija, predaju znanstvenih radova, dvostruko slijepo recenziranje, donošenje odluka te organizaciju programa konferencije. Također će omogućiti slanje obavijesti povezanih s važnim događajima u postupku organizacije konferencije u slučaju promjena.
 
@@ -38,33 +39,37 @@ Korisničke uloge definiraju se prema potrebama sustava. Pojedini korisnik može
 **Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
 
 **Uključeno:**
-
-- Registracija korisnika putem e-pošte ili ORCID računa, prijava, odjava i upravljanje korisničkim profilom.
-- Predaja znanstvenih radova, spremanje nacrta, pohrana PDF datoteka i upravljanje statusima predanih radova.
+- Registracija i prijava adresom e-pošte ili ORCID računom, odjava i upravljanje profilom.
+- Korisničke uloge po konferenciji i provjera prava pristupa na poslužitelju.
+- Odobravanje konferencija, unos osnovnih podataka, tema i rokova te automatsko onemogućivanje radnji nakon isteka roka.
+- Predaja radova s koautorima i anonimiziranim PDF rukopisom, provjera PDF-a i DOI referenci (Crossref), revizija i predaja konačne verzije.
+- Pozivanje recenzenata, iskazivanje interesa, prepoznavanje sukoba interesa (uključujući koautorstvo prema podacima iz ORCID-a) i prijedlog raspodjele radova.
+- Dvostruko slijepa recenzija, rasprava recenzenata, podsjetnici e-poštom i označavanje recenzija koje kasne.
+- Odluke o radovima i obavijesti autorima prema predlošku poruke.
+- Program konferencije sa sekcijama, javna objava programa, osobni raspored s izvozom u Google Calendar i zbornik sažetaka u PDF formatu.
 - Validacija podataka i PDF dokumenata, uključujući provjeru formata, veličine, broja stranica i odabranih metapodataka dokumenta.
 - Provjera DOI referenci putem Crossref servisa.
-- -Ručne provjere kroz Thunder Client
-
-**Izvan opsega ili odgođeno:**
-
-- Definiranje korisničkih uloga i provjera prava pristupa na backendu.
+- Ručne provjere kroz Thunder Client
+- Uređivanje uloga i dopuštenja uloga prema bazi podataka
 - Stvaranje, pregled i uređivanje konferencija te upravljanje njihovim statusima, vidljivošću, znanstvenim temama i rokovima.
-- Provođenje dvostruko slijepog recenziranja, dodjela recenzenata i evidentiranje recenzija.
 - Evidentiranje odluka o radovima i obavještavanje korisnika o važnim događajima.
 - Upravljanje programom konferencije i osobnim rasporedom korisnika.
 - Generiranje zbornika radova u PDF formatu, u skladu sa zahtjevom projekta.
 - Uređivanje korisničkog profila, ako je trenutačno implementirano samo dohvaćanje profila.
 - Potpuna autorizacija na temelju uloga i prava pristupa, trenutačno samo provjera je li korisnik prijavljen
-- Uređivanje uloga i dopuštenja prema bazi podataka
-- Implementiranje uloga
-- Potpuno povezivanje javnih stranica konferencije s dinamičkim podacima iz sustava, jer neke od njih su samo prikaz, a neke su onemogućene radi nedostatka drugih funkcionalnosti ili podataka
-- Stvaranje konferencije i odabir predsjednika
-- Predaja rada - omogućiti ponovno provjeru ID konferencije nakon što se prethodno omoguće uloge i stvaranje konferencije
-- Pozivanje koautora koji još nemaju korisnički račun
-- Mogućnost povlačenja rada u cijelom razdoblju (Daljnje razvijanje stanja radova, postupak recenziranja, odluke i konačne odluke  i uvrštavanja)
-- Automatizirani jedinični i integracijski testovi ključnih funkcionalnosti 
-**Vanjske ovisnosti:**
+- Automatizirani jedinični i integracijski testovi ključnih funkcionalnosti
+- Upravljanje programom konferencije i osobnim rasporedom korisnika.
+- Generiranje zbornika radova u PDF formatu, u skladu sa zahtjevom projekta.
 
+**Trenutno ostvareno:**
+Trenutačno ostvareno: registracija i prijava e-poštom i ORCID-om, odjava, uređivanje profila, JWT tokeni za API, javna početna stranica i stranica programa (s privremenim podacima) te sučelje registriranog korisnika (početna, obrazac za predaju rada, „Moji radovi” i kontakt), pri čemu predaja rada još nije povezana s poslužiteljem. Shema baze podataka obuhvaća sve entitete potrebne za ostale funkcionalnosti. Ostale uključene funkcionalnosti planirane su za sljedeće iteracije; pregled stanja nalazi se u README-u projekta.
+
+**Izvan opsega ili odgođeno:**
+- Objavljivanje cjelovitog zbornika radova; sustav generira samo zbornik sažetaka koji traži projektni zadatak.
+- Integracija s vanjskim sustavima za plaćanje kotizacija, jer nije dio projektnog zadatka.
+- Napredne funkcionalnosti koje nisu potrebne za ostvarenje osnovnih procesa upravljanja konferencijama.
+
+**Vanjske ovisnosti:**
 - PostgreSQL sustav za upravljanje relacijskom bazom podataka, za pohranu korisnika, konferencija, radova, recenzija i povezanih podataka.
 - Poslužiteljsko okruženje za pokretanje web-aplikacije i lokalnu pohranu datoteka.
 - ORCID kao vanjski pružatelj identiteta za autentifikaciju putem OAuth 2.0 protokola.
