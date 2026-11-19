@@ -154,8 +154,18 @@ Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za prać
 ## Doprinos projektu
 
 [Ako je primjenjivo, ukratko opišite kako se evidentiraju zadaci i nedostaci te kako se pregledavaju promjene koda i gdje se nalazi aktualna evidencija zadataka. Ako tim održava `CONTRIBUTING.md`, ovdje postavite poveznicu umjesto ponavljanja pravila. Nemojte stvarati tu datoteku samo zato da biste popunili ovaj odjeljak.]
-opis
 
+opis:
+Podjela zadataka odvijala se tijekom laboratorijskih vježbi, na sastancima uživo, putem GitHub Issues alata te dogovorom u zajedničkoj WhatsApp grupi.
+Greške i nedostaci uočavaju se tijekom testiranja i korištenja aplikacije, a zatim se prijavljuju u WhatsApp grupu. Za pojedine probleme otvaraju se GitHub Issues zadaci kojima se dodjeljuje odgovorna osoba (Assignee).
+Radi očuvanja stabilnosti glavne grane (main), izravno dodavanje promjena u nju nije dopušteno. Svi članovi tima dužni su raditi putem zasebnih grana (branch) ili forkanjem repozitorija te predavati promjene putem Pull Requestova (PR).Iznimke su dodavanje nekih dijelova dokumentacije.(npr. prenošenje .puml i .svg datoteka za UML dijagrame)
+Pri otvaranju Pull Requesta u pravilu se određuje član tima zadužen za pregled promjena (Review). Ako je ta osoba dulje vrijeme nedostupna, moguće je odabrati drugog člana ili samostalno spojiti promjene, ali samo u slučaju novih, neovisnih funkcionalnosti koje ne utječu na postojeće dijelove aplikacije. Ako promjena uključuje uklanjanje postojećeg sadržaja ili utječe na druge funkcionalnosti, pregled drugog člana tima obvezan je prije spajanja.
+Članovi tima također kontinuirano testiraju aplikaciju te prijavljuju uočene probleme i daju povratne informacije o već implementiranim funkcionalnostima.
+Članovi tima također kontinuirano testiraju aplikaciju te prijavljuju uočene probleme i daju povratne informacije o već implementiranim funkcionalnostima.
+Aktualna evidencija postojećih i planiranih funkcionalnosti nalazi se u ovom dokumentu, u odgovarajućim odjeljcima(trenutačne i planirane funkcionalnosti). Evidencija raspodjele zadataka i doprinosa pojedinih članova ili grupa dostupna je u dokumentaciji pojedinih dijelova projekta te kroz povijest Pull Requestova i commitova. Također, dostupni su dnevnici rada pojedinih timova:
+- [Dokumentacija baze podataka](db/README.md)
+- [Dokumentacija frontenda](frontend/README-frontend.md)
+- [Dnevnik rada backenda](backend/README-backend.md)
 <a id="license"></a>
 
 **Status licence:** [Navedite licencu i postavite poveznicu na projektnu datoteku `LICENSE` ili izričito navedite da nije dodijeljena licenca koja dopušta javnu ponovnu uporabu. Namjeravani opseg provjerite s timom; nemojte prepisivati licencu predloška ove dokumentacije kao licencu svoje aplikacije.]
@@ -173,6 +183,18 @@ Ovaj projekt slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencij
 **Izjava:** [Navedite jesu li korišteni alati umjetne inteligencije. Ako jesu, navedite alate i njihove glavne namjene te objasnite kako je tim pregledao nastali kod ili tekst i kako može objasniti vlastiti doprinos. Ako nisu korišteni, to jasno navedite. U alate umjetne inteligencije nemojte unositi privatne podatke, pristupne podatke ni tuđe zaštićene materijale.]
 
 [Ako je za ovaj projekt potreban detaljniji zapis uporabe umjetne inteligencije, postavite poveznicu na njegovo jedinstveno mjerodavno mjesto u dokumentaciji.]
+
+**Izjava:**
+AI je u dokumentaciji korišten za ispravljanje pravopisa i gramatike, poboljšavanje stila i formulacije rečenica, usklađivanje struktura teksta s kosturom predloška dokumentacije, pregledavanje je li nešto duplicirano, previđeno, zaboravljeno, nekonzistentno ili cjelovito. AI alat koji je korišten za izradu dokumentacije je Chat GPT. Sadržaj koji je generirao ponekad je uvelike olakšao zapis dokumentacije i praćenje, ali ponekad je bio neprecizan, zaobilazio rješenje ili ubacivao pogrešne stvari. Za svako korištenje bilo je potrebno pregledati, provjeriti, ispraviti i preoblikovati sadržaj.
+AI je u programiranju korišten za istraživanje, upoznavanje rada s vanjskim sustavima, prevođenje dokumenata, pomoć u usmjeravanju koda, debuggiranje...
+AI alat koji su korišteni jesu ChatGPT i Claude.
+
+
+1. Koji AI alat si koristio/la – primjerice ChatGPT, Gemini ili Copilot.
+2. Kako si ga koristio/la – primjerice za ispravljanje gramatike, razradu ideja ili pomoć pri programiranju.
+3. Kako je AI pridonio radu – objasniti na koji je način njegov sadržaj iskorišten.
+4. Osobno kritičko mišljenje – vlastiti osvrt na sadržaj koji je generirao AI.
+5. Detaljan zapis upita (promptova) – navesti što si upisivao/la u AI alat i kako si s njim komunicirao/la.
 
 <a id="code-of-conduct-and-support"></a>
 
