@@ -23,48 +23,46 @@ Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima pr
 - **Organizator/administrator konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
 
 ###TRENUTAČNE FUNKCIONALNOSTI:
-Funkcionalnost	Zahtjevi	Napomena
-Registracija i prijava adresom e-pošte i lozinkom	F-001, F-002	Lozinka se pohranjuje kao sažetak (hash), a nakon prijave stvara se sesija.
-Registracija i prijava putem ORCID računa (OAuth 2.0)	F-001, F-002	Trenutačno se koristi ORCID sandbox okruženje.
-Odjava i poništavanje sesije	F-003	—
-Pregled i uređivanje vlastitog profila	F-004	—
-Izdavanje JWT tokena za pristup API-ju	F-002, NF-01	Ruta `POST /api/auth/token`; token vrijedi 24 sata.
-Javna početna stranica i stranica programa	F-009	Program trenutačno prikazuje privremene podatke.
-Sučelje registriranog korisnika: početna stranica, obrazac za predaju rada, „Moji radovi” i kontakt	F-019, F-027	Stranice postoje, ali predaja rada još nije povezana s poslužiteljem.
+
+| Funkcionalnost | Povezani zahtjevi | Napomena |
+|---|---|---|
+| Registracija korisnika adresom e-pošte i lozinkom | F-001 | Implementirana je registracija korisnika. Lozinka se pohranjuje u obliku sažetka (hash), a ne kao običan tekst. |
+| Prijava korisnika adresom e-pošte i lozinkom | F-002 | Implementirana je prijava korisnika i uspostavljanje sesije. Funkcionalnost je ručno provjerena putem alata Thunder Client. |
+| Registracija i prijava putem ORCID računa (OAuth 2.0) | F-001, F-002 | Implementiran je tijek autorizacije putem ORCID-a u sandbox okruženju. Potpuna end-to-end provjera integracije još nije potvrđena. |
+| Odjava korisnika | F-003 | Implementirano je uništavanje poslužiteljske sesije i uklanjanje sesijskog kolačića. Već izdani JWT tokeni ostaju valjani do isteka njihova 24-satnog trajanja. |
+| Dohvat vlastitog korisničkog profila | F-004 | Implementiran je dohvat podataka prijavljenog korisnika. Mogućnost uređivanja profila još nije potvrđena. |
+| Izdavanje JWT tokena za pristup API-ju | F-002, NF-01 | Implementirana je ruta `POST /api/auth/token`. Izdani token vrijedi 24 sata i koristi se za autentifikaciju zahtjeva prema zaštićenim API rutama. |
+| Javna početna stranica i stranica programa | F-009 | Osnovne stranice su izrađene. Podaci o programu trenutačno su privremeni i nije potvrđeno da su povezani sa stvarnim podacima iz baze. |
+| Osnovno sučelje registriranog korisnika | F-019, F-027 | Izrađene su stranice i navigacija za registriranog korisnika, uključujući početnu stranicu, obrazac za predaju rada i prikaz „Moji radovi”. Predaja rada kroz sučelje još nije potpuno povezana s poslužiteljskim dijelom aplikacije. |
+| Poslužiteljska obrada prijave znanstvenog rada | F-019 – F-026 | Implementiran je dio poslužiteljske logike za predaju rada, spremanje nacrta, pohranu PDF rukopisa i podataka o autorima. Funkcionalnost još nije potpuno integrirana sa sučeljem. |
+| Provjera PDF rukopisa i DOI referenci | F-023 – F-026 | Implementirane su provjere PDF datoteke, njezinih metapodataka i DOI referenci putem Crossref servisa. Provjera metapodataka ne znači automatsku provjeru anonimnosti cjelokupnog sadržaja dokumenta. |
 
 ###PLANIRANE FUNKCIONALNOSTI:
 
-]Planirane funkcionalnosti
-Predaja rada s PDF rukopisom, koautorima i provjerom metapodataka te DOI referenci putem Crossrefa (F-019 – F-026).
-Upravljanje konferencijama, temama i rokovima te automatsko zaključavanje radnji nakon isteka roka (F-010 – F-018).
-Uloge po konferenciji i administracija korisničkih računa (F-005 – F-008).
-Pozivanje recenzenata, iskazivanje interesa, sukobi interesa i prijedlog raspodjele radova (F-033 – F-044).
-Dvostruko slijepa recenzija, rasprava recenzenata i podsjetnici e-poštom (F-045 – F-052).
-Odluke o radovima i obavijesti autorima (F-053 – F-056).
-Program konferencije, osobni raspored s izvozom u Google Calendar i zbornik sažetaka u PDF formatu (F-057 – F-066).
-Ključne funkcionalnosti
-Upravljanje konferencijama i njihovim rokovima.
-Prijava znanstvenih radova i predaja dokumenata.
-Dodjela recenzenata uz provjeru sukoba interesa.
-Izrada recenzija i donošenje odluka o prihvaćanju radova.
-Izrada programa konferencije i izvoz odabranih podataka.
-Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte docs.
-<a id="deployment"></a>
+| Funkcionalnost | Povezani zahtjevi | Napomena |
+|---|---|---|
+| Upravljanje konferencijama, temama, rokovima i postavkama konferencije | F-010 – F-018 | Obuhvaća stvaranje i uređivanje konferencija te upravljanje njihovim osnovnim postavkama i rokovima. |
+| Potpuna integracija predaje znanstvenih radova sa sučeljem | F-019 – F-028 | Obuhvaća predaju rada, upravljanje autorima i koautorima, rukopisima, izmjenama i povlačenjem radova. |
+| Implementaciju, upravljanje korisničkim ulogama i ovlastima te administracija korisničkih računa | F-005 – F-008 | Potrebno je implementirati sustav korisničkih uloga i pripadajućih ovlasti te osigurati da korisnici mogu pristupati funkcionalnostima i izvršavati radnje u skladu sa svojom ulogom i dodijeljenim pravima.Obuhvaća administraciju korisnika i upravljanje njihovim ovlastima u sustavu. |
+| Pozivanje recenzenata, iskazivanje interesa i provjera sukoba interesa | F-033 – F-044 | Obuhvaća pozivanje recenzenata, iskazivanje interesa, provjeru sukoba interesa te predlaganje, potvrđivanje i izmjenu raspodjele radova. |
+| Provedba recenzijskog postupka | F-045 – F-052 | Obuhvaća dvostruko slijepu recenziju, predaju recenzija, raspravu recenzenata i slanje podsjetnika. |
+| Donošenje odluka o radovima i obavještavanje autora | F-053 – F-056 | Obuhvaća evidentiranje odluka o prihvaćanju ili odbijanju radova te obavještavanje autora. |
+| Izrada i objava programa konferencije | F-057 – F-062 | Obuhvaća organizaciju prihvaćenih radova u program konferencije. |
+| Upravljanje osobnim rasporedom i izvoz podataka u kalendarske aplikacije | F-063 – F-065 | Obuhvaća osobni raspored sudionika i izvoz podataka u kalendarski format odnosno podržane kalendarske aplikacije. |
+| Generiranje zbornika sažetaka u PDF formatu | F-066 | Obuhvaća generiranje zbornika sažetaka konferencije. |
 
 
 **Ključne funkcionalnosti**
 
-- [Reprezentativna funkcionalnost koju korisnici mogu isprobati]
-- [Druga reprezentativna funkcionalnost]
-- [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva]
-- Upravljanje konferencijama i njihovim rokovima.
-- Prijava znanstvenih radova i predaja dokumenata.
-- Dodjela recenzenata uz provjeru sukoba interesa.
-- Izrada recenzija i donošenje odluka o prihvaćanju radova.
-- Izrada programa konferencije i izvoz odabranih podataka.
+- [Reprezentativna funkcionalnost koju korisnici mogu isprobati]:
+- Prijava u sustav e-poštom ili ORCID računom (F-001, F-002)
+- [Druga reprezentativna funkcionalnost]:
+- Predaja znanstvenog rada (F-019, F-020)
+- [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva];
+- Povlačenje znanstvenog rada( F-028 )
 
 
-Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [docs](docs/Home.md).
+Za potpuni opis funkcionalnih i nefunkcionalnih zahtjeva, slučajeva uporabe, arhitekture, implementacije i rezultata ispitivanja pogledajte [projektnu dokumentaciju](/docs/Home.md)
 
 <a id="deployment"></a>
 
