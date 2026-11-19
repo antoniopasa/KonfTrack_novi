@@ -86,3 +86,7 @@ app.use("/api/papers", paperRoutes);
 app.listen(PORT, () => {
   console.log(`KonfTrack radi na http://localhost:${PORT}`);
 });
+
+const healthRoutes = require("./routes/healthRoutes");
+// ...
+app.use("/health", healthRoutes);
