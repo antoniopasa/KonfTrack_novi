@@ -8,6 +8,55 @@ KonfTrack je web-aplikacija namijenjena organizaciji znanstvenih konferencija. C
 
 ## Opis aplikacije
 
+[Aplikacija rješava problem organizacije konferencija starim načinima tako što za razliku od njih  štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
+Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
+
+-**Neregistrirani korisnik** - bez prijave pregledava javnu stranicu konferencije i objavljeni program.
+- **Autori** — prijavljuju znanstvene radove i predaju njihove verzije.
+- **Recenzenti** — pregledavaju dodijeljene radove i izrađuju recenzije.
+- **Predsjednik programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
+- **Organizator/administrator konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
+
+## TRENUTAČNE FUNKCIONALNOSTI:
+
+| Funkcionalnost | Povezani zahtjevi | Napomena |
+|---|---|---|
+| Registracija korisnika adresom e-pošte i lozinkom | F-001, NF-01, NF-02 | Implementirana je registracija korisnika. Lozinka se pohranjuje u obliku sažetka (hash), a ne kao običan tekst. Validacija ulaznih podataka i dosljedni HTTP statusi pogrešaka još nisu potvrđeni. |
+| Prijava korisnika adresom e-pošte i lozinkom | F-001, NF-01 | Implementirana je prijava korisnika i uspostavljanje sesije. Funkcionalnost je ručno provjerena putem alata Thunder Client, a automatizirani testovi još nisu napisani (NF-05). |
+| Registracija i prijava putem ORCID računa (OAuth 2.0) | F-001, NF-01 | Implementiran je tijek autorizacije putem ORCID-a u sandbox okruženju. Potpuna end-to-end provjera integracije još nije potvrđena. Potrebno je osigurati sigurno rukovanje OAuth tokenima. |
+| Odjava korisnika | F-001, NF-01 | Implementirano je uništavanje poslužiteljske sesije i uklanjanje sesijskog kolačića. Već izdani JWT tokeni ostaju valjani do isteka njihova 24-satnog trajanja, što je djelomično u neskladu s kriterijem da se odjavom poništava aktivna sesija. |
+| Dohvat vlastitog korisničkog profila | F-002 | Implementiran je dohvat podataka prijavljenog korisnika. Mogućnost uređivanja profila (ime, prezime, ustanova, ORCID, područja ekspertize) još nije potvrđena. |
+| Izdavanje JWT tokena za pristup API-ju | F-001, F-003, NF-01 | Implementirana je ruta `POST /api/auth/token`. Izdani token vrijedi 24 sata i koristi se za autentifikaciju zahtjeva prema zaštićenim API rutama. Provjera ovlasti prema ulozi na backendu još nije implementirana. |
+| Javna početna stranica i stranica programa | F-007, F-022 | Osnovne stranice su izrađene. Podaci o programu trenutačno su privremeni i nije potvrđeno da su povezani sa stvarnim podacima iz baze. |
+| Osnovno sučelje registriranog korisnika | F-002, F-008, F-011, NF-06 | Izrađene su stranice i navigacija za registriranog korisnika, uključujući početnu stranicu, obrazac za predaju rada i prikaz „Moji radovi”. Predaja rada kroz sučelje još nije potpuno povezana s poslužiteljskim dijelom aplikacije. Prilagodba mobilnim uređajima nije potvrđena. |
+| Poslužiteljska obrada prijave znanstvenog rada | F-008, F-009, F-012, NF-02 | Implementiran je dio poslužiteljske logike za predaju rada, spremanje nacrta, pohranu PDF rukopisa i podataka o autorima. Potrebno je dovršiti koautore bez korisničkog računa, autora za kontakt i provjeru otvorenosti roka. Funkcionalnost još nije potpuno integrirana sa sučeljem. |
+| Provjera PDF rukopisa i DOI referenci | F-009, F-010, NF-03 | Implementirane su provjere PDF datoteke, njezinih metapodataka i DOI referenci putem Crossref servisa. Provjera metapodataka ne znači automatsku provjeru anonimnosti cjelokupnog sadržaja dokumenta. |
+
+## PLANIRANE FUNKCIONALNOSTI:
+
+| Funkcionalnost | Povezani zahtjevi | Napomena |
+|---|---|---|
+| Upravljanje konferencijama, temama, rokovima i postavkama konferencije | F-004 – F-007, NF-07 | Obuhvaća odobravanje konferencija i imenovanje predsjednika programskog odbora, stvaranje i uređivanje konferencija i znanstvenih tema, upravljanje rokovima (uključujući produljenje i vremensku zonu) te objavu konferencije. |
+| Potpuna integracija predaje znanstvenih radova sa sučeljem | F-008 – F-012, NF-02, NF-06, NF-08 | Obuhvaća predaju rada, upravljanje autorima i koautorima, rukopisima, izmjenama, povlačenjem radova, praćenjem statusa te predajom revidirane i konačne verzije. |
+| Implementaciju, upravljanje korisničkim ulogama i ovlastima te administracija korisničkih računa | F-002, F-003, NF-01 | Potrebno je implementirati sustav korisničkih uloga (administrator, predsjednik programskog odbora, recenzent, autor) i pripadajućih ovlasti te osigurati da korisnici mogu pristupati funkcionalnostima i izvršavati radnje u skladu sa svojom ulogom i dodijeljenim pravima. Obuhvaća administraciju korisnika, deaktivaciju računa i provjeru ovlasti na backendu. |
+| Pozivanje recenzenata, iskazivanje interesa i provjera sukoba interesa | F-013 – F-017 | Obuhvaća pozivanje recenzenata, iskazivanje interesa, provjeru sukoba interesa te predlaganje, potvrđivanje i izmjenu raspodjele radova uz najmanje tri recenzenta po radu, kao i zamjenu recenzenata. |
+| Provedba recenzijskog postupka | F-018, F-019, NF-03 | Obuhvaća dvostruko slijepu recenziju, predaju recenzija, raspravu recenzenata i slanje podsjetnika. |
+| Donošenje odluka o radovima i obavještavanje autora | F-020, F-021 | Obuhvaća evidentiranje odluka o prihvaćanju, reviziji ili odbijanju radova te obavještavanje autora. |
+| Izrada i objava programa konferencije | F-022 | Obuhvaća organizaciju prihvaćenih radova u program konferencije. |
+| Upravljanje osobnim rasporedom i izvoz podataka u kalendarske aplikacije | F-023 | Obuhvaća osobni raspored sudionika i izvoz podataka u Google Calendar. |
+| Generiranje zbornika sažetaka u PDF formatu | F-024 | Obuhvaća generiranje zbornika sažetaka konferencije. |
+| Statistika konferencije i platforme te upravljanje predlošcima e-pošte | F-025 | Obuhvaća statistiku za predsjednika programskog odbora (s izvozom u CSV) i administratora te uređivanje predložaka poruka e-pošte. |
+| Nefunkcijska poboljšanja (konfiguracija, logiranje, testovi, dokumentacija, opterećenje) | NF-01, NF-02, NF-04, NF-05, NF-08 | Obuhvaća tajne i postavke izvan izvornog koda, centralizirano logiranje bez osjetljivih podataka, automatizirane unit i integracijske testove, dokumentaciju API ruta, sigurnosne testove pristupa i testiranje opterećenja. |
+
+**Ključne funkcionalnosti**
+
+- [Reprezentativna funkcionalnost koju korisnici mogu isprobati]:
+- Prijava u sustav e-poštom ili ORCID računom (F-001)
+- [Druga reprezentativna funkcionalnost]:
+- Predaja znanstvenog rada (F-008, F-009)
+- [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva];
+- Povlačenje znanstvenog rada( F-011 )
+
 Aplikacija rješava problem organizacije konferencija starim načinima tako što za razliku od njih štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan.
 Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratorima platforme.
 
