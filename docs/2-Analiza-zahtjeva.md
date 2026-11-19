@@ -15,10 +15,6 @@ Cilj: Navesti što aplikacija mora omogućiti korisnicima, odakle pojedina mogu�
 
 | ID | Opis | Prioritet | Izvor | Kriteriji prihvaćanja |
 |---|---|---|---|---|
-## Funkcionalni zahtjevi
-
-| ID | Opis | Prioritet | Izvor | Kriteriji prihvaćanja |
-|---|---|---|---|---|
 | F-001 | Sustav omogućuje registraciju, prijavu i odjavu korisnika putem adrese e-pošte ili ORCID računa. | Visok | Projektni zadatak | Korisnik se može registrirati i prijaviti podržanim načinom autentifikacije. Sustav provjerava valjanost podataka i ne dopušta pristup neautentificiranim korisnicima. Odjavom se poništava aktivna korisnička sesija. |
 | F-002 | Sustav omogućuje pregled i uređivanje osobnog korisničkog profila. | Visok | Projektni zadatak | Prijavljeni korisnik može pregledati i ažurirati dopuštene osobne podatke, uključujući ime, prezime, ustanovu, ORCID identifikator i područja ekspertize. Korisnik ne može samostalno mijenjati administrativne ovlasti. |
 | F-003 | Sustav omogućuje upravljanje korisničkim računima, ulogama i pravima pristupa. | Visok | Projektni zadatak | Sustav podržava uloge administratora, predsjednika programskog odbora, recenzenta i autora. Administrator može pregledavati i deaktivirati korisničke račune, a ovlašteni korisnici mogu dodjeljivati uloge za pojedine konferencije. Sustav provjerava ovlasti pri izvođenju zaštićenih operacija i sprječava neovlašten pristup podacima drugih korisnika ili konferencija. |
