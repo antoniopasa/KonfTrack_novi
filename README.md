@@ -89,14 +89,17 @@ Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li
 
 <!-- Obavezno od Demo 1 nadalje. Zamijenite mjesta za unos naredbama koje je drugi član tima uspješno provjerio nakon čistog kloniranja repozitorija. Detaljne upute za administraciju držite u projektnoj dokumentaciji u direktoriju docs/. -->
 
-**Preduvjeti:** [Navedite potrebno izvršno okruženje (engl. runtime) i verzija, upravitelj paketa (engl. package manager), baza podataka ili vanjska usluga ako je nužna.]
+**Preduvjeti:** Instalacija Node.js, npm, Python, PostgreSQL, GitHub Desktop
 
 ```bash
-git clone [repository URL]
-cd [repository directory]
-[install dependencies]
-[run the application]
+# Preuzimanje projekta
+git clone [URL vašeg repozitorija]
+cd KonfTrack
 ```
+Za ispravno pokretanje aplikacije potrebno je postaviti bazu podataka, konfigurirati varijable okruženja i instalirati potrebne pakete. Detaljne upute za postavljanje baze podataka, konfiguraciju .env datoteke, pokretanje migracija i pokretanje backend poslužitelja nalaze se u navedenoj dokumentaciji.
+- [Dokumentacija baze podataka za pokretanje apliakcije](db/README-db.md)
+- [Dokumentacija backenda za pokretanje aplikacije](backend/README.md)
+
 
 **Adresa:** [Stvarna adresa koju aplikacija ispiše nakon pokretanja.]
 
@@ -110,15 +113,16 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 
 | Tehnologija ili alat | Uloga u ovom projektu        | Razlog uporabe ili važno ograničenje           |
 | -------------------- | ---------------------------- | ---------------------------------------------- |
-| [Node.js i Express]              | [Poslužiteljska aplikacija: rute, obrada obrazaca i API.] | [Ista aplikacija poslužuje web-stranice i API, pa se postavlja kao jedna usluga.] |
-| [EJS]              | [Generiranje web-stranica na poslužitelju.] | [Sučelje se uglavnom sastoji od obrazaca i popisa, pa nije potreban zaseban klijent u pregledniku.] |
-| [PostgreSQL]              | [Pohrana korisnika, konferencija, radova, recenzija i njihovih odnosa.] | [Podaci su izrazito povezani; promjene sheme zahtijevaju migracije.] |
-| [Prisma]              | [Pristup bazi i verzionirane migracije.] | [Svi članovi tima rade nad istom shemom iz repozitorija.] |
-| [express-session i JWT]              | [Sesija za web-stranice i tokeni za API.i] | [Izdani JWT ostaje valjan do isteka i nakon odjave.] |
-| [ORCID (OAuth 2.0)]              | [Registracija i prijava istraživača te podaci za provjeru sukoba interesa.] | [Ovisnost o vanjskoj usluzi; sandbox i produkcija imaju odvojene postavke.] |
-| [Crossref API]              | [Provjera DOI oznaka referenci predanih radova.] | [Vanjska usluga; nedostupnost servisa ne smije spriječiti predaju rada.] |
-| [Naziv]              | [Što radi u ovoj aplikaciji] | [Razlog ili ograničenje specifično za projekt] |
-Obrazloženje ključnih arhitekturnih odluka nalazi se u pogalvju4.1.
+| Node.js i Express | Poslužiteljska aplikacija: rute, obrada obrazaca i API. | Ista aplikacija poslužuje web-stranice i API, pa se postavlja kao jedna usluga. |
+| EJS | Generiranje web-stranica na poslužitelju. | Sučelje se uglavnom sastoji od obrazaca i popisa, pa nije potreban zaseban klijent u pregledniku. |
+| PostgreSQL | Pohrana korisnika, konferencija, radova, recenzija i njihovih odnosa. | Podaci su izrazito povezani; promjene sheme zahtijevaju migracije. |
+| Prisma | Pristup bazi i verzionirane migracije. | Svi članovi tima rade nad istom shemom iz repozitorija. |
+| express-session i JWT | Sesija za web-stranice i tokeni za API. | Izdani JWT ostaje valjan do isteka i nakon odjave. |
+| ORCID (OAuth 2.0) | Registracija i prijava istraživača te podaci za provjeru sukoba interesa. | Ovisnost o vanjskoj usluzi; sandbox i produkcija imaju odvojene postavke. |
+| Crossref API | Provjera DOI oznaka referenci predanih radova. | Vanjska usluga; nedostupnost servisa ne smije spriječiti predaju rada. |
+
+Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Ključne arhitekturne odluke](docs/4-Arhitektura-i-oblikovanje.md).
+
 <details>
 <summary><strong>Primjer: objašnjenje ključnih tehnoloških odluka</strong></summary>
 
@@ -167,7 +171,7 @@ Greške i nedostaci uočavaju se tijekom testiranja i korištenja aplikacije, a 
 - [Dokumentacija frontenda](frontend/README-frontend.md)
 - [Dokumentacija backenda za prijavu](backend/prijava-dnevnikRad.md)
 - [Dokumentacija backenda za inicijalizaciju](backend/inicijalizacija-dnevnikRad.md)
-- [Dokumentacija backenda za pokretanje aplikacije](backend/README.md)
+
 <a id="license"></a>
 
 **Status licence:** [Navedite licencu i postavite poveznicu na projektnu datoteku `LICENSE` ili izričito navedite da nije dodijeljena licenca koja dopušta javnu ponovnu uporabu. Namjeravani opseg provjerite s timom; nemojte prepisivati licencu predloška ove dokumentacije kao licencu svoje aplikacije.]
