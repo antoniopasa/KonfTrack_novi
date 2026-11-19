@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    if: github.repository == 'karlatusek/KonfTrack'
+    if: github.repository == 'karlatusek/KonfTrack1'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
