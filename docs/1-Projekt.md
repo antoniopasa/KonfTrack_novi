@@ -4,9 +4,10 @@
 
 ## 1.1 Problem i cilj projekta
 
-**Cilj:** Cilj projekta KonfTrack je razviti web-platformu koja omogućuje upravljanje znanstvenim konferencijama i njihovim ključnim organizacijskim procesima. Sustav će podržavati upravljanje korisnicima i njihovim pravima pristupa, stvaranje i uređivanje konferencija, predaju znanstvenih radova, dvostruko slijepo recenziranje, donošenje odluka te organizaciju programa konferencije. Također će omogućiti slanje obavijesti povezanih s važnim događajima u postupku organizacije konferencije u slučaju promjena.
-
+**Cilj:**
 Organizacija znanstvenih konferencija često se oslanja na razmjenu e-mailova i sinkronizaciju tablica. Takav pristup dovodi do gubitka dokumenata, propuštanja strogih rokova, rizika od curenja identiteta autora tijekom recenzije te otežane komunikacije između organizatora, recenzenata i autora.
+
+Cilj projekta KonfTrack je razviti web-platformu koja omogućuje upravljanje znanstvenim konferencijama i njihovim ključnim organizacijskim procesima. Sustav će podržavati upravljanje korisnicima i njihovim pravima pristupa, stvaranje i uređivanje konferencija, predaju znanstvenih radova, dvostruko slijepo recenziranje, donošenje odluka te organizaciju programa konferencije. Također će omogućiti slanje obavijesti povezanih s važnim događajima u postupku organizacije konferencije u slučaju promjena.
 
 Očekivana korist projekta je jednostavnije upravljanje konferencijama, bolja preglednost tijeka obrade radova, lakše praćenje rokova i jasnije razdvajanje ovlasti među sudionicima. Sustav bi trebao omogućiti da autori, recenzenti i organizatori pristupaju funkcijama i informacijama koje su im potrebne, uz očuvanje povjerljivosti recenzijskog postupka i zaštitu osobnih podataka.
 
@@ -77,8 +78,7 @@ Korisničke uloge definiraju se prema potrebama sustava. Pojedini korisnik može
 
 **Cilj:** Objasniti kako korisnici trenutačno rješavaju problem i koja preostala potreba opravdava odobreni projekt.
 
-Organizacija znanstvenih konferencija često se oslanja na fragmentirane postupke i odvojene alate koji omogućuju tek parcijalno zaprimanje radova i komunikaciju. Upravo ta rascjepkanost i potreba za centraliziranim upravljanjem motiviraju razvoj KonfTracka kao jedinstvene platforme koja na jednom mjestu povezuje korisnike, radove, recenzije i odluke. Time se organizacijskim odborima osigurava sustavna podrška za praćenje rokova i očuvanje stroge povjerljivosti postupka, bez preuzimanja uloge samog donošenja odluka.
-
+Organizacija znanstvenih konferencija može se provoditi korištenjem različitih alata i postupaka, npr. razmjena e-mailova za komunikaciju među autorima, recenzentima, predsjednikom, tablica za evidenciju radova, dodijeljenih recenzenata koje se ručno uređuju, praćenje datuma... Takav način iziskuje koordinaciju, preciznost i potpunu posvećenost. KonfTrack ima za cilj objediniti sve potrebne procese organizacije znanstvene konferencije na jednoj platformi i tako omogućiti rasterećenje svih članova, a posebice organizatora i predsjednika. Također, cilj joj je omogućiti veću preglednost, dostupnost, ažurnost, podršku i odaziv publike. KonfTrack želi objediniti prijave autora, predaju radova, osigurati ispravnu predaju, recenziranje, dvostruko slijepu recenziju, donošenje odluka, ispravke grešaka, raspravu recenzenata, razmjenu informacija predsjednika i programskog odbora, donošenje odluke, ponovnu predaju konačne verzije, odabir predavača, raspored održavanja, izrada programa te dostupnost i preglednost informacija o održavanju konferencije.
 
 
 ---
