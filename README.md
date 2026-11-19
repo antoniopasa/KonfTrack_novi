@@ -13,20 +13,44 @@
 
 ## Opis aplikacije
 
-[Aplikacija rješava problem organizacije konferencija analognim načinima tako što štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
+[Aplikacija rješava problem organizacije konferencija starim načinima tako što za razliku od njih  štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
 Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
 
--**Neregistrirani korisnik** - nije potrebna prijava da bi pogledali program, skinuli raspored.
+-**Neregistrirani korisnik** - bez prijave pregledava javnu stranicu konferencije i objavljeni program.
 - **Autori** — prijavljuju znanstvene radove i predaju njihove verzije.
 - **Recenzenti** — pregledavaju dodijeljene radove i izrađuju recenzije.
 - **Predsjednik programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
 - **Organizator/administrator konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
 
 ###TRENUTAČNE FUNKCIONALNOSTI:
+Funkcionalnost	Zahtjevi	Napomena
+Registracija i prijava adresom e-pošte i lozinkom	F-001, F-002	Lozinka se pohranjuje kao sažetak (hash), a nakon prijave stvara se sesija.
+Registracija i prijava putem ORCID računa (OAuth 2.0)	F-001, F-002	Trenutačno se koristi ORCID sandbox okruženje.
+Odjava i poništavanje sesije	F-003	—
+Pregled i uređivanje vlastitog profila	F-004	—
+Izdavanje JWT tokena za pristup API-ju	F-002, NF-01	Ruta `POST /api/auth/token`; token vrijedi 24 sata.
+Javna početna stranica i stranica programa	F-009	Program trenutačno prikazuje privremene podatke.
+Sučelje registriranog korisnika: početna stranica, obrazac za predaju rada, „Moji radovi” i kontakt	F-019, F-027	Stranice postoje, ali predaja rada još nije povezana s poslužiteljem.
 
 ###PLANIRANE FUNKCIONALNOSTI:
 
-]
+]Planirane funkcionalnosti
+Predaja rada s PDF rukopisom, koautorima i provjerom metapodataka te DOI referenci putem Crossrefa (F-019 – F-026).
+Upravljanje konferencijama, temama i rokovima te automatsko zaključavanje radnji nakon isteka roka (F-010 – F-018).
+Uloge po konferenciji i administracija korisničkih računa (F-005 – F-008).
+Pozivanje recenzenata, iskazivanje interesa, sukobi interesa i prijedlog raspodjele radova (F-033 – F-044).
+Dvostruko slijepa recenzija, rasprava recenzenata i podsjetnici e-poštom (F-045 – F-052).
+Odluke o radovima i obavijesti autorima (F-053 – F-056).
+Program konferencije, osobni raspored s izvozom u Google Calendar i zbornik sažetaka u PDF formatu (F-057 – F-066).
+Ključne funkcionalnosti
+Upravljanje konferencijama i njihovim rokovima.
+Prijava znanstvenih radova i predaja dokumenata.
+Dodjela recenzenata uz provjeru sukoba interesa.
+Izrada recenzija i donošenje odluka o prihvaćanju radova.
+Izrada programa konferencije i izvoz odabranih podataka.
+Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte docs.
+<a id="deployment"></a>
+
 
 **Ključne funkcionalnosti**
 
@@ -86,8 +110,15 @@ Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša 
 
 | Tehnologija ili alat | Uloga u ovom projektu        | Razlog uporabe ili važno ograničenje           |
 | -------------------- | ---------------------------- | ---------------------------------------------- |
+| [Node.js i Express]              | [Poslužiteljska aplikacija: rute, obrada obrazaca i API.] | [Ista aplikacija poslužuje web-stranice i API, pa se postavlja kao jedna usluga.] |
+| [EJS]              | [Generiranje web-stranica na poslužitelju.] | [Sučelje se uglavnom sastoji od obrazaca i popisa, pa nije potreban zaseban klijent u pregledniku.] |
+| [PostgreSQL]              | [Pohrana korisnika, konferencija, radova, recenzija i njihovih odnosa.] | [Podaci su izrazito povezani; promjene sheme zahtijevaju migracije.] |
+| [Prisma]              | [Pristup bazi i verzionirane migracije.] | [Svi članovi tima rade nad istom shemom iz repozitorija.] |
+| [express-session i JWT]              | [Sesija za web-stranice i tokeni za API.i] | [Izdani JWT ostaje valjan do isteka i nakon odjave.] |
+| [ORCID (OAuth 2.0)]              | [Registracija i prijava istraživača te podaci za provjeru sukoba interesa.] | [Ovisnost o vanjskoj usluzi; sandbox i produkcija imaju odvojene postavke.] |
+| [Crossref API]              | [Provjera DOI oznaka referenci predanih radova.] | [Vanjska usluga; nedostupnost servisa ne smije spriječiti predaju rada.] |
 | [Naziv]              | [Što radi u ovoj aplikaciji] | [Razlog ili ograničenje specifično za projekt] |
-
+Obrazloženje ključnih arhitekturnih odluka nalazi se u pogalvju4.1.
 <details>
 <summary><strong>Primjer: objašnjenje ključnih tehnoloških odluka</strong></summary>
 
@@ -123,6 +154,7 @@ Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za prać
 ## Doprinos projektu
 
 [Ako je primjenjivo, ukratko opišite kako se evidentiraju zadaci i nedostaci te kako se pregledavaju promjene koda i gdje se nalazi aktualna evidencija zadataka. Ako tim održava `CONTRIBUTING.md`, ovdje postavite poveznicu umjesto ponavljanja pravila. Nemojte stvarati tu datoteku samo zato da biste popunili ovaj odjeljak.]
+opis
 
 <a id="license"></a>
 
