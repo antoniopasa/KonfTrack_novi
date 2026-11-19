@@ -140,16 +140,15 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 
 ## Članovi tima
 
-| Član tima | Uloga |
-|---|---|
-| Marta Šimić | Frontend |
-| Karla Tušek | Backend |
-| Antonio Pasarić | Frontend |
-| Gabrijela Stipić | Backend |
-| Mia Hrkać | Backend |
-| Marin Lukas Lončar | Baze podataka |
-| Pavla Čančar | Koordinator + Dokumentacija |
-
+| Član tima | Uloga |Fer mail|
+|---|---|---|
+| Marta Šimić | Frontend |ms57042@fer.hr|
+| Karla Tušek | Backend |kt56735@fer.hr|
+| Antonio Pasarić | Frontend |ap56979@fer.hr|
+| Gabrijela Stipić | Backend |gs57113@fer.hr|
+| Mia Hrkać | Backend |mh56916@fer.hr|
+| Marin Lukas Lončar | Baze podataka |ml010811167@fer.hr|
+| Pavla Čančar | Koordinator + Dokumentacija |pc56957@fer.hr|
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
 
