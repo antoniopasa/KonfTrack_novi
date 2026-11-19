@@ -7,7 +7,7 @@
 **Cilj:** Voditi kratak zapis projektnih sastanaka i tjedne koordinacije: tko je sudjelovao, što je odlučeno i koja je radnja uslijedila. Raspravu koja nije dovela do odluke zabilježite samo ako je važno pitanje ostalo otvoreno.
 
 >Definirati prije prve uporabe:
-`[Inicijali/Kratica] = [Ime i prezime]` (npr. *AK = Ana Kovač; LM = Luka Marić; EP = Ema Petrović; NK = Nika Kralj*).																														
+`PČ Pavla Čančar, GS Gabrijela Stipić, AP Antonio Pasarić, KT Karla Tušek, MH Mia Hrkać, MLL Marin Lukas Lončar, MŠ Marta Šimić																													
 
 | Datum i sudionici | Glavna tema | Donesena odluka ili zadatak  | Poveznica na zadatak ili  rezultat, ako postoji |
 | --- | --- | --- | --- |
@@ -22,10 +22,19 @@ Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet
 
 **Kratice članova tima:** AK = Ana Kovač; LM = Luka Marić; EP = Ema Petrović; NK = Nika Kralj.
 
+### A.1 Evidencija sastanaka i dogovora
+
 | Datum i sudionici | Glavna tema | Odluka, radnja ili otvoreno pitanje | Poveznica na zadatak ili nastali rezultat, ako postoji |
 | --- | --- | --- | --- |
-| 15. 11. 2025.; AK, LM, EP | Lokacija kada je pristup preglednika odbijen | Dodati ručni odabir položaja na karti u obrazac za prijavu. AK obrađuje obrazac; LM provjerava valjanost lokacije. | Zadataka #21 i #23. |
-| 22. 11. 2025.; AK, EP | Usklađivanje formata lokacijskih podataka | klijentski dio i poslužiteljski API koriste neusklađene formate koordinata. EP će uskladiti format zahtjeva i demonstrira spremanje na sljedećem pregledu. | Zadatak #25. |
+| 14. 10. 2026.; cijela grupa | Odabir teme projekta | **Odluka:** Preuzeta je predložena tema G12 – SK2 KonfTrack jer grupa nije odabrala vlastitu temu.<br>**Radnja:** Svi članovi preuzimaju dokumentaciju s uputama za daljnji rad. | Specifikacija teme G12 (PDF, 4 str.) `[nedostaje poveznica]` |
+| 15. 10. 2026.; cijela grupa (chat) | Pristup GitHubu i organizacija laboratorijskih vježbi | **Radnja:** Prikupljena su GitHub korisnička imena članova te su poslane pozivnice profesoru i asistentima (H. Floreani, S. Kendjel).<br>**Otvoreno pitanje:** Pozivnice još nisu prihvaćene.<br>**Odluka:** Svi članovi obvezno donose prijenosna računala na vježbe radi zajedničkog rada. | GitHub repozitorij `[nedostaje poveznica]` |
+| 16. 10. 2026.; cijela grupa | Usklađivanje termina sastanaka | **Odluka:** Utvrđeni su zajednički termini za redovite sastanke grupe: srijedom (8–10 h, 12–14 h i nakon 17 h), četvrtkom (8–10 h i 12–15 h) te petkom (nakon 16 h). | – |
+| 21. 10. 2026.; cijela grupa (uživo) | Postavljanje razvojne okoline i novog repozitorija | **Radnja:** PČ je izradio novi GitHub repozitorij, a stari se briše. Svi članovi pristupaju novom repozitoriju, čitaju zahtjeve projekta i postavljaju lokalnu razvojnu okolinu. | Novi GitHub repozitorij `[nedostaje poveznica]` |
+| 28. 10. 2026.; PČ, MH i ostali (chat) | Izbor tehnološkog skupa | **Odluka:** Odabran je Node/Express (JavaScript) prema predlošku kolegija, a Python/FastAPI je odbačen. PČ prebacuje početnu strukturu na odabrani predložak (bez prigovora do isteka roka u 15 h). | – |
+| 8. 11. 2026.; PČ, AP, MŠ | Rješavanje problema s prijavom korisnika | **Otvoreno pitanje:** Neispravan rad funkcionalnosti prijave (login).<br>**Radnja:** Otvoren je zadatak za ispravak prijave; AP i MŠ preuzimaju odgovornost za pronalazak uzroka i ispravak koda. | GitHub zadatak (issue) `[nedostaje broj/poveznica]` |
+| 9. 11. 2026.; cijela grupa (chat) | Definiranje tjednog cilja, prijave i toka rada (issuei A1–A16) | **Odluka:** Prijava e-poštom i ORCID-om (OAuth 2.0) implementiraju se kao dvije ravnopravne opcije (zaključak KT). Umjesto krute podjele, članovi samostalno dopunjuju zadatke, već riješene zatvaraju komentarom *„već spojeno na glavnu granu“*, a PR otvaraju samo za nove izmjene.<br>**Radnja:** MLL izrađuje bazu podataka (A1, A15, A16), KT implementira prijavu (A2–A5), a grupa ažurira dokumentaciju i UML dijagrame za provjeru funkcionalnosti. | Zadaci (issuei) A1–A16 |
+| 18. 11. 2026.; cijela grupa (chat) | Sinkronizacija grana i provjera postavljene aplikacije | **Odluka:** Sve izmjene koda moraju ići isključivo putem *pull requesta* na glavnu granu (`main`) uz redovito slanje promjena (*push*).<br>**Rezultat:** Aplikacija je javno postavljena, a GS je testiranjem potvrdila da predaja radova ispravno radi. | Postavljena aplikacija: [://onrender.com](https://://onrender.com) |
+
 
 **Ishod i odgovornost:** Zapisi jasno definiraju tko je odgovoran za koji dio posla i koji je provjerljivi rezultat dogovoren. npr Rečenica „Raspravljali smo o obradi lokacije” prikrila bi je li se itko obvezao na promjenu. Ovi redci navode odluku ili otvorenu radnju, odgovornu osobu i rezultat koji se može pregledati.
 
