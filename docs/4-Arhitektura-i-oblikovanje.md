@@ -22,12 +22,6 @@ Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano
 
 | Odluka | Razmatrana alternativa | Projektno specifično obrazloženje i kompromis |
 | --- | --- | --- |
-## 4.1 Ključne arhitekturne odluke
-
-**Cilj:** Objasniti nekoliko arhitekturnih odluka koje najviše utječu na rješenje i navesti njihove projektno specifične razloge.
-
-| Odluka | Razmatrana alternativa | Projektno specifično obrazloženje i kompromis |
-| --- | --- | --- |
 | Jedna poslužiteljska aplikacija (Node.js/Express) podijeljena na module: rute, kontrolere, servise i modele | Mikrousluge, npr. zasebne usluge za konferencije, radove i recenzije | Konferencije, radovi, recenzije i odluke međusobno su čvrsto povezani: odluka o radu ovisi o recenzijama, a recenzija o verziji rada i rokovima konferencije. Jedna aplikacija dijeli bazu i provjeru ovlasti, pa se te veze ne moraju usklađivati preko mreže, a postavlja se kao jedna usluga. Kompromis: pojedini dijelovi ne mogu se zasebno skalirati, a kvar aplikacije zaustavlja cijeli sustav. |
 | Stranice se generiraju na poslužitelju iz EJS predložaka | Zaseban klijent u pregledniku (SPA, npr. React) koji komunicira s REST API-jem | Sučelje se uglavnom sastoji od obrazaca i popisa (predaja rada, pregled radova, unos recenzije), za što je poslužiteljsko generiranje dovoljno. Ista aplikacija poslužuje stranice i obrađuje obrasce, pa se sesija prenosi kolačićem bez dodatne konfiguracije CORS-a. Kompromis: slabija interaktivnost i ponovno učitavanje stranice nakon slanja obrasca, a frontend i backend moraju se uskladiti oko naziva polja i varijabli u predlošcima. |
 | Relacijska baza podataka (PostgreSQL) | Dokumentna baza podataka (npr. MongoDB) | Podaci su izrazito povezani: autori i recenzenti vezani su uz radove, recenzije uz verzije radova, a radovi uz konferencije i sekcije. Strani ključevi sprječavaju, primjerice, recenziju nepostojećeg rada, a rokovi se pohranjuju s vremenskom zonom (`timestamptz`) za usporedbu s trenutkom predaje. Kompromis: svaka promjena sheme zahtijeva migraciju. |
