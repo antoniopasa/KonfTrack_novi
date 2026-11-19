@@ -244,7 +244,10 @@ Ograničenje je uvjet koji tim mora poštovati; pretpostavka je uvjet na koji se
 
 | Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
 | --- | --- | --- | --- |
+| [datum dogovora] | F-026 | U opseg projekta uključena je provjera DOI referenci putem Crossref API-ja kako bi se autorima omogućila provjera bibliografskih referenci tijekom predaje rada. | Dogovor projektnog tima / zapisnik sastanka ili potvrda mentora |
 |  |  |  |  |
+
+
 
 <details>
 <summary><strong>Primjer značajne promjene</strong></summary>
@@ -252,6 +255,12 @@ Ograničenje je uvjet koji tim mora poštovati; pretpostavka je uvjet na koji se
 **Primjer scenarija — odluka tijekom pregleda CrisisMapa:**
 
 | Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
+### 2.5 Značajne promjene zahtjeva
+
+| **Datum** | **ID zahtjeva** | **Promjena i razlog** | **Dogovoreno s / dokaz** |
+|---|---|---|---|
+| [datum dogovora] | F-001, F-002 | Opseg projekta proširen je uključivanjem registracije i prijave putem ORCID računa, uz korištenje OAuth 2.0 protokola. Promjena je prihvaćena radi omogućavanja povezivanja korisničkih računa s ORCID identitetom. | Dogovor projektnog tima / zapisnik sastanka ili potvrda mentora |
+| [datum dogovora] | F-026 | U opseg projekta uključena je provjera DOI referenci putem Crossref API-ja kako bi se autorima omogućila provjera bibliografskih referenci tijekom predaje rada. | Dogovor projektnog tima / zapisnik sastanka ili potvrda mentora |
 | --- | --- | --- | --- |
 | [Datum pregleda] | F-004, NF-01 | Dodati ručni odabir lokacije kada korisnik odbije geolokaciju preglednika; bez toga građanin ne može podnijeti prijavu kriznog događaja s lokacijom. | [Poveznica na stvarnu bilješku pregleda ili zadatak tima] |
 
