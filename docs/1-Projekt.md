@@ -31,45 +31,34 @@ Korisničke uloge definiraju se prema potrebama sustava. Pojedini korisnik može
 
 **Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
 
-**Uključeno:** 
+**Uključeno:**
 
-->Registracija korisnika, prijava, odjava, upravljanje profilom.
+- Registracija korisnika putem e-pošte ili ORCID računa, prijava, odjava i upravljanje korisničkim profilom.
+- Definiranje korisničkih uloga i provjera prava pristupa na backendu.
+- Stvaranje, pregled i uređivanje konferencija te upravljanje njihovim statusima, vidljivošću, znanstvenim temama i rokovima.
+- Predaja znanstvenih radova, spremanje nacrta, pohrana PDF datoteka i upravljanje statusima predanih radova.
+- Validacija podataka i PDF dokumenata, uključujući provjeru formata, veličine, broja stranica i odabranih metapodataka dokumenta.
+- Provjera DOI referenci putem Crossref servisa.
+- Provođenje dvostruko slijepog recenziranja, dodjela recenzenata i evidentiranje recenzija.
+- Evidentiranje odluka o radovima i obavještavanje korisnika o važnim događajima.
+- Upravljanje programom konferencije i osobnim rasporedom korisnika.
+- Generiranje zbornika radova u PDF formatu, u skladu sa zahtjevom projekta.
 
-->Definiranje korisničkih uloga i provjera prava pristupa na backendu.
+**Izvan opsega ili odgođeno:**
 
-->Stvaranje, pregled i uređivanje konferencija te upravljanje njihovim statusima, vidljivošću, znanstvenim temama i rokovima.
+- Integracija s vanjskim sustavima za plaćanje kotizacija jer nije dogovorena kao zahtjev projekta.
+- Napredne funkcionalnosti koje nisu potrebne za ostvarenje osnovnih procesa upravljanja konferencijama.
+- Napredne mogućnosti vanjskih integracija koje nisu izričito navedene u zahtjevima projekta.
+- Udaljena pohrana datoteka i pohrana u oblaku; trenutačna implementacija koristi lokalnu mapu `uploads` na poslužitelju.
 
-->Predaja znanstvenih radova, pohrana njihovih datoteka i upravljanje statusima predaja.
+**Vanjske ovisnosti:**
 
-->Provođenje dvostruko slijepog recenziranja, dodjela recenzenata i evidentiranje recenzija.
-
-->Evidentiranje odluka o radovima i obavještavanje korisnika o važnim događajima.
-
-->Validacija ulaznih podataka
-
-
-**Izvan opsega ili odgođeno:** 
-
-->Automatizirano generiranje i objavljivanje cjelovitih zbornika radova, osim ako se ta funkcionalnost naknadno potvrdi kao dio obveznog opsega.
-
-->Napredne integracije s vanjskim sustavima, primjerice Crossrefom ili ORCID-om, jer nisu uključene u odobreni zadatak.
-
-->Integracija s vanjskim sustavima za plaćanje kotizacija, jer nije dogovorena kao zahtjev projekta.
-
-->Napredne funkcionalnosti koje nisu potrebne za ostvarenje osnovnih procesa upravljanja konferencijama.
-
-
-**Vanjske ovisnosti:** 
-
-->Sustav za upravljanje relacijskom bazom podataka za pohranu korisnika, konferencija, radova, recenzija i povezanih podataka. ()
-
-->Poslužiteljsko okruženje za pokretanje web-aplikacije i pohranu datoteka. ()
-
-->Usluga za slanje obavijesti putem e-pošte i postupak resetiranja lozinke. ()
-
-->Vanjski pružatelj identiteta (OAuth)
-
-->Sustav za verzije koda i suradnju na projektu. (GitHub)
+- PostgreSQL sustav za upravljanje relacijskom bazom podataka, za pohranu korisnika, konferencija, radova, recenzija i povezanih podataka.
+- Poslužiteljsko okruženje za pokretanje web-aplikacije i lokalnu pohranu datoteka.
+- ORCID kao vanjski pružatelj identiteta za autentifikaciju putem OAuth 2.0 protokola.
+- Crossref API za provjeru DOI referenci.
+- Usluga za slanje obavijesti putem e-pošte, ako se koristi u implementaciji sustava.
+- GitHub za upravljanje verzijama izvornog koda i suradnju članova projektnog tima.
 
 
 
