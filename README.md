@@ -169,6 +169,7 @@ Greške i nedostaci uočavaju se tijekom testiranja i korištenja aplikacije, a 
 - [Dokumentacija frontenda](frontend/README-frontend.md)
 - [Dokumentacija backenda za prijavu](backend/prijava-dnevnikRad.md)
 - [Dokumentacija backenda za inicijalizaciju](backend/inicijalizacija-dnevnikRad.md)
+- [Dokumentacija backenda za predaju i povlačenje rada](backend/rad-dnevnikRad.md)
 
 <a id="license"></a>
 
