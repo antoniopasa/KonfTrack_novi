@@ -147,7 +147,7 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 | Antonio Pasarić | Frontend |ap56979@fer.hr|
 | Gabrijela Stipić | Backend |gs57113@fer.hr|
 | Mia Hrkać | Backend |mh56916@fer.hr|
-| Marin Lukas Lončar | Baze podataka |ml11167@fer.hr|
+| Marin Lukas Lončar | Baze podataka |ml010811167@fer.hr|
 | Pavla Čančar | Koordinator + Dokumentacija |pc56957@fer.hr|
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
