@@ -91,7 +91,7 @@ Sati u tablici predstavljaju samoprijavljenu procjenu uloženog truda (izrada, i
 
 **Cilj:** Prikazati kada su promjene napravljene u repozitoriju i tko ih je napravio, uz napomenu da sam broj zapisa promjena ne mjeri kvalitetu doprinosa.
 
-**Prikaz aktivnosti repozitorija:** [://github.com](https://://github.com) (razdoblje od **19. 10. 2026.** do **19. 11. 2026.**).
+**Prikaz aktivnosti repozitorija:** [://github.com](https://github.com/pavlacancar/KonfTrack/graphs/contributors?from=2026-08-14T22%3A00%3A00.000Z) (razdoblje od **19. 10. 2026.** do **19. 11. 2026.**).
 
 *(Napomena: Ovdje zalijepite ili ugradite snimku zaslona grafa s GitHuba: `![GitHub Contributors](putanja-do-slike.png)`).*
 
