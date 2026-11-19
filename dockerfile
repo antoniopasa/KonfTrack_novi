@@ -5,13 +5,10 @@ RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists
 
 WORKDIR /app/backend
 
-COPY backend/package*.json ./
-RUN npm ci
-
 COPY backend/ ./
 COPY frontend/ /app/frontend/
 
-RUN npx prisma generate
+RUN npm ci
 
 ENV NODE_ENV=production
 EXPOSE 3000
