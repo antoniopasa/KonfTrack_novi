@@ -165,8 +165,8 @@ Greške i nedostaci uočavaju se tijekom testiranja i korištenja aplikacije, a 
 - Evidencija raspodjele zadataka i doprinosa pojedinih članova ili grupa dostupna je u dokumentaciji pojedinih dijelova projekta te kroz povijest Pull Requestova i commitova. Također, dostupni su dnevnici rada pojedinih timova:
 - [Dokumentacija baze podataka](db/README-db.md)
 - [Dokumentacija frontenda](frontend/README-frontend.md)
-- [Dokumentacija backenda za prijavu](backend/prijava-dnevnikRad-backend.md)
-- [Dokumentacija backenda za inicijalizaciju](backend/inicijalizacija-dnevnikRad-backend.md)
+- [Dokumentacija backenda za prijavu](backend/prijava-dnevnikRad.md)
+- [Dokumentacija backenda za inicijalizaciju](backend/inicijalizacija-dnevnikRad.md)
 - [Dokumentacija backenda za pokretanje aplikacije](backend/README.md)
 <a id="license"></a>
 
