@@ -156,16 +156,18 @@ Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za prać
 [Ako je primjenjivo, ukratko opišite kako se evidentiraju zadaci i nedostaci te kako se pregledavaju promjene koda i gdje se nalazi aktualna evidencija zadataka. Ako tim održava `CONTRIBUTING.md`, ovdje postavite poveznicu umjesto ponavljanja pravila. Nemojte stvarati tu datoteku samo zato da biste popunili ovaj odjeljak.]
 
 opis:
-Podjela zadataka odvijala se tijekom laboratorijskih vježbi, na sastancima uživo, putem GitHub Issues alata te dogovorom u zajedničkoj WhatsApp grupi.
+- Podjela zadataka odvijala se tijekom laboratorijskih vježbi, na sastancima uživo, putem GitHub Issues alata te dogovorom u zajedničkoj WhatsApp grupi.
 Greške i nedostaci uočavaju se tijekom testiranja i korištenja aplikacije, a zatim se prijavljuju u WhatsApp grupu. Za pojedine probleme otvaraju se GitHub Issues zadaci kojima se dodjeljuje odgovorna osoba (Assignee).
-Radi očuvanja stabilnosti glavne grane (main), izravno dodavanje promjena u nju nije dopušteno. Svi članovi tima dužni su raditi putem zasebnih grana (branch) ili forkanjem repozitorija te predavati promjene putem Pull Requestova (PR).Iznimke su dodavanje nekih dijelova dokumentacije.(npr. prenošenje .puml i .svg datoteka za UML dijagrame)
-Pri otvaranju Pull Requesta u pravilu se određuje član tima zadužen za pregled promjena (Review). Ako je ta osoba dulje vrijeme nedostupna, moguće je odabrati drugog člana ili samostalno spojiti promjene, ali samo u slučaju novih, neovisnih funkcionalnosti koje ne utječu na postojeće dijelove aplikacije. Ako promjena uključuje uklanjanje postojećeg sadržaja ili utječe na druge funkcionalnosti, pregled drugog člana tima obvezan je prije spajanja.
-Članovi tima također kontinuirano testiraju aplikaciju te prijavljuju uočene probleme i daju povratne informacije o već implementiranim funkcionalnostima.
-Članovi tima također kontinuirano testiraju aplikaciju te prijavljuju uočene probleme i daju povratne informacije o već implementiranim funkcionalnostima.
-Aktualna evidencija postojećih i planiranih funkcionalnosti nalazi se u ovom dokumentu, u odgovarajućim odjeljcima(trenutačne i planirane funkcionalnosti). Evidencija raspodjele zadataka i doprinosa pojedinih članova ili grupa dostupna je u dokumentaciji pojedinih dijelova projekta te kroz povijest Pull Requestova i commitova. Također, dostupni su dnevnici rada pojedinih timova:
-- [Dokumentacija baze podataka](db/README.md)
+- Radi očuvanja stabilnosti glavne grane (main), izravno dodavanje promjena u nju nije dopušteno. Svi članovi tima dužni su raditi putem zasebnih grana (branch) ili forkanjem repozitorija te predavati promjene putem Pull Requestova (PR).Iznimke su dodavanje nekih dijelova dokumentacije.(npr. prenošenje .puml i .svg datoteka za UML dijagrame)
+- Pri otvaranju Pull Requesta u pravilu se određuje član tima zadužen za pregled promjena (Review). Ako je ta osoba dulje vrijeme nedostupna, moguće je odabrati drugog člana ili samostalno spojiti promjene, ali samo u slučaju novih, neovisnih funkcionalnosti koje ne utječu na postojeće dijelove aplikacije. Ako promjena uključuje uklanjanje postojećeg sadržaja ili utječe na druge funkcionalnosti, pregled drugog člana tima obvezan je prije spajanja.
+- Članovi tima također kontinuirano testiraju aplikaciju te prijavljuju uočene probleme i daju povratne informacije o već implementiranim funkcionalnostima.
+- Aktualna evidencija postojećih i planiranih funkcionalnosti nalazi se u ovom dokumentu, u odgovarajućim odjeljcima(trenutačne i planirane funkcionalnosti).
+- Evidencija raspodjele zadataka i doprinosa pojedinih članova ili grupa dostupna je u dokumentaciji pojedinih dijelova projekta te kroz povijest Pull Requestova i commitova. Također, dostupni su dnevnici rada pojedinih timova:
+- [Dokumentacija baze podataka](db/README-db.md)
 - [Dokumentacija frontenda](frontend/README-frontend.md)
-- [Dnevnik rada backenda](backend/README-backend.md)
+- [Dokumentacija backenda za prijavu](backend/prijava-dnevnikRad-backend.md)
+- [Dokumentacija backenda za inicijalizaciju](backend/inicijalizacija-dnevnikRad-backend.md)
+- [Dokumentacija backenda za pokretanje aplikacije](backend/README.md)
 <a id="license"></a>
 
 **Status licence:** [Navedite licencu i postavite poveznicu na projektnu datoteku `LICENSE` ili izričito navedite da nije dodijeljena licenca koja dopušta javnu ponovnu uporabu. Namjeravani opseg provjerite s timom; nemojte prepisivati licencu predloška ove dokumentacije kao licencu svoje aplikacije.]
