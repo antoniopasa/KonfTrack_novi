@@ -187,11 +187,6 @@ AI je u dokumentaciji korišten za ispravljanje pravopisa i gramatike, poboljša
 AI je u programiranju korišten za istraživanje, upoznavanje rada s vanjskim sustavima, prevođenje dokumenata, pomoć u usmjeravanju koda, debuggiranje...
 AI alat koji su korišteni jesu ChatGPT i Claude.
 
-1. Koji AI alat si koristio/la – primjerice ChatGPT, Gemini ili Copilot.
-2. Kako si ga koristio/la – primjerice za ispravljanje gramatike, razradu ideja ili pomoć pri programiranju.
-3. Kako je AI pridonio radu – objasniti na koji je način njegov sadržaj iskorišten.
-4. Osobno kritičko mišljenje – vlastiti osvrt na sadržaj koji je generirao AI.
-5. Detaljan zapis upita (promptova) – navesti što si upisivao/la u AI alat i kako si s njim komunicirao/la.
 
 <a id="code-of-conduct-and-support"></a>
 
