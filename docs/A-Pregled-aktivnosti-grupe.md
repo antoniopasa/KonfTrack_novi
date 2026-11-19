@@ -6,7 +6,7 @@
 
 **Cilj:** Voditi kratak zapis projektnih sastanaka i tjedne koordinacije: tko je sudjelovao, što je odlučeno i koja je radnja uslijedila. Raspravu koja nije dovela do odluke zabilježite samo ako je važno pitanje ostalo otvoreno.
 
-**Kratice članova tima:** `PČ Pavla Čančar, GS Gabrijela Stipić, AP Antonio Pasarić, KT Karla Tušek, MH Mia Hrkać, MLL Marin Lukas Lončar, MŠ Marta Šimić`
+**Kratice članova tima:** `PČ Pavla Čančar, GS Gabrijela Stipić, AP Antonio Pasarić, KT Karla Tušek, MH Mia Hrkać, MLL Marin Luka Lončar, MŠ Marta Šimić`
 
 | Datum i sudionici | Glavna tema | Donesena odluka ili zadatak | Poveznica na zadatak ili rezultat, ako postoji |
 | --- | --- | --- | --- |
@@ -98,10 +98,10 @@ Sati u tablici predstavljaju samoprijavljenu procjenu uloženog truda (izrada, i
 | Član | Broj *commitova* (bez spajanja) | Dana s aktivnošću |
 | --- | --- | --- |
 | **PČ** | 144 | 14 |
-| **MŠ** | 21 | 10 |
+| **MŠ** | 24 | 10 |
 | **GS** | 18 | 5 |
 | **KT** | 16 | 7 |
-| **MH** | 13 | 4 |
+| **MH** | 14 | 4 |
 | **MLL** | 6 | 3 |
 | **AP** | 4 | 3 |
 | *GitHub Actions (automatski)* | *9* | *–* |
