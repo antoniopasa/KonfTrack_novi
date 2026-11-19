@@ -2,9 +2,9 @@
 
 **Kolegij:** [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz), Fakultet elektrotehnike i računarstva Sveučilišta u Zagrebu  
 **Akademska godina:** [2026./2027.]  
-**Tim:** [Oznaka i naziv tima]  
+**Tim:** [Grupa L-A-12.3]  
 **Nastavnik:** Vlado Sruk  
-**Asistent / demonstrator:** [Ime i uloga u ovom izvođenju kolegija]
+**Asistent / demonstrator:** [Saša Kendjel / Helena Floreani]
 
 ## Pregled projekta
 
