@@ -245,7 +245,11 @@ Ograničenje je uvjet koji tim mora poštovati; pretpostavka je uvjet na koji se
 | Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
 | --- | --- | --- | --- |
 | [datum dogovora] | F-026 | U opseg projekta uključena je provjera DOI referenci putem Crossref API-ja kako bi se autorima omogućila provjera bibliografskih referenci tijekom predaje rada. | Dogovor projektnog tima / zapisnik sastanka ili potvrda mentora |
+| [datum dogovora] | F-024 | Povlačenje rada dopušteno je samo prije isteka roka za predaju i ako rad nije u određenim završnim statusima. | Potrebno je potvrditi prihvaća li se ograničenje povlačenja na razdoblje prije isteka roka za predaju. Izvorni zahtjev predviđa mogućnost povlačenja sve do prihvaćanja rada, uključujući razdoblje recenziranja. Ako se prihvaća trenutačno ponašanje, potrebno je sukladno tome izmijeniti zahtjev.|
+| [datum dogovora] | F-029 | Sustav koristi status „povučen” za radove koji su povučeni, umjesto da se takvi radovi brišu iz sustava. | Potrebno je dopuniti popis statusa rada u funkcijskom zahtjevu F-029 statusom „povučen” kako bi dokumentacija odgovarala implementiranom ponašanju i zahtjevu F-028.|
 |  |  |  |  |
+
+
 
 
 
