@@ -43,14 +43,21 @@ Korisničke uloge definiraju se prema potrebama sustava. Pojedini korisnik može
 - Evidentiranje odluka o radovima i obavještavanje korisnika o važnim događajima.
 - Upravljanje programom konferencije i osobnim rasporedom korisnika.
 - Generiranje zbornika radova u PDF formatu, u skladu sa zahtjevom projekta.
+- Pozivanje postojećih prema e-mail adresi
+- -Ručne provjere kroz Thunder Client
 
 **Izvan opsega ili odgođeno:**
 
-- Integracija s vanjskim sustavima za plaćanje kotizacija jer nije dogovorena kao zahtjev projekta.
-- Napredne funkcionalnosti koje nisu potrebne za ostvarenje osnovnih procesa upravljanja konferencijama.
-- Napredne mogućnosti vanjskih integracija koje nisu izričito navedene u zahtjevima projekta.
-- Udaljena pohrana datoteka i pohrana u oblaku; trenutačna implementacija koristi lokalnu mapu `uploads` na poslužitelju.
-
+- Uređivanje korisničkog profila, ako je trenutačno implementirano samo dohvaćanje profila.
+- Potpuna autorizacija na temelju uloga i prava pristupa, trenutačno samo provjera je li korisnik prijavljen
+- Uređivanje uloga i dopuštenja prema bazi podataka
+- Implementiranje uloga
+- Potpuno povezivanje javnih stranica konferencije s dinamičkim podacima iz sustava, jer neke od njih su samo prikaz, a neke su onemogućene radi nedostatka drugih funkcionalnosti ili podataka
+- Stvaranje konferencije i odabir predsjednika
+- Predaja rada - omogućiti ponovno provjeru ID konferencije nakon što se prethodno omoguće uloge i stvaranje konferencije
+- Pozivanje koautora koji još nemaju korisnički račun
+- Mogućnost povlačenja rada u cijelom razdoblju (Daljnje razvijanje stanja radova, postupak recenziranja, odluke i konačne odluke  i uvrštavanja)
+- Automatizirani jedinični i integracijski testovi ključnih funkcionalnosti 
 **Vanjske ovisnosti:**
 
 - PostgreSQL sustav za upravljanje relacijskom bazom podataka, za pohranu korisnika, konferencija, radova, recenzija i povezanih podataka.
