@@ -1,147 +1,131 @@
 
-
-' UC_Upravljanje_programom_v1.puml
+' ==============================================================================
+' upravljanje_programom.puml
 '
-' Svrha:    Prikazuje funkcionalnosti vezane uz sastavljanje,
-'           uređivanje i objavu programa konferencije, upravljanje
-'           sekcijama, uvrštavanje radova, osobne rasporede korisnika
-'           te automatsko generiranje zbornika sažetaka. Interna
-'           logika, pohrana podataka i korisničko sučelje nisu
-'           obuhvaćeni.
+' Svrha:    Prikazuje slučajeve uporabe povezane sa sastavljanjem i objavom
+'           programa konferencije, upravljanjem osobnim rasporedom i
+'           generiranjem zbornika.
 ' Autor:    Pavla Čančar
-' AI:       Dijagram je izrađen i vizualno uređen uz pomoć AI alata. AI je pomogao
-'           u izradi i reviziji i da kod prati izgled strukture po danom predlošku; autori su pregledali i odgovaraju
-'           za konačni sadržaj.
-' Zahtjevi: F-057 do F-066 (svaki slučaj korištenja ima ID za
-'           praćenje prema funkcionalnim zahtjevima)
+' AI:       AI je pomogao u strukturiranju i reviziji dijagrama;
+'           autorica ga je pregledala i odgovara za konačni sadržaj.
+' Zahtjevi: UC-10.1 do UC-10.6, UC-11.1 i UC-12.1
+'           (F-022 do F-024)
 '
 ' Diagram level: System Requirements
 ' Diagram type:  Use Case Diagram
-' Version:       1.0
+' Version:       2.2
+' ==============================================================================
 
-@startuml UC_Upravljanje_programom
+@startuml
+title Sustav KonfTrack – upravljanje programom
+left to right direction
 
-title Upravljanje programom konferencije
-
-top to bottom direction
-
-skinparam backgroundColor white
 skinparam shadowing false
 skinparam defaultFontName Arial
-skinparam defaultFontSize 12
 skinparam ArrowColor #212529
-skinparam ActorBorderColor #212529
-skinparam ActorBackgroundColor #F2F2F2
-skinparam UseCaseBorderColor #3973AC
-skinparam UseCaseBackgroundColor #DCEAF7
-skinparam RectangleBorderColor #212529
+skinparam nodesep 25
+skinparam ranksep 30
+skinparam packageStyle rectangle
 
-actor "Predsjednik programskog odbora" as Chair
-actor "Registrirani korisnik" as User
-actor "Neregistrirani korisnik" as Visitor
-actor "Google Calendar" as GoogleCalendar <<external system>>
-
-rectangle "KonfTrack" {
-
-    package "1. Sastavljanje programa konferencije" {
-
-        usecase "UC-P01\nSastavljanje i uređivanje\nprograma konferencije" as UCP_01
-
-        usecase "UC-P02\nUpravljanje sekcijama" as UCP_02
-
-        usecase "UC-P03\nUnos podataka o sekciji\n==\nTema sekcije\nDvorana\nTermin\nPredsjedavajući" as UCP_03
-
-        usecase "UC-P04\nUvrštavanje radova\nu sekcije programa" as UCP_04
-
-        usecase "UC-P05\nPredlaganje grupiranja radova\nprema temama i ključnim riječima" as UCP_05
-    }
-
-    package "2. Provjera i objava programa" {
-
-        usecase "UC-P06\nProvjera preklapanja termina\nizlaganja istog izlagača" as UCP_06
-
-        usecase "UC-P07\nProvjera da predsjedavajući\nsekcije nije autor rada" as UCP_07
-
-        usecase "UC-P08\nPromjena statusa rada u\n'Uvršten u program'" as UCP_08
-
-        usecase "UC-P09\nObjava programa konferencije" as UCP_09
-
-        usecase "UC-P10\nPregled objavljenog\nprograma konferencije" as UCP_10
-    }
-
-    package "3. Osobni raspored korisnika" {
-
-        usecase "UC-P11\nDodavanje izlaganja\nu osobni raspored" as UCP_11
-
-        usecase "UC-P12\nIzvoz osobnog rasporeda\nu Google Calendar" as UCP_12
-    }
-
-    package "4. Generiranje zbornika sažetaka" {
-
-        usecase "UC-P13\nAutomatsko generiranje\nzbornika sažetaka u PDF-u" as UCP_13
-
-        usecase "UC-P14\nOrganiziranje zbornika po sekcijama\ni izrada kazala autora" as UCP_14
-    }
+skinparam actor {
+    BackgroundColor #F8F9FA
+    BorderColor #212529
+    BackgroundColor<<external system>> #FFF3CD
+    BorderColor<<external system>> #856404
 }
 
-' ------------------------------------------------------------
-' Povezanost aktera i slučajeva korištenja
-' ------------------------------------------------------------
+skinparam usecase {
+    BackgroundColor #E7F1FF
+    BorderColor #0D6EFD
+}
 
-Chair -- UCP_01
-Chair -- UCP_02
-Chair -- UCP_03
-Chair -- UCP_04
-Chair -- UCP_09
+' ==============================================================================
+' Primarni akteri
+' ==============================================================================
 
-Visitor -- UCP_10
-User -- UCP_10
-User -- UCP_11
-User -- UCP_12
+actor Chair as "Predsjednik programskog\nodbora"
+actor User as "Registrirani korisnik"
+actor Visitor as "Neregistrirani korisnik"
 
-GoogleCalendar -- UCP_12
+' ==============================================================================
+' Sekundarni akteri (vanjski sustavi)
+' ==============================================================================
 
-' ------------------------------------------------------------
-' Odnosi include i extend
-' ------------------------------------------------------------
+actor Calendar as "Google Calendar" <<external system>>
 
-' Sastavljanje programa uključuje upravljanje sekcijama
-' i uvrštavanje radova u program
-UCP_01 ..> UCP_02 : <<include>>
-UCP_01 ..> UCP_04 : <<include>>
+' ==============================================================================
+' Granica sustava
+' ==============================================================================
 
-' Upravljanje sekcijama uključuje unos podataka o sekciji
-UCP_02 ..> UCP_03 : <<include>>
+rectangle "Sustav KonfTrack – upravljanje programom" {
 
-' Sustav može predložiti grupiranje radova kao pomoć
-' pri uvrštavanju radova u sekcije
-UCP_05 ..> UCP_04 : <<extend>>
+    ' Sastavljanje i objava programa
+    package "1. Sastavljanje i objava programa" {
+        (UC-10.1\nUređivanje programa konferencije) as UC_101
 
-' Uvrštavanje rada uključuje provjere rasporeda
-' i promjenu statusa rada
-UCP_04 ..> UCP_06 : <<include>>
-UCP_04 ..> UCP_07 : <<include>>
-UCP_04 ..> UCP_08 : <<include>>
+        (UC-10.2\nUpravljanje sekcijama\n==\nTema, dvorana, termin i predsjedavajući) as UC_102
 
-' Generiranje zbornika uključuje organizaciju sadržaja
-UCP_13 ..> UCP_14 : <<include>>
+        (UC-10.3\nUvrštavanje radova i raspoređivanje izlaganja) as UC_103
 
-' ------------------------------------------------------------
-' Pomoćne veze za raspored elemenata
-' ------------------------------------------------------------
+        (UC-10.4\nProvjera ograničenja programa\n==\nPreklapanje izlagača i predsjedavajući nije autor) as UC_104
 
-UCP_01 -[hidden]down-> UCP_02
-UCP_02 -[hidden]down-> UCP_03
-UCP_03 -[hidden]down-> UCP_04
-UCP_04 -[hidden]down-> UCP_05
+        (UC-10.5\nObjava programa konferencije) as UC_105
 
-UCP_06 -[hidden]down-> UCP_07
-UCP_07 -[hidden]down-> UCP_08
-UCP_08 -[hidden]down-> UCP_09
-UCP_09 -[hidden]down-> UCP_10
+        (UC-10.6\nPregled javnog programa konferencije) as UC_106
+    }
 
-UCP_11 -[hidden]down-> UCP_12
+    ' Osobni raspored
+    package "2. Osobni raspored" {
+        (UC-11.1\nUpravljanje osobnim rasporedom) as UC_111
+    }
 
-UCP_13 -[hidden]down-> UCP_14
+    ' Zbornik
+    package "3. Zbornik" {
+        (UC-12.1\nGeneriranje PDF zbornika sažetaka) as UC_121
+    }
+
+    ' Raspored paketa u dva reda
+    UC_106 -[hidden]right- UC_111
+    UC_111 -[hidden]right- UC_121
+}
+
+' ==============================================================================
+' Asocijacije aktera i slučajeva uporabe
+' ==============================================================================
+
+' Predsjednik programskog odbora upravlja programom i zbornikom.
+Chair -- UC_101
+Chair -- UC_102
+Chair -- UC_103
+Chair -- UC_104
+Chair -- UC_105
+Chair -- UC_121
+
+' Registrirani i neregistrirani korisnici pregledavaju javni program.
+Visitor -- UC_106
+User -- UC_106
+
+' Registrirani korisnik upravlja osobnim rasporedom.
+User -- UC_111
+
+' Vanjski sustav povezan je s upravljanjem osobnim rasporedom.
+Calendar -- UC_111
+
+' ==============================================================================
+' Veze između slučajeva uporabe
+' ==============================================================================
+
+' Provjera ograničenja obvezan je dio uvrštavanja radova u program.
+UC_103 ..> UC_104 : <<include>>
+
+' ==============================================================================
+' Raspored aktera
+' ==============================================================================
+
+' Akteri se smještaju na desnu stranu sustava.
+UC_106 -[hidden]right- User
+User -[hidden]down- Visitor
+Visitor -[hidden]down- UC_111
+UC_111 -[hidden]right- Calendar
 
 @enduml
