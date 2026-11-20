@@ -8,14 +8,9 @@ KonfTrack je web-aplikacija namijenjena organizaciji znanstvenih konferencija. C
 
 ## Opis aplikacije
 
-[Aplikacija rješava problem organizacije konferencija starim načinima tako što za razliku od njih  štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
+Aplikacija rješava problem organizacije konferencija starim načinima tako što za razliku od njih  štedi vrijeme, omogućuje transparentnost, jednostavnost i preglednost, organiziranost te pravednost. Rješava problem anonimnosti i uvodi dvostruko slijepu recenziju kako bi konačan odabir bio optimalan. 
 Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima programskog odbora i administratiorima konferencija. 
 
--**Neregistrirani korisnik** - bez prijave pregledava javnu stranicu konferencije i objavljeni program.
-- **Autori** — prijavljuju znanstvene radove i predaju njihove verzije.
-- **Recenzenti** — pregledavaju dodijeljene radove i izrađuju recenzije.
-- **Predsjednik programskog odbora** — koordiniraju recenziranje i sudjeluju u donošenju odluka.
-- **Organizator/administrator konferencije** — upravljaju postavkama konferencije, rokovima i korisničkim ulogama.
 
 ## TRENUTAČNE FUNKCIONALNOSTI:
 
@@ -36,7 +31,7 @@ Namijenjena je svim autorima znanstvenih radova, recenzentima, predsjednicima pr
 
 | Funkcionalnost | Povezani zahtjevi | Napomena |
 |---|---|---|
-| Upravljanje konferencijama, temama, rokovima i postavkama konferencije | F-004 – F-007, NF-07 | Obuhvaća odobravanje konferencija i imenovanje predsjednika programskog odbora, stvaranje i uređivanje konferencija i znanstvenih tema, upravljanje rokovima (uključujući produljenje i vremensku zonu) te objavu konferencije. |
+| Upravljanje konferencijama, temama, rokovima i postavkama konferencije | F-004 – F-007, NF-07 | Obuhvaća odobravanje konferencija i imenovanje predsjednika programskog odbora, stvaranje i uređivanje konferencija i znanstvenih tema, upravljanje rokovima (uključujući produljenje i vremensku zonu) te objavu konferencije. Konferencije se zasad unose početnim podacima (`seedConferences.js`). |
 | Potpuna integracija predaje znanstvenih radova sa sučeljem | F-008 – F-012, NF-02, NF-06, NF-08 | Obuhvaća predaju rada, upravljanje autorima i koautorima, rukopisima, izmjenama, povlačenjem radova, praćenjem statusa te predajom revidirane i konačne verzije. |
 | Implementaciju, upravljanje korisničkim ulogama i ovlastima te administracija korisničkih računa | F-002, F-003, NF-01 | Potrebno je implementirati sustav korisničkih uloga (administrator, predsjednik programskog odbora, recenzent, autor) i pripadajućih ovlasti te osigurati da korisnici mogu pristupati funkcionalnostima i izvršavati radnje u skladu sa svojom ulogom i dodijeljenim pravima. Obuhvaća administraciju korisnika, deaktivaciju računa i provjeru ovlasti na backendu. |
 | Pozivanje recenzenata, iskazivanje interesa i provjera sukoba interesa | F-013 – F-017 | Obuhvaća pozivanje recenzenata, iskazivanje interesa, provjeru sukoba interesa te predlaganje, potvrđivanje i izmjenu raspodjele radova uz najmanje tri recenzenta po radu, kao i zamjenu recenzenata. |
@@ -114,7 +109,29 @@ Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li
 
 **Javno dostupna aplikacija:** https://konftrack1.onrender.com/
 
-**Isprobajte:** Registrirajte se koristeći adresu e-pošte i lozinku te zatim prijavite u aplikaciju.Nakon prijave otvorite stranicu svojeg korisničkog profila i provjerite prikazuju li se podaci prijavljenog korisnika te pokušajte dodati svoj rad i povući ga. Pogledajte statistiku pod "Moji radovi" kako se mijenja dok predajete i zatim povlačite rad.
+Aplikacija je postavljena na besplatnom planu usluge Render, koji uspavljuje aplikaciju kada se ne koristi. **Prvo otvaranje može trajati do jedne minute**; nakon toga aplikacija radi normalnom brzinom.
+
+### Kako isprobati aplikaciju
+
+1. Otvorite javnu adresu. Početna stranica i stranica programa dostupne su bez prijave.
+2. Odaberite **Registracija** i izradite račun adresom e-pošte i lozinkom (najmanje 8 znakova) ili odaberite prijavu **ORCID** računom. Registracija e-poštom ne zahtijeva potvrdu, pa se odmah možete prijaviti.
+3. U izborniku odaberite **Predaja rada**:
+   - odaberite konferenciju (ispod izbornika prikazuju se mjesto, rok za predaju i najveći broj stranica), a zatim jednu od njezinih tema
+   - upišite naslov, sažetak i ključne riječi
+   - po želji dodajte koautora (ime i e-pošta) i odaberite autora za kontakt
+   - u polje za reference upišite, svaki u svoj redak, `10.1038/nature14539` (postojeći DOI) i `10.1234/konftrack.nepostoji` (nepostojeći DOI)
+   - priložite bilo koji PDF do 10 stranica i odaberite **Predaj rad**
+4. Nakon predaje prikazuje se potvrda sa stanjem rada i upozorenjem za nepostojeći DOI. Ako metapodaci PDF-a sadrže ime nekog od autora, prikazuje se i upozorenje o anonimnosti.
+5. Otvorite **Moji radovi**: rad je u stanju *predan*. Rad možete povući, nakon čega prelazi u stanje *povučen*.
+
+Gumb **Spremi nacrt** sprema rad bez provjera obaveznih polja i bez PDF-a, kao nacrt.
+
+### Ograničenja javne inačice
+
+- Predani PDF rukopisi pohranjuju se u datotečni sustav poslužitelja, koji se na Renderu briše pri svakom novom postavljanju. Podaci o radovima u bazi ostaju, ali rukopisi predani prije novog postavljanja više nisu dostupni.
+- Recenzijski postupak, odluke, program iz baze i administracija još nisu implementirani (vidi Planirane funkcionalnosti).
+- Provjera metapodataka PDF-a ne jamči anonimnost samog teksta rada.
+- Izdani JWT ostaje valjan do isteka i nakon odjave.
 
 **Demonstracija:** Za pristup funkcionalnostima namijenjenima registriranim korisnicima potrebno je izraditi korisnički račun putem obrasca za registraciju(e-poštom ili ORCID računom). Korisnik se nakon registracije može prijaviti adresom e-pošte i lozinkom. Za javni pregled početne stranice nije potrebna prijava. Prijavljeni korisnik ima mogućnost, predaje rada, pregleda rada i povlačenja rada.
 
@@ -128,26 +145,45 @@ Detaljniji opis trenutačnih funkcionalnosti i poznatih ograničenja nalazi se u
 
 ## Brzi početak / instalacija
 
-<!-- Obavezno od Demo 1 nadalje. Zamijenite mjesta za unos naredbama koje je drugi član tima uspješno provjerio nakon čistog kloniranja repozitorija. Detaljne upute za administraciju držite u projektnoj dokumentaciji u direktoriju docs/. -->
-
-**Preduvjeti:** Instalacija Node.js, npm, Python, PostgreSQL, GitHub Desktop
+**Preduvjeti:** Node.js 22 i npm, PostgreSQL. (Python je potreban samo za Selenium ispitivanja u mapi `tests/`.)
 
 ```bash
 # Preuzimanje projekta
-git clone [URL vašeg repozitorija]
-cd KonfTrack
+git clone https://github.com/pavlacancar/KonfTrack.git
+cd KonfTrack/backend
+
+# Instalacija ovisnosti (automatski generira i Prisma klijent)
+npm install
+
+# Konfiguracija: kopirajte primjer i upišite vlastite vrijednosti
+cp .env.example .env          # na Windowsu: copy .env.example .env
+
+# Stvaranje tablica u bazi i početni podaci (konferencije s temama i rokovima)
+npx prisma migrate deploy
+node seedConferences.js
+
+# Pokretanje
+npm run dev
 ```
 
-Za ispravno pokretanje aplikacije potrebno je postaviti bazu podataka, konfigurirati varijable okruženja i instalirati potrebne pakete. Detaljne upute za postavljanje baze podataka, konfiguraciju .env datoteke, pokretanje migracija i pokretanje backend poslužitelja nalaze se u navedenoj dokumentaciji.
+**Adresa:** http://localhost:3000 (ili port postavljen u `PORT`). Za ORCID prijavu otvorite aplikaciju na http://127.0.0.1:3000, jer je ta adresa registrirana kao povratna adresa u ORCID sandboxu.
 
-- [Dokumentacija baze podataka za pokretanje apliakcije](db/README-db.md)
-- [Dokumentacija backenda za pokretanje aplikacije](backend/README.md)
+**Konfiguracija:** Sve potrebne varijable navedene su u [`backend/.env.example`](backend/.env.example):
 
-**Adresa:** [Stvarna adresa koju aplikacija ispiše nakon pokretanja.]
+| Varijabla | Značenje |
+| --- | --- |
+| `DATABASE_URL` | Adresa lokalne PostgreSQL baze. |
+| `PORT`, `APP_URL` | Port i javna adresa aplikacije. |
+| `SESSION_SECRET`, `JWT_SECRET` | Dva različita nasumična ključa od najmanje 32 znaka. |
+| `ORCID_SANDBOX`, `ORCID_CLIENT_ID`, `ORCID_CLIENT_SECRET`, `ORCID_CALLBACK_URL` | Podaci aplikacije registrirane u [ORCID Sandbox Developer Tools](https://sandbox.orcid.org/developer-tools). |
+| `COOKIE_SECURE` | Lokalno `false`; u produkciji (HTTPS) `true`. |
 
-**Konfiguracija:** [Navedite potrebne varijable okruženja (engl. environment variables) ili uputite na sigurnu datoteku `.env.example`; objasnite gdje se dobivaju vrijednosti. Nikada ne stavljajte stvarne pristupne podatke u ovu datoteku, primjer konfiguracije, snimke zaslona, zapise ni zapise promjena (engl. commits).]
+Ključeve možete generirati naredbom `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`. Stvarne vrijednosti nikada se ne stavljaju u repozitorij.
 
-[Dodajte kratak korak provjere, primjerice koja se stranica treba otvoriti ili koja naredba pokreće osnovnu provjeru.] Za detaljno postavljanje pogledajte [projektnu dokumentaciju](docs/Home.md).
+**Provjera:** Otvorite http://localhost:3000/health; odgovor treba potvrditi da poslužitelj radi. Zatim otvorite početnu stranicu, registrirajte se i slijedite korake iz odjeljka *Kako isprobati aplikaciju*.
+
+Detaljne upute, uključujući česte probleme s bazom, nalaze se u [dokumentaciji backenda](backend/README.md) i [dokumentaciji baze podataka](db/README-db.md).
+
 
 ## Tehnologije
 
@@ -191,7 +227,7 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 | Antonio Pasarić | Frontend | ap56979@fer.hr | [antoniopasa](https://github.com/antoniopasa) |
 | Gabrijela Stipić | Backend | 	gs57113@fer.hr | [gabrijelast](https://github.com/gabrijelast) |
 | Mia Hrkać | Backend | mh56916@fer.hr | [miahrk](https://github.com/miahrk) |
-| Marin Lukas Lončar | Baze podataka | 	ml010811167@fer.hr | [RedSky42](https://github.com/RedSky42) |
+| Marin Luka Lončar | Baze podataka | 	ml010811167@fer.hr | [RedSky42](https://github.com/RedSky42) |
 | Pavla Čančar | Koordinator + Dokumentacija | pc56957@fer.hr | [pavlacancar](https://github.com/pavlacancar) |
 
 https://github.com/pavlacancar https://github.com/RedSky42
