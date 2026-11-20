@@ -30,7 +30,6 @@ Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano
 | Prijava putem ORCID-a (OAuth 2.0, *authorization code*) uz prijavu e-poštom i lozinkom | Samo prijava e-poštom i lozinkom | Korisnici su znanstvenici koji uglavnom već imaju ORCID iD. Prijava ORCID-om pouzdano povezuje račun s identitetom istraživača, što je preduvjet za provjeru sukoba interesa na temelju koautorstva. Kompromis: ovisnost o vanjskoj usluzi i odvojene postavke za sandbox i produkcijsko okruženje; korisnik koji se prijavljuje samo ORCID-om nema lozinku pa token dobiva isključivo kroz web-prijavu. |
 | PDF datoteke radova pohranjuju se u datotečni sustav poslužitelja, a baza čuva putanju; svaka predaja stvara novu verziju rada (`paper_versions`) | Pohrana PDF-a u bazi (`bytea`) ili u objektnoj pohrani (npr. S3) | Baza ostaje mala, a datoteke nisu javno dostupne jer se mapa `uploads/` ne poslužuje kao statički sadržaj. Pristup datoteci zato mora proći provjeru ovlasti na poslužitelju. Recenzija je vezana uz konkretnu verziju, pa nakon revizije ostaje jasno koju je verziju recenzent ocijenio. Kompromis: datoteke se ne nalaze u sigurnosnoj kopiji baze, a na platformi s privremenim datotečnim sustavom mogu se izgubiti pri ponovnom postavljanju (vidi 4.7). |
 | Anonimnost dvostruko slijepe recenzije provodi poslužitelj | Skrivanje podataka o autorima samo u korisničkom sučelju | Ako se podaci o autorima samo skrivaju u sučelju, i dalje se mogu pročitati iz API odgovora, naziva datoteke ili metapodataka PDF-a. Zato poslužitelj recenzentu ne vraća podatke o autorima, datoteke se spremaju pod generiranim nazivima, a pri predaji se provjerava sadrže li metapodaci PDF-a ime autora. Kompromis: svaki upit koji vraća podatke recenzentu mora se zasebno filtrirati, a provjera metapodataka samo upozorava i ne može otkriti ime autora u samom tekstu rada. |
-|  |  |  |
 
 Objasnite glavne arhitekturne odluke bez ponavljanja popisa tehnologija. Ako važna odluka ima ADR, dovoljno je u tablici navesti njegov ID.
 
@@ -97,6 +96,7 @@ i ostalim povezanim entitetima.
 **ER dijagram:**
 
 ![ER dijagram sustava KonfTrack](konfTrackERD.png)
+**Slika 4.2. ER dijagram sustava KonfTrack**
 
 **Izvor dijagrama:**
 
@@ -117,13 +117,49 @@ a njegova struktura opisana je u
 
 </details>
 
+
 ### 4.3.2 Reprezentativni UML dijagram razreda
 
-**Cilj:** Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
+Za reprezentativni dio oblikovanja sustava KonfTrack odabrana je
+funkcionalnost predaje i upravljanja znanstvenim radovima.
 
-**Dijagram razreda:** [Ugradite čitljiv UML dijagram razreda za reprezentativni dio oblikovanja.]  
-**PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]  
-**Referenca na kod pri završnom pregledu:** [Poveznica na odgovarajuću implementaciju.]
+Dijagram prikazuje osnovne entitete sustava, njihove atribute,
+operacije za upravljanje radovima te međusobne veze.
+
+**Dijagram razreda:**
+
+![UML dijagram razreda KonfTrack](./assets/diagrams/4-3-konftrack-paper-CD.svg)
+
+**PlantUML izvor:**
+
+[Izvorni UML dijagram](./puml/4-3-konftrack-paper-CD.puml)
+
+**Referenca na kod pri završnom pregledu:**
+
+[Kontroler za upravljanje radovima](../backend/src/controllers/paperController.js)
+
+[Prisma modeli podataka](../backend/prisma/schema.prisma)
+
+[Servis za provjeru PDF-a](../backend/src/services/pdfService.js)
+
+[Servis za provjeru DOI oznaka](../backend/src/services/crossrefService.js)
+
+**Objašnjenje oblikovanja:**
+
+Razredi Paper, Conference, User, PaperAuthor i PaperVersion
+predstavljaju osnovne podatkovne entitete sustava.
+Njihove veze prikazane su asocijacijama s odgovarajućim
+kardinalnostima.
+
+PaperController odgovoran je za spremanje nacrta,
+predaju, dohvat, uređivanje i povlačenje znanstvenih radova.
+
+Prilikom predaje rada koristi PdfService za provjeru
+rukopisa i CrossrefService za provjeru DOI oznaka.
+Ove ovisnosti prikazane su isprekidanim strelicama.
+
+Kontroler i servisi predstavljaju logičke JavaScript module,
+dok podatkovni entiteti odgovaraju modelima Prisma ORM-a.
 
 <details>
 <summary><strong>Oblikovanje odgovornosti prijave i dopuštenih promjena</strong></summary>
@@ -139,6 +175,7 @@ a njegova struktura opisana je u
 **Analiza primjera:** `DisasterReport` sadrži dopuštena pravila promjene stanja pa tijek rada ne može prešutno odobriti već odbijenu prijavu. `ReportWorkflow` koordinira operaciju bez preuzimanja pravila prijelaza stanja same prijave; `ReportRepository` definira potrebne operacije pohrane. Kompozicija `Location` i odabrani tipovi prikazuju veze korisne za oblikovanje. Dijagram namjerno izostavlja stupce baze podataka i nepovezane razrede: ER model objašnjava pohranjene podatke, dok ovaj dijagram dodjeljuje programske odgovornosti i operacije. Ti su razredi odluka oblikovanja, a ne obavezni slojevi za svaki tim. Završnu implementaciju usporedite s početnim oblikovanjem i ažurirajte dijagram tamo gdje su se odluke promijenile; generiranje dijagrama iz koda tek na kraju ne može zamijeniti ovo početno modeliranje.
 
 </details>
+
 
 ## 4.4 Ponašanje tijekom izvođenja
 
