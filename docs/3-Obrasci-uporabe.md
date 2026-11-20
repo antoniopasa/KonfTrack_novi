@@ -224,27 +224,6 @@ Vanjski sustav može biti sekundarni akter obrasca uporabe kada sudjeluje u ostv
 
 Povezivanje zahtjev → obrazac uporabe → ispitivanje održavajte **samo jednom, u [tablici sljedivosti zahtjeva](./2-Analiza-zahtjeva.md)**. Ovdje nemojte održavati drugu projektnu tablicu mapiranja ni stupac sa statusom implementacije. Ako važan zahtjev nema interakciju s ljudskim akterom, objasnite gdje se obrađuje umjesto izmišljanja aktera.
 
-<details>
-<summary><strong>Provjera pokrivenosti zahtjeva</strong></summary>
 
-**Primjer — CrisisMap:** Tablica pokrivenosti obrazaca uporabe koju treba analizirati:
-
-| Broj obrasca uporabe | Naziv obrasca uporabe    | Obuhvaćeni funkcijski zahtjevi                  |
-| -------------------- | ------------------------ | ----------------------------------------------- |
-| UC-001               | Registracija računa      | F-001: Registracija računa putem e-pošte        |
-| UC-002               | Prijava kriznog događaja | F-022: Prijava i provjera kriznog događaja      |
-| UC-003               | Sustav upozorenja        | F-045: Slanje upozorenja korisnicima i timovima |
-| UC-004               | Koordinacija spašavanja  | F-067: Koordinacija s hitnim službama           |
-
----
-
-**Problemi pokrivenosti koje treba riješiti:**
-
-- **Pogrešan ID zahtjeva:** ova tablica povezuje UC-002 s F-022, dok se opis UC-002 u odjeljku 3.2 poziva na F-004, zahtjev za podnošenje prijave iz odjeljka 2.1.
-- **Zahtjevi koji ne postoje:** F-022, F-045 i F-067 nisu definirani u oglednim zahtjevima u 2.1.
-- **Obrasci uporabe bez opisa:** UC-003 i UC-004 nemaju opis u 3.2. UC-004 (koordinacija s hitnim službama) ujedno je mogućnost s vanjskim posljedicama koju opseg dopušta samo ako je uključena u odobreni zadatak.
-- **Nesklad aktera:** primjer aktera u odjeljku 2.3 navodi da koordinator pomoći podnosi prijave (F-004), dok UC-002 kao primarnog aktera navodi građanina.
-
-</details>
 
 **Završna provjera:** Dijagram, specifikacije obrazaca uporabe i matrica sljedivosti međusobno su usklađeni. Svaki važan obrazac uporabe povezan je s postojećim zahtjevom, akteri odgovaraju stvarnim ulogama u aplikaciji, a opisani glavni i alternativni tijekovi odgovaraju ponašanju koje sustav stvarno podržava.
