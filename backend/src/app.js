@@ -8,6 +8,7 @@ const helmet = require("helmet");
 const authRoutes = require("./routes/authRoutes");
 const orcidRoutes = require("./routes/orcidRoutes");
 const paperRoutes = require("./routes/paperRoutes");
+const conferenceRoutes = require("./routes/conferenceRoutes");
 
 const app = express();
 
@@ -80,6 +81,7 @@ app.use("/", authRoutes);
 // ORCID rute
 app.use("/auth", orcidRoutes);
 app.use("/api/papers", paperRoutes);
+app.use("/api/conferences", conferenceRoutes);
 // Rute za radove
 //app.use("/auth", paperRoutes);
 // Pokretanje servera
