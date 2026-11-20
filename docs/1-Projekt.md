@@ -5,6 +5,7 @@
 ## 1.1 Problem i cilj projekta
 
 **Cilj:**
+<br>
 Problem:
 Organizacija znanstvenih konferencija često se oslanja na razmjenu e-mailova i sinkronizaciju tablica. Takav pristup dovodi do gubitka dokumenata, propuštanja strogih rokova, rizika od curenja identiteta autora tijekom recenzije, velike koordinacije i praćenju te otežane komunikacije između organizatora, recenzenata i autora.
 
