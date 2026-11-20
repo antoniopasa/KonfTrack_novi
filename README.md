@@ -182,15 +182,17 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 
 ## Članovi tima
 
-| Član tima | Uloga |
-|---|---|
-| Marta Šimić | Frontend |
-| Karla Tušek | Backend |
-| Antonio Pasarić | Frontend |
-| Gabrijela Stipić | Backend |
-| Mia Hrkać | Backend |
-| Marin Lukas Lončar | Baze podataka |
-| Pavla Čančar | Koordinator + Dokumentacija |
+| Član tima | Uloga | Fer-mail | Github profil |
+|---|---|---|---|
+| Marta Šimić | Frontend |  | [martasimic](https://github.com/martasimic) |
+| Karla Tušek | Backend || [karlatusek](https://github.com/karlatusek) |
+| Antonio Pasarić | Frontend || [antoniopasa](https://github.com/antoniopasa) |
+| Gabrijela Stipić | Backend || [gabrijelast](https://github.com/gabrijelast) |
+| Mia Hrkać | Backend || [miahrk](https://github.com/miahrk) |
+| Marin Lukas Lončar | Baze podataka || [RedSky42](https://github.com/RedSky42) |
+| Pavla Čančar | Koordinator + Dokumentacija || [pavlacancar](https://github.com/pavlacancar) |
+
+https://github.com/pavlacancar https://github.com/RedSky42
 
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
