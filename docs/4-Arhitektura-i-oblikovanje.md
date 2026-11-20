@@ -96,6 +96,7 @@ i ostalim povezanim entitetima.
 **ER dijagram:**
 
 ![ER dijagram sustava KonfTrack](konfTrackERD.png)
+**Slika 4.2. ER dijagram sustava KonfTrack**
 
 **Izvor dijagrama:**
 
@@ -107,14 +108,6 @@ Model podataka definiran je u PostgreSQL bazi,
 a njegova struktura opisana je u
 [Prisma shemi](../backend/prisma/schema.prisma).
 
-
-**Slika 4.2. ER dijagram podataka sustava CrisisMap**
-
-**PlantUML izvor:** [izvor](./puml/4-2-crisismap-data-ERD.puml)
-
-**Analiza primjera:** `R-104` ima jednog autora i jednu kategoriju; Ana i kategorija *Poplava* mogu biti povezane s više prijava. Dijagram prikazuje veze bez prepisivanja svih stupaca baze podataka ili pisanja drugog tabličnog opisa za svaki entitet. Ako aplikacija prihvaća i **anonimne** prijave, tu mogućnost prikažite u vezi s entitetom `Citizen`. Ako su kategorije fiksne vrijednosti, a ne pohranjeni zapisi, nemojte izmišljati tablicu kategorija. Završni ER dijagram usporedite s modelom trajne pohrane i objasnite samo razlike važne za razumijevanje projekta.
-
-</details>
 
 ### 4.3.2 Reprezentativni UML dijagram razreda
 
