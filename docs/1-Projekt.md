@@ -39,45 +39,38 @@ Korisničke uloge definiraju se prema potrebama sustava. Pojedini korisnik može
 **Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
 
 **Uključeno:**
-- Registracija i prijava adresom e-pošte ili ORCID računom, odjava i upravljanje profilom.
-- Korisničke uloge po konferenciji i provjera prava pristupa na poslužitelju.
-- Odobravanje konferencija, unos osnovnih podataka, tema i rokova te automatsko onemogućivanje radnji nakon isteka roka.
-- Predaja radova s koautorima i anonimiziranim PDF rukopisom, provjera PDF-a i DOI referenci (Crossref), revizija i predaja konačne verzije.
-- Pozivanje recenzenata, iskazivanje interesa, prepoznavanje sukoba interesa (uključujući koautorstvo prema podacima iz ORCID-a) i prijedlog raspodjele radova.
-- Dvostruko slijepa recenzija, rasprava recenzenata, podsjetnici e-poštom i označavanje recenzija koje kasne.
-- Odluke o radovima i obavijesti autorima prema predlošku poruke.
-- Program konferencije sa sekcijama, javna objava programa, osobni raspored s izvozom u Google Calendar i zbornik sažetaka u PDF formatu.
-- Validacija podataka i PDF dokumenata, uključujući provjeru formata, veličine, broja stranica i odabranih metapodataka dokumenta.
-- Provjera DOI referenci putem Crossref servisa.
-- Ručne provjere kroz Thunder Client
-- Uređivanje uloga i dopuštenja uloga prema bazi podataka
-- Stvaranje, pregled i uređivanje konferencija te upravljanje njihovim statusima, vidljivošću, znanstvenim temama i rokovima.
-- Evidentiranje odluka o radovima i obavještavanje korisnika o važnim događajima.
-- Upravljanje programom konferencije i osobnim rasporedom korisnika.
-- Generiranje zbornika radova u PDF formatu, u skladu sa zahtjevom projekta.
-- Uređivanje korisničkog profila, ako je trenutačno implementirano samo dohvaćanje profila.
-- Potpuna autorizacija na temelju uloga i prava pristupa, trenutačno samo provjera je li korisnik prijavljen
-- Automatizirani jedinični i integracijski testovi ključnih funkcionalnosti
-- Upravljanje programom konferencije i osobnim rasporedom korisnika.
-- Generiranje zbornika radova u PDF formatu, u skladu sa zahtjevom projekta.
 
-**Trenutno ostvareno:**
-Trenutačno ostvareno: registracija i prijava e-poštom i ORCID-om, odjava, uređivanje profila, JWT tokeni za API, javna početna stranica i stranica programa (s privremenim podacima) te sučelje registriranog korisnika (početna, obrazac za predaju rada, „Moji radovi” i kontakt), pri čemu predaja rada još nije povezana s poslužiteljem. Shema baze podataka obuhvaća sve entitete potrebne za ostale funkcionalnosti. Ostale uključene funkcionalnosti planirane su za sljedeće iteracije; pregled stanja nalazi se u README-u projekta.
+- Registracija i prijava adresom e-pošte ili ORCID računom, odjava i upravljanje korisničkim profilom.
+- Upravljanje korisničkim ulogama po konferenciji i provjera prava pristupa na poslužitelju.
+- Odobravanje konferencija, unos osnovnih podataka, znanstvenih tema i rokova te ograničavanje radnji nakon isteka odgovarajućih rokova.
+- Stvaranje, pregled i uređivanje konferencija te upravljanje njihovim statusima i vidljivošću.
+- Predaja znanstvenih radova s podacima o koautorima i PDF rukopisom, provjera PDF datoteka i DOI referenci putem servisa Crossref, upravljanje verzijama radova i predaja konačne verzije.
+- Pozivanje recenzenata, iskazivanje interesa za recenziranje, prepoznavanje mogućih sukoba interesa, uključujući provjeru koautorstva na temelju dostupnih podataka iz ORCID-a, te prijedlog raspodjele radova.
+- Provođenje dvostruko slijepog recenzijskog postupka, rasprava recenzenata, praćenje rokova recenziranja i slanje podsjetnika e-poštom.
+- Evidentiranje odluka o radovima i obavještavanje autora o važnim promjenama statusa.
+- Upravljanje programom konferencije, organizacija sekcija, javna objava programa i upravljanje osobnim rasporedom korisnika.
+- Generiranje zbornika sažetaka u PDF formatu, u skladu sa zahtjevima projektnog zadatka.
+- Validacija ulaznih podataka i PDF dokumenata, uključujući provjeru formata, veličine, broja stranica i odabranih metapodataka dokumenta.
+
+**Trenutačno ostvareno:**
+
+U trenutačnoj verziji sustava implementirane su registracija i prijava adresom e-pošte i ORCID računom, odjava, upravljanje korisničkim profilom te autentifikacija API zahtjeva putem JWT tokena. Implementirano je korisničko sučelje s javnim stranicama i sučeljem za registrirane korisnike, uključujući početnu stranicu, obrazac za predaju rada, pregled vlastitih radova i kontakt.
+
+Implementiran je poslužiteljski dio za predaju i obradu znanstvenih radova, uključujući provjeru PDF datoteka i DOI referenci putem servisa Crossref te pohranu podataka o radu, autorima i verzijama rada. Stanje pojedinih funkcionalnosti i eventualna ograničenja prikazani su u projektnom README-u i odgovarajućim tehničkim dnevnicima.
 
 **Izvan opsega ili odgođeno:**
-- Objavljivanje cjelovitog zbornika radova; sustav generira samo zbornik sažetaka koji traži projektni zadatak.
-- Integracija s vanjskim sustavima za plaćanje kotizacija, jer nije dio projektnog zadatka.
-- Napredne funkcionalnosti koje nisu potrebne za ostvarenje osnovnih procesa upravljanja konferencijama.
+
+- Objavljivanje cjelovitih tekstova radova u zborniku; projektni zadatak obuhvaća generiranje zbornika sažetaka u PDF formatu.
+- Napredne funkcionalnosti koje nisu potrebne za ostvarenje osnovnih procesa upravljanja znanstvenim konferencijama.
 
 **Vanjske ovisnosti:**
-- PostgreSQL sustav za upravljanje relacijskom bazom podataka, za pohranu korisnika, konferencija, radova, recenzija i povezanih podataka.
-- Poslužiteljsko okruženje za pokretanje web-aplikacije i lokalnu pohranu datoteka.
-- ORCID kao vanjski pružatelj identiteta za autentifikaciju putem OAuth 2.0 protokola.
-- Crossref API za provjeru DOI referenci.
-- Usluga za slanje obavijesti putem e-pošte, ako se koristi u implementaciji sustava.
-- GitHub za upravljanje verzijama izvornog koda i suradnju članova projektnog tima.
 
-
+- **PostgreSQL** — sustav za upravljanje relacijskom bazom podataka u kojoj se pohranjuju korisnici, konferencije, radovi, recenzije i povezani podaci.
+- **Poslužiteljsko okruženje** — potrebno za pokretanje web-aplikacije i pohranu datoteka.
+- **ORCID** — vanjski pružatelj identiteta za autentifikaciju korisnika putem protokola OAuth 2.0.
+- **Crossref API** — vanjski servis za provjeru DOI referenci i dohvat bibliografskih metapodataka.
+- **Usluga za slanje e-pošte** — koristi se za slanje obavijesti korisnicima, ako je uključena u trenutačno postavljeno okruženje.
+- **GitHub** — koristi se za upravljanje verzijama izvornog koda, praćenje zadataka i suradnju članova projektnog tima.
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
