@@ -187,7 +187,7 @@ dok podatkovni entiteti odgovaraju modelima Prisma ORM-a.
 
 **Slika 4.4. Sekvencijski dijagram podnošenja prijave kriznog događaja**
 
-**Scenarij:** [Naziv interakcije; dodajte UC ID ako postoji.]  
+**Scenarij:**  Predaja znanstvenog rada s provjerom PDF rukopisa i DOI oznaka (F-008, F-009, F-010) 
 **sekvencijski dijagram:** ![Sekvencijski dijagram](./assets/diagrams/4-4-konftrack-report-submission-SD.svg)  
 **PlantUML izvor:** [izvor](./puml/4-4-konftrack-report-submission-SD.puml)
 
