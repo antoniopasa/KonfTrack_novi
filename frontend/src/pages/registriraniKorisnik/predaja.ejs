@@ -12,10 +12,13 @@
       data-email="<%= korisnik.email %>">
   <fieldset>
     <div class="form-grid">
-      <div class="field">
-  <label for="konferencija">Konferencija (ID)</label>
-  <input id="konferencija" type="number" placeholder="npr. 1">
-</div>
+            <div class="field full">
+        <label for="konferencija">Konferencija</label>
+        <select id="konferencija">
+          <option value="">Učitavanje konferencija…</option>
+        </select>
+        <small id="konf-info" class="muted"></small>
+      </div>
       <div class="field full">
         <label for="naslov">Naslov rada</label>
         <input id="naslov" type="text" placeholder="Unesite naslov rada">
@@ -28,11 +31,8 @@
 
       <div class="field">
         <label for="tema">Tema</label>
-        <select id="tema">
-          <option>Odaberite temu</option>
-          <option>Tema 1</option>
-          <option>Tema 2</option>
-          <option>Tema 3</option>
+                <select id="tema" disabled>
+          <option value="">Najprije odaberite konferenciju</option>
         </select>
       </div>
 
@@ -43,19 +43,22 @@
 
       <div class="field full">
         <label>Koautori</label>
-        <div class="coauthor-row">
-          <input type="text" placeholder="Ime i prezime">
-          <input type="email" placeholder="E-pošta">
-          <button type="button" class="btn btn-secondary">Dodaj</button>
+          <div class="coauthor-row">
+          <input id="koautor-ime" type="text" placeholder="Ime i prezime">
+          <input id="koautor-email" type="email" placeholder="E-pošta">
+          <button type="button" id="dodajKoautora" class="btn btn-secondary">Dodaj</button>
         </div>
-        <div class="list-item muted">Još nema dodanih koautora.</div>
+        <div id="popisKoautora"></div>
+      </div>
+
+      <div class="field full">
+        <label for="reference">Reference s DOI oznakom (jedna po retku)</label>
+        <textarea id="reference" rows="3" placeholder="npr. 10.1038/nature14539"></textarea>
       </div>
 
       <div class="field">
         <label for="kontakt">Autor za kontakt</label>
-        <select id="kontakt">
-          <option><%= korisnik.ime %> <%= korisnik.prezime %></option>
-        </select>
+          <select id="kontakt"></select>
       </div>
 
       <div class="field">
@@ -68,7 +71,7 @@
     </div>
 
     <div class="form-actions">
-      <button type="button" class="btn btn-secondary">Spremi nacrt</button>
+      <button type="button" id="spremiNacrt" class="btn btn-secondary">Spremi nacrt</button>
       <button type="submit" class="btn btn-primary">Predaj rad</button>
     </div>
   </fieldset>

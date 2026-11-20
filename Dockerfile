@@ -13,4 +13,4 @@ RUN DATABASE_URL="postgresql://user:pass@localhost:5432/db" npx prisma generate
 ENV NODE_ENV=production
 EXPOSE 3000
 
-CMD ["sh", "-c", "npx prisma migrate deploy && node src/app.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node seedConferences.js && node src/app.js"]
