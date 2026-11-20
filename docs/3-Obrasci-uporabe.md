@@ -15,11 +15,13 @@ Zbog većeg broja funkcionalnosti, glavni dijagram ograničen je na pregled najv
 
 **PlantUML izvor:** [izvor](./puml/3-1-konftrack-system-UC.puml)
 
+
 ![Dijagram obrazaca uporabe sustava KonfTrack- Upravljanje recenziranjem](./assets/diagrams/3-2-konftrack-recenziranje-UC.svg)
 
 **Slika 3.2. Usmjereni dijagram obrazaca uporabe sustava KonfTrack - Upravljanje recenziranjem**
 
 **PlantUML izvor:** [izvor](./puml/3-2-konftrack-recenziranje-UC.puml)
+
 
 ![Dijagram obrazaca uporabe sustava KonfTrack- Upravljanje radovima](./assets/diagrams/3-3-konftrack-radovi-UC.svg)
 
@@ -27,11 +29,14 @@ Zbog većeg broja funkcionalnosti, glavni dijagram ograničen je na pregled najv
 
 **PlantUML izvor:** [izvor](./puml/3-3-konftrack-radovi-UC.puml)
 
+
 ![Dijagram obrazaca uporabe sustava KonfTrack - Izrada programa](./assets/diagrams/3-4-konftrack-program-UC.svg)
 
 **Slika 3.4. Usmjereni dijagram obrazaca uporabe sustava KonfTrack - Izrada programa**
 
 **PlantUML izvor:** [izvor](./puml/3-4-konftrack-program-UC.puml)
+
+
 
 **Provjera dijagrama:** Prikažite prepoznate uloge koje **komuniciraju s aplikacijom**, a ne dionike koji s njom nemaju interakciju. Svaki glavni korisnički cilj mora imati pridruženog aktera; uključeni obrazac uporabe može se dosegnuti preko drugog obrasca uporabe bez vlastite izravne veze s akterom. `<<include>>` i `<<extend>>` koristite samo kada odnos odgovara stvarnom ponašanju.
 
