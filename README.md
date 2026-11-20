@@ -114,11 +114,13 @@ Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li
 
 **Javno dostupna aplikacija:** https://konftrack1.onrender.com/
 
-**Isprobajte:** [Jedna ili dvije kratke radnje koje pokazuju funkcionalan korisnički tijek.]
+**Isprobajte:** Registrirajte se koristeći adresu e-pošte i lozinku te zatim prijavite u aplikaciju.Nakon prijave otvorite stranicu svojeg korisničkog profila i provjerite prikazuju li se podaci prijavljenog korisnika te pokušajte dodati svoj rad i povući ga. Pogledajte statistiku pod "Moji radovi" kako se mijenja dok predajete i zatim povlačite rad.
 
-**Demonstracija:** [Objasnite kako dobiti potreban ograničeni pristup ako je prijava obavezna; u suprotnom napišite „Korisnički račun nije potreban.” Ovdje ne objavljujte lozinke ni pristupne tokene.]
+**Demonstracija:** Za pristup funkcionalnostima namijenjenima registriranim korisnicima potrebno je izraditi korisnički račun putem obrasca za registraciju(e-poštom ili ORCID računom). Korisnik se nakon registracije može prijaviti adresom e-pošte i lozinkom. Za javni pregled početne stranice nije potrebna prijava. Prijavljeni korisnik ima mogućnost, predaje rada, pregleda rada i povlačenja rada.
 
-**Ograničenja:** [Kratko navedite ograničenja postavljene inačice ili postavite poveznicu na jedinstveno mjerodavno mjesto u dokumentaciji s poznatim problemima.]
+**Ograničenja:** Trenutačna inačica aplikacije predstavlja djelomično implementiran sustav. Funkcionalnosti registracije, prijave i dohvata korisničkog profila implementirane su, dok pojedini dijelovi sustava još nisu dovršeni ili potpuno povezani. Predaja znanstvenih radova kroz korisničko sučelje još nije potpuno integrirana s poslužiteljskim dijelom, a podaci na stranici programa trenutačno su privremeni. ORCID integracija koristi sandbox okruženje i njezina potpuna end-to-end provjera još nije potvrđena. Provjera metapodataka PDF dokumenta ne jamči potpunu anonimnost njegova sadržaja. Izdani JWT tokeni ostaju valjani do isteka svojeg 24-satnog trajanja, čak i nakon odjave korisnika.
+
+Detaljniji opis trenutačnih funkcionalnosti i poznatih ograničenja nalazi se u odjeljku Trenutačne funkcionalnosti ovog dokumenta.
 
 [Vodič za postavljanje i pokretanje](docs/6-Postavljanje-instalacija-i-konfiguracija.md) opisuje smještaj aplikacije (engl. hosting) koji tim stvarno koristi. Tim može koristiti Render ili drugu platformu koju ste dogovorili s asistentom/demonstratorom.
 
