@@ -230,8 +230,6 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 | Marin Luka Lončar | Baze podataka | 	ml010811167@fer.hr | [RedSky42](https://github.com/RedSky42) |
 | Pavla Čančar | Koordinator + Dokumentacija | pc56957@fer.hr | [pavlacancar](https://github.com/pavlacancar) |
 
-https://github.com/pavlacancar https://github.com/RedSky42
-
 
 Uloge se tijekom projekta mogu mijenjati. Pregled sastanaka, plana rada i doprinosa članova nalazi se u [dodatku A dokumentacije](./docs/A-Pregled-aktivnosti-grupe.md)
 
