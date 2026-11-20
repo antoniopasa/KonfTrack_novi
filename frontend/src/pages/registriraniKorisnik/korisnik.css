@@ -1,5 +1,5 @@
 :root {
-  --navy: #13395F;
+  --navy: #13395f;
   --navy-light: #1f4a75;
   --navy-dark: #0f2a47;
   --card: #ffffff;
@@ -25,7 +25,7 @@ body {
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
   font-size: var(--font-body);
   color: var(--text);
- background: linear-gradient(120deg, #a7b8cb 0%, #c3c9d6 50%, #f2b6cc 100%);
+  background: linear-gradient(120deg, #a7b8cb 0%, #c3c9d6 50%, #f2b6cc 100%);
   background-attachment: fixed;
   min-height: 100vh;
 }
@@ -47,7 +47,6 @@ body {
   top: 0;
   height: 100vh;
 }
-
 
 .sidebar .logo {
   display: flex;
@@ -157,7 +156,7 @@ body {
 
 /* ---------- Header ---------- */
 .page-header {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 .page-header h1 {
   font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", sans-serif;
@@ -476,6 +475,21 @@ fieldset:disabled .btn {
   color: #9b1c1c;
 }
 
+/* ---------- Predaja: kartica s rezultatom ---------- */
+#rezultat {
+  margin-top: 20px;
+}
+#rezultat .card p {
+  margin-bottom: 6px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+#rezultat a.btn {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {
   .grid-3 {
@@ -560,7 +574,6 @@ fieldset:disabled .btn {
   .filters select {
     width: 100%;
   }
-
 
   /* tablica kao kartice */
   .table thead {
