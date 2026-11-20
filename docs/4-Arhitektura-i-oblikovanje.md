@@ -109,13 +109,57 @@ a njegova struktura opisana je u
 [Prisma shemi](../backend/prisma/schema.prisma).
 
 
+**Slika 4.2. ER dijagram podataka sustava CrisisMap**
+
+**PlantUML izvor:** [izvor](./puml/4-2-crisismap-data-ERD.puml)
+
+**Analiza primjera:** `R-104` ima jednog autora i jednu kategoriju; Ana i kategorija *Poplava* mogu biti povezane s više prijava. Dijagram prikazuje veze bez prepisivanja svih stupaca baze podataka ili pisanja drugog tabličnog opisa za svaki entitet. Ako aplikacija prihvaća i **anonimne** prijave, tu mogućnost prikažite u vezi s entitetom `Citizen`. Ako su kategorije fiksne vrijednosti, a ne pohranjeni zapisi, nemojte izmišljati tablicu kategorija. Završni ER dijagram usporedite s modelom trajne pohrane i objasnite samo razlike važne za razumijevanje projekta.
+
+</details>
+
+
 ### 4.3.2 Reprezentativni UML dijagram razreda
 
-**Cilj:** Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
+Za reprezentativni dio oblikovanja sustava KonfTrack odabrana je
+funkcionalnost predaje i upravljanja znanstvenim radovima.
 
-**Dijagram razreda:** [Ugradite čitljiv UML dijagram razreda za reprezentativni dio oblikovanja.]  
-**PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]  
-**Referenca na kod pri završnom pregledu:** [Poveznica na odgovarajuću implementaciju.]
+Dijagram prikazuje osnovne entitete sustava, njihove atribute,
+operacije za upravljanje radovima te međusobne veze.
+
+**Dijagram razreda:**
+
+![UML dijagram razreda KonfTrack](./assets/diagrams/4-3-konftrack-paper-CD.svg)
+
+**PlantUML izvor:**
+
+[Izvorni UML dijagram](./puml/4-3-konftrack-paper-CD.puml)
+
+**Referenca na kod pri završnom pregledu:**
+
+[Kontroler za upravljanje radovima](../backend/src/controllers/paperController.js)
+
+[Prisma modeli podataka](../backend/prisma/schema.prisma)
+
+[Servis za provjeru PDF-a](../backend/src/services/pdfService.js)
+
+[Servis za provjeru DOI oznaka](../backend/src/services/crossrefService.js)
+
+**Objašnjenje oblikovanja:**
+
+Razredi Paper, Conference, User, PaperAuthor i PaperVersion
+predstavljaju osnovne podatkovne entitete sustava.
+Njihove veze prikazane su asocijacijama s odgovarajućim
+kardinalnostima.
+
+PaperController odgovoran je za spremanje nacrta,
+predaju, dohvat, uređivanje i povlačenje znanstvenih radova.
+
+Prilikom predaje rada koristi PdfService za provjeru
+rukopisa i CrossrefService za provjeru DOI oznaka.
+Ove ovisnosti prikazane su isprekidanim strelicama.
+
+Kontroler i servisi predstavljaju logičke JavaScript module,
+dok podatkovni entiteti odgovaraju modelima Prisma ORM-a.
 
 <details>
 <summary><strong>Oblikovanje odgovornosti prijave i dopuštenih promjena</strong></summary>
@@ -131,6 +175,7 @@ a njegova struktura opisana je u
 **Analiza primjera:** `DisasterReport` sadrži dopuštena pravila promjene stanja pa tijek rada ne može prešutno odobriti već odbijenu prijavu. `ReportWorkflow` koordinira operaciju bez preuzimanja pravila prijelaza stanja same prijave; `ReportRepository` definira potrebne operacije pohrane. Kompozicija `Location` i odabrani tipovi prikazuju veze korisne za oblikovanje. Dijagram namjerno izostavlja stupce baze podataka i nepovezane razrede: ER model objašnjava pohranjene podatke, dok ovaj dijagram dodjeljuje programske odgovornosti i operacije. Ti su razredi odluka oblikovanja, a ne obavezni slojevi za svaki tim. Završnu implementaciju usporedite s početnim oblikovanjem i ažurirajte dijagram tamo gdje su se odluke promijenile; generiranje dijagrama iz koda tek na kraju ne može zamijeniti ovo početno modeliranje.
 
 </details>
+
 
 ## 4.4 Ponašanje tijekom izvođenja
 

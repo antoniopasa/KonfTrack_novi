@@ -1,0 +1,68 @@
+@startuml
+title KonfTrack - Upravljanje radovima
+
+class Conference {
+  -id: int
+  -name: String
+  -submissionDeadline: DateTime
+  -maxPages: int
+}
+
+class Paper {
+  -id: int
+  -title: String
+  -abstract: String
+  -status: String
+}
+
+Conference "0..1" -- "0..*" Paper
+
+class PaperAuthor {
+  -id: int
+  -invitedName: String
+  -invitedEmail: String
+  -isContactAuthor: Boolean
+}
+
+class PaperVersion {
+  -id: int
+  -versionNumber: int
+  -versionType: String
+  -filePath: String
+}
+Paper "1" -- "0..*" PaperAuthor
+Paper "1" -- "0..*" PaperVersion
+
+
+class User {
+  -id: int
+  -firstName: String
+  -lastName: String
+  -email: String
+}
+
+class PaperController <<controller>> {
+  +saveDraft()
+  +submitPaper()
+  +getMyPapers()
+  +getPaper()
+  +updatePaper()
+  +withdrawPaper()
+}
+PaperController ..> Paper : upravlja
+User "0..1" -- "0..*" PaperAuthor
+
+
+class PdfService <<service>> {
+  +validatePdf()
+}
+
+class CrossrefService <<service>> {
+  +verifyDoi()
+}
+
+PaperController ..> PdfService : koristi
+PaperController ..> CrossrefService : koristi
+
+
+@enduml
