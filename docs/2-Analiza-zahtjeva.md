@@ -200,7 +200,7 @@ Ograničenje je uvjet koji tim mora poštovati; pretpostavka je uvjet na koji se
 | 4. 11. 2026.  | F-017                        | **Precizirano je postupanje pri zamjeni recenzenta.** Predsjednik programskog odbora može zamijeniti prethodno dodijeljenog recenzenta drugim recenzentom, pri čemu se rad uklanja iz dodjele prethodnog recenzenta i dodjeljuje novom. Zamijenjeni recenzent gubi pristup radu i ne može sudjelovati u daljnjem postupku odlučivanja o njemu.                                                                                     | Dogovoreno s profesorom putem e-maila, točka 3.      |
 | 10. 11. 2026. | F-010                        | U opseg projekta uključena je provjera DOI referenci putem Crossref API-ja kako bi se autorima omogućila provjera bibliografskih referenci tijekom predaje rada.                                                                                                                                                                                                                                                                   | Dogovor projektnog tima                              |
 | 19. 11. 2026. | F-012                        | Popis statusa rada dopunjen je statusom „povučen”, jer F-011 zahtijeva da povučeni rad ostane evidentiran, a implementacija takve radove označava statusom `withdrawn`.                                                                                                                                                                                                                                                            | Usklađivanje dokumentacije s F-011 i implementacijom |
-| 19. 11. 2026. | F-001 – F-025, NF-01 – NF-08 | **Objedinjeni su i ponovno numerirani zahtjevi.** Srodni zahtjevi spojeni su u veće cjeline (70 → 25 funkcijskih i 14 → 8 nefunkcijskih zahtjeva). Opseg aplikacije nije promijenjen. Svi dokumenti i tablica sljedivosti u 2.6 ažurirani su na nove oznake.                                                                                                                                                                       | Dogovor projektnog tima                              |
+| 19. 11. 2026. | F-001 – F-025, NF-01 – NF-08 | **Objedinjeni su i ponovno numerirani zahtjevi.** Srodni zahtjevi spojeni su u veće cjeline (70 → 25 funkcijskih i 14 → 8 nefunkcijskih zahtjeva). Opseg aplikacije nije promijenjen. Svi dokumenti i tablica sljedivosti u 2.6 ažurirani su na nove oznake.                                                                                                                                                                       | Povratna informacija asistenta na Iteraciji 1 (19. 11. 2026.)                           |
 
 <details>
 <summary><strong>Primjer značajne promjene</strong></summary>
@@ -279,9 +279,9 @@ Ograničenje je uvjet koji tim mora poštovati; pretpostavka je uvjet na koji se
 
 | Kontrolna točka | Povratna informacija ili nalaz | Odluka o zahtjevu ili opsegu |
 | --------------- | ------------------------------ | ---------------------------- |
-| Iteracija 1     | [Povratna informacija]         | [Odluka; vidi odjeljak 2.5]  |
-| Demo 2          | [Povratna informacija]         | [Odluka; vidi odjeljak 2.5]  |
-| Završni pregled | [Povratna informacija]         | [Odluka; vidi odjeljak 2.5]  |
+| Iteracija 1 | Asistent je upozorio da je funkcijskih i nefunkcijskih zahtjeva previše i da su presitno razlomljeni. | Srodni zahtjevi objedinjeni su u 25 funkcijskih i 8 nefunkcijskih zahtjeva, bez promjene opsega aplikacije. Obrasci uporabe, README i tablica sljedivosti ažurirani su na nove oznake; vidi odjeljak 2.5 (19. 11. 2026.). |
+| Demo 2 | Kontrolna točka još nije održana. | — |
+| Završni pregled | Kontrolna točka još nije održana. | — |
 
 <details>
 <summary><strong>Odluke o zahtjevima nakon pregleda</strong></summary>

@@ -30,7 +30,6 @@ Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano
 | Prijava putem ORCID-a (OAuth 2.0, *authorization code*) uz prijavu e-poštom i lozinkom | Samo prijava e-poštom i lozinkom | Korisnici su znanstvenici koji uglavnom već imaju ORCID iD. Prijava ORCID-om pouzdano povezuje račun s identitetom istraživača, što je preduvjet za provjeru sukoba interesa na temelju koautorstva. Kompromis: ovisnost o vanjskoj usluzi i odvojene postavke za sandbox i produkcijsko okruženje; korisnik koji se prijavljuje samo ORCID-om nema lozinku pa token dobiva isključivo kroz web-prijavu. |
 | PDF datoteke radova pohranjuju se u datotečni sustav poslužitelja, a baza čuva putanju; svaka predaja stvara novu verziju rada (`paper_versions`) | Pohrana PDF-a u bazi (`bytea`) ili u objektnoj pohrani (npr. S3) | Baza ostaje mala, a datoteke nisu javno dostupne jer se mapa `uploads/` ne poslužuje kao statički sadržaj. Pristup datoteci zato mora proći provjeru ovlasti na poslužitelju. Recenzija je vezana uz konkretnu verziju, pa nakon revizije ostaje jasno koju je verziju recenzent ocijenio. Kompromis: datoteke se ne nalaze u sigurnosnoj kopiji baze, a na platformi s privremenim datotečnim sustavom mogu se izgubiti pri ponovnom postavljanju (vidi 4.7). |
 | Anonimnost dvostruko slijepe recenzije provodi poslužitelj | Skrivanje podataka o autorima samo u korisničkom sučelju | Ako se podaci o autorima samo skrivaju u sučelju, i dalje se mogu pročitati iz API odgovora, naziva datoteke ili metapodataka PDF-a. Zato poslužitelj recenzentu ne vraća podatke o autorima, datoteke se spremaju pod generiranim nazivima, a pri predaji se provjerava sadrže li metapodaci PDF-a ime autora. Kompromis: svaki upit koji vraća podatke recenzentu mora se zasebno filtrirati, a provjera metapodataka samo upozorava i ne može otkriti ime autora u samom tekstu rada. |
-|  |  |  |
 
 Objasnite glavne arhitekturne odluke bez ponavljanja popisa tehnologija. Ako važna odluka ima ADR, dovoljno je u tablici navesti njegov ID.
 
@@ -97,6 +96,7 @@ i ostalim povezanim entitetima.
 **ER dijagram:**
 
 ![ER dijagram sustava KonfTrack](konfTrackERD.png)
+**Slika 4.2. ER dijagram sustava KonfTrack**
 
 **Izvor dijagrama:**
 
@@ -185,9 +185,11 @@ dok podatkovni entiteti odgovaraju modelima Prisma ORM-a.
 
 **Cilj:** Prikazati redoslijed poruka za jedan reprezentativni scenarij i odgovore na važnu alternativu.
 
+**Slika 4.4. Sekvencijski dijagram podnošenja prijave kriznog događaja**
+
 **Scenarij:** [Naziv interakcije; dodajte UC ID ako postoji.]  
-**sekvencijski dijagram:** [Ugradite čitljiv UML sekvencijski dijagram.]  
-**PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]
+**sekvencijski dijagram:** ![Sekvencijski dijagram](./assets/diagrams/4-4-konftrack-report-submission-SD.svg)  
+**PlantUML izvor:** [izvor](./puml/4-4-konftrack-report-submission-SD.puml)
 
 <details>
 <summary><strong>Odabir lokacije, provjera valjanosti i podnošenje prijave</strong></summary>

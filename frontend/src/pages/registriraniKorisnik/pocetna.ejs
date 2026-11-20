@@ -9,29 +9,29 @@
 <section class="grid grid-3">
   <div class="card">
     <h3>Moji radovi</h3>
-    <div class="stat-row"><span>Ukupno predano</span><strong>–</strong></div>
-    <div class="stat-row"><span>U recenziji</span><strong>–</strong></div>
-    <div class="stat-row"><span>Prihvaćeno</span><strong>–</strong></div>
+    <div class="stat-row"><span>Ukupno predano</span><strong id="statUkupno">–</strong></div>
+    <div class="stat-row"><span>U recenziji</span><strong id="statRecenzija">–</strong></div>
+    <div class="stat-row"><span>Prihvaćeno</span><strong id="statPrihvaceno">–</strong></div>
   </div>
 
   <div class="card">
-          <section class="vazniDatumi">
-            <h2>Važni datumi</h2>
-            <ul>
-              <li><span>Predaja radova</span><strong>—</strong></li>
-              <li><span>Recenzije</span><strong>—</strong></li>
-              <li><span>Obavijest autorima</span><strong>—</strong></li>
-              <li><span>Predaja konačnih verzija</span><strong>—</strong></li>
-            </ul>
-          </section>
+    <section class="vazniDatumi">
+      <h2>Važni datumi</h2>
+      <ul>
+        <li><span>Predaja radova</span><strong id="datumPredaja">—</strong></li>
+        <li><span>Recenzije</span><strong id="datumRecenzije">—</strong></li>
+        <li><span>Obavijest autorima</span><strong id="datumObavijest">—</strong></li>
+        <li><span>Predaja konačnih verzija</span><strong id="datumKonacne">—</strong></li>
+      </ul>
+    </section>
   </div>
 
   <div class="card">
     <h3>Brze akcije</h3>
     <a href="/korisnik/predaja" class="list-item link">Predaj novi rad</a>
     <a href="/korisnik/moji-radovi" class="list-item link">Pregledaj predane radove</a>
-    <a href="/korisnik/kontakt" class="list-item link">Kontaktiraj organizatore</a>
   </div>
 </section>
 
+<script src="/registriraniKorisnik/pocetna.js" defer></script>
 <%- include('footer') %>
