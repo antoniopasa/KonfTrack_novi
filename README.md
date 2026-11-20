@@ -233,7 +233,7 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 https://github.com/pavlacancar https://github.com/RedSky42
 
 
-Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
+Uloge se tijekom projekta mogu mijenjati. Pregled sastanaka, plana rada i doprinosa članova nalazi se u [dodatku A dokumentacije](./docs/A-Pregled-aktivnosti-grupe.md)
 
 ## Doprinos projektu
 
