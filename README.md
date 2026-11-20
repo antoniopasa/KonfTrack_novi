@@ -184,13 +184,13 @@ Obrazloženje ključnih arhitekturnih odluka nalazi se u [poglavlju 4.1 – Klju
 
 | Član tima | Uloga | Fer-mail | Github profil |
 |---|---|---|---|
-| Marta Šimić | Frontend |  | [martasimic](https://github.com/martasimic) |
-| Karla Tušek | Backend || [karlatusek](https://github.com/karlatusek) |
-| Antonio Pasarić | Frontend || [antoniopasa](https://github.com/antoniopasa) |
-| Gabrijela Stipić | Backend || [gabrijelast](https://github.com/gabrijelast) |
-| Mia Hrkać | Backend || [miahrk](https://github.com/miahrk) |
-| Marin Lukas Lončar | Baze podataka || [RedSky42](https://github.com/RedSky42) |
-| Pavla Čančar | Koordinator + Dokumentacija || [pavlacancar](https://github.com/pavlacancar) |
+| Marta Šimić | Frontend | ms57042@fer.hr | [martasimic](https://github.com/martasimic) |
+| Karla Tušek | Backend | kt56735@fer.hr | [karlatusek](https://github.com/karlatusek) |
+| Antonio Pasarić | Frontend | ap56979@fer.hr | [antoniopasa](https://github.com/antoniopasa) |
+| Gabrijela Stipić | Backend | 	gs57113@fer.hr | [gabrijelast](https://github.com/gabrijelast) |
+| Mia Hrkać | Backend | mh56916@fer.hr | [miahrk](https://github.com/miahrk) |
+| Marin Lukas Lončar | Baze podataka | 	ml010811167@fer.hr | [RedSky42](https://github.com/RedSky42) |
+| Pavla Čančar | Koordinator + Dokumentacija | pc56957@fer.hr | [pavlacancar](https://github.com/pavlacancar) |
 
 https://github.com/pavlacancar https://github.com/RedSky42
 
