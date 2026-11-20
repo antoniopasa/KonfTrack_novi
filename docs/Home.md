@@ -10,8 +10,6 @@
 
 **Cilj:** KonfTrack je web-aplikacija namijenjena organizaciji i upravljanju znanstvenim konferencijama. Namijenjena je autorima znanstvenih radova, recenzentima, predsjednicima programskih odbora i administratorima konferencija. Cilj aplikacije je objediniti upravljanje konferencijama, predaju i recenziranje znanstvenih radova, praćenje njihova životnog ciklusa te donošenje odluka o prihvaćanju radova.
 
-[Opis projekta.]
-
 <details>
 <summary><strong>Sažet pregled projekta</strong></summary>
 
@@ -50,6 +48,7 @@ Dokumentacija se kontinuirano ažurira kako se aplikacija razvija.
 
 ## Organizacija projekta i razvojni proces
 
+Trenutno se nalazi na početnom [README.md](https://github.com/pavlacancar/KonfTrack#)
 **Način rada:** [Stvarni način rada i trajanje iteracije, ako je relevantno.]  
 **Praćenje trenutačnih zadataka i nedostataka:** [Poveznica na GitHub Issues ili stvarno korištenu ploču zadataka.]
 
@@ -86,7 +85,7 @@ README repozitorija sadrži projektnu [izjavu o uporabi umjetne inteligencije](.
 Kratak sažetak: [README – Uporaba umjetne inteligencije](../README.md#uporaba-umjetne-inteligencije). Ovaj odjeljak bilježi koji su alati korišteni, za koju dokumentaciju ili kod te kako je tim provjerio rezultat. Slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencije](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf).
 
 ### Korišteni alati
-
+Trenutno se nalazi na početnom [README.md](https://github.com/pavlacancar/KonfTrack#)
 | Alat | Inačica ili model | Koristio/la | Glavna svrha |
 | --- | --- | --- | --- |
 | [Naziv alata] | [Inačica ili model, ako je poznat] | [Član/članovi tima] | [npr. izrada nacrta dokumentacije, generiranje izvora dijagrama] |

@@ -148,9 +148,11 @@ a njegova struktura opisana je u
 
 **Cilj:** Prikazati redoslijed poruka za jedan reprezentativni scenarij i odgovore na važnu alternativu.
 
+**Slika 4.4. Sekvencijski dijagram podnošenja prijave kriznog događaja**
+
 **Scenarij:** [Naziv interakcije; dodajte UC ID ako postoji.]  
-**sekvencijski dijagram:** [Ugradite čitljiv UML sekvencijski dijagram.]  
-**PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]
+**sekvencijski dijagram:** ![Sekvencijski dijagram](./assets/diagrams/4-4-konftrack-report-submission-SD.svg)  
+**PlantUML izvor:** [izvor](./puml/4-4-konftrack-report-submission-SD.puml)
 
 <details>
 <summary><strong>Odabir lokacije, provjera valjanosti i podnošenje prijave</strong></summary>

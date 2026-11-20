@@ -1,181 +1,121 @@
 
-
-' UC_Upravljanje_radovima_v1.puml
+' ==============================================================================
+' Datoteka: upravljanje_radovima.puml
 '
-' Svrha:    Prikazuje funkcionalnosti vezane uz životni ciklus
-'           znanstvenih radova u sustavu KonfTrack, od kreiranja
-'           nacrta i predaje rada do revizije, povlačenja i predaje
-'           konačne verzije. Interna logika, pohrana podataka i
-'           korisničko sučelje nisu obuhvaćeni.
+' Svrha:    Detaljnije prikazuje predaju i upravljanje životnim ciklusom
+'           znanstvenih radova u sustavu KonfTrack.
 ' Autor:    Pavla Čančar
-' AI:       Dijagram je izrađen uz pomoć AI alata. AI je pomogao
-'           u izradi i reviziji i obolikovanju vizualno ugodnog prikaza; autor je pregledao i odgovara
-'           za konačni sadržaj.
-' Zahtjevi: F-019 do F-032 (svaki slučaj korištenja ima ID za
-'           praćenje prema funkcionalnim zahtjevima)
+' AI:       AI je pomogao u strukturiranju i reviziji dijagrama;
+'           autorica je pregledala i odgovara za konačni sadržaj.
+' Zahtjevi: UC-06.1 do UC-06.8; F-008 do F-012
 '
 ' Diagram level: System Requirements
 ' Diagram type:  Use Case Diagram
-' Version:       1.2
+' Version:       2.0
+' ==============================================================================
 
-' ============================================================
-
-@startuml UC_Upravljanje_radovima
-
-title Upravljanje radovima
-
+@startuml
+title Sustav KonfTrack – upravljanje radovima
 top to bottom direction
 
-skinparam backgroundColor white
 skinparam shadowing false
 skinparam defaultFontName Arial
-skinparam defaultFontSize 12
 skinparam ArrowColor #212529
-skinparam ActorBorderColor #212529
-skinparam ActorBackgroundColor #F2F2F2
-skinparam UseCaseBorderColor #3973AC
-skinparam UseCaseBackgroundColor #DCEAF7
-skinparam RectangleBorderColor #212529
+skinparam nodesep 25
+skinparam ranksep 35
 
-actor "Autor" as Author
-actor "Crossref" as Crossref <<external system>>
-
-rectangle "KonfTrack" {
-
-    package "1. Priprema rada" {
-
-        usecase "UC-A01\nKreiranje i spremanje\nnacrta rada" as UCA_01
-
-        usecase "UC-A02\nUnos metapodataka rada" as UCA_02
-
-        usecase "UC-A03\nUpravljanje koautorima" as UCA_03
-
-        usecase "UC-A04\nOdređivanje korespondentnog autora" as UCA_04
-    }
-
-    package "2. Predaja rada i provjere" {
-
-        usecase "UC-A05\nPrilaganje anonimizirane\nPDF datoteke rada" as UCA_05
-
-        usecase "UC-A06\nProvjera formata i\nbroja stranica PDF-a" as UCA_06
-
-        usecase "UC-A07\nProvjera metapodataka\nPDF datoteke" as UCA_07
-
-        usecase "UC-A08\nProvjera DOI referenci" as UCA_08
-
-        usecase "UC-A09\nPredaja rada" as UCA_09
-    }
-
-    package "3. Upravljanje predanim radom" {
-
-        usecase "UC-A10\nPregled vlastitih radova" as UCA_10
-
-        usecase "UC-A11\nUređivanje predanog rada\n==\nUređivanje nije dopušteno\n tijekom recenziranja" as UCA_11
-
-        usecase "UC-A12\nPovlačenje rada" as UCA_12
-
-        usecase "UC-A18\nObavještavanje recenzenata\no povlačenju rada" as UCA_18
-    }
-
-    package "4. Revizija i konačna verzija" {
-
-        usecase "UC-A13\nPredaja revidirane\nverzije rada" as UCA_13
-
-        usecase "UC-A14\nPrilaganje dokumenta s\nodgovorima na recenzije" as UCA_14
-
-        usecase "UC-A15\nPredaja konačne\nneanonimizirane verzije rada" as UCA_15
-
-        usecase "UC-A16\nPrilaganje potpisane izjave\no autorskim pravima" as UCA_16
-
-        usecase "UC-A17\nOdređivanje izlagača rada" as UCA_17
-    }
+skinparam actor {
+    BackgroundColor #F8F9FA
+    BorderColor #212529
+    BackgroundColor<<external system>> #FFF3CD
+    BorderColor<<external system>> #856404
 }
 
-' ------------------------------------------------------------
-' Povezanost aktera i slučajeva korištenja
-' ------------------------------------------------------------
+skinparam usecase {
+    BackgroundColor #E7F1FF
+    BorderColor #0D6EFD
+}
 
-Author -- UCA_01
-Author -- UCA_02
-Author -- UCA_03
-Author -- UCA_04
-Author -- UCA_05
-Author -- UCA_09
-Author -- UCA_10
-Author -- UCA_11
-Author -- UCA_12
-Author -- UCA_13
-Author -- UCA_14
-Author -- UCA_15
-Author -- UCA_16
-Author -- UCA_17
+' ==============================================================================
+' Primarni i sekundarni akteri
+' ==============================================================================
 
-Crossref -- UCA_08
+actor Author as "Autor"
+actor Crossref <<external system>>
 
-' ------------------------------------------------------------
-' Odnosi include
-' ------------------------------------------------------------
+' ==============================================================================
+' Granica sustava
+' ==============================================================================
 
-' Predaja rada uključuje potrebne podatke i dokumentaciju
-UCA_09 ..> UCA_02 : <<include>>
-UCA_09 ..> UCA_03 : <<include>>
-UCA_09 ..> UCA_04 : <<include>>
-UCA_09 ..> UCA_05 : <<include>>
-UCA_09 ..> UCA_08 : <<include>>
+rectangle "Sustav KonfTrack – upravljanje radovima" {
 
-' Provjere priložene PDF datoteke
-UCA_05 ..> UCA_06 : <<include>>
-UCA_05 ..> UCA_07 : <<include>>
+    (UC-06.1\nKreiranje i spremanje nacrta rada) as UC_061
 
-' Revidirana verzija uključuje novu datoteku
-' i dokument s odgovorima na recenzije
-UCA_13 ..> UCA_05 : <<include>>
-UCA_13 ..> UCA_14 : <<include>>
+    (UC-06.2\nUnos podataka o radu,\nautorima i koautorima) as UC_062
 
-' Konačna verzija uključuje izjavu i određivanje izlagača
-UCA_15 ..> UCA_16 : <<include>>
-UCA_15 ..> UCA_17 : <<include>>
+    (UC-06.3\nPrilaganje i provjera PDF rukopisa) as UC_063
 
-' Povlačenje rada pokreće obavještavanje recenzenata
-UCA_12 ..> UCA_18 : <<include>>
+    (UC-06.4\nProvjera DOI referenci) as UC_064
 
-' ------------------------------------------------------------
-' Pomoćne veze za raspored elemenata
-' ------------------------------------------------------------
+    (UC-06.5\nPredaja rada) as UC_065
 
-UCA_01 -[hidden]down-> UCA_02
-UCA_02 -[hidden]down-> UCA_03
-UCA_03 -[hidden]down-> UCA_04
+    (UC-06.6\nPregled i praćenje statusa rada) as UC_066
 
-UCA_05 -[hidden]down-> UCA_06
-UCA_06 -[hidden]down-> UCA_07
-UCA_07 -[hidden]down-> UCA_08
-UCA_08 -[hidden]down-> UCA_09
+    (UC-06.7\nUređivanje i povlačenje rada) as UC_067
 
-UCA_10 -[hidden]down-> UCA_11
-UCA_11 -[hidden]down-> UCA_12
-UCA_12 -[hidden]down-> UCA_18
+    (UC-06.8\nPredaja revidirane i konačne verzije rada) as UC_068
+}
 
-UCA_13 -[hidden]down-> UCA_14
-UCA_14 -[hidden]down-> UCA_15
-UCA_15 -[hidden]down-> UCA_16
-UCA_16 -[hidden]down-> UCA_17
+' ==============================================================================
+' Asocijacije aktera i slučajeva uporabe
+' ==============================================================================
 
-' ------------------------------------------------------------
-' Mogući statusi rada
-' ------------------------------------------------------------
+Author -- UC_061
+Author -- UC_062
+Author -- UC_063
+Author -- UC_064
+Author -- UC_065
+Author -- UC_066
+Author -- UC_067
+Author -- UC_068
 
-note bottom of UCA_10
-  Mogući statusi rada:
-  - Nacrt
-  - Predan
-  - U recenziranju
-  - Potrebna dorada
-  - Prihvaćen
-  - Odbijen
-  - Konačna verzija predana
-  - Uvršten u program
-  - Povucen
+Crossref -- UC_064
+
+' ==============================================================================
+' Veze između slučajeva uporabe
+' ==============================================================================
+
+' Predaja rada podrazumijeva unos podataka i prilaganje rukopisa.
+UC_065 ..> UC_062 : <<include>>
+UC_065 ..> UC_063 : <<include>>
+
+' Provjera DOI referenci provodi se u sklopu predaje rada.
+UC_065 ..> UC_064 : <<include>>
+
+' Revidirana i konačna verzija dio su životnog ciklusa rada.
+' Njihovi posebni dokumenti i uvjeti opisani su u specifikaciji.
+
+' ==============================================================================
+' Napomene
+' ==============================================================================
+
+note right of UC_063
+  Provjera PDF rukopisa obuhvaća:
+  - format datoteke
+  - broj stranica
+  - upozorenja vezana uz metapodatke
+end note
+
+note right of UC_067
+  Uređivanje je dopušteno
+  u skladu s pravilima i rokovima.
+  Povlačenje je moguće prije prihvaćanja,
+  uključujući razdoblje recenziranja.
+end note
+
+note bottom of UC_068
+  Obuhvaća predaju revidirane verzije
+  i predaju konačne verzije rada.
 end note
 
 @enduml

@@ -1,20 +1,22 @@
 
-
-
-
 ' ==============================================================================
 ' 3-1-konftrack-system-UC_v1.puml
 '
-' Svrha:    Prikazuje glavne aktere i ciljeve korištenja sustava KonfTrack te
-'           vanjske sustave s kojima KonfTrack komunicira. Detaljni prikazi nalaze se u zasebnim usmjerenim dijagramima.
-' Autor:    [Pavla Čančar]
-' AI:       AI je pomogao reviziji dijagrama koji je izradio autor te u usklađivanju izgleda koda s predloškom koji nam je zadan kao primejr;autor je pregledao
-'           sadržaj i odgovara za konačni sadržaj.
-' Zahtjevi: F-001 do F-070
+' Svrha:    Prikazuje tko i s kojim ciljem koristi sustav KonfTrack
+'           (korisnici, administratori, predsjednici programskog odbora,
+'           autori i recenzenti) te koje vanjske sustave sustav koristi.
+'           Interna logika, pohrana podataka i korisničko sučelje
+'           namjerno nisu obuhvaćeni (kasniji modeli).
+'
+' Autor:    Tim KonfTrack, kolegij Programsko inženjerstvo
+' AI:       AI je pomogao u strukturiranju i reviziji dijagrama;
+'           autori su pregledali i odgovaraju za konačni sadržaj.
+' Zahtjevi: UC-01 do UC-13 (svaki slučaj uporabe ima ID za praćenje
+'           prema funkcijskim zahtjevima, implementaciji i testovima)
 '
 ' Diagram level: System Requirements
 ' Diagram type:  Use Case Diagram
-' Version:       1.1
+' Version:       1.0
 ' ==============================================================================
 
 @startuml
@@ -41,27 +43,25 @@ skinparam usecase {
 ' Primarni akteri
 ' ==============================================================================
 
-actor "Neregistrirani korisnik" as Visitor
-actor "Registrirani korisnik" as User
-actor "Administrator sustava" as Admin
-actor "Predsjednik programskog\nodbora" as Chair
-actor Autor as Author
-actor Recenzent as Reviewer
+' Akteri predstavljaju korisničke uloge, a ne stanja prijave.
+' Specijalizirane uloge nasljeđuju mogućnosti registriranog korisnika.
 
-' Autor, recenzent, administrator i predsjednik programskog odbora
-' specijalizacije su registriranog korisnika. Ista osoba može imati
-' različite uloge na različitim konferencijama.
+actor User as "Registrirani korisnik"
+actor Visitor as "Neregistrirani korisnik"
+actor Admin as "Administrator sustava"
+actor Chair as "Predsjednik programskog\nodbora"
+actor Author as "Autor"
+actor Reviewer as "Recenzent"
 
 Admin -|> User
 Chair -|> User
 Author -|> User
 Reviewer -|> User
 
-' Samo za raspored aktera.
+' Samo za raspored aktera na dijagramu.
 Admin -[hidden]down-> Chair
 Chair -[hidden]down-> Author
 Author -[hidden]down-> Reviewer
-Visitor -[hidden]down-> User
 
 ' ==============================================================================
 ' Sekundarni akteri (vanjski sustavi)
@@ -69,7 +69,7 @@ Visitor -[hidden]down-> User
 
 actor ORCID <<external system>>
 actor Crossref <<external system>>
-actor "Google Calendar" as GoogleCalendar <<external system>>
+actor "Google Calendar" as Calendar <<external system>>
 
 ' ==============================================================================
 ' Granica sustava
@@ -77,109 +77,91 @@ actor "Google Calendar" as GoogleCalendar <<external system>>
 
 rectangle "Sustav KonfTrack" as KonfTrack {
 
-    ' Pristup i korisnički račun
-    (UC-01\nRegistracija) as UC_Register
-    (UC-02\nPrijava u sustav) as UC_Login
-    (UC-23\nOdjava iz sustava) as UC_Logout
-    (UC-03\nPregled javne stranice\nkonferencije) as UC_PublicPage
-    (UC-04\nUpravljanje profilom) as UC_Profile
+    ' Korisnički računi i administracija
+    (UC-01\nUpravljanje računom\ni profilom) as UC_Account
+    (UC-02\nAdministriranje korisnika\ni ovlasti) as UC_Administration
+    (UC-03\nOdobravanje konferencije) as UC_Approval
 
-    ' Administracija i upravljanje konferencijom
-    (UC-05\nUpravljanje korisnicima i\npostavkama platforme) as UC_Admin
-    (UC-06\nOdobravanje konferencije\ni imenovanje predsjednika) as UC_Approve
-    (UC-07\nUpravljanje konferencijom) as UC_Conference
+    ' Upravljanje konferencijom i javne informacije
+    (UC-04\nUpravljanje konferencijom) as UC_Conference
+    (UC-05\nPregled i objava\njavnih informacija) as UC_PublicInfo
 
-    ' Upravljanje radovima
-    (UC-08\nPredaja rada) as UC_Submit
-    (UC-09\nUpravljanje vlastitim radovima) as UC_MyPapers
+    ' Radovi
+    (UC-06\nPredaja i upravljanje radovima) as UC_Papers
 
-    ' Upravljanje recenziranjem
-    (UC-10\nUpravljanje recenzentima) as UC_Reviewers
-    (UC-11\nPrihvaćanje ili odbijanje\npoziva za recenziranje) as UC_Invitation
-    (UC-12\nIskazivanje interesa\nza recenziranje) as UC_Interest
-    (UC-13\nDodjela radova\nrecenzentima) as UC_Assignment
-    (UC-14\nRecenziranje rada) as UC_Review
-    (UC-15\nSudjelovanje u\nanonimnoj raspravi) as UC_Discussion
+    ' Recenzenti i recenziranje
+    (UC-07\nUpravljanje recenzentima\ni dodjelom radova) as UC_Reviewers
+    (UC-08\nRecenziranje i rasprava\no radovima) as UC_Review
+    (UC-09\nDonošenje odluka i\nobavještavanje autora) as UC_Decisions
 
-    ' Odluke i statistika
-    (UC-16\nDonošenje odluka\no radovima) as UC_Decisions
-    (UC-17\nPregled statistike\nkonferencije) as UC_Statistics
+    ' Program i osobni raspored
+    (UC-10\nUpravljanje programom konferencije) as UC_Program
+    (UC-11\nUpravljanje osobnim rasporedom) as UC_Schedule
 
-    ' Program konferencije i osobni raspored
-    (UC-18\nUpravljanje programom\nkonferencije) as UC_Program
-    (UC-19\nUpravljanje osobnim\nrasporedom) as UC_Schedule
-    (UC-20\nGeneriranje zbornika\nradova) as UC_Proceedings
-
-    ' Uključeni slučajevi uporabe
-    (UC-21\nProvjera DOI referenci) as UC_DOI
-    (UC-22\nProvjera sukoba interesa) as UC_Conflict
+    ' Zbornik i statistika
+    (UC-12\nGeneriranje zbornika) as UC_Proceedings
+    (UC-13\nUpravljanje statistikom i\npostavkama platforme) as UC_Statistics
 }
 
 ' ==============================================================================
 ' Asocijacije aktera i slučajeva uporabe
 ' ==============================================================================
 
-' Neregistrirani korisnik
-Visitor -- UC_Register
-Visitor -- UC_PublicPage
-
 ' Registrirani korisnik
-User -- UC_Login
-User -- UC_PublicPage
-User -- UC_Profile
+User -- UC_Account
+User -- UC_PublicInfo
 User -- UC_Schedule
-User -- UC_Logout
+
+' Neregistrirani korisnik
+Visitor -- UC_PublicInfo
 
 ' Administrator sustava
-Admin -- UC_Admin
-Admin -- UC_Approve
+Admin -- UC_Administration
+Admin -- UC_Approval
+Admin -- UC_Statistics
 
 ' Predsjednik programskog odbora
 Chair -- UC_Conference
+Chair -- UC_PublicInfo
 Chair -- UC_Reviewers
-Chair -- UC_Assignment
 Chair -- UC_Decisions
 Chair -- UC_Program
+Chair -- UC_Proceedings
 Chair -- UC_Statistics
 
 ' Autor
-Author -- UC_Submit
-Author -- UC_MyPapers
+Author -- UC_Papers
+Author -- UC_Decisions
 
 ' Recenzent
-Reviewer -- UC_Invitation
-Reviewer -- UC_Interest
+Reviewer -- UC_Reviewers
 Reviewer -- UC_Review
-Reviewer -- UC_Discussion
 
 ' ==============================================================================
 ' Veze između slučajeva uporabe
 ' ==============================================================================
 
-' Provjera DOI referenci provodi se pri predaji rada ako rad sadrži DOI reference.
-UC_Submit ..> UC_DOI : <<include>>
-
-' Provjera sukoba interesa sastavni je dio dodjele radova recenzentima.
-UC_Assignment ..> UC_Conflict : <<include>>
+' Nema zasebnih pomoćnih slučajeva uporabe za DOI provjeru,
+' provjeru sukoba interesa ili slanje obavijesti jer su ti postupci
+' sastavni dijelovi odgovarajućih glavnih slučajeva uporabe.
 
 ' ==============================================================================
-' Interakcije s vanjskim sustavima
+' Interakcije sa sekundarnim akterima
 ' ==============================================================================
 
-' ORCID se koristi za registraciju, prijavu i provjeru podataka relevantnih
-' za sukob interesa.
-UC_Register -right- ORCID
-UC_Login -- ORCID
-UC_Conflict -- ORCID
+' ORCID se koristi za autentifikaciju i provjeru povezanih podataka.
+UC_Account -- ORCID
+UC_Reviewers -- ORCID
 
-' Crossref se koristi za provjeru DOI referenci i dohvat metapodataka.
-UC_DOI -- Crossref
+' Crossref se koristi za provjeru DOI identifikatora radova.
+UC_Papers -- Crossref
 
-' Pretpostavlja se izravna integracija s Google Calendarom.
-UC_Schedule -- GoogleCalendar
+' Google Calendar služi za povezivanje osobnog rasporeda.
+UC_Schedule -- Calendar
 
 ' Samo za raspored vanjskih sustava.
-Crossref -[hidden]down-> ORCID
-ORCID -[hidden]down-> GoogleCalendar
+ORCID -[hidden]down-> Crossref
+Crossref -[hidden]down-> Calendar
 
 @enduml
+

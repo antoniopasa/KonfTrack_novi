@@ -12,4 +12,4 @@ Grupa L-A-12.3
 | 4. | Gabrijela Stipić | Backend | [gabrijelast](https://github.com/gabrijelast) |[Dokumentacija backenda za predaju i povlačenje rada](../backend/rad-dnevnikRad.md) |
 | 5. | Mia Hrkać | Backend | [miahrk](https://github.com/miahrk) | [Dokumentacija backenda za inicijalizaciju](../backend/inicijalizacija-dnevnikRad.md) |
 | 6. | Marin Lukas Lončar | Baze podataka | [RedSky42](https://github.com/RedSky42) | [Dokumentacija baze podataka](../db/README-db.md) |
-| 7. | **Pavla Čančar*** | Voditeljica i dokumentacija | [pavlacancar](https://github.com/pavlacancar) | |
+| 7. | Pavla Čančar | **Voditeljica** i dokumentacija | [pavlacancar](https://github.com/pavlacancar) | Dokumentacija KonfTrack |
