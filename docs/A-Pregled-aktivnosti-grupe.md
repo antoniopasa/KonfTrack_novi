@@ -33,11 +33,11 @@
 | 4. 11. – 10. 11. 2026. | Izrada baze podataka (Prisma shema, migracije, tokeni), funkcionalnost registracije, raspodjela i obrada zadataka `A1–A16` te dorada zahtjeva | MLL, MŠ, KT, PČ | PR #54, PR #58, PR #85, PR #94, PR #95 |
 | 11. 11. – 17. 11. 2026. | Predaja rada (PDF prijenos, provjera DOI-ja preko Crossrefa), JWT tokeni, ER model, glavni UML dijagram i obrasci uporabe | GS, KT, MLL, PČ | PR #107, PR #115–#120, PR #126 |
 | 18. 11. – 19. 11. 2026. | Spajanje *frontenda* i *backenda*, obrada obrazaca uporabe i poglavlja `4.1`, ažuriranje poglavlja `2` i `3`, uređivanje `README` datoteka, postavljanje na Render i izrada dnevnika rada | MŠ, MH, GS, PČ, AP, KT | PR #127–#142 |
-| Preostali rad (do predaje) | Izrada dijagrama `4.3.2` (MLL) i `4.4.1` (AP), završni *deployment* (KT) te dovršetak poglavlja `5–7` | MLL, AP, KT, cijela grupa | – |
+| Preostali rad (do predaje) | |  | – |
 
 ## A.3 Aktivnosti i doprinosi članova
 
-Sati u tablici predstavljaju samoprijavljenu procjenu uloženog truda (izrada, ispravljanje pogrešaka, učenje i sastanci), bez dvostrukog brojanja zajedničkog rada. Ukupno je na razini tima utrošeno **240 sati** (PČ 57 h, KT 38 h, MŠ 37 h, MH 35 h, GS 28 h, MLL 25 h, AP 20 h).
+Sati u tablici predstavljaju samoprijavljenu procjenu uloženog truda (izrada, ispravljanje pogrešaka, učenje i sastanci), bez dvostrukog brojanja zajedničkog rada. Ukupno je na razini tima utrošeno **240 sati** (PČ 50 h, KT 40 h, MŠ 39 h, MH 35 h, GS 28 h, MLL 31 h, AP 17 h).
 
 | Aktivnost ili rezultat | Član | Prijavljeni sati | Reprezentativni rezultat ili poveznica |
 | --- | --- | --- | --- |
@@ -128,9 +128,8 @@ Sati u tablici predstavljaju samoprijavljenu procjenu uloženog truda (izrada, i
 | **Nekompatibilnost Prisme 7 s projektnim postavkama** | Zbog zahtjeva Prisme 7 za ESM modulima i drukčijom konfiguracijom, MH je donijela odluku o zadržavanju stabilne verzije Prisma 6. | **Riješeno** odlukom; migracije i upiti rade stabilno u cijelom sustavu. |
 | **Ovisnost predaje rada o vanjskom Crossref servisu** | GS je izdvojila provjere u zasebne servise (`crossrefService.js`, `pdfService.js`) i prilagodila sustav da prikazuje upozorenja umjesto potpunog odbijanja rada. | **Riješeno uz ograničenja:** DOI-jevi se provjeravaju sekvencijalno, mrežna pogreška prikazuje se kao nepostojeći DOI, anonimnost se provjerava samo iz metapodataka PDF-a, a datoteke se pohranjuju lokalno. |
 | **Pogreške u prvoj verziji obrazaca uporabe i analize (`2.5`, `2.6`, poglavlje `3`)** | PČ je ponovno izradila sporne dijelove dokumentacije i regenerirala pripadajuće PlantUML dijagrame (~10 h dodatnog rada). | **Riješeno** (PR #126, PR #131–#134, PR #137). |
-| **Zaostajanje razvojnih grana za glavnom granom (`main`)** | Na sastanku 18. 11. uvedeno je pravilo obveznog spajanja isključivo putem *pull requestova* i redovitog slanja izmjena (*push*). | **U tijeku:** Potrebno potvrditi da su sve grane ažurne prije konačne predaje. |
 | **Nedostajuće ovisnosti i rute u početnom *backend* zapisu** | U dnevniku *backenda* zabilježeno je da `/health` i Swagger nisu bili spojeni u `app.js` te da su nedostajali paketi `jsonwebtoken`, `multer` i `axios`. | **Potrebno provjeriti:** Provjeriti u `package.json` i `app.js` na grani `main` jesu li svi paketi i rute naknadno dodani tijekom razvoja. |
-| **Prikaz sučelja za recenzije i stranica grešaka `403`/`404`** | Pokrenuto je pitanje vidljivosti dijela za recenzije (trenutačno vidljivo samo *„Moji radovi“*) te implementacije posebnih stranica za greške `403` i `404`. | **Otvoreno:** Potrebno provjeriti uloge korisnika (recenzent) i dovršiti prilagođene stranice grešaka prije konačne predaje. |
+
 </details>
 
 ---
